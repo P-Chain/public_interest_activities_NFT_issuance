@@ -25,6 +25,7 @@ mongoose.connect(process.env.MONGO_URI, {
 const port = process.env.PORT || 4000; // 4000 if not defined
 
 /* link part */
+const auth_account = require('./auth_account');
 const auth_apply = require('./auth_apply');
 const log_in = require('./log_in');
 const main = require('./main');
@@ -42,6 +43,7 @@ router.get('/', (ctx, next) => {
     ctx.body = '첫 화면 (홈)';
 })
 
+router.use('/auth_account', auth_account.routes());
 router.use('/auth_apply', auth_apply.routes());
 router.use('/log_in', log_in.routes());
 router.use('/main', main.routes());
