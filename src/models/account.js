@@ -64,7 +64,7 @@ Account.statics.localRegister = function({ username, email, password}) {
     return account.save();
 }
 
-Account.methods.vaildatePassword = function(password) {
+Account.methods.validatePassword = function(password) {
     // 함수로 전달받은 password의 해시값과, 데이터에 담겨있는 해시값과 비교를 합니다.
     const hashed = hash(password);
     return this.password === hashed;
