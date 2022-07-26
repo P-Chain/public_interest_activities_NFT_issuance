@@ -9,6 +9,8 @@ const router = new Router();
 const mongoose = require('mongoose');
 const bodyParser = require('koa-bodyparser');
 
+const { jwtMiddleware } = require('lib/token');
+
 mongoose.Promise = global.Promise; // use node native Promise
 // connect mongoDB
 mongoose.connect(process.env.MONGO_URI, {
@@ -38,10 +40,7 @@ const user_search = require('./user_search');
 const vms_ins = require('./vms_ins');
 
 app.use(bodyParser()); // have to be upward of router
-
-router.get('/', (ctx, next) => {
-    ctx.body = '첫 화면 (홈)';
-})
+app.use(jwtMiddleware); // apply middleware
 
 router.use('/auth_account', auth_account.routes());
 router.use('/auth_apply', auth_apply.routes());
