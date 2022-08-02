@@ -6,7 +6,7 @@ function hash(password) {
     return crypto.createHmac('sha256', process.env.SECRET_KEY).update(password).digest('hex');
 }
 
-const Account = new Schema({
+const Ins_Account = new Schema({
     profile: {
         username: String,
         thumbnail: { type: String, default: '/static/images/default_thumbnail.png'}
@@ -31,16 +31,16 @@ const Account = new Schema({
     createdAt: {type: Date, default: Date.now}*/ // 발급계정은 nft 소유 불가
 });
 
-Account.statics.findByUsername = function(username) {
+Ins_Account.statics.findByUsername = function(username) {
     // 객체에 내장되어있는 값을 사용할 때는 객체명.키
     return this.findOne({'profile.username': username}).exec();
 };
 
-Account.statics.findByEmail = function(email) {
+Ins_Account.statics.findByEmail = function(email) {
     return this.findOne({email}).exec();
 };
 
-Account.statics.findByEmailOrUsername = function({username, email}) {
+Ins_Account.statics.findByEmailOrUsername = function({username, email}) {
     return this.findOne({
         // $or 연산자를 통해 둘중에 하나를 만족하는 데이터를 찾습니다
         $or: [
@@ -50,7 +50,7 @@ Account.statics.findByEmailOrUsername = function({username, email}) {
     }).exec();
 };
 
-Account.statics.localRegister = function({ username, email, password}) {
+Ins_Account.statics.localRegister = function({ username, email, password}) {
     //데이터를 생성할 때는 new this()를 사용
     const account = new this({
         profile: {
@@ -64,11 +64,11 @@ Account.statics.localRegister = function({ username, email, password}) {
     return account.save();
 }
 
-Account.methods.validatePassword = function(password) {
+Ins_Account.methods.validatePassword = function(password) {
     // 함수로 전달받은 password의 해시값과, 데이터에 담겨있는 해시값과 비교를 합니다.
     const hashed = hash(password);
     return this.password === hashed;
 };
 
 
-module.exports = mongoose.model('Account', Account);
+module.exports = mongoose.model('Ins_Account', Ins_Account);
