@@ -2,7 +2,7 @@
   "name": "public_interest_activities",
   "description": "public_interest_activities_NFT_issuance",
   "version": "1.0.0",
-  "author": "P-chain",
+  "author": "JeongTaeyeong <jxoyo15@naver.com>",
   "license": "MIT",
   "private": true,
   "scripts": {
