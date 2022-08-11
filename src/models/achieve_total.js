@@ -10,9 +10,9 @@ const Achieve_total = new Schema({ // 업적 종류 저장용 DB
     Condition: {name: String, clear: Number} // 자동발급 업적을 위한 달성조건
 });
 
-Achieve_total.static.findAchieveByID = function(id){
+Achieve_total.static.findAchieveByID = function(Id){
     // 업적 ID 입력해서 해당 업적 정보 불러오기
-    return this.findOne({'Id':id}).exec();
+    return this.findOne({Id}).exec();
 };
 
 Achieve_total.static.findImageByID = function(id){
