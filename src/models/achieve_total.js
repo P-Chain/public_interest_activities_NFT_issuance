@@ -13,16 +13,16 @@ const Achieve_total = new Schema({ // 업적 종류 저장용 DB
 Achieve_total.static.findAchieveByID = function(id){
     // 업적 ID 입력해서 해당 업적 정보 불러오기
     return this.findOne({'Id':id}).exec();
-}
+};
 
 Achieve_total.static.findImageByID = function(id){
     // 업적 ID 입력해서 업적 이미지 불러오기
     var data = this.findOne({'Id':id}).exec();
     return data.Image;
-}
+};
 Achieve_total.static.findImageAndName = function(id){
     // 업적 ID 입력해서 업적 이미지와 업적 이름 불러오기
     var data = this.findOne({'Id':id}).exec();
     return {image : data.Image, name : data.Name}
-}
+};
 module.exports = mongoose.model('Achieve_total', Achieve_total);
