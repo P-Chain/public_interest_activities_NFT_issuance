@@ -6,7 +6,7 @@ const PA = require('models/Progressed_achieve');
 
 
 exports.APLTest1 = async (ctx) =>{
-    var ID = 1
+    var ID = 'testID'
     var data = await APL.userRegist(ID);
     console.log('pass');
     ctx.body = 'testing APL';
