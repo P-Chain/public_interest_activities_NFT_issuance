@@ -13,6 +13,7 @@ Progressed_achieve.statics.AddUser = function(id){
     const User = new this({
         Id:id
     });
+    User.save();
 };
 
 Progressed_achieve.statics.findAchieveArray = function(id){

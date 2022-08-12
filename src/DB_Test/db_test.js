@@ -6,8 +6,25 @@ const PA = require('models/Progressed_achieve');
 
 
 exports.APLTest1 = async (ctx) =>{
-    var ID = 'testID'
+    var ID = 'testID';
     var data = await APL.userRegist(ID);
-    console.log('pass');
     ctx.body = 'testing APL';
 };
+
+exports.APLTest2 = async (ctx) =>{
+    var ID = 'testID';
+    var vol = 60;
+    var res = await APL.VolTimeUpdate(ID,vol);
+    ctx.body = 'test2 APL'+res;
+}
+exports.APLTest3 = async (ctx) =>{
+    var ID = 'testID';
+    var res = await APL.findDoneNum(ID);
+    ctx.body = 'test3 APL'+'  '+res;
+}
+exports.APLTest4 = async (ctx) =>{
+    var ID = 'testID';
+    var res = await APL.AchieveCount(ID);
+    res = await APL.findDoneNum(ID);
+    ctx.body = 'test4 ApL'+res;
+}

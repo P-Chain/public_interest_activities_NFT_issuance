@@ -15,37 +15,44 @@ AchieveProgressLev.statics.userRegist = function(Id){ // 새로운 유저DB생�
     return user.save();
 };
 
-AchieveProgressLev.statics.findVolTime = function(id){
+/*AchieveProgressLev.statics.findVolTime = function(id){
     // ID입력해 봉사시간 불러오기
     var data = this.findOne({'Id':id}).exec();
     return data.vol_time;
-};
+};*/
 
-AchieveProgressLev.statics.VolTimeUpdate = function({id, VolTime}){
+AchieveProgressLev.statics.VolTimeUpdate = function(Id,VolTime){
     // 봉사시간 업데이트
-    var User = this.findOne({'Id':id}).exec();
-    User.vol_time = VolTime;
+    //var User = this.findOne({Id}).exec();
+    this.updateOne({Id},{$set: {vol_time: VolTime}}).exec();
+    //return this.findByIdAndUpdate(User._id,{vol_time: VolTime},{new:true}).exec();
+    
 };
 
-AchieveProgressLev.statics.findDoneNum = function(id){
+/*AchieveProgressLev.statics.findDoneNum = function(Id){
     // ID입력해 기부액 불러오기
-    var data = this.findOne({'Id':id}).exec();
-    return data.Done_num;
-};
-AchieveProgressLev.statics.DoneUpdate = function({id, DoneNum}){
+    this.findOne({Id},function(err,res){
+        var num = res.vol_time;
+    }).clone().exec();
+    return num;
+};*/
+AchieveProgressLev.statics.DoneUpdate = function(id, DoneNum){
     // 기부액 업데이트
-    var User = this.findOne({'Id':id}).exec();
-    User.Done_num = DoneNum
+    this.updateOne({Id},{$set: {Done_num: DoneNum}}).exec();
 };
-AchieveProgressLev.statics.findAchieveNum = function(id){
+/*AchieveProgressLev.statics.findAchieveNum = function(id){
     // ID입력해 업적 달성갯수 불러오기
     var data = this.findOne({'Id':id}).exec();
     return data.Progressed_achieve_num;
-};
-AchieveProgressLev.statics.AchieveCount = function(id){
+};*/
+
+// ** 세부 요소 불러오기 기능을 구현하려면 파싱이 필요한것으로 예상되어, 전체 불러오기 외에 다른 기능 주석처리함
+
+AchieveProgressLev.statics.AchieveCount = function(Id){
     // ID입력해 업적 달성갯수 올리기
-    var User = this.findOne({'Id':id}).exec();
-    User.Progressed_achieve_num++;
+    return this.findOne({Id},function(err,res){
+        res.updateOne({$set: {Progressed_achieve_num: res.Progressed_achieve_num+1}}).clone().exec();
+    }).clone().exec();
 };
 AchieveProgressLev.statics.findAllProgress = function(id){
     // ID 입력해 전체 진행도 불러오기
