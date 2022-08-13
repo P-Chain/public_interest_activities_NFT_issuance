@@ -1,9 +1,7 @@
 <template>
   <div id="app">
     <NavBar></NavBar>
-    <div class="notice">
-      <Notice></Notice>
-    </div>
+    <Notice></Notice>
     <RankingCard></RankingCard>
     <ProgressCard></ProgressCard>
     <CommunityCard></CommunityCard>

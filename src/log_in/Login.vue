@@ -1,82 +1,144 @@
+<!-- https://codepen.io/rpandrews/pen/XWbjJEg -->
 <template>
-  <div class="container">
-    <div class="row">
-    	<div class="col-md-4 col-md-offset-4">
-    		<div class="panel panel-default">
-			  	<div class="panel-heading">
-			    	<h3 class="panel-title">Login</h3>
-			 	</div>
-			  	<div class="panel-body">
-			    	<form accept-charset="UTF-8" role="form">
-                    <fieldset>
-			    	  	<div class="form-group">
-			    		    <input class="form-control" placeholder="yourmail@example.com" name="email" type="text">
-			    		</div>
-			    		<div class="form-group">
-			    			<input class="form-control" placeholder="Password" name="password" type="password" value="">
-			    		</div>
-			    		<div class="checkbox">
-			    	    	<label>
-			    	    		<input name="remember" type="checkbox" value="Remember Me"> Remember Me
-			    	    	</label>
-			    	    </div>
-			    		<input class="btn btn-lg btn-success btn-block" type="submit" value="Login">
-			    	</fieldset>
-			      	</form>
-                      <hr/>
-                    <center><h4>OR</h4></center>
-                    <input class="btn btn-lg btn-facebook btn-block" type="submit" value="Login via facebook">
-                    <input class="btn btn-lg btn-facebook btn-block" type="submit" value="Login via google">
-			    </div>
-			</div>
-		</div>
-	</div>
+<div id="app">
+
+   <div class="login-page">
+      <transition name="fade">
+         <div v-if="!registerActive" class="wallpaper-login"></div>
+      </transition>
+      <div class="wallpaper-register"></div>
+
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-8 mx-auto">
+               <div v-if="!registerActive" class="card login" v-bind:class="{ error: emptyFields }">
+                  <h1>Sign In</h1>
+                  <form class="form-group">
+                     <input v-model="emailLogin" type="email" class="form-control" placeholder="Email" required>
+                     <input v-model="passwordLogin" type="password" class="form-control" placeholder="Password" required>
+                     <input type="submit" class="btn btn-primary" @click="doLogin">
+                     <p>Don't have an account? <a href="#" @click="registerActive = !registerActive, emptyFields = false">Sign up here</a>
+                     </p>
+                     <p><a href="#">Forgot your password?</a></p>
+                  </form>
+               </div>
+
+               <div v-else class="card register" v-bind:class="{ error: emptyFields }">
+                  <h1>Sign Up</h1>
+                  <form class="form-group">
+                     <input v-model="emailReg" type="email" class="form-control" placeholder="Email" required>
+                     <input v-model="passwordReg" type="password" class="form-control" placeholder="Password" required>
+                     <input v-model="confirmReg" type="password" class="form-control" placeholder="Confirm Password" required>
+                     <input type="submit" class="btn btn-primary" @click="doRegister">
+                     <p>Already have an account? <a href="#" @click="registerActive = !registerActive, emptyFields = false">Sign in here</a>
+                     </p>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
 </div>
 </template>
 
 <script>
 export default {
-
+   data: {
+      registerActive: false,
+      emailLogin: "",
+      passwordLogin: "",
+      emailReg: "",
+      passwordReg: "",
+      confirmReg: "",
+      emptyFields: false
+   },
+   
+   methods: {
+      doLogin() {
+         if (this.emailLogin === "" || this.passwordLogin === "") {
+            this.emptyFields = true;
+         } else {
+            alert("You are now logged in");
+         }
+      },
+      
+      doRegister() {
+         if (this.emailReg === "" || this.passwordReg === "" || this.confirmReg === "") {
+            this.emptyFields = true;
+         } else {
+            alert("You are now registered");
+         }
+      }
+   }
 }
 </script>
 
 <style scoped>
-    .white{
-    color:#000;
-    background-color:#fff;
+p {
+  line-height: 1rem;
 }
 
-.btn-facebook {
-    color: #ffffff;
-    -webkit-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-    background-color: #2b4b90;
-    *background-color: #133783;
-    background-image: -moz-linear-gradient(top, #3b5998, #133783);
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#3b5998), to(#133783));
-    background-image: -webkit-linear-gradient(top, #3b5998, #133783);
-    background-image: -o-linear-gradient(top, #3b5998, #133783);
-    background-image: linear-gradient(to bottom, #3b5998, #133783);
-    background-repeat: repeat-x;
-    border-color: #133783 #133783 #091b40;
-    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff3b5998', endColorstr='#ff133783', GradientType=0);
-    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+.card {
+  padding: 20px;
 }
 
-    .btn-facebook:hover,
-    .btn-facebook:focus,
-    .btn-facebook:active,
-    .btn-facebook.active,
-    .btn-facebook.disabled,
-    .btn-facebook[disabled] {
-        color: #ffffff;
-        background-color: #133783 !important;
-        *background-color: #102e6d !important;
-    }
+.form-group input {
+  margin-bottom: 20px;
+}
 
-    .btn-facebook:active,
-    .btn-facebook.active {
-        background-color: #0d2456 \9 !important;
-    }
+.login-page {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+}
+.login-page .wallpaper-login {
+  background: url(https://images.pexels.com/photos/32237/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260) no-repeat center center;
+  background-size: cover;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+.login-page .fade-enter-active,
+.login-page .fade-leave-active {
+  transition: opacity 0.5s;
+}
+.login-page .fade-enter,
+.login-page .fade-leave-to {
+  opacity: 0;
+}
+.login-page .wallpaper-register {
+  background: url(https://images.pexels.com/photos/533671/pexels-photo-533671.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260) no-repeat center center;
+  background-size: cover;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+}
+.login-page h1 {
+  margin-bottom: 1.5rem;
+}
+
+.error {
+  animation-name: errorShake;
+  animation-duration: 0.3s;
+}
+
+@keyframes errorShake {
+  0% {
+    transform: translateX(-25px);
+  }
+  25% {
+    transform: translateX(25px);
+  }
+  50% {
+    transform: translateX(-25px);
+  }
+  75% {
+    transform: translateX(25px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 </style>

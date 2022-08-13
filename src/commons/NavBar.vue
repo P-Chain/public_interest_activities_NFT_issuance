@@ -1,26 +1,19 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">&&사이트명</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">&&닉네임</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">로그인</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">마이페이지</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
-    </ul>
-  </div>
-  </nav>
+<div>
+  <b-navbar toggleable="sm" type="light" variant="light">
+    <b-navbar-toggle target="nav-text-collapse"></b-navbar-toggle>
+
+    <b-navbar-brand href="#">NavBar</b-navbar-brand>
+
+    <b-collapse id="nav-collapse" is-nav>
+      <b-navbar-nav>
+        <b-nav-item href="#">&&닉네임</b-nav-item>
+        <b-nav-item href="#">로그인</b-nav-item>
+        <b-nav-item href="#">마이페이지</b-nav-item>
+      </b-navbar-nav>
+    </b-collapse>
+  </b-navbar>
+</div>
 </template>
 
 <script>

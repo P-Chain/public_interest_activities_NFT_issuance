@@ -1,12 +1,21 @@
 <template>
-  <div class="jumbotron">
-    <h1 class="display-4">Notice</h1>
-    <p class="lead">&&공지사항 내용이 들어가는 곳</p>
-    <!-- <hr class="my-4">
-    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-    <p class="lead">
-      <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-    </p> -->
+<div>
+  <b-jumbotron>
+    <template #header>&&공지사항</template>
+
+    <template #lead>
+      &&부제
+    </template>
+
+    <hr class="my-4">
+
+    <p>
+      &&내용
+    </p>
+
+    <!-- <b-button variant="primary" href="#">Do Something</b-button>
+    <b-button variant="success" href="#">Do Something Else</b-button> -->
+  </b-jumbotron>
 </div>
 </template>
 
@@ -16,6 +25,9 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+div {
+  border: 1px;
+}
 
 </style>
