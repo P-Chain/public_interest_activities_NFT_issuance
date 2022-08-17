@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <main>
+            <form @submit.prevent="submit">
+                <input type="text" v-model="username"> 
+                <input type="text" v-model="email"> 
+                <input type="text" v-model="password"> 
+                <button type="submit">
+                    Submit From Vue Property
+                </button>
+            </form>
+        </main>
+
+        <script src = "https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script> <!-- Vue framework src -->
+        <script src = "https://unpkg.com/vue-router@3.0.1/dist/vue-router.js"></script> <!-- Vue Router framework src -->
+        <script src = "https://cdn.jsdelivr.net/npm/vue-resource@1.3.4"></script> <!-- Vue Resource framework src -->
+        <script src = "https://unpkg.com/axios/dist/axios.min.js"></script> <!-- axios framework src -->
+        <script>
+            new Vue({
+                el : 'main',
+                data : {
+                    username : '',
+                    email : '',
+                    password : ''
+                },
+                methods : {
+                    submit(){
+                        axios.post('/register/local', { username: this.username, password: this.password, email: this.email })
+                        .then(res => {
+                            // do something with res
+                            console.log(res);
+                        })
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>
