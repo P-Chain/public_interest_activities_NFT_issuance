@@ -12,7 +12,15 @@
   "dependencies": {
     "bootstrap": "^5.2.0",
     "bootstrap-vue": "^2.22.0",
-    "vue": "^2.7.8"
+    "vue": "^2.7.8",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.1",
+    "joi": "^17.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "koa": "^2.13.4",
+    "koa-bodyparser": "^4.3.0",
+    "koa-router": "^12.0.0",
+    "mongoose": "^6.4.6"
   },
   "browserslist": [
     "> 1%",
@@ -31,5 +39,10 @@
     "vue-template-compiler": "^2.4.4",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.9.1"
+  },
+  "scripts": {
+    "start": "cross-env NODE_PATH=src node src",
+    "start:dev": "cross-env NODE_PATH=src nodemon --watch src/ src/index.js",
+    "start:updated": "npm install && cross-env NODE_PATH=src nodemon -- watch src/ src/index.js"
   }
 }
