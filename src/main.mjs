@@ -1,17 +1,33 @@
 import Vue from 'vue'
 import App from './App.vue'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
-// Import Bootstrap and BootstrapVue CSS files (order is important)
+
+// import Bootstrap and BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'mdb-vue-ui-kit/css/mdb.min.css'
+
+// temp
+// const Vue = require('vue');
+// const App = require('../src/App.vue');
+// const BootstrapVue = require('bootstrap-vue');
+// const IconsPlugin = require('bootstrap-vue');
+// require('bootstrap/dist/css/bootstrap.css');
+// require('bootstrap-vue/dist/bootstrap-vue.css');
+// require('mdb-vue-ui-kit/css/mdb.min.css');
+
+
 
 // 라우터 별 vue 파일 import
 import Main from './main/main.vue'
 import Login from './log_in/Login.vue'
 import SignUpSelection from './auth_account/SignUpSelection.vue'
-import DirectorAccount from './auth_account/DirectorAccountForm.vue'
-import UserAccount from './auth_account/UserAccountForm.vue'
+import DirectorAccount from './auth_account/DirectorAccountPage.vue'
+import UserAccount from './auth_account/UserAccountPage.vue'
 import Ranking from './ranking/Ranking.vue'
+
+// temp
+// const Main = require('../src/main/Main.vue');
 
 // Make BootstrapVue available throughout your project
 Vue.use(BootstrapVue)

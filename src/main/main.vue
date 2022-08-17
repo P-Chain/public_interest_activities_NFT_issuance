@@ -18,6 +18,15 @@ import ProgressCard from './components/ProgressCard.vue'
 import CommunityCard from './components/CommunityCard.vue'
 import Footer from '../commons/Footer.vue'
 
+// temp
+// const NavBar = require('../src/commons/NavBar.vue');
+// const Notice = require('../src/main/components/Notice.vue');
+// const RankingCard = require('../src/main/components/RankingCard.vue');
+// const ProgressCard = require('../src/main/components/ProgressCard.vue');
+// const CommunityCard = require('./components/CommunityCard.vue');
+// const Footer = require('../src/commons/Footer.vue');
+
+
 export default {
     name: 'app', 
     components: {
