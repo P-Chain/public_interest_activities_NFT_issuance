@@ -1,5 +1,6 @@
+<!-- 회원가입 페이지, 사용자 계정과 발급 계정 구분 -->
+
 <template>
-<!-- 회원가입 전 사용자 계정과 발급 계정 구분 -->
 <div class="social-box">
     <div class="container">
      	<div class="row">
