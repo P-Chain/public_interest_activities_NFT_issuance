@@ -38,6 +38,7 @@ const nft_issue = require('./nft_issue');
 const ranking = require('./ranking');
 const user_search = require('./user_search');
 const vms_ins = require('./vms_ins');
+const DB_test = require('./DB_Test');
 
 app.use(bodyParser()); // have to be upward of router
 app.use(jwtMiddleware); // apply middleware
@@ -53,6 +54,7 @@ router.use('/nft_issue', nft_issue.routes());
 router.use('/ranking', ranking.routes());
 router.use('/user_search', user_search.routes());
 router.use('/vms_ins', vms_ins.routes());
+router.use('/DB_test', DB_test.routes());
 
 app.use(router.routes()).use(router.allowedMethods());
 
