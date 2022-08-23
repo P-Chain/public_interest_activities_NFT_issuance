@@ -3,7 +3,7 @@
   <div id="app">
     <NavBar></NavBar>
     <div id="contents">
-      <h3>회원가입</h3>
+      <h3>사용자 계정 회원가입</h3>
       <UserAccountInputForm></UserAccountInputForm>
     </div>
     <Footer></Footer>
@@ -11,22 +11,18 @@
 </template>
 
 <script>
-import NavBar from '../commons/NavBar.vue'
 import UserAccountInputForm from './components/userAccountInputForm.vue'
-import Footer from '../commons/Footer.vue'
 
 export default {
   name: 'app', 
   components: {
-    NavBar,
-    UserAccountInputForm,
-    Footer
+    UserAccountInputForm
   }
 }
 </script>
 
 <style scoped>
-div {
-  padding: 0.2rem;
+#contents {
+  margin: 1rem;
 }
 </style>

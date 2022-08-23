@@ -80,16 +80,15 @@
           :options="sexes"
           required
         ></b-form-select>
-        <br>
       </b-form-group>
 
       <b-button type="submit" variant="primary">Submit</b-button>
       <b-button type="reset" variant="danger">Reset</b-button>
     </b-form>
     <!-- for debug -->
-    <b-card class="mt-3" header="Form Data Result">
+    <!-- <b-card class="mt-3" header="Form Data Result">
       <pre class="m-0">{{ form }}</pre>
-    </b-card>
+    </b-card> -->
     <!-- for debug -->
   </div>
 </template>
@@ -115,6 +114,19 @@ export default {
     onSubmit(event) {
       event.preventDefault()
       alert(JSON.stringify(this.form)) // for debug
+      axios.post('/register/local', { 
+        id: this.id, 
+        password: this.password, 
+        email: this.email,
+        number: this.number,
+        name: this.name,
+        birthdate: this.birthdate,
+        sex: this.sex
+      })
+      .then(res => {
+        // do something with res
+        console.log(res);
+      })
     },
     onReset(event) {
       event.preventDefault()
@@ -137,5 +149,7 @@ export default {
 </script>
 
 <style scoped>
-
+form-group {
+  margin-bottom: 1rem;
+}
 </style>

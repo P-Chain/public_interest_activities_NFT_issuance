@@ -50,7 +50,8 @@ var routes = [
 
 // 뷰 라우터 인스턴스 생성
 var router = new VueRouter({
-    routes
+    routes,
+    mode: "history"
 });
 
 // 뷰 인스턴스 생성
