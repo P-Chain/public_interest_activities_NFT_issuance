@@ -1,15 +1,16 @@
-<!-- ID, PW, 이름, 전화번호, 생년월일, 성별, 이메일, 닉네임 -->
+<!-- 이메일, PW, 이름, 전화번호, 생년월일, 성별 -->
 <!-- https://bootstrap-vue.org/docs/components/form -->
 <!-- 추가로 더 할 수 있는 것: UX / 유효성 검사 -->
 <template>
   <div>
     <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-    <!-- id -->
-      <b-form-group id="input-group-1" label="아이디" label-for="input-1">
+      <!-- 이메일 -->
+      <b-form-group id="input-group-1" label="이메일" label-for="input-1">
         <b-form-input
           id="input-1"
-          v-model="form.id"
-          placeholder="ID를 입력해주세요."
+          v-model="form.email"
+          type="email"
+          placeholder="이메일을 입력해주세요. ex)example@example.com"
           required
         ></b-form-input>
       </b-form-group>
@@ -50,21 +51,10 @@
         하이픈(-)을 제거하고 입력해주세요.
       </b-form-group>
 
-    <!-- 이메일 -->
-      <b-form-group id="input-group-5" label="이메일" label-for="input-5">
+    <!-- 생년월일 -->
+      <b-form-group id="input-group-5" label="생년월일" label-for="input-5">
         <b-form-input
           id="input-5"
-          v-model="form.email"
-          type="email"
-          placeholder="이메일을 입력해주세요. ex)example@example.com"
-          required
-        ></b-form-input>
-      </b-form-group>
-
-    <!-- 생년월일 -->
-      <b-form-group id="input-group-6" label="생년월일" label-for="input-6">
-        <b-form-input
-          id="input-6"
           v-model="form.birthdate"
           type="date"
           placeholder=""
@@ -73,9 +63,9 @@
       </b-form-group>
 
     <!-- 성별 -->
-      <b-form-group id="input-group-6" label="성별" label-for="input-7">
+      <b-form-group id="input-group-6" label="성별" label-for="input-6">
         <b-form-select
-          id="input-7"
+          id="input-6"
           v-model="form.sex"
           :options="sexes"
           required
@@ -98,9 +88,8 @@ export default {
   data() {
     return {
       form: {
-        id: '',
-        password: '',
         email: '',
+        password: '',
         number: '',
         name: '',
         birthdate: '',
@@ -115,9 +104,8 @@ export default {
       event.preventDefault()
       alert(JSON.stringify(this.form)) // for debug
       axios.post('/register/local', { 
-        id: this.id, 
-        password: this.password, 
         email: this.email,
+        password: this.password, 
         number: this.number,
         name: this.name,
         birthdate: this.birthdate,
@@ -131,11 +119,10 @@ export default {
     onReset(event) {
       event.preventDefault()
       // Reset our form values
-      this.form.id =''
+      this.form.email = ''
       this.form.password = ''
       this.form.name = ''
       this.form.number = ''
-      this.form.email = ''
       this.form.birthdate = ''
       this.form.sex = ''
       // Trick to reset/clear native browser form validation state
@@ -149,7 +136,5 @@ export default {
 </script>
 
 <style scoped>
-form-group {
-  margin-bottom: 1rem;
-}
+
 </style>

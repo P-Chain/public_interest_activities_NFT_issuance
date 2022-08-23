@@ -1,20 +1,21 @@
-<!-- ID, PW, 기관명, 기관번호, 대표 이메일 -->
+<!-- 대표 이메일, PW, 기관명, 기관번호 -->
 <!-- https://bootstrap-vue.org/docs/components/form -->
 <!-- 추가로 더 할 수 있는 것: UX / 유효성 검사 -->
 <template>
   <div>
     <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-    <!-- id -->
-      <b-form-group id="input-group-1" label="아이디" label-for="input-1">
+      <!-- 대표 이메일 -->
+      <b-form-group id="input-group-1" label="대표 이메일" label-for="input-1">
         <b-form-input
           id="input-1"
-          v-model="form.id"
-          placeholder="ID를 입력해주세요."
+          v-model="form.email"
+          type="email"
+          placeholder="대표 이메일을 입력해주세요. ex)example@example.com"
           required
         ></b-form-input>
       </b-form-group>
 
-    <!-- password -->
+      <!-- password -->
       <b-form-group id="input-group-2" label="비밀번호" label-for="input-2">
         <b-form-input 
           id="input-2"
@@ -26,7 +27,7 @@
         ></b-form-input>
       </b-form-group>
 
-    <!-- 기관명 -->
+      <!-- 기관명 -->
       <b-form-group id="input-group-3" label="기관명" label-for="input-3">
         <b-form-input
           id="input-3"
@@ -36,7 +37,7 @@
         ></b-form-input>
       </b-form-group>
 
-    <!-- 기관번호 -->
+      <!-- 기관번호 -->
       <b-form-group id="input-group-4" label="기관 전화번호" label-for="input-4">
         <b-form-input
           id="input-4"
@@ -48,17 +49,6 @@
           required
         ></b-form-input>
         하이픈(-)을 제거하고 입력해주세요.
-      </b-form-group>
-
-    <!-- 대표 이메일 -->
-      <b-form-group id="input-group-5" label="대표 이메일" label-for="input-5">
-        <b-form-input
-          id="input-5"
-          v-model="form.email"
-          type="email"
-          placeholder="대표 이메일을 입력해주세요. ex)example@example.com"
-          required
-        ></b-form-input>
       </b-form-group>
 
       <b-button type="submit" variant="primary">Submit</b-button>
@@ -77,11 +67,10 @@ export default {
   data() {
     return {
       form: {
-        id: '',
+        email: '',
         password: '',
         organization_name: '',
         number: '',
-        email: '',
       },
       show: true
     }
@@ -91,11 +80,10 @@ export default {
       event.preventDefault()
       alert(JSON.stringify(this.form)) // for debug
       axios.post('/register/local', { 
-        id: this.id, 
+        email: this.email,
         password: this.password, 
         organization_name: this.organization_name,
-        number: this.number,
-        email: this.email 
+        number: this.number
       })
       .then(res => {
         // do something with res
@@ -105,11 +93,10 @@ export default {
     onReset(event) {
       event.preventDefault()
       // Reset our form values
-      this.form.id =''
+      this.form.email = ''
       this.form.password = ''
       this.form.organization_name = ''
-      this.form.number = '',
-      this.form.email = ''
+      this.form.number = ''
       // Trick to reset/clear native browser form validation state
       this.show = false
       this.$nextTick(() => {
@@ -121,5 +108,7 @@ export default {
 </script>
 
 <style scoped>
-
+/* #input-group {
+  margin-bottom: 1rem;
+} */
 </style>

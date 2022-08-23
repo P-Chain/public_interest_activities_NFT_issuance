@@ -1,9 +1,8 @@
 <!-- 회원가입 페이지 -->
 
 <template>
-<div id="app">
-  <div id="contents">
-    <h4>회원가입 페이지</h4>
+  <div class="contents">
+    <h4>회원가입</h4>
     <b-card-group deck>
 			<b-card title="사용자 계정">
 				<b-card-text>일반 사용자용 계정</b-card-text>
@@ -16,18 +15,15 @@
 			</b-card>
   	</b-card-group>
 	</div>
-</div>
 </template>
 
 <script>
 
 export default {
-	name: 'app',
+
 }
 </script>
 
 <style scoped>
-#contents {
-  margin: 1rem;
-}
+
 </style>

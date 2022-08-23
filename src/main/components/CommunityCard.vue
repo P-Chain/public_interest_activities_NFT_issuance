@@ -1,5 +1,4 @@
 <template>
-<div>
   <b-card title="커뮤니티" sub-title="&&부제">
     <b-card-text>
       &&내용이 들어갈 곳
@@ -7,10 +6,9 @@
 
     <!-- <b-card-text>A second paragraph of text in the card.</b-card-text> -->
 
-    <!-- <a href="#" class="card-link">Card link</a>
-    <b-link href="#" class="card-link">Another link</b-link> -->
+    <a href="/community" class="card-link">더보기</a>
+    <!-- <b-link href="#" class="card-link">Another link</b-link> -->
   </b-card>
-</div>
 </template>
 
 <script>

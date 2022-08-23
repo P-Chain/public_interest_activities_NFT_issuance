@@ -5,7 +5,7 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 // import Bootstrap and BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
-import 'mdb-vue-ui-kit/css/mdb.min.css'
+import 'mdb-vue-ui-kit/css/mdb.min.css';
 
 // temp
 // const Vue = require('vue');
@@ -25,6 +25,8 @@ import SignUpSelection from './auth_account/SignUpSelection.vue'
 import DirectorAccount from './auth_account/DirectorAccountPage.vue'
 import UserAccount from './auth_account/UserAccountPage.vue'
 import Ranking from './ranking/Ranking.vue'
+import AuthApply from './auth_apply/AuthApply.vue'
+import MyPage from './mypage/MyPage.vue'
 
 // temp
 // const Main = require('../src/main/Main.vue');
@@ -38,14 +40,22 @@ Vue.use(VueRouter);
 
 // 라우터 등록
 var routes = [
-    { path: '/', component: Main }, // 메인 페이지
-    
-    { path: '/login', component: Login }, // 로그인 페이지
-    { path: '/auth_account', component: SignUpSelection }, // 로그인 -> 회원가입 페이지  
-    { path: '/director_account', component: DirectorAccount }, // 회원가입 -> 발급 계정 폼 입력 페이지  
-    { path: '/user_account', component: UserAccount }, // 회원가입 -> 사용자 계정 폼 입력 페이지
-
-    { path: '/ranking', component: Ranking } // 랭킹 페이지
+    // 메인 페이지
+    { path: '/', component: Main },
+    // 로그인 페이지
+    { path: '/login', component: Login },
+    // 로그인 -> 회원가입 페이지
+    { path: '/auth_account', component: SignUpSelection },  
+    // 회원가입 -> 발급 계정 폼 입력 페이지 
+    { path: '/director_account', component: DirectorAccount },
+    // 회원가입 -> 사용자 계정 폼 입력 페이지
+    { path: '/user_account', component: UserAccount },
+    // 랭킹 페이지
+    { path: '/ranking', component: Ranking },
+    // 마이 페이지
+    { path: '/mypage', component: MyPage },
+    // 마이 페이지 -> 권한 신청 페이지
+    { path: '/auth_apply', component: AuthApply }
 ];
 
 // 뷰 라우터 인스턴스 생성

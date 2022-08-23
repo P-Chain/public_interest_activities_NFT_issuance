@@ -20,5 +20,8 @@ export default {
 </script>
 
 <style>
-
+.contents {
+  margin: 1rem;
+  /* border: 1px solid black; */
+}
 </style>

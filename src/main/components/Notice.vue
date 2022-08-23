@@ -1,7 +1,6 @@
 <template>
-<div>
   <b-jumbotron>
-    <template #header>&&공지사항</template>
+    <template #header>공지사항</template>
 
     <template #lead>
       &&부제
@@ -16,7 +15,6 @@
     <!-- <b-button variant="primary" href="#">Do Something</b-button>
     <b-button variant="success" href="#">Do Something Else</b-button> -->
   </b-jumbotron>
-</div>
 </template>
 
 <script>
