@@ -58,5 +58,17 @@ AchieveProgressLev.statics.findAllProgress = function(id){
     // ID 입력해 전체 진행도 불러오기
     return this.findOne({'Id':id}).exec();
 };
+AchieveProgressLev.statics.printAchieveRank = function(){
+    // 전체 DB 업적랭킹순으로 불러오기
+    return this.find({"Progressed_achieve_num": {$gt: 0}},{"Id":true,"Progressed_achieve_num":true}).sort({Progressed_achieve_num:-1}).exec();
+};
+AchieveProgressLev.statics.printVolRank = function(){
+    // 전체 DB 봉사시간랭킹순으로 불러오기
+    return this.find({"vol_time": {$gt: 0}},{"Id":true,"vol_time":true}).sort({vol_time:-1}).exec();
+};
+AchieveProgressLev.statics.printDoneRank = function(){
+    // 전체 DB 기부액랭킹순으로 불러오기
+    return this.find({"Done_num": {$gt: 0}},{"Id":true,"Done_num":true}).sort({Done_num:-1}).exec();
+};
 
 module.exports = mongoose.model('AchieveProgressLev', AchieveProgressLev);
