@@ -1,5 +1,7 @@
 const Joi = require('joi');
 const Account = require('models/Account');
+const APL = require('models/AchieveProgressLev');
+const PA = require('models/Progressed_achieve');
 
 // 로컬 회원가입
 exports.localRegister = async (ctx) => {
@@ -39,6 +41,8 @@ exports.localRegister = async (ctx) => {
     let account = null;
     try {
         account = await Account.localRegister(ctx.request.body);
+        var data = await APL.userRegist(ctx.request.body.email);
+        await PA.AddUser(ctx.request.body.email);
     } catch (e) {
         ctx.throw(500, e);
     }
