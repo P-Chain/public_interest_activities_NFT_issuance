@@ -1,7 +1,7 @@
 <!-- 발급 계정 입력 폼 -->
 <template>
   <div class="contents">
-    <h3>발급 계정 회원가입</h3>
+    <h4>발급 계정 회원가입</h4>
     <DirectorAccountInputForm></DirectorAccountInputForm>
   </div>
 </template>

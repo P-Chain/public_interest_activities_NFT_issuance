@@ -7,17 +7,6 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'mdb-vue-ui-kit/css/mdb.min.css';
 
-// temp
-// const Vue = require('vue');
-// const App = require('../src/App.vue');
-// const BootstrapVue = require('bootstrap-vue');
-// const IconsPlugin = require('bootstrap-vue');
-// require('bootstrap/dist/css/bootstrap.css');
-// require('bootstrap-vue/dist/bootstrap-vue.css');
-// require('mdb-vue-ui-kit/css/mdb.min.css');
-
-
-
 // 라우터 별 vue 파일 import
 import Main from './main/main.vue'
 import Login from './log_in/Login.vue'
@@ -28,8 +17,6 @@ import Ranking from './ranking/Ranking.vue'
 import AuthApply from './auth_apply/AuthApply.vue'
 import MyPage from './mypage/MyPage.vue'
 
-// temp
-// const Main = require('../src/main/Main.vue');
 
 // Make BootstrapVue available throughout your project
 Vue.use(BootstrapVue)
@@ -55,7 +42,29 @@ var routes = [
     // 마이 페이지
     { path: '/mypage', component: MyPage },
     // 마이 페이지 -> 권한 신청 페이지
-    { path: '/auth_apply', component: AuthApply }
+    { path: '/auth_apply', component: AuthApply },
+    // // 마이 페이지 -> 봉사시간 인증 페이지
+    // {},
+    // // 발급할 NFT 선택 페이지 (권한 보유자)
+    // {},
+    // // * -> 발급할 사용자 선택 페이지
+    // {},
+    // // * -> 발급 신청 페이지
+    // {},
+    // // 커뮤니티 페이지
+    // {},
+    // // 커뮤니티 -> 작성 페이지
+    // {},
+    // // 커뮤니티 -> 게시물 페이지
+    // {},
+    // // 관리자 전용 페이지 (관리자)
+    // {},
+    // // 관리자 전용 페이지 -> NFT 발급 승인 페이지
+    // {},
+    // // 관리자 전용 페이지 -> 봉사시간 승인 페이지
+    // {},
+    // // 관리자 전용 페이지 -> 발급권한 부여 페이지
+    // {},
 ];
 
 // 뷰 라우터 인스턴스 생성

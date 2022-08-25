@@ -1,9 +1,13 @@
 <template>
-  <b-card title="랭킹" sub-title="&&부제">
+  <b-card title="랭킹" sub-title="">
     <b-card-text>
-      <b-progress :value="value1" :max="max" show-value class="mb-1"></b-progress>
-      <b-progress :value="value2" :max="max" show-value class="mb-2"></b-progress>
-      <b-progress :value="value3" :max="max" show-value class="mb-3"></b-progress>
+      <!-- DB에서 불러내는 작업 필요. 최대 3개까지 -->
+      {{ rank1 }}
+      <b-progress :value="value1" :max="value1" height="1rem" show-value class="mb-1"></b-progress>
+      {{ rank2 }}
+      <b-progress :value="value2" :max="value1" height="1rem" show-value class="mb-2"></b-progress>
+      {{ rank3 }}
+      <b-progress :value="value3" :max="value1" height="1rem" show-value class="mb-3"></b-progress>
     </b-card-text>
 
     <!-- <b-card-text>A second paragraph of text in the card.</b-card-text> -->
@@ -20,14 +24,18 @@ export default {
       value1: 100,
       value2: 77,
       value3: 50,
+
+      rank1: '랭킹1',
+      rank2: '랭킹2',
+      rank3: '랭킹3'
     }
-  },
-  created: {
-    max: this.value1 * 2
   }
 }
 </script>
 
-<style>
+<style scoped>
+.progress {
+  margin-bottom: 1rem;
+}
 
 </style>

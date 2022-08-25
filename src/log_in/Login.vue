@@ -1,36 +1,31 @@
 <!-- 로그인 페이지 -->
-<!-- https://codepen.io/rpandrews/pen/XWbjJEg -->
+<!-- 로그인 성공, 실패 시 백엔드와 연동해서 작업 필요 -->
 <template>
   <div class="login-page">
     <div class="contents">
       <h2>로그인</h2>
       <b-form @submit="onSubmit">
         <!-- 대표 이메일 -->
-        <b-form-group id="input-group-1" label-for="input-1">
-          <b-form-input
-            id="input-1"
-            v-model="form.email"
-            type="email"
-            placeholder="Email"
-            required
-          ></b-form-input>
-        </b-form-group>
-
+        <b-form-input
+          id="input-1"
+          v-model="form.email"
+          type="email"
+          placeholder="Email"
+          required
+        ></b-form-input>
         <!-- password -->
-        <b-form-group id="input-group-2" label-for="input-2">
-          <b-form-input 
-            id="input-2"
-            v-model="form.password"
-            type="password" 
-            placeholder="Password"
-            aria-describedby="password-help-block"
-            required
-          ></b-form-input>
-        </b-form-group>
+        <b-form-input 
+          id="input-2"
+          v-model="form.password"
+          type="password" 
+          placeholder="Password"
+          aria-describedby="password-help-block"
+          required
+        ></b-form-input>
         <b-button type="submit" variant="primary">로그인</b-button>
       </b-form>
-      <p>Don't have an account?
-      <a href="/auth_account">Sign up here</a>
+      <p>계정이 없으신가요?
+      <a href="/auth_account">회원가입</a>
       </p>
     </div>
   </div>
@@ -43,14 +38,15 @@ export default {
       form: {
         email: '',
         password: ''
-      },
+      }
     }
   },
   methods: {
     onSubmit(event) {
       event.preventDefault();
+      // for debug
       alert(this.form.email);
-      axios.post('/register/local', { 
+      axios.post('/login/local', { 
         email: this.email,
         password: this.password, 
       })
@@ -76,6 +72,7 @@ input {
   justify-content: center;
   display: flex;
   height: 100vh;
+  background-image: url('../assets/background.jpg');
 }
 
 .contents {

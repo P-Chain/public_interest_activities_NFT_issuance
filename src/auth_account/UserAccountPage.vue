@@ -1,7 +1,7 @@
 <!-- 사용자 계정 입력 폼 -->
 <template>
-  <div id="contents">
-    <h3>사용자 계정 회원가입</h3>
+  <div class="contents">
+    <h4>사용자 계정 회원가입</h4>
     <UserAccountInputForm></UserAccountInputForm>
   </div>
 </template>
