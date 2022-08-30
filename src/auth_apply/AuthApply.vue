@@ -1,14 +1,22 @@
 <!-- 권한 신청 페이지 -->
+<!-- 현재 발급 중인 NFT 목록 및 발급 권한 신청 -->
 <template>
-    <p>권한 신청 페이지</p>
+  <div class="contents">
+    <h3>권한 신청 페이지</h3>
+    <NFTCheckBox></NFTCheckBox>
+  </div>
 </template>
 
 <script>
-export default {
+import NFTCheckBox from './components/NFTCheckBox.vue'
 
+export default {
+  components: {
+    NFTCheckBox
+  }
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>

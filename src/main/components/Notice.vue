@@ -1,33 +1,39 @@
 <template>
-<div>
   <b-jumbotron>
-    <template #header>&&공지사항</template>
-
-    <template #lead>
-      &&부제
+    <!-- 제목 -->
+    <template #header>
+      공지사항
     </template>
 
-    <hr class="my-4">
+    <!-- 부제 -->
+    <template #lead>
+      {{ subtitle }}
+    </template>
 
+    <!-- 수평선-->
+    <hr class="my-4">
+    
+    <!-- 내용 -->
     <p>
-      &&내용
+      {{ contents }}
     </p>
 
     <!-- <b-button variant="primary" href="#">Do Something</b-button>
     <b-button variant="success" href="#">Do Something Else</b-button> -->
   </b-jumbotron>
-</div>
 </template>
 
 <script>
 export default {
-
+  data() {
+    return {
+      subtitle: '부제',
+      contents: '내용'
+    }
+  }
 }
 </script>
 
 <style scoped>
-div {
-  border: 1px;
-}
 
 </style>
