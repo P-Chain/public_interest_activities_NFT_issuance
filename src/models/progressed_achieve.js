@@ -5,7 +5,7 @@ const crypto = require('crypto');
 
 const Progressed_achieve = new Schema({ // 업적 달성여부 DB
     Id: String, // 사용자 ID
-    Prog_achieve: {type:[{id_ach: Number, name_ach: String, date_ach: Date}], default: []} // 달성업적 저장용 배열(업적id, 업적이름, 달성날짜 저장)
+    ProgAchieve: {type:[{idAch: Number, nameAch: String, dateAch: Date}], default: []} // 달성업적 저장용 배열(업적id, 업적이름, 달성날짜 저장)
 });
 
 Progressed_achieve.statics.AddUser = function(id){
@@ -22,7 +22,7 @@ Progressed_achieve.statics.findAchieveArray = function(id){
 };
 Progressed_achieve.statics.AddProgAchieve = function(id, IdAch, NameAch, DateAch){
     // 사용자 달성 업적 추가
-    this.updateOne({Id:id},{$push: {Prog_achieve: {id_ach:IdAch, name_ach:NameAch, date_ach:DateAch}}}).exec();
+    this.updateOne({Id:id},{$push: {ProgAchieve: {idAch:IdAch, nameAch:NameAch, dateAch:DateAch}}}).exec();
     
 };
 

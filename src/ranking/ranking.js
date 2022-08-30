@@ -6,6 +6,11 @@ const Account = require('models/Account');
 exports.achieveRankInfo = async (ctx) => {
     // 업적 랭킹 불러오기
     var data = await APL.printAchieveRank();
+    for (i in data){
+        console.log(data[i]);
+        var res = JSON.parse(data[i]);
+        console.log(res.id);
+    }
     ctx.body = data;
 };
 
