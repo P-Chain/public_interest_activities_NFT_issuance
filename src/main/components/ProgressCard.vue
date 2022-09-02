@@ -29,10 +29,7 @@
 
           <b-tab title="보유">
             <div>
-              <p>I'm the second tab</p>
-
-
-              
+              <p>I'm the second tab</p>          
             </div>
           </b-tab>
           <!-- <b-tab title="Disabled" disabled><p>I'm a disabled tab!</p></b-tab> -->

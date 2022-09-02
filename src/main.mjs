@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import Jazzicon from 'vue-jazzicon';
 
 // import Bootstrap and BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
@@ -9,28 +10,38 @@ import 'mdb-vue-ui-kit/css/mdb.min.css';
 
 // 라우터 별 vue 파일 import
 import Main from './main/main.vue'
-import Login from './log_in/Login.vue'
+import LoginPage from './log_in/LoginPage.vue'
 import SignUpSelection from './auth_account/SignUpSelection.vue'
 import DirectorAccount from './auth_account/DirectorAccountPage.vue'
 import UserAccount from './auth_account/UserAccountPage.vue'
 import Ranking from './ranking/Ranking.vue'
 import AuthApply from './auth_apply/AuthApply.vue'
 import MyPage from './mypage/MyPage.vue'
+import VmsIns from './vms_ins/VmsIns.vue'
+import NFTChoice from './nft_choice/NFTChoice.vue'
+import UserSearch from './user_search/UserSearch.vue'
+import NFTIssue from './nft_issue/NFTIssue.vue'
+import ManagePage from './manage_page/ManagePage.vue'
+import Progress from './progress/Progress.vue'
+
 
 
 // Make BootstrapVue available throughout your project
 Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
- // router 기능 확장 선언
+// router 기능 확장 선언
 Vue.use(VueRouter);
+
+// Jazzicon 컴포넌트 등록
+Vue.component('jazzicon', Jazzicon);
 
 // 라우터 등록
 var routes = [
     // 메인 페이지
     { path: '/', component: Main },
     // 로그인 페이지
-    { path: '/login', component: Login },
+    { path: '/login', component: LoginPage },
     // 로그인 -> 회원가입 페이지
     { path: '/auth_account', component: SignUpSelection },  
     // 회원가입 -> 발급 계정 폼 입력 페이지 
@@ -43,28 +54,25 @@ var routes = [
     { path: '/mypage', component: MyPage },
     // 마이 페이지 -> 권한 신청 페이지
     { path: '/auth_apply', component: AuthApply },
-    // // 마이 페이지 -> 봉사시간 인증 페이지
-    // {},
-    // // 발급할 NFT 선택 페이지 (권한 보유자)
-    // {},
-    // // * -> 발급할 사용자 선택 페이지
-    // {},
-    // // * -> 발급 신청 페이지
-    // {},
+    // 마이 페이지 -> 봉사시간 인증 페이지
+    { path: '/vms_ins', component: VmsIns },
+    // 발급할 NFT 선택 페이지 (권한 보유자)
+    { path: '/nft_choice', component: NFTChoice },
+    // * -> 발급할 사용자 선택 페이지
+    { path: '/user_search', component: UserSearch },
+    // * -> 발급 신청 페이지
+    { path: '/nft_issue', component: NFTIssue },
     // // 커뮤니티 페이지
     // {},
     // // 커뮤니티 -> 작성 페이지
     // {},
     // // 커뮤니티 -> 게시물 페이지
     // {},
-    // // 관리자 전용 페이지 (관리자)
-    // {},
-    // // 관리자 전용 페이지 -> NFT 발급 승인 페이지
-    // {},
-    // // 관리자 전용 페이지 -> 봉사시간 승인 페이지
-    // {},
-    // // 관리자 전용 페이지 -> 발급권한 부여 페이지
-    // {},
+    // 관리자 페이지 -> NFT 발급 승인 페이지, 봉사시간 승인 페이지, 발급권한 부여 페이지 (탭)
+    { path: '/manage_page', component: ManagePage },
+    // 진행 정보 페이지
+    { path: '/progress', component: Progress },
+
 ];
 
 // 뷰 라우터 인스턴스 생성

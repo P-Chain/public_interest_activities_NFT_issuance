@@ -2,7 +2,7 @@
 <template>
   <div class="container">
     <b-list-group>
-      이메일<b-list-group-item>&&이메일</b-list-group-item>
+      이메일<b-list-group-item>{{ myEmail }}</b-list-group-item>
       <!-- 비밀번호 변경 -->
       <div class="password">
         <b-form inline @submit="onSubmit">
@@ -11,14 +11,21 @@
           <b-button type="submit" variant="primary">수정</b-button>
         </b-form>
       </div>
-      이름<b-list-group-item>&&이름</b-list-group-item>
-      전화번호<b-list-group-item>&&전화번호</b-list-group-item>
+      이름<b-list-group-item>{{ myName }}</b-list-group-item>
+      전화번호<b-list-group-item>{{ myPhoneNum }}</b-list-group-item>
       <div class="wallet">
-        지갑 주소<b-list-group-item>&&adfdsfdsgdfgfdg</b-list-group-item>
+        지갑 주소
+        <b-list-group-item>
+          <tr>
+            <td>{{ myWalletAdr }}</td>
+            <td><jazzicon :address="myWalletAdr" :diameter="20" /></td>
+          </tr>
+        </b-list-group-item>
         <b-button variant="primary">지갑 연동</b-button>
       </div>
     </b-list-group>
-    <b-button variant="outline-primary">권한 신청</b-button>
+    <b-button href="./vms_ins" variant="outline-primary">봉사시간 갱신</b-button>
+    <b-button href="./auth_apply" variant="outline-secondary">권한 신청</b-button>
   </div>
 </template>
 
@@ -26,6 +33,10 @@
 export default {
   data() {
     return {
+      myEmail: '이메일',
+      myName: '이름',
+      myPhoneNum: '전화번호',
+      myWalletAdr: '0xcd50586710A82A6f6cB06d8a017fc3177CEc9087',
       form: {
         password: ''
       }
@@ -36,14 +47,14 @@ export default {
       event.preventDefault()
       alert(JSON.stringify(this.form)) // for debug
       axios.post('/register/local', { // router 수정 필요
-        password: this.password, 
+        password: this.form.password, 
       })
       .then(res => {
         // do something with res
         console.log(res);
       })
     }
-  }
+  },
 }
 </script>
 
@@ -63,5 +74,4 @@ input {
 form {
   margin-bottom: 1rem;
 }
-
 </style>

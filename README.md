@@ -31,17 +31,17 @@ auth_apply:   권한 신청 페이지(NFT 목록)
 
 main:         메인 페이지
 
-manage_page:  
+manage_page:  관리자 전용 페이지
 
 mypage:       마이 페이지(진행정보 / 개인정보 표시. )
 
-nft_choice:
+nft_choice:   권한 있는 경우, 발급할 NFT 선택 페이지
 
-nft_issue:
+nft_issue:    NFT 발행 페이지?
 
 ranking:      랭킹 페이지
 
-uesr_search:
+uesr_search:  
 
 vms_ins: 봉사시간 갱신 페이지 (vms 발급번호 입력 후 봉사시간 갱신)
 
