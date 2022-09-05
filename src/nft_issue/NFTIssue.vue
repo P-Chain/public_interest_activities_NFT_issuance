@@ -1,7 +1,7 @@
 <template>
   <div class="contents">
     <h3>파일 첨부</h3>
-    <InputFileBox></InputFileBox>
+    <input-file-box></input-file-box>
   </div>
 </template>
 
@@ -9,7 +9,7 @@
 import InputFileBox from './components/InputFileBox.vue'
 export default {
   components: {
-    InputFileBox
+    'input-file-box': InputFileBox
   }
 }
 </script>

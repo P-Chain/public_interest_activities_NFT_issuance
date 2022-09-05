@@ -2,16 +2,16 @@
 <template>
   <div class="contents">
     <h3>관리자 승인 페이지</h3>
-    <Content></Content>
+    <manage-content></manage-content>
   </div>
 </template>
 
 <script>
-import Content from './components/Content.vue'
+import ManageContent from './components/ManageContent.vue'
 
 export default {
   components: {
-    Content
+    'manage-content': ManageContent
   }
 }
 </script>

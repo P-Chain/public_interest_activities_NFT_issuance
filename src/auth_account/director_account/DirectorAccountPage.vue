@@ -2,7 +2,7 @@
 <template>
   <div class="contents">
     <h4>발급 계정 회원가입</h4>
-    <DirectorAccountInputForm></DirectorAccountInputForm>
+    <dir-account-input-form></dir-account-input-form>
   </div>
 </template>
 
@@ -11,7 +11,7 @@ import DirectorAccountInputForm from './components/directorAccountInputForm.vue'
 
 export default {
   components: {
-    DirectorAccountInputForm
+    'dir-account-input-form': DirectorAccountInputForm
   }
 }
 </script>

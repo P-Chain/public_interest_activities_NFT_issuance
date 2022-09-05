@@ -22,9 +22,9 @@
       <b-button type="submit" variant="primary">로그인</b-button>
     </b-form>
     <!--API 연결하기-->
-    <button class="button-image" href=""><img src="../../assets/googleIcon.png"></button>
-    <button class="button-image" href=""><img src="../../assets/facebookIcon.png"></button>
-    
+    <button class="button-image" href=""><b-img :src="require('../../assets/googleIcon.png')"></b-img></button>
+    <button class="button-image" href=""><b-img :src="require('../../assets/facebookIcon.png')"></b-img></button>
+ 
     <p>계정이 없으신가요?
     <a href="/auth_account">회원가입</a>
     </p>

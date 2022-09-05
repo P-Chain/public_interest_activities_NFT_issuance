@@ -2,7 +2,7 @@
 <template>
   <div class="contents">
     <h3>NFT 발급 신청</h3>
-    <NFTCheckBox></NFTCheckBox>
+    <nft-checkbox></nft-checkbox>
   </div>
 </template>
 
@@ -11,7 +11,7 @@ import NFTCheckBox from './components/NFTCheckBox.vue'
 
 export default {
   components: {
-    NFTCheckBox
+    'nft-checkbox': NFTCheckBox
   }
 }
 </script>

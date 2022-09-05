@@ -3,7 +3,7 @@
 <template>
   <div class="login-page">
     <div class="contents">
-      <LoginBox></LoginBox>
+      <login-box></login-box>
     </div>
   </div>
 </template>
@@ -13,7 +13,7 @@ import LoginBox from './components/LoginBox.vue'
 
 export default {
   components: {
-    LoginBox
+    'login-box': LoginBox
   }
 }
 </script>

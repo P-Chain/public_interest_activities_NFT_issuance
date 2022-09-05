@@ -1,7 +1,7 @@
 <template>
   <div class="contents">
     <h3>봉사시간 갱신</h3>
-    <VmsInputBox></VmsInputBox>
+    <vms-inputbox></vms-inputbox>
   </div>
 </template>
 
@@ -10,7 +10,7 @@ import VmsInputBox from './components/VmsInputBox.vue'
 
 export default {
   components: {
-    VmsInputBox
+    'vms-inputbox': VmsInputBox
   }
 }
 </script>

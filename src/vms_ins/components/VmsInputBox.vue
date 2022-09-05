@@ -9,6 +9,13 @@
             placeholder="vms 인증번호를 입력해주세요."
             required
           ></b-form-input>
+          <b-form-input
+            id="input-2"
+            v-model="vmsTime"
+            type="number"
+            placeholder="봉사시간을 입력해주세요."
+            required
+          ></b-form-input>
         </b-form-group>
 
         <b-button type="submit" variant="primary">제출</b-button>
@@ -17,6 +24,13 @@
     </b-tab>
     <b-tab title="파일 첨부">
       <b-form>
+        <b-form-input
+            id="input-1"
+            v-model="vmsTime"
+            type="number"
+            placeholder="봉사시간을 입력해주세요."
+            required
+          ></b-form-input>
         <b-form-file
             v-model="file1"
             :state="Boolean(file1)"
@@ -37,6 +51,7 @@ export default {
   data() {
     return {
       vmsNum: '',
+      vmsTime: '',
       file1: null
     }
   }

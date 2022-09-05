@@ -11,7 +11,7 @@
           <b-button type="submit" variant="primary">수정</b-button>
         </b-form>
       </div>
-      이름<b-list-group-item>{{ myName }}</b-list-group-item>
+      이름 또는 기관명<b-list-group-item>{{ myName }}</b-list-group-item>
       전화번호<b-list-group-item>{{ myPhoneNum }}</b-list-group-item>
       <div class="wallet">
         지갑 주소

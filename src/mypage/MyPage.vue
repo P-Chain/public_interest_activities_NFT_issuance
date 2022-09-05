@@ -2,7 +2,7 @@
 <template>
   <div class="contents">
     <h3>마이 페이지</h3>
-    <MyInfoList></MyInfoList>
+    <myinfolist></myinfolist>
   </div>
 </template>
 
@@ -11,11 +11,11 @@ import MyInfoList from './components/MyInfoList.vue'
 
 export default {
   components: {
-    MyInfoList
+    'myinfolist': MyInfoList
   }
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>

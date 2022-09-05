@@ -1,10 +1,10 @@
 <!-- 메인 페이지 -->
 <template>
   <div class="contents">
-    <Notice></Notice>
-    <RankingCard></RankingCard>
-    <ProgressCard></ProgressCard>
-    <CommunityCard></CommunityCard>
+    <notice></notice>
+    <ranking-card></ranking-card>
+    <progress-card></progress-card>
+    <community-card></community-card>
   </div>
 </template>
 
@@ -16,10 +16,10 @@ import CommunityCard from './components/CommunityCard.vue'
 
 export default {
   components: {
-    Notice,
-    RankingCard,
-    ProgressCard,
-    CommunityCard
+    'notice': Notice,
+    'ranking-card': RankingCard,
+    'progress-card': ProgressCard,
+    'community-card': CommunityCard
   }
 }
 </script>
