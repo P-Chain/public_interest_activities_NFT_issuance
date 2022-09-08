@@ -105,13 +105,10 @@ export default {
     onSubmit(event) {
       event.preventDefault()
       alert(JSON.stringify(this.form)) // for debug
-      axios.post('/register/local', { 
-        email: this.email,
-        password: this.password, 
-        number: this.number,
-        name: this.name,
-        birthdate: this.birthdate,
-        sex: this.sex
+      axios.post('http://localhost:4000/api/auth_account/register/local', { 
+        email: this.form.email,
+        password: this.form.password, 
+        username: this.form.name
       })
       .then(res => {
         // do something with res

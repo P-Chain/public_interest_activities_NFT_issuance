@@ -46,9 +46,9 @@ export default {
       event.preventDefault();
       // for debug
       alert(this.form.email);
-      axios.post('/login/local', { 
-        email: this.email,
-        password: this.password, 
+      axios.post('http://localhost:4000/api/auth_account/login/local', { 
+        email: this.form.email,
+        password: this.form.password, 
       })
       .then(res => {
         // do something with res

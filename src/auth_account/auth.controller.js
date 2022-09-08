@@ -5,6 +5,7 @@ const PA = require('models/Progressed_achieve');
 
 // 로컬 회원가입
 exports.localRegister = async (ctx) => {
+    console.log(ctx.request.body);
     // 데이터 검증
     const schema = Joi.object().keys({
         username: Joi.string().alphanum().min(4).max(15).required(),
