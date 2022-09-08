@@ -8,8 +8,8 @@ const router = new Router();
 
 const mongoose = require('mongoose');
 const bodyParser = require('koa-bodyparser');
-
 const { jwtMiddleware } = require('lib/token');
+const cors = require('@koa/cors');
 
 mongoose.Promise = global.Promise; // use node native Promise
 // connect mongoDB
@@ -40,6 +40,7 @@ const user_search = require('./user_search');
 const vms_ins = require('./vms_ins');
 const DB_test = require('./DB_Test');
 
+app.use(cors());
 app.use(bodyParser()); // have to be upward of router
 app.use(jwtMiddleware); // apply middleware
 

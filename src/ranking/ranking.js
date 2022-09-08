@@ -8,10 +8,10 @@ exports.achieveRankInfo = async (ctx) => {
     var data = await APL.printAchieveRank();
     for (i in data){
         console.log(data[i]);
-        var res = JSON.parse(data[i]);
-        console.log(res.id);
+        console.log(data[i].id);
     }
-    ctx.body = data;
+    ctx.set("Access-Control-Allow-Origin","*");
+    ctx.response.body = data;
 };
 
 exports.volRankInfo = async (ctx) => {

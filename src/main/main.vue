@@ -20,7 +20,7 @@ export default {
     RankingCard,
     ProgressCard,
     CommunityCard
-  }
+  },
 }
 </script>
 
