@@ -49,8 +49,8 @@
       ></b-form-input>
     </b-form-group>
 
-    <b-button type="submit" variant="primary">Submit</b-button>
-    <b-button type="reset" variant="danger">Reset</b-button>
+    <b-button type="submit" variant="primary">제출</b-button>
+    <b-button type="reset" variant="danger">초기화</b-button>
   </b-form>
   <!-- for debug -->
   <!-- <b-card class="mt-3" header="Form Data Result">

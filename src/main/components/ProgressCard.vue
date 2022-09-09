@@ -26,13 +26,15 @@
               </b-progress>
             </div>
           </b-tab>
-
+          <!-- b-img 태그로 수정하기 -->
           <b-tab title="보유">
             <div>
-              <p>I'm the second tab</p>
-
-
-              
+              <b-img :src="require('../../assets/background.jpg')"></b-img>    
+              <b-img :src="require('../../assets/googleIcon.png')"></b-img>    
+              <b-img :src="require('../../assets/facebookIcon.png')"></b-img>    
+              <b-img :src="require('../../assets/background.jpg')"></b-img>    
+              <b-img :src="require('../../assets/googleIcon.png')"></b-img>    
+              <b-img :src="require('../../assets/facebookIcon.png')"></b-img>    
             </div>
           </b-tab>
           <!-- <b-tab title="Disabled" disabled><p>I'm a disabled tab!</p></b-tab> -->
@@ -66,5 +68,10 @@ export default {
 <style scoped>
 .progress {
   margin-bottom: 1rem;
+}
+img {
+  width: 5rem;
+  height: 5rem;
+  border: 1px solid black;
 }
 </style>

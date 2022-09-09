@@ -1,8 +1,7 @@
-<!-- 권한 신청 페이지 -->
-<!-- 현재 발급 중인 NFT 목록 및 발급 권한 신청 -->
+<!-- 발급할 NFT 선택 페이지 (인증 권한 가진 사람만) -->
 <template>
   <div class="contents">
-    <h3>권한 신청</h3>
+    <h3>NFT 발급 신청</h3>
     <nft-checkbox></nft-checkbox>
   </div>
 </template>
@@ -17,6 +16,6 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 
 </style>
