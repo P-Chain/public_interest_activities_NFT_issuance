@@ -28,14 +28,3 @@ exports.APLTest4 = async (ctx) =>{
     res = await APL.findDoneNum(ID);
     ctx.body = 'test4 ApL'+res;
 }
-
-exports.PATest1 = async(ctx) =>{
-    var ID = 'testID';
-    await PA.AddUser(ID);
-    ctx.body = 'test1 PA';
-}
-
-exports.PATest2 = async(ctx) =>{
-    await PA.AddProgAchieve('testID',1,'a',new Date("<2022-08-17>"));
-    ctx.body = 'test2 PA';
-}

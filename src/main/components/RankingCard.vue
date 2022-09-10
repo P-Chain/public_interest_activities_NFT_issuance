@@ -9,14 +9,15 @@
       {{ rank3 }}
       <b-progress :value="value3" :max="value1" height="1rem" show-value class="mb-3"></b-progress>
     </b-card-text>
+
     <!-- <b-card-text>A second paragraph of text in the card.</b-card-text> -->
+
     <a href="/ranking" class="card-link">더보기</a>
     <!-- <b-link href="#" class="card-link">Another link</b-link> -->
   </b-card>
 </template>
 
 <script>
-
 export default {
   data () {
     return {
@@ -28,24 +29,6 @@ export default {
       rank2: '랭킹2',
       rank3: '랭킹3'
     }
-  },
-  created(){
-    axios.get("http://localhost:4000/api/ranking/achieve").then(response =>{
-        console.log(response);
-        var data = response.data;
-        var dat = data[0];
-        this.value1 = dat.progressedAchieveNum,
-        this.rank1 = dat.id,
-        dat = data[1];
-        this.value2 = dat.progressedAchieveNum,
-        this.rank2 = dat.id,
-        dat = data[2];
-        this.value3 = dat.progressedAchieveNum,
-        
-        
-        
-        this.rank3 = dat.id
-    })
   }
 }
 </script>

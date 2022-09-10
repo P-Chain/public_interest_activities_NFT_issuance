@@ -3,7 +3,6 @@ import App from './App.vue'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import Jazzicon from 'vue-jazzicon'
 
-
 // import Bootstrap and BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -11,8 +10,6 @@ import 'mdb-vue-ui-kit/css/mdb.min.css'
 
 // 라우터 별 vue 파일 import
 import Main from './main/main.vue'
-
-
 import LoginPage from './log_in/LoginPage.vue'
 import AuthAccount from './auth_account/AuthAccount.vue'
 import DirectorAccount from './auth_account/director_account/DirectorAccountPage.vue'
@@ -33,7 +30,6 @@ import AllProgress from './progress/all_progress/AllProgress.vue'
 
 
 
-
 // Make BootstrapVue available throughout your project
 Vue.use(BootstrapVue);
 // Optionally install the BootstrapVue icon components plugin
@@ -46,7 +42,6 @@ Vue.component('jazzicon', Jazzicon);
 
 // 라우터 등록
 var routes = [
-
     // 메인 페이지
     { path: '/', component: Main },
     // 로그인 페이지
@@ -94,10 +89,8 @@ var routes = [
 
 // 뷰 라우터 인스턴스 생성
 var router = new VueRouter({
-
     routes,
     mode: "history"
-
 });
 
 // 뷰 인스턴스 생성

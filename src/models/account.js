@@ -32,10 +32,6 @@ const Account = new Schema({
     createdAt: {type: Date, default: Date.now}
 });
 
-Account.statics.printNftRank = function(){
-    return this.find({"issuanceCount":{$gt: 0}},{"profile.username": true, "issuanceCount": true}).sort({"issuanceCount":-1}).exec();
-}
-
 Account.statics.findByUsername = function(username) {
     // 객체에 내장되어있는 값을 사용할 때는 객체명.키
     return this.findOne({'profile.username': username}).exec();
