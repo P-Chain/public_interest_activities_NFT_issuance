@@ -77,10 +77,10 @@ export default {
       event.preventDefault()
       alert(JSON.stringify(this.form)) // for debug
       axios.post('/register/local', { 
-        email: this.form.email,
-        password: this.form.password, 
-        organization_name: this.form.organization_name,
-        number: this.form.number
+        email: this.email,
+        password: this.password, 
+        organization_name: this.organization_name,
+        number: this.number
       })
       .then(res => {
         // do something with res

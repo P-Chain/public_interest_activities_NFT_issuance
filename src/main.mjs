@@ -49,9 +49,9 @@ var routes = [
     // 로그인 -> 회원가입 페이지
     { path: '/auth_account', component: AuthAccount },  
     // 회원가입 -> 발급 계정 폼 입력 페이지 
-    { path: '/auth_account/director', component: DirectorAccount },
+    { path: '/auth_account/director_account', component: DirectorAccount },
     // 회원가입 -> 사용자 계정 폼 입력 페이지
-    { path: '/auth_account/user', component: UserAccount },
+    { path: '/auth_account/user_account', component: UserAccount },
     // 랭킹 페이지
     { path: '/ranking', component: Ranking },
     // 마이 페이지

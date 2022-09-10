@@ -42,7 +42,6 @@ export default {
 <style scoped>
 .bv-no-focus-ring {
   margin-bottom: 1rem;
-  border: 1px solid black;
 }
 
 </style>

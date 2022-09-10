@@ -45,9 +45,6 @@ export default {
   },
   method: {
 
-  },
-  created() {
-    axios.get('/', )
   }
 }
 </script>
