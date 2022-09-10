@@ -41,9 +41,6 @@ export default {
         this.rank2 = dat.id,
         dat = data[2];
         this.value3 = dat.progressedAchieveNum,
-        
-        
-        
         this.rank3 = dat.id
     })
   }
