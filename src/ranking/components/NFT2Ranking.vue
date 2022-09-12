@@ -43,6 +43,7 @@ export default {
         { index: 1, name: '홍*동', email: 'a****@naver.com', prog: 50 },
         { index: 2, name: 'A*C', email: 'g****@google.com', prog: 30 },
         { index: 3, name: 'D*F', email: 'a****@daum.com', prog: 20 },
+        { index: 4, name: 'E*F', email: 'e****@daum.com', prog: 10 },
       ]
     }
   }
