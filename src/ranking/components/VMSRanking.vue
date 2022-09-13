@@ -25,16 +25,11 @@ export default {
           label: '랭킹',
         },
         {
-          key: 'name',
-          label: '이름',
-          sortable: true
-        },
-        {
-          key: 'email',
+          key: 'id',
           label: '이메일',
         },        
         {
-          key: 'prog',
+          key: 'volTime',
           label: '봉사 시간',
           sortable: true
         },
@@ -45,6 +40,16 @@ export default {
         { index: 3, name: '홍*동', email: 'a****@daum.com', prog: 300 },
       ]
     }
+  },
+created(){
+    axios.get("https://pchapi.loca.lt/api/ranking/vol").then(response =>{
+    console.log(response.data);
+        var arr = response.data;
+        for(var i in arr){
+            arr[i].index = Number(i)+1;
+        }
+        this.items = arr;
+    })
   }
 }
 </script>

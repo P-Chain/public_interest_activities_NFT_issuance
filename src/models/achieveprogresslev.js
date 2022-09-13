@@ -7,7 +7,8 @@ const AchieveProgressLev = new Schema({ // 개인 진행도 저장용 DB
     id: String, // 사용자 ID
     volTime: {type: Number, default: 0}, // 봉사시간
     progressedAchieveNum: {type: Number, default: 0}, // 업적 달성 갯수
-    doneNum: {type: Number, default: 0} // 기부액
+    doneNum: {type: Number, default: 0}, // 기부액
+    username: String // 사용자 이름
 });
 
 AchieveProgressLev.statics.userRegist = function(id){ // 새로운 유저DB생성
