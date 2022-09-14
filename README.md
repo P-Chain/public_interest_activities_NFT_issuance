@@ -49,4 +49,17 @@ progress:     진행 정보 페이지
 
 ------------------------------
 
+로컬터널 이용해서 서버 여는법
+
+npm 에서 localtunnel 설치
+
+명령프롬프트 해당 폴더에서 yarn start로 백엔드 서버 열기, npm run dev로 프론트 서버 열기
+
+명령프롬프트 추가로 2개의 창을 열어서 lt -p 4000 -s pchapi 명령어로 백엔드 서버 터널 열기,
+lt -p 8080 -s pchain 으로 프론트 서버 터널 열기
+
+인터넷 브라우저로 pchapi.loca.lt 들어가서 localtunnel 주의사항 페이지에서 버튼 클릭, pchain.loca.lt들어가서 버튼 클릭
+
+
+
 필요 페이지: 
