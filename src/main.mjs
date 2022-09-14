@@ -29,7 +29,7 @@ import Progress from './progress/Progress.vue'
 import Achieved from './progress/achieved/achieved.vue'
 import MyOwnNFT from './progress/my_own_NFT/MyOwnNFT.vue'
 import NotAchieved from './progress/not_achieved/NotAchieved.vue'
-import AllProgress from './progress/all_progress/AllProgress.vue'
+import ProgressAll from './progress/progress_all/ProgressAll.vue'
 
 
 
@@ -88,7 +88,7 @@ var routes = [
     // --진행 정보 페이지 -> 미달성 업적 페이지
     { path: '/progress/not_achieved', component: NotAchieved },
     // --진행 정보 페이지 -> 진행도 페이지
-    { path: '/progress/all_progress', component: AllProgress },
+    { path: '/progress/progress_all', component: ProgressAll },
 
 ];
 
