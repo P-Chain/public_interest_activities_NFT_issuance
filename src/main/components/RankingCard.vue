@@ -4,17 +4,35 @@
       <b-tab title="업적 랭킹">
         <b-card-text>
           <!-- DB에서 불러내는 작업 필요. 최대 3개까지 -->
-          {{ rank1 }}
-          <b-progress :value="value1" :max="value1" height="1rem" show-value class="mb-1"></b-progress>
-          {{ rank2 }}
-          <b-progress :value="value2" :max="value1" height="1rem" show-value class="mb-2"></b-progress>
-          {{ rank3 }}
-          <b-progress :value="value3" :max="value1" height="1rem" show-value class="mb-3"></b-progress>
+          {{ arank1 }}
+          <b-progress :value="avalue1" :max="avalue1" height="1rem" show-value class="mb-1"></b-progress>
+          {{ arank2 }}
+          <b-progress :value="avalue2" :max="avalue1" height="1rem" show-value class="mb-2"></b-progress>
+          {{ arank3 }}
+          <b-progress :value="avalue3" :max="avalue1" height="1rem" show-value class="mb-3"></b-progress>
         </b-card-text>
       </b-tab> 
       <b-tab title="봉사시간 랭킹">
+          <b-card-text>
+          <!-- DB에서 불러내는 작업 필요. 최대 3개까지 -->
+          {{ vrank1 }}
+          <b-progress :value="vvalue1" :max="vvalue1" height="1rem" show-value class="mb-1"></b-progress>
+          {{ vrank2 }}
+          <b-progress :value="vvalue2" :max="vvalue1" height="1rem" show-value class="mb-2"></b-progress>
+          {{ vrank3 }}
+          <b-progress :value="vvalue3" :max="vvalue1" height="1rem" show-value class="mb-3"></b-progress>
+        </b-card-text>
       </b-tab>
       <b-tab title="NFT 보유 랭킹">
+          <b-card-text>
+          <!-- DB에서 불러내는 작업 필요. 최대 3개까지 -->
+          {{ nrank1 }}
+          <b-progress :value="nvalue1" :max="nvalue1" height="1rem" show-value class="mb-1"></b-progress>
+          {{ nrank2 }}
+          <b-progress :value="nvalue2" :max="nvalue1" height="1rem" show-value class="mb-2"></b-progress>
+          {{ nrank3 }}
+          <b-progress :value="nvalue3" :max="nvalue1" height="1rem" show-value class="mb-3"></b-progress>
+        </b-card-text>
       </b-tab>
     </b-tabs>
     <template #footer>
@@ -28,29 +46,75 @@
 export default {
   data () {
     return {
-      value1: 0,
-      value2: 0,
-      value3: 0,
+      avalue1: 0,
+      avalue2: 0,
+      avalue3: 0,
 
-      rank1: '',
-      rank2: '',
-      rank3: ''
+      arank1: 'none',
+      arank2: 'none',
+      arank3: 'none',
+    
+        vvalue1: 0,
+      vvalue2: 0,
+      vvalue3: 0,
+
+      vrank1: 'none',
+      vrank2: 'none',
+      vrank3: 'none',
+        
+        nvalue1: 0,
+      nvalue2: 0,
+      nvalue3: 0,
+
+      nrank1: 'none',
+      nrank2: 'none',
+      nrank3: 'none',
     }
   },
   created(){
-      console.log(process.env.BACKURL);
     axios.get("/api/ranking/achieve").then(response =>{
         var data = response.data;
         var dat = data[0];
-        this.value1 = dat.progressedAchieveNum,
-        this.rank1 = dat.id,
+        this.avalue1 = dat.progressedAchieveNum,
+        this.arank1 = dat.id
+            if(data.length>1){
         dat = data[1];
-        this.value2 = dat.progressedAchieveNum,
-        this.rank2 = dat.id,
+        this.avalue2 = dat.progressedAchieveNum,
+        this.arank2 = dat.id}
+        if(data.length>2){
         dat = data[2];
-        this.value3 = dat.progressedAchieveNum,
-        this.rank3 = dat.id
-    })
+        this.avalue3 = dat.progressedAchieveNum,
+        this.arank3 = dat.id}
+    });
+      axios.get("/api/ranking/vol").then(response =>{
+          console.log(response);
+        var data = response.data;
+        var dat = data[0];
+        this.vvalue1 = dat.volTime,
+        this.vrank1 = dat.id
+          if(data.length>1){
+        dat = data[1];
+        this.vvalue2 = dat.volTime,
+        this.vrank2 = dat.id}
+          if(data.length>2){
+        dat = data[2];
+        this.vvalue3 = dat.volTime,
+        this.vrank3 = dat.id}
+    });
+      axios.get("/api/ranking/nft").then(response =>{
+        var data = response.data;
+        var dat = data[0];
+        this.nvalue1 = dat.issuanceCount,
+        this.nrank1 = dat.email
+        if(data.length>1){
+            dat = data[1];
+            this.nvalue2 = dat.issuanceCount,
+            this.nrank2 = dat.email}
+        if(data.length>2){
+            dat = data[2];
+            this.nvalue3 = dat.issuanceCount,
+            this.nrank3 = dat.email}
+    });
   }
 }
 </script>
