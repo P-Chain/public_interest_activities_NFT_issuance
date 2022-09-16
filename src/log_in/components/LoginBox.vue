@@ -46,7 +46,7 @@ export default {
     onSubmit(event) {
       event.preventDefault();
       // for debug
-      alert(this.form.email);
+//      alert(this.form.email);
       fetch('/api/auth_account/login/local',{
   method: 'POST',
   mode: 'cors',

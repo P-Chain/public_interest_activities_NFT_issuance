@@ -63,7 +63,7 @@ export default {
         console.log(res);
       })
     },
-    onClick
+    
   },
 }
 </script>
