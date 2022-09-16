@@ -1,17 +1,25 @@
 <template>
   <b-card title="랭킹" sub-title="">
-    <b-card-text>
-      <!-- DB에서 불러내는 작업 필요. 최대 3개까지 -->
-      {{ rank1 }}
-      <b-progress :value="value1" :max="value1" height="1rem" show-value class="mb-1"></b-progress>
-      {{ rank2 }}
-      <b-progress :value="value2" :max="value1" height="1rem" show-value class="mb-2"></b-progress>
-      {{ rank3 }}
-      <b-progress :value="value3" :max="value1" height="1rem" show-value class="mb-3"></b-progress>
-    </b-card-text>
-    <!-- <b-card-text>A second paragraph of text in the card.</b-card-text> -->
-    <a href="/ranking" class="card-link">더보기</a>
-    <!-- <b-link href="#" class="card-link">Another link</b-link> -->
+    <b-tabs content-class="mt-3">
+      <b-tab title="업적 랭킹">
+        <b-card-text>
+          <!-- DB에서 불러내는 작업 필요. 최대 3개까지 -->
+          {{ rank1 }}
+          <b-progress :value="value1" :max="value1" height="1rem" show-value class="mb-1"></b-progress>
+          {{ rank2 }}
+          <b-progress :value="value2" :max="value1" height="1rem" show-value class="mb-2"></b-progress>
+          {{ rank3 }}
+          <b-progress :value="value3" :max="value1" height="1rem" show-value class="mb-3"></b-progress>
+        </b-card-text>
+      </b-tab> 
+      <b-tab title="봉사시간 랭킹">
+      </b-tab>
+      <b-tab title="NFT 보유 랭킹">
+      </b-tab>
+    </b-tabs>
+    <template #footer>
+      <a href="/ranking" class="card-link">더보기</a>
+      </template>
   </b-card>
 </template>
 
