@@ -44,7 +44,7 @@ export default {
       console.log(this.access);
     },
     logout(event) {
-
+      console.log()
     }
   }
 }
