@@ -24,4 +24,7 @@ export default {
   margin: 1rem;
   /* border: 1px solid black; */
 }
+#app {
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+}
 </style>

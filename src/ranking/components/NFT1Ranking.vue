@@ -1,24 +1,17 @@
 <template>
-  <b-table small :fields="fields" :items="items" responsive="sm">
-    <!-- A virtual column -->
-    <template #cell(index)="data">
+  <b-table striped hover :items="items" :fields="fields">
+    <!-- <template #cell(index)="data">
       {{ data.index + 1 }}
     </template>
-
-    <!-- A custom formatted column -->
     <template #cell(name)="data">
-      <b class="text-info">{{ data.value.last.toUpperCase() }}</b>, <b>{{ data.value.first }}</b>
+      {{ data.items.name }}
     </template>
-
-    <!-- A virtual composite column -->
-    <template #cell(nameage)="data">
-      {{ data.item.name.first }} is {{ data.item.age }} years old
+    <template #cell(email)="data">
+      {{ data.items.email }}
     </template>
-
-    <!-- Optional default data cell scoped slot -->
-    <template #cell()="data">
-      <i>{{ data.value }}</i>
-    </template>
+    <template #cell(prog)="data">
+      {{ data.items.prog }}
+    </template> -->
   </b-table>
 </template>
 
@@ -47,10 +40,9 @@ export default {
         },
       ],
       items: [
-        { name: { first: 'John', last: 'Doe' }, sex: 'Male', age: 42 },
-        { name: { first: 'Jane', last: 'Doe' }, sex: 'Female', age: 36 },
-        { name: { first: 'Rubin', last: 'Kincade' }, sex: 'Male', age: 73 },
-        { name: { first: 'Shirley', last: 'Partridge' }, sex: 'Female', age: 62 }
+        { index: 1, name: '홍*동', email: 'a****@naver.com', prog: 100 },
+        { index: 2, name: 'A*C', email: 'g****@google.com', prog: 66 },
+        { index: 3, name: 'D*F', email: 'a****@daum.com', prog: 30 },
       ]
     }
   }
