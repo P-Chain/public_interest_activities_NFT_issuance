@@ -46,12 +46,20 @@ export default {
       event.preventDefault();
       // for debug
       alert(this.form.email);
-      axios.post('http://pchapi.loca.lt/api/auth_account/login/local', { 
-        email: this.form.email,
-        password: this.form.password, 
-      })
-      .then(res => {
+      fetch('http://pchapi.loca.lt/api/auth_account/login/local',{
+  method: 'POST',
+  mode: 'cors',
+  credentials: 'include',
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    email: this.form.email,
+    password: this.form.password
+  })
+}).then(res => {
         // do something with res
+        //location.href='http://pchain.loca.lt/';
         console.log(res);
       })
     }

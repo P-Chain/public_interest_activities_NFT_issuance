@@ -112,6 +112,7 @@ export default {
       })
       .then(res => {
         // do something with res
+        location.href='https://pchain.loca.lt/login';
         console.log(res);
       })
     },
