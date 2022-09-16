@@ -42,7 +42,8 @@ export default {
     }
   },
 created(){
-    axios.get("https://pchapi.loca.lt/api/ranking/vol").then(response =>{
+    console.log(process.env.BACKURL);
+    axios.get(process.env.BACKURL+"/api/ranking/vol").then(response =>{
     console.log(response.data);
         var arr = response.data;
         for(var i in arr){

@@ -30,7 +30,7 @@ export default {
     }
   },
   created(){
-    axios.get("https://pchapi.loca.lt/api/ranking/achieve").then(response =>{
+    axios.get("https://pchapii.loca.lt/api/ranking/achieve").then(response =>{
         console.log(response);
         var data = response.data;
         var dat = data[0];

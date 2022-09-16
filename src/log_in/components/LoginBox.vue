@@ -46,7 +46,7 @@ export default {
       event.preventDefault();
       // for debug
       alert(this.form.email);
-      fetch('http://pchapi.loca.lt/api/auth_account/login/local',{
+      fetch('http://pchapii.loca.lt/api/auth_account/login/local',{
   method: 'POST',
   mode: 'cors',
   credentials: 'include',
