@@ -9,9 +9,9 @@
 
     <b-card title="보유 NFT">
       <b-card-text>
-        <b-img :src="require('../../assets/background.jpg')"></b-img>  
-        <b-img :src="require('../../assets/googleIcon.png')"></b-img>  
-        <b-img :src="require('../../assets/facebookIcon.png')"></b-img>
+        <b-img :src="card2.img1"></b-img>  
+        <b-img :src="card2.img2"></b-img>  
+        <b-img :src="card2.img3"></b-img>
       </b-card-text>
       <router-link to="/progress/my_own_NFT" class="card-link">더보기</router-link>
     </b-card>
@@ -44,7 +44,7 @@
           </b-progress-bar>
         </b-progress>
       </b-card-text>
-      <router-link to="/progress/all_progress" class="card-link">더보기</router-link>
+      <router-link to="/progress/progress_all" class="card-link">더보기</router-link>
     </b-card>
   </b-card-group>
 </template>
@@ -59,9 +59,9 @@ export default {
         text3: '업적5'
       },
       card2: {
-        img1: '../../assets/background.jpg',
-        img2: '../../assets/googleIcon.png',
-        img3: '../../assets/facebookIcon.png'
+        img1: require("../../assets/background.jpg"),
+        img2: require("../../assets/googleIcon.png"),
+        img3: require("../../assets/facebookIcon.png"),
       },
       card3: {
         text1: '업적2',

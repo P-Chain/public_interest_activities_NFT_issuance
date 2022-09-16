@@ -22,7 +22,8 @@
       <b-button type="submit" variant="primary">로그인</b-button>
     </b-form>
     <!--API 연결하기-->
-    <button class="button-image" href=""><b-img :src="require('../../assets/googleIcon.png')"></b-img></button>
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <!-- <button class="button-image" id="GgCustomLogin" @click="init"><b-img :src="require('../../assets/googleIcon.png')"></b-img></button> -->
     <button class="button-image" href=""><b-img :src="require('../../assets/facebookIcon.png')"></b-img></button>
  
     <p>계정이 없으신가요?
@@ -61,10 +62,24 @@ export default {
         // do something with res
         location.href='/';
         console.log(res);
+        // temp 
+        if (res.status == 200) {
+          this.$store.commit("login", res.data);
+          this.$router.push("/");
+        }
       })
+    },
+    onSignIn(googleUser) {
+      var profile = googleUser.getBasicProfile();
+      console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+      console.log('Name: ' + profile.getName());
+      console.log('Image URL: ' + profile.getImageUrl());
+      console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+      
+      var id_token = googleUser.getAuthResponse().id_token;
     }
   }
-}
+} 
 </script>
 
 <style scoped>

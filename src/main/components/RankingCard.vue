@@ -20,13 +20,13 @@
 export default {
   data () {
     return {
-      value1: 100,
-      value2: 77,
-      value3: 50,
+      value1: 0,
+      value2: 0,
+      value3: 0,
 
-      rank1: '랭킹1',
-      rank2: '랭킹2',
-      rank3: '랭킹3'
+      rank1: '',
+      rank2: '',
+      rank3: ''
     }
   },
   created(){
@@ -41,9 +41,6 @@ export default {
         this.rank2 = dat.id,
         dat = data[2];
         this.value3 = dat.progressedAchieveNum,
-        
-        
-        
         this.rank3 = dat.id
     })
   }

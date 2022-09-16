@@ -1,10 +1,17 @@
 <template>
-  
+  <div class="contents">
+    <h3>미달성 업적</h3>
+    <not-achieved-list></not-achieved-list>
+  </div>
 </template>
 
 <script>
-export default {
+import NotAchievedList from './components/NotAchievedList.vue'
 
+export default {
+  components: {
+    'not-achieved-list': NotAchievedList
+  }
 }
 </script>
 
