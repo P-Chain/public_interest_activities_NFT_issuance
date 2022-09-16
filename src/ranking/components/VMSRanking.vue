@@ -42,8 +42,7 @@ export default {
     }
   },
 created(){
-    console.log(process.env.BACKURL);
-    axios.get(process.env.BACKURL+"/api/ranking/vol").then(response =>{
+    axios.get("/api/ranking/vol").then(response =>{
     console.log(response.data);
         var arr = response.data;
         for(var i in arr){

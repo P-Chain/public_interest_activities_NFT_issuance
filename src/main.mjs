@@ -44,6 +44,8 @@ Vue.use(VueRouter);
 // Jazzicon 컴포넌트 등록
 Vue.component('jazzicon', Jazzicon);
 
+var BACKURL = 'http://pchapi.loca.lt'
+
 // 라우터 등록
 var routes = [
 

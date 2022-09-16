@@ -41,7 +41,7 @@ const vms_ins = require('./vms_ins');
 const DB_test = require('./DB_Test');
 
 app.use(cors({
-  origin: 'http://pchainn.loca.lt', 
+  origin: 'http://pchain.loca.lt', 
   credentials: true, 
   exposeHeaders: ['page-count']
 }));

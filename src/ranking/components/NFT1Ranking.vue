@@ -39,7 +39,7 @@ export default {
     }
   },
   created(){
-    axios.get("https://pchapii.loca.lt/api/ranking/achieve").then(response =>{
+    axios.get("/api/ranking/achieve").then(response =>{
     console.log(response.data);
         var arr = response.data;
         for(var i in arr){

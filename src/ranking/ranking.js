@@ -22,13 +22,11 @@ exports.volRankInfo = async (ctx) => {
 exports.doneRankInfo = async (ctx) => {
     // 기부액 랭킹 불러오기
     var data = await APL.printDoneRank();
-    ctx.set("Access-Control-Allow-Origin","*");
     ctx.body = data;
 };
 
 exports.nftRankInfo = async (ctx) => {
     // nft 랭킹 불러오기
     var data = await Account.printNftRank();
-    ctx.set("Access-Control-Allow-Origin","*");
     ctx.body = data;
 };

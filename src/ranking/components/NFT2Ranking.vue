@@ -48,8 +48,7 @@ export default {
     }
   },
   created(){
-    console.log(process.env.BACKURL);
-    axios.get("https://pchapi.loca.lt/api/ranking/nft").then(response =>{
+    axios.get("/api/ranking/nft").then(response =>{
     console.log(response.data);
         var arr = response.data;
         for(var i in arr){
