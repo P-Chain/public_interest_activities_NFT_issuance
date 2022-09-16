@@ -46,7 +46,7 @@ export default {
       event.preventDefault();
       // for debug
       alert(this.form.email);
-      fetch('http://pchapii.loca.lt/api/auth_account/login/local',{
+      fetch('/api/auth_account/login/local',{
   method: 'POST',
   mode: 'cors',
   credentials: 'include',
@@ -59,7 +59,7 @@ export default {
   })
 }).then(res => {
         // do something with res
-        //location.href='http://pchain.loca.lt/';
+        location.href='/';
         console.log(res);
       })
     }

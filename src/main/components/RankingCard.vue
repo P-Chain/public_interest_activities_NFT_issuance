@@ -32,7 +32,6 @@ export default {
   created(){
       console.log(process.env.BACKURL);
     axios.get("/api/ranking/achieve").then(response =>{
-        console.log(response);
         var data = response.data;
         var dat = data[0];
         this.value1 = dat.progressedAchieveNum,

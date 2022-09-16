@@ -105,14 +105,14 @@ export default {
     onSubmit(event) {
       event.preventDefault()
       alert(JSON.stringify(this.form)) // for debug
-      axios.post('http://pchapii.loca.lt/api/auth_account/register/local', { 
+      axios.post('/api/auth_account/register/local', { 
         email: this.form.email,
         password: this.form.password, 
         username: this.form.name
       })
       .then(res => {
         // do something with res
-        location.href='https://pchain.loca.lt/login';
+        location.href='/login';
         console.log(res);
       })
     },

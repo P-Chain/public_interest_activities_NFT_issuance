@@ -32,6 +32,15 @@ export default {
       access: 0,
     }
   },
+    created(){
+    axios.get("/api/auth_account/check").then(response =>{
+        if(response.data.username){
+            this.name = response.data.username;
+            this.token = true;
+        }
+        
+    })
+  },
   // for debug
   methods: {
     onChange(event) {
