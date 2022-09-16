@@ -49,7 +49,7 @@
       ></b-form-input>
     </b-form-group>
 
-  <!-- 생년월일 -->
+  <!-- 생년월일
     <b-form-group id="input-group-5" label="생년월일" label-for="input-5">
       <b-form-input
         id="input-5"
@@ -60,7 +60,7 @@
       ></b-form-input>
     </b-form-group>
 
-  <!-- 성별 -->
+  성별
     <b-form-group id="input-group-6" label="성별" label-for="input-6">
       <b-form-select
         id="input-6"
@@ -68,7 +68,7 @@
         :options="options"
         required
       ></b-form-select>
-    </b-form-group>
+    </b-form-group> -->
 
     <b-button type="submit" variant="primary">제출</b-button>
     <b-button type="reset" variant="danger">초기화</b-button>
@@ -89,15 +89,15 @@ export default {
         password: '',
         number: '',
         name: '',
-        birthdate: '',
-        sex: ''
+        // birthdate: '',
+        // sex: ''
       },
-      options: [
-        { value: '', text: 'Select One', disabled: true }, 
-        { value: 'm', text: '남' }, 
-        { value: 'w', text: '여' }, 
-        { value: 's', text: '비밀' }
-      ],
+      // options: [
+      //   { value: '', text: 'Select One', disabled: true }, 
+      //   { value: 'm', text: '남' }, 
+      //   { value: 'w', text: '여' }, 
+      //   { value: 's', text: '비밀' }
+      // ],
       show: true
     }
   },
@@ -122,8 +122,8 @@ export default {
       this.form.password = ''
       this.form.name = ''
       this.form.number = ''
-      this.form.birthdate = ''
-      this.form.sex = ''
+      // this.form.birthdate = ''
+      // this.form.sex = ''
       // Trick to reset/clear native browser form validation state
       this.show = false
       this.$nextTick(() => {

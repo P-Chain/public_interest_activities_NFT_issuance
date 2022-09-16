@@ -21,7 +21,15 @@
             <td><jazzicon :address="myWalletAdr" :diameter="20" /></td>
           </tr>
         </b-list-group-item>
-        <b-button variant="primary">지갑 연동</b-button>
+        <b-button v-b-modal.modal-1 variant="primary">
+          지갑주소 입력
+        </b-button>
+
+        <b-modal id="modal-1" title="지깁주소 입력">
+          <b-form-input v-model="WalletAdr" placeholder="지갑 주소를 입력해주세요"></b-form-input>
+          <b-button type="submit" variant="primary" @click="walletAdrChange">제출</b-button>
+          <b-button href="./mypage" variant="outline-primary">뒤로 가기</b-button>
+        </b-modal>
       </div>
     </b-list-group>
     <b-button href="./vms_ins" variant="outline-primary">봉사시간 갱신</b-button>
@@ -39,7 +47,8 @@ export default {
       myWalletAdr: '0xcd50586710A82A6f6cB06d8a017fc3177CEc9087',
       form: {
         password: ''
-      }
+      },
+      walletAdr : ''
     }
   },
   methods: {
@@ -53,7 +62,8 @@ export default {
         // do something with res
         console.log(res);
       })
-    }
+    },
+    onClick
   },
 }
 </script>

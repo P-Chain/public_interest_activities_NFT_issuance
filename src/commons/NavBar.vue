@@ -11,7 +11,7 @@
       </b-navbar-nav>
       <b-navbar-nav v-else>
         <b-nav-item>{{ name }}</b-nav-item>
-        <b-nav-item href="/">로그아웃</b-nav-item>
+        <b-nav-item @click="logout">로그아웃</b-nav-item>
         <b-nav-item href="/mypage">마이페이지</b-nav-item>
         <b-nav-item v-if="access >= 1" href="/nft_choice">NFT발급</b-nav-item>
         <b-nav-item v-if="access >= 2" href="/manage_page">관리페이지</b-nav-item>
@@ -42,6 +42,9 @@ export default {
       if (this.access == 2) this.access = 0;
       else (this.access)++;
       console.log(this.access);
+    },
+    logout(event) {
+
     }
   }
 }
