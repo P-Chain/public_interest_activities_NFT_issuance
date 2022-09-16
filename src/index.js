@@ -40,7 +40,12 @@ const user_search = require('./user_search');
 const vms_ins = require('./vms_ins');
 const DB_test = require('./DB_Test');
 
-app.use(cors());
+app.use(cors({
+  origin: 'http://pchainn.loca.lt', 
+  credentials: true, 
+  exposeHeaders: ['page-count']
+}));
+app.proxy = true
 app.use(bodyParser()); // have to be upward of router
 app.use(jwtMiddleware); // apply middleware
 

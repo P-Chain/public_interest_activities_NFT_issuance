@@ -3,14 +3,11 @@
     <!-- <template #cell(index)="data">
       {{ data.index + 1 }}
     </template>
-    <template #cell(name)="data">
-      {{ data.items.name }}
-    </template>
     <template #cell(email)="data">
-      {{ data.items.email }}
+      {{ data.items.id }}
     </template>
     <template #cell(prog)="data">
-      {{ data.items.prog }}
+      {{ data.items.progressedAchieveNum }}
     </template> -->
   </b-table>
 </template>
@@ -25,16 +22,11 @@ export default {
           label: '랭킹',
         },
         {
-          key: 'name',
-          label: '이름',
-          sortable: true
-        },
-        {
-          key: 'email',
+          key: 'id',
           label: '이메일',
         },        
         {
-          key: 'prog',
+          key: 'progressedAchieveNum',
           label: '보유 갯수',
           sortable: true
         },
@@ -45,6 +37,16 @@ export default {
         { index: 3, name: 'D*F', email: 'a****@daum.com', prog: 30 },
       ]
     }
+  },
+  created(){
+    axios.get("https://pchapii.loca.lt/api/ranking/achieve").then(response =>{
+    console.log(response.data);
+        var arr = response.data;
+        for(var i in arr){
+            arr[i].index = Number(i)+1;
+        }
+        this.items = arr;
+    })
   }
 }
 </script>
