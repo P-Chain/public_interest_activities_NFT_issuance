@@ -21,14 +21,32 @@
             <td><jazzicon :address="myWalletAdr" :diameter="20" /></td>
           </tr>
         </b-list-group-item>
-        <b-button v-b-modal.modal-1 variant="primary">
+        <b-button v-b-modal.modal-prevent-closing variant="primary">
           지갑주소 입력
         </b-button>
-
-        <b-modal id="modal-1" title="지깁주소 입력">
-          <b-form-input v-model="WalletAdr" placeholder="지갑 주소를 입력해주세요"></b-form-input>
-          <b-button type="submit" variant="primary" @click="walletAdrChange">제출</b-button>
-          <b-button href="./mypage" variant="outline-primary">뒤로 가기</b-button>
+        <b-modal
+          id="modal-prevent-closing"
+          ref="modal"
+          title="지갑 주소 입력"
+          @show="resetModal"
+          @hidden="resetModal"
+          @ok="handleOk"
+        >
+          <form ref="form" @submit.stop.prevent="handleSubmit">
+            <b-form-group
+              label="지갑주소"
+              label-for="name-input"
+              invalid-feedback="지갑 주소가 필요합니다"
+              :state="nameState"
+            >
+              <b-form-input
+                id="name-input"
+                v-model="name"
+                :state="nameState"
+                required
+              ></b-form-input>
+            </b-form-group>
+          </form>
         </b-modal>
       </div>
     </b-list-group>
@@ -63,7 +81,6 @@ export default {
         console.log(res);
       })
     },
-    
   },
 }
 </script>
