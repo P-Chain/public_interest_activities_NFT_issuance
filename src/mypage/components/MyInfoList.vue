@@ -21,7 +21,9 @@
             <td><jazzicon :address="myWalletAdr" :diameter="20" /></td>
           </tr>
         </b-list-group-item>
-        <b-button variant="primary">지갑 연동</b-button>
+        <b-button variant="primary">
+          지갑 연동
+        </b-button>
       </div>
     </b-list-group>
     <b-button href="./vms_ins" variant="outline-primary">봉사시간 갱신</b-button>
