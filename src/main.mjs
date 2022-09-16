@@ -52,19 +52,19 @@ var routes = [
     // 로그인 페이지
     { path: '/login', component: LoginPage },
     // 로그인 -> 회원가입 페이지
-    { path: '/auth_account', component: AuthAccount },  
+    { path: '/auth_account', component: () => import(/* webpackChunkName: "auth" */ './auth_account/AuthAccount.vue') },  
     // 회원가입 -> 발급 계정 폼 입력 페이지 
-    { path: '/auth_account/director_account', component: DirectorAccount },
+    { path: '/auth_account/director_account', component: () => import(/* webpackChunkName: "auth" */ './auth_account/director_account/DirectorAccountPage.vue') }, 
     // 회원가입 -> 사용자 계정 폼 입력 페이지
-    { path: '/auth_account/user_account', component: UserAccount },
+    { path: '/auth_account/user_account', component: () => import(/* webpackChunkName: "auth" */ './auth_account/user_account/UserAccountPage.vue') }, 
     // 랭킹 페이지
-    { path: '/ranking', component: Ranking },
+    { path: '/ranking', component: () => import(/* webpackChunkName: "ranking" */ './ranking/Ranking.vue') }, 
     // 마이 페이지
-    { path: '/mypage', component: MyPage },
+    { path: '/mypage', component: () => import(/* webpackChunkName: "mypage" */ './mypage/MyPage.vue') }, 
     // 마이 페이지 -> 권한 신청 페이지
-    { path: '/auth_apply', component: AuthApply },
+    { path: '/auth_apply', component: () => import(/* webpackChunkName: "mypage" */ './auth_apply/AuthApply.vue') }, 
     // 마이 페이지 -> 봉사시간 인증 페이지
-    { path: '/vms_ins', component: VmsIns },
+    { path: '/vms_ins', component: () => import(/* webpackChunkName: "mypage" */ './vms_ins/VmsIns.vue') }, 
     // 발급할 NFT 선택 페이지 (권한 보유자)
     { path: '/nft_choice', component: NFTChoice },
     // * -> 발급할 사용자 선택 페이지

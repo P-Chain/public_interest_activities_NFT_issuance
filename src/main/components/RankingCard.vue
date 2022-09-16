@@ -13,8 +13,10 @@
         </b-card-text>
       </b-tab> 
       <b-tab title="봉사시간 랭킹">
+
       </b-tab>
       <b-tab title="NFT 보유 랭킹">
+        
       </b-tab>
     </b-tabs>
     <template #footer>

@@ -13,6 +13,7 @@
       </div>
       이름 또는 기관명<b-list-group-item>{{ myName }}</b-list-group-item>
       전화번호<b-list-group-item>{{ myPhoneNum }}</b-list-group-item>
+
       <div class="wallet">
         지갑 주소
         <b-list-group-item>
@@ -37,12 +38,12 @@
               label="지갑주소"
               label-for="name-input"
               invalid-feedback="지갑 주소가 필요합니다"
-              :state="nameState"
+              :state="walletAdrState"
             >
               <b-form-input
                 id="name-input"
-                v-model="name"
-                :state="nameState"
+                v-model="walletAdr"
+                :state="walletAdrState"
                 required
               ></b-form-input>
             </b-form-group>
@@ -66,8 +67,12 @@ export default {
       form: {
         password: ''
       },
-      walletAdr : ''
+      walletAdr : '',
+      walletAdrState: null,
     }
+  },
+  created() {
+    axios.get('/')
   },
   methods: {
     onSubmit(event) {
@@ -81,6 +86,36 @@ export default {
         console.log(res);
       })
     },
+    checkFormValidity() {
+        const valid = this.$refs.form.checkValidity()
+        this.walletAdrState = valid
+        return valid
+      },
+    resetModal() {
+      this.walletAdr = ''
+      this.walletAdrState = null
+    },
+    handleOk(bvModalEvent) {
+      // Prevent modal from closing
+      bvModalEvent.preventDefault()
+      // Trigger submit handler
+      this.handleSubmit()
+    },
+    handleSubmit() {
+      // Exit when the form isn't valid
+      if (!this.checkFormValidity()) {
+        return
+      }
+      // Push the name to submitted names
+      this.myWalletAdr = this.walletAdr
+      console.log(this.myWalletAdr)
+      console.log(this.walletAdr)
+      
+      // Hide the modal manually
+      this.$nextTick(() => {
+        this.$bvModal.hide('modal-prevent-closing')
+      })
+    }
   },
 }
 </script>
