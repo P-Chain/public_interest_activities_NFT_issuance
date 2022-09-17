@@ -19,7 +19,7 @@
     </b-collapse>
     <!-- for debug -->
 <!--    <b-button variant="primary" @click="onChange">로그인 전환</b-button>-->
-    <b-button variant="secondary" @click="onPlus">계정 권한 전환</b-button>
+<!--    <b-button variant="secondary" @click="onPlus">계정 권한 전환</b-button>-->
   </b-navbar>
 </template>
 
@@ -41,6 +41,9 @@ export default {
             this.name = response.data.profile.username;
             if(response.data.issuer){
                 this.access = 1;
+                if(response.data.manager){
+                    this.access = 2;
+                }
             }
             this.token = true;
         }

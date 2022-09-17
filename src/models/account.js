@@ -24,6 +24,7 @@ const Account = new Schema({
             accessToken: String
         }
     },
+    isManager: Boolean,
     isIssuer: {type: Boolean, default: false},
     password: String, // 로컬 계정의 경우엔 비밀번호를 해싱해서 저장
     walletAddress: String, // 수정가능.
@@ -80,7 +81,8 @@ Account.methods.generateToken = function() {
     const payload = {
         _id: this._id,
         profile: this.profile,
-        isIssuer: this.isIssuer
+        isIssuer: this.isIssuer,
+        isManager: this.isManager
     };
 
     return generateToken(payload, 'account');

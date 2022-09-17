@@ -139,6 +139,6 @@ exports.check = async (ctx) => {
         return;
     }
     console.log(user.isIssuer);
-    ctx.body = {profile: user.profile, issuer: user.isIssuer};
+    ctx.body = {profile: user.profile, issuer: user.isIssuer, manager: user.isManager};
 }
 
