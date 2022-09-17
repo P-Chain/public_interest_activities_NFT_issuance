@@ -16,24 +16,43 @@
 <script>
 export default {
   data() {
-      return {
-        selected: '',
-        options: [
-          { text: '이름: 유저1, 이메일: aaa@aaa.aa', value: 0 },
-          { text: '이름: 유저2, 이메일: bbb@bbb.bb', value: 1 },
-          { text: '이름: 유저3, 이메일: ccc@ccc.cc', value: 2 },
-        ]
-      }
+    return {
+      selected: '',
+      form: {
+        name: '',
+        email: ''
+      },
+      options: [
+        { text: '이름: name, 이메일: email' },
+        { text: '이름: name, 이메일: email' },
+        { text: '이름: name, 이메일: email' },
+      ]
     }
+  },
+  created() {
+    this.options 
+    this.$EventBus.$on('userSearch', function(value) {
+      console.log(value)
+      this.options = []
+      console.log(this.options)
+      axios.get('/').then(response => {
+        this.form = response.data
+      })
+    })
+  },
+  updated() {
+    console.log('updated')
+  }
 }
 </script>
 
 <style scoped>
 .bv-no-focus-ring {
   margin-bottom: 0.5rem;
+  overflow: scroll;
+  height: 10rem;
 }
 .form-group {
   border: 1px solid black;
 }
-
 </style>

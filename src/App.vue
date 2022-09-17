@@ -15,16 +15,10 @@ export default {
   components: {
     'nav-bar': NavBar,
     'main-footer': MainFooter,
-  }
+  },
 }
 </script>
 
 <style>
-.contents {
-  margin: 1rem;
-  /* border: 1px solid black; */
-}
-#app {
-  font-family: Roboto, Helvetica, Arial, sans-serif;
-}
+
 </style>

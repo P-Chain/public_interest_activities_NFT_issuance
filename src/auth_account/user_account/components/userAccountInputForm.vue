@@ -26,20 +26,30 @@
       ></b-form-input>
     </b-form-group>
 
-  <!-- name -->
+  <!-- username -->
     <b-form-group id="input-group-3" label="이름" label-for="input-3">
       <b-form-input
         id="input-3"
-        v-model="form.name"
-        placeholder="이름을 입력해주세요."
+        v-model="form.username"
+        placeholder="성명을 입력해주세요."
+        required
+      ></b-form-input>
+    </b-form-group>
+
+  <!-- nickname -->
+    <b-form-group id="input-group-4" label="이름" label-for="input-4">
+      <b-form-input
+        id="input-4"
+        v-model="form.nickname"
+        placeholder="닉네임을 입력해주세요."
         required
       ></b-form-input>
     </b-form-group>
 
   <!-- 전화번호 -->
-    <b-form-group id="input-group-4" label="전화번호" label-for="input-4">
+    <b-form-group id="input-group-5" label="전화번호" label-for="input-5">
       <b-form-input
-        id="input-4"
+        id="input-5"
         v-model="form.number"
         placeholder="전화번호를 입력해주세요. ex)01012345678"
         type="tel"
@@ -48,27 +58,6 @@
         required
       ></b-form-input>
     </b-form-group>
-
-  <!-- 생년월일
-    <b-form-group id="input-group-5" label="생년월일" label-for="input-5">
-      <b-form-input
-        id="input-5"
-        v-model="form.birthdate"
-        type="date"
-        placeholder=""
-        required
-      ></b-form-input>
-    </b-form-group>
-
-  성별
-    <b-form-group id="input-group-6" label="성별" label-for="input-6">
-      <b-form-select
-        id="input-6"
-        v-model="form.sex"
-        :options="options"
-        required
-      ></b-form-select>
-    </b-form-group> -->
 
     <b-button type="submit" variant="primary">제출</b-button>
     <b-button type="reset" variant="danger">초기화</b-button>
@@ -87,8 +76,9 @@ export default {
       form: {
         email: '',
         password: '',
+        username: '',
+        nickname: '',
         number: '',
-        name: '',
         // birthdate: '',
         // sex: ''
       },
@@ -104,14 +94,17 @@ export default {
   methods: {
     onSubmit(event) {
       event.preventDefault()
-      alert(JSON.stringify(this.form)) // for debug
-      axios.post('http://localhost:4000/api/auth_account/register/local', { 
+      console.log(JSON.stringify(this.form)) // for debug
+      axios.post('/api/auth_account/register/local', { 
         email: this.form.email,
         password: this.form.password, 
-        username: this.form.name
+        username: this.form.username,
+        nickname: this.form.nickname,
+        number: this.form.number
       })
       .then(res => {
         // do something with res
+        this.$router.push('/login')
         console.log(res);
       })
     },
@@ -120,7 +113,8 @@ export default {
       // Reset our form values
       this.form.email = ''
       this.form.password = ''
-      this.form.name = ''
+      this.form.username = ''
+      this.form.nickname = ''
       this.form.number = ''
       // this.form.birthdate = ''
       // this.form.sex = ''
