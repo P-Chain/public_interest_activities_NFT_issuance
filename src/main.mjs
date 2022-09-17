@@ -47,6 +47,10 @@ Vue.component('jazzicon', Jazzicon);
 // 이벤트 버스 선언
 Vue.prototype.$EventBus = new Vue();
 
+// URL
+var BACKURL = 'http://pchapi.loca.lt'
+
+
 // 라우터 등록
 var routes = [
 

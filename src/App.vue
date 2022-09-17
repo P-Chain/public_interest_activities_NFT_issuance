@@ -10,6 +10,8 @@
 import NavBar from './commons/NavBar.vue'
 import MainFooter from './commons/Footer.vue'
 
+var BACKURL = 'http://pchapi.loca.lt'
+
 export default {
   name: 'app',
   components: {

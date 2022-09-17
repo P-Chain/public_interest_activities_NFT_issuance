@@ -94,7 +94,6 @@ export default {
   methods: {
     onSubmit(event) {
       event.preventDefault()
-      console.log(JSON.stringify(this.form)) // for debug
       axios.post('/api/auth_account/register/local', { 
         email: this.form.email,
         password: this.form.password, 

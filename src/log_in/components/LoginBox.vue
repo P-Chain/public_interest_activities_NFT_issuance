@@ -46,14 +46,21 @@ export default {
     onSubmit(event) {
       event.preventDefault();
       // for debug
-      alert(this.form.email);
-
-      axios.post('/login/local', { 
-        email: this.email,
-        password: this.password, 
-      })
-      .then(res => {
+//      alert(this.form.email);
+      fetch('/api/auth_account/login/local',{
+  method: 'POST',
+  mode: 'cors',
+  credentials: 'include',
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    email: this.form.email,
+    password: this.form.password
+  })
+}).then(res => {
         // do something with res
+        location.href='/';
         console.log(res);
         // temp 
         if (res.status == 200) {

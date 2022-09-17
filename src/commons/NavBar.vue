@@ -11,15 +11,15 @@
       </b-navbar-nav>
       <b-navbar-nav v-else>
         <b-nav-item>{{ name }}</b-nav-item>
-        <b-nav-item >로그아웃</b-nav-item>
+        <b-nav-item @click="logout">로그아웃</b-nav-item>
         <b-nav-item @click="goPage('mypage')">마이페이지</b-nav-item>
         <b-nav-item v-if="access >= 1" @click="goPage('nft_choice')">NFT발급</b-nav-item>
         <b-nav-item v-if="access >= 2" @click="goPage('manage_page')">관리페이지</b-nav-item>
       </b-navbar-nav>
     </b-collapse>
     <!-- for debug -->
-    <b-button variant="primary" @click="onChange">로그인 전환</b-button>
-    <b-button variant="secondary" @click="onPlus">계정 권한 전환</b-button>
+<!--    <b-button variant="primary" @click="onChange">로그인 전환</b-button>-->
+<!--    <b-button variant="secondary" @click="onPlus">계정 권한 전환</b-button>-->
   </b-navbar>
 </template>
 
@@ -30,6 +30,26 @@ export default {
       name: '이름',
       token: false,
       access: 0,
+    }
+  },
+    created(){
+        try{
+    axios.get("/api/auth_account/check").then(response =>{
+        console.log(response);
+        if(response.data.profile.username){
+            console.log(response.data.issuer);
+            this.name = response.data.profile.username;
+            if(response.data.issuer){
+                this.access = 1;
+                if(response.data.manager){
+                    this.access = 2;
+                }
+            }
+            this.token = true;
+        }
+        
+    })} catch(e){
+        this.token = false;
     }
   },
   // for debug
@@ -47,6 +67,15 @@ export default {
       var page = '/' + pageName
       this.$router.push(page)
     },
+    logout(event) {
+        axios.post("/api/auth_account/logout").then(response =>{
+        if(response){
+            this.name = "name"
+            this.$router.push('/')
+        }
+        
+    })
+    }
   }
 }
 </script>

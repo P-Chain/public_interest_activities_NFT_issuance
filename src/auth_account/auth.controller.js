@@ -70,6 +70,7 @@ exports.localLogin = async (ctx) => {
     const result = schema.validate(ctx.request.body);
 
     if(result.error) {
+        console.log(result.error);
         ctx.status = 400; // Bad Request
         return;
     }
@@ -86,6 +87,8 @@ exports.localLogin = async (ctx) => {
 
     if(!account || !account.validatePassword(password)) {
     // 유저가 존재하지 않거나 || 비밀번호가 일치하지 않으면
+        console.log("input error");
+        console.log(account);
         ctx.status = 403; // Forbidden
         return;
     }
@@ -135,7 +138,7 @@ exports.check = async (ctx) => {
         ctx.status = 403; // Forbidden
         return;
     }
-
-    ctx.body = user.profile;
+    console.log(user.isIssuer);
+    ctx.body = {profile: user.profile, issuer: user.isIssuer, manager: user.isManager};
 }
 

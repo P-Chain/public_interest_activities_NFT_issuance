@@ -10,14 +10,13 @@ exports.achieveRankInfo = async (ctx) => {
         console.log(data[i]);
         console.log(data[i].id);
     }
-    ctx.set("Access-Control-Allow-Origin","*");
     ctx.response.body = data;
 };
 
 exports.volRankInfo = async (ctx) => {
     // 봉사시간 랭킹 불러오기
     var data = await APL.printVolRank();
-    ctx.body = data;
+    ctx.response.body = data;
 };
 
 exports.doneRankInfo = async (ctx) => {
