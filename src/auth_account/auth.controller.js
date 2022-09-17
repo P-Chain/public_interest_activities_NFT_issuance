@@ -138,7 +138,7 @@ exports.check = async (ctx) => {
         ctx.status = 403; // Forbidden
         return;
     }
-
-    ctx.body = user.profile;
+    console.log(user.isIssuer);
+    ctx.body = {profile: user.profile, issuer: user.isIssuer};
 }
 

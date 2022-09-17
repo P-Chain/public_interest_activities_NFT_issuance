@@ -33,13 +33,21 @@ export default {
     }
   },
     created(){
+        try{
     axios.get("/api/auth_account/check").then(response =>{
-        if(response.data.username){
-            this.name = response.data.username;
+        console.log(response);
+        if(response.data.profile.username){
+            console.log(response.data.issuer);
+            this.name = response.data.profile.username;
+            if(response.data.issuer){
+                this.access = 1;
+            }
             this.token = true;
         }
         
-    })
+    })} catch(e){
+        this.token = false;
+    }
   },
   // for debug
   methods: {
@@ -55,7 +63,6 @@ export default {
     logout(event) {
         axios.post("/api/auth_account/logout").then(response =>{
         if(response){
-            this.token = false;
             this.name = "name"
             location.href = "/";
         }
