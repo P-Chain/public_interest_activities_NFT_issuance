@@ -52,7 +52,7 @@ progress:     진행 정보 페이지
 
 ----- 3. 로컬터널 이용해서 서버 여는법- ----
 
-npm 에서 localtunnel 설치
+npm 에서 localtunnel 설치 (-g)
 
 명령프롬프트 해당 폴더에서 yarn start로 백엔드 서버 열기, npm run dev로 프론트 서버 열기
 

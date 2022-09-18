@@ -11,27 +11,7 @@ import 'mdb-vue-ui-kit/css/mdb.min.css'
 
 // 라우터 별 vue 파일 import
 import Main from './main/main.vue'
-
-
 import LoginPage from './log_in/LoginPage.vue'
-import AuthAccount from './auth_account/AuthAccount.vue'
-import DirectorAccount from './auth_account/director_account/DirectorAccountPage.vue'
-import UserAccount from './auth_account/user_account/UserAccountPage.vue'
-import Ranking from './ranking/Ranking.vue'
-import AuthApply from './auth_apply/AuthApply.vue'
-import MyPage from './mypage/MyPage.vue'
-import VmsIns from './vms_ins/VmsIns.vue'
-import NFTChoice from './nft_choice/NFTChoice.vue'
-import UserSearch from './user_search/UserSearch.vue'
-import NFTIssue from './nft_issue/NFTIssue.vue'
-import ManagePage from './manage_page/ManagePage.vue'
-import Progress from './progress/Progress.vue'
-import Achieved from './progress/achieved/achieved.vue'
-import MyOwnNFT from './progress/my_own_NFT/MyOwnNFT.vue'
-import NotAchieved from './progress/not_achieved/NotAchieved.vue'
-import ProgressAll from './progress/progress_all/ProgressAll.vue'
-
-
 
 
 // Make BootstrapVue available throughout your project
