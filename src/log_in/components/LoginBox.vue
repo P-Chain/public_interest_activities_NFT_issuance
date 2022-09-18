@@ -69,6 +69,7 @@ export default {
         })
         .catch(function (error) {
           if (error.response.status == 403) {
+            alert("아이디 또는 비밀번호를 잘못 입력하였습니다.")
             console.log("아이디 또는 비밀번호를 잘못 입력하였습니다.");
           }
         })

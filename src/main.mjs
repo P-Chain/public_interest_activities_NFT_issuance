@@ -1,12 +1,14 @@
 import Vue from 'vue'
 import App from './App.vue'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
-import Jazzicon from 'vue-jazzicon'
 
+import Jazzicon from 'vue-jazzicon'
+import { store } from "./store";
 
 // import Bootstrap and BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'mdb-vue-ui-kit/css/mdb.min.css'
 
 // 라우터 별 vue 파일 import
 import Main from './main/main.vue'
@@ -28,7 +30,6 @@ Vue.prototype.$EventBus = new Vue();
 
 // URL
 var BACKURL = 'http://pchapi.loca.lt'
-
 
 // 라우터 등록
 var routes = [
@@ -101,8 +102,8 @@ var routes = [
 // 뷰 라우터 인스턴스 생성
 var router = new VueRouter({
     routes,
-    mode: "history"
-
+    mode: "history",
+    store: store,
 });
 
 
