@@ -17,7 +17,7 @@ export default {
     'username-inputbox': UserNameInputBox,
     'userlist': UserList,
     'added-userlist': AddedUserList
-  }
+  },
 }
 </script>
 

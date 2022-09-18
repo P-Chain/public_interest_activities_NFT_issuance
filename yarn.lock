@@ -3799,11 +3799,6 @@
     "inherits" "^2.0.1"
     "safe-buffer" "^5.1.2"
 
-"mdb-vue-ui-kit@^2.0.0":
-  "integrity" "sha512-9dzL28KiuAWTFxiCXVplq83O//ALg2k88xaAvgVtl80ENBRYWRMafc2NYO4pM9FedKeF9/KGG5JaQYoyPcIqmA=="
-  "resolved" "https://registry.npmjs.org/mdb-vue-ui-kit/-/mdb-vue-ui-kit-2.0.0.tgz"
-  "version" "2.0.0"
-
 "media-typer@0.3.0":
   "integrity" "sha512-dq+qelQ9akHpcOl/gUVRTxVIOkAJ1wR3QAvb4RsVjS8oVoFjDGTc679wJYmUmknUF5HwMLOgb5O+a3KxfWapPQ=="
   "resolved" "https://registry.npmjs.org/media-typer/-/media-typer-0.3.0.tgz"

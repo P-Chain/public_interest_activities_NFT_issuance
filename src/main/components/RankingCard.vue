@@ -4,16 +4,19 @@
       <b-tab title="업적 랭킹">
         <b-card-text>
           <!-- DB에서 불러내는 작업 필요. 최대 3개까지 -->
-          {{ arank1 }}
-          <b-progress :value="avalue1" :max="avalue1" height="1rem" show-value class="mb-1"></b-progress>
-          {{ arank2 }}
-          <b-progress :value="avalue2" :max="avalue1" height="1rem" show-value class="mb-2"></b-progress>
-          {{ arank3 }}
-          <b-progress :value="avalue3" :max="avalue1" height="1rem" show-value class="mb-3"></b-progress>
+          {{ rank1 }}
+          <b-progress :value="value1" :max="value1" height="1rem" show-value class="mb-1"></b-progress>
+          {{ rank2 }}
+          <b-progress :value="value2" :max="value1" height="1rem" show-value class="mb-2"></b-progress>
+          {{ rank3 }}
+          <b-progress :value="value3" :max="value1" height="1rem" show-value class="mb-3"></b-progress>
         </b-card-text>
       </b-tab> 
       <b-tab title="봉사시간 랭킹">
-          <b-card-text>
+
+      </b-tab>
+      <b-tab title="NFT 보유 랭킹">
+        <b-card-text>
           <!-- DB에서 불러내는 작업 필요. 최대 3개까지 -->
           {{ vrank1 }}
           <b-progress :value="vvalue1" :max="vvalue1" height="1rem" show-value class="mb-1"></b-progress>
@@ -54,7 +57,7 @@ export default {
       arank2: 'none',
       arank3: 'none',
     
-        vvalue1: 0,
+      vvalue1: 0,
       vvalue2: 0,
       vvalue3: 0,
 
@@ -62,7 +65,7 @@ export default {
       vrank2: 'none',
       vrank3: 'none',
         
-        nvalue1: 0,
+      nvalue1: 0,
       nvalue2: 0,
       nvalue3: 0,
 
@@ -87,7 +90,7 @@ export default {
         this.arank3 = dat.id}
     });
       axios.get("/api/ranking/vol").then(response =>{
-          console.log(response);
+        console.log(response);
         var data = response.data;
         var dat = data[0];
         this.vvalue1 = dat.volTime,

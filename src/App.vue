@@ -17,7 +17,7 @@ export default {
   components: {
     'nav-bar': NavBar,
     'main-footer': MainFooter,
-  }
+  },
 }
 </script>
 
@@ -29,4 +29,5 @@ export default {
 #app {
   font-family: Roboto, Helvetica, Arial, sans-serif;
 }
+
 </style>

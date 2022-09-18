@@ -6,7 +6,7 @@
 
     <!-- <b-card-text>A second paragraph of text in the card.</b-card-text> -->
 
-    <a href="/community" class="card-link">더보기</a>
+    <router-link to="/community" class="card-link">더보기</router-link>
     <!-- <b-link href="#" class="card-link">Another link</b-link> -->
   </b-card>
 </template>

@@ -1,13 +1,10 @@
 .DS_Store
 node_modules/
 dist/
+myFile/
 npm-debug.log
 yarn-error.log
 .env
-화면 구상도.png
-UI 설계.png
-2022중간보고서*
-myFile/
 
 # Editor directories and files
 .idea

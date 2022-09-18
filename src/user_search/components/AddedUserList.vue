@@ -3,7 +3,7 @@
     <hr>
     선택한 대상자 목록
     <hr>
-    <div v-for="item in lists" :key="item">
+    <div v-for="item in lists" :key="item.index">
       이름: {{ item.name }}<br>
       이메일: {{ item.email }}<br>
       <hr>
