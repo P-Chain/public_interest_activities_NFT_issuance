@@ -109,10 +109,20 @@ export default {
         email: this.form.email,
         password: this.form.password, 
         username: this.form.name
+      }).catch(function(error){
+          if(error.response.status==400){
+              console.log("입력오류");
+          }
+          else if(error.response.status==409){
+              console.log("이메일 또는 닉네임 중복");
+              console.log(error);
+          }
       })
       .then(res => {
         // do something with res
-        location.href='/login';
+          if(res.status == 200){
+              location.href='/login';
+          }
         console.log(res);
       })
     },

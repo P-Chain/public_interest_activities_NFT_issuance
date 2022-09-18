@@ -34,8 +34,19 @@ export default {
   },
     created(){
         try{
-    axios.get("/api/auth_account/check").then(response =>{
-        console.log(response);
+        axios.get("/api/auth_account/check").catch(function(error){
+            if(error.response){
+                if(error.response.status==403){
+                    console.log("미로그인 상태");
+                }
+            } 
+            else if(error.request){
+                console.log("request");
+                console.log(error);
+            }
+        })
+            .then(response =>{
+        //console.log(response);
         if(response.data.profile.username){
             console.log(response.data.issuer);
             this.name = response.data.profile.username;
@@ -48,7 +59,9 @@ export default {
             this.token = true;
         }
         
-    })} catch(e){
+    })} catch(error){
+        console.log("error");
+        console.log(error.response);
         this.token = false;
     }
   },

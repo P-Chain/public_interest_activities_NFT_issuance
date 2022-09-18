@@ -47,23 +47,31 @@ export default {
       event.preventDefault();
       // for debug
 //      alert(this.form.email);
-      fetch('/api/auth_account/login/local',{
-  method: 'POST',
-  mode: 'cors',
-  credentials: 'include',
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
+//      fetch('/api/auth_account/login/local',{
+//  method: 'POST',
+//  mode: 'cors',
+//  credentials: 'include',
+//  headers: {
+//    "Content-Type": "application/json",
+//  },
+//  body: JSON.stringify({
+//    email: this.form.email,
+//    password: this.form.password
+//  })
+//})
+        axios.post('/api/auth_account/login/local',{
     email: this.form.email,
     password: this.form.password
-  })
-}).then(res => {
+  }).catch(function(error){
+            if(error.response.status==403){
+                console.log("아이디 또는 비밀번호를 잘못 입력하였습니다.");
+            }
+        }).then(res => {
         // do something with res
-        location.href='/';
         console.log(res);
         // temp 
         if (res.status == 200) {
+            location.href = '/';
           this.$store.commit("login", res.data);
           this.$router.push("/");
         }
