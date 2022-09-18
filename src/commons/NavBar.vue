@@ -66,7 +66,7 @@ export default {
     logout(event) {
         axios.post("/api/auth_account/logout").then(response =>{
         if(response){
-            this.name = "name"
+            this.name = "이름"
             location.href = "/";
         }
         
