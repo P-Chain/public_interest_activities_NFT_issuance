@@ -7,7 +7,6 @@ import Jazzicon from 'vue-jazzicon'
 // import Bootstrap and BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
-import 'mdb-vue-ui-kit/css/mdb.min.css'
 
 // 라우터 별 vue 파일 import
 import Main from './main/main.vue'

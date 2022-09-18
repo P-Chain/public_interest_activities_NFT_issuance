@@ -16,9 +16,7 @@
 
       </b-tab>
       <b-tab title="NFT 보유 랭킹">
-
-=======
-          <b-card-text>
+        <b-card-text>
           <!-- DB에서 불러내는 작업 필요. 최대 3개까지 -->
           {{ vrank1 }}
           <b-progress :value="vvalue1" :max="vvalue1" height="1rem" show-value class="mb-1"></b-progress>
@@ -38,7 +36,6 @@
           {{ nrank3 }}
           <b-progress :value="nvalue3" :max="nvalue1" height="1rem" show-value class="mb-3"></b-progress>
         </b-card-text>
->>>>>>> P
       </b-tab>
     </b-tabs>
     <template #footer>
@@ -60,7 +57,7 @@ export default {
       arank2: 'none',
       arank3: 'none',
     
-        vvalue1: 0,
+      vvalue1: 0,
       vvalue2: 0,
       vvalue3: 0,
 
@@ -68,7 +65,7 @@ export default {
       vrank2: 'none',
       vrank3: 'none',
         
-        nvalue1: 0,
+      nvalue1: 0,
       nvalue2: 0,
       nvalue3: 0,
 
