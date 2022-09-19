@@ -30,7 +30,8 @@ const Account = new Schema({
     walletAddress: String, // 수정가능.
     achievementProgress: [String], // 수정가능
     issuanceCount: {type: Number, default: 0}, // 서비스에서 nft 발행을 받을때마다 1올라간다.
-    createdAt: {type: Date, default: Date.now}
+    createdAt: {type: Date, default: Date.now},
+    nickname: String
 });
 
 Account.statics.printNftRank = function(){
@@ -46,23 +47,24 @@ Account.statics.findByEmail = function(email) {
     return this.findOne({email}).exec();
 };
 
-Account.statics.findByEmailOrUsername = function({username, email}) {
+Account.statics.findByEmailOrUsername = function({nickname, email}) {
     return this.findOne({
         // $or 연산자를 통해 둘중에 하나를 만족하는 데이터를 찾습니다
         $or: [
-            { 'profile.username': username },
+            { 'nickname': nickname },
             { email }
         ]
     }).exec();
 };
 
-Account.statics.localRegister = function({ username, email, password}) {
+Account.statics.localRegister = function({ username, email, password, nickname}) {
     //데이터를 생성할 때는 new this()를 사용
     const account = new this({
         profile: {
             username
             // thumbnail 값을 설정하지 않으면 기본값으로 설정
         },
+        nickname,
         email,
         password: hash(password)
     });
@@ -82,7 +84,8 @@ Account.methods.generateToken = function() {
         _id: this._id,
         profile: this.profile,
         isIssuer: this.isIssuer,
-        isManager: this.isManager
+        isManager: this.isManager,
+        nickname: this.nickname
     };
 
     return generateToken(payload, 'account');

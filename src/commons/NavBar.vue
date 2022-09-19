@@ -22,8 +22,10 @@
       </b-navbar-nav>
     </b-collapse>
     <!-- for debug -->
+<!--
     <b-button variant="primary" @click="onChange">로그인 전환</b-button>
     <b-button variant="secondary" @click="onPlus">계정 권한 전환</b-button>
+-->
   </b-navbar>
 </template>
 
@@ -52,9 +54,9 @@ export default {
         })
         .then((response) => {
           //console.log(response);
-          if (response.data.profile.username) {
+          if (response.data.nickname) {
             console.log(response.data.issuer);
-            this.name = response.data.profile.username;
+            this.name = response.data.nickname;
             if (response.data.issuer) {
               this.access = 1;
               if (response.data.manager) {

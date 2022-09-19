@@ -8,7 +8,8 @@ exports.localRegister = async (ctx) => {
     console.log(ctx.request.body);
     // 데이터 검증
     const schema = Joi.object().keys({
-        username: Joi.string().alphanum().min(4).max(15).required(),
+        nickname: Joi.string().min(4).max(15).required(),
+        username: Joi.string().required(),
         email: Joi.string().email().required(),
         password: Joi.string().required().min(6)
     });
@@ -33,7 +34,7 @@ exports.localRegister = async (ctx) => {
         ctx.status = 409; // Conflict
         // 어떤 값이 중복되었는지 알려줍니다
         ctx.body = {
-            key: existing.email === ctx.request.body.email ? 'email' : 'username'
+            key: existing.email === ctx.request.body.email ? 'email' : 'nickname'
         };
         return;
     }
@@ -139,6 +140,6 @@ exports.check = async (ctx) => {
         return;
     }
     console.log(user.isIssuer);
-    ctx.body = {profile: user.profile, issuer: user.isIssuer, manager: user.isManager};
+    ctx.body = {profile: user.profile, issuer: user.isIssuer, manager: user.isManager, nickname: user.nickname};
 }
 
