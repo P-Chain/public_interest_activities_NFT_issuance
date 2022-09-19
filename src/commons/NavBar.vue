@@ -78,6 +78,7 @@ export default {
       this.token = false;
     }
     this.commitToken()
+    this.commitAccess()
   },
   // for debug
   methods: {
@@ -96,12 +97,18 @@ export default {
         if (response) {
           this.name = "이름";
           this.token = false
+          this.access = 0
           this.commitToken()
-          location.href = "/";        }
+          this.commitAccess()
+          location.href = "/";        
+        }
       });
     },
     commitToken() {
       this.$store.commit('changeToken', this.token)
+    },
+    commitAccess() {
+      this.$store.commit('changeAccess', this.access)
     }
   },
 }
