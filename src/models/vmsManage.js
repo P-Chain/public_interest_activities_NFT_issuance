@@ -8,6 +8,11 @@ const vmsManage = new Schema({ // 봉사시간 갱신 신청 관리 DB
     id: String, // 신청자 ID
     volIss: String, // 봉사시간 인증서
     volTime: Number, // 현재 봉사시간
-    state: String, // 신청 상태(대기, 수락, 거부)
+    state: {type: String, default: "대기"}, // 신청 상태(대기, 수락, 거부)
     username: String // 신청자 이름
 });
+
+vmsManage.statics.newApply = function(id,volIss,volTime,username){ // 새로운 유저DB생성
+    const user = new this({index: this.count()+1,id,volIss,volTime,username});
+    return user.save();
+};
