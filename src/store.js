@@ -5,7 +5,7 @@ import Vuex from "vuex"
 // Vuex 선언
 Vue.use(Vuex);
 
-export const store = new Vuex.Store({
+export default new Vuex.Store({
   state: {
     token: false
   },
@@ -13,7 +13,9 @@ export const store = new Vuex.Store({
 
   },
   mutations: {
-    
+    changeToken(state, token) {
+      state.token = token
+    }
   },
   actions: {
 

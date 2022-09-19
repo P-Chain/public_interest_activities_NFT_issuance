@@ -71,7 +71,7 @@ export default {
       console.log(error.response);
       this.token = false;
     }
-    this.$store.state.token = this.token
+    this.commitToken()
   },
   // for debug
   methods: {
@@ -96,8 +96,11 @@ export default {
         }
       });
     },
+    commitToken() {
+      this.$store.commit('changeToken', this.token)
+    }
   },
-};
+}
 </script>
 
 <style scoped></style>

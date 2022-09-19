@@ -3,7 +3,7 @@ import App from './App.vue'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
 import Jazzicon from 'vue-jazzicon'
-import { store } from "./store";
+import store from './store'
 
 // import Bootstrap and BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
@@ -103,7 +103,6 @@ var routes = [
 var router = new VueRouter({
     routes,
     mode: "history",
-    store: store,
 });
 
 
@@ -111,5 +110,6 @@ var router = new VueRouter({
 new Vue({
   el: '#app',
   render: h => h(App),
-  router
+  router,
+  store
 }).$mount('#app')
