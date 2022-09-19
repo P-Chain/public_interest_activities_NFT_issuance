@@ -22,10 +22,10 @@
       </b-navbar-nav>
     </b-collapse>
     <!-- for debug -->
-<!--
-    <b-button variant="primary" @click="onChange">로그인 전환</b-button>
-    <b-button variant="secondary" @click="onPlus">계정 권한 전환</b-button>
--->
+
+    <!-- <b-button variant="primary" @click="onChange">로그인 전환</b-button>
+    <b-button variant="secondary" @click="onPlus">계정 권한 전환</b-button> -->
+
   </b-navbar>
 </template>
 
@@ -71,6 +71,7 @@ export default {
       console.log(error.response);
       this.token = false;
     }
+    this.$store.state.token = this.token
   },
   // for debug
   methods: {
