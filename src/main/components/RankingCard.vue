@@ -36,7 +36,7 @@
       </b-tab>
     </b-tabs>
     <template #footer>
-      <a href="/ranking" class="card-link">더보기</a>
+      <router-link to="/ranking" class="card-link">더보기</router-link>
       </template>
   </b-card>
 </template>
@@ -86,7 +86,7 @@ export default {
         this.avalue3 = dat.progressedAchieveNum,
         this.arank3 = dat.id}
     });
-      axios.get("/api/ranking/vol").then(response =>{
+    axios.get("/api/ranking/vol").then(response =>{
         console.log(response);
         var data = response.data;
         var dat = data[0];
@@ -101,7 +101,7 @@ export default {
         this.vvalue3 = dat.volTime,
         this.vrank3 = dat.id}
     });
-      axios.get("/api/ranking/nft").then(response =>{
+    axios.get("/api/ranking/nft").then(response =>{
         var data = response.data;
         var dat = data[0];
         this.nvalue1 = dat.issuanceCount,

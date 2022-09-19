@@ -4,6 +4,7 @@ import store from './store'
 
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import Jazzicon from 'vue-jazzicon'
+import VueRouter from 'vue-router'
 
 // import Bootstrap and BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'

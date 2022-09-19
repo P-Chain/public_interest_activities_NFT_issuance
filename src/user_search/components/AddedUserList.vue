@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="wrapper">
     <hr>
     선택한 대상자 목록
     <hr>
@@ -8,9 +8,12 @@
       이메일: {{ item.email }}<br>
       <hr>
     </div>
-
-    <b-button href="./nft_issue" variant="primary">발급</b-button>
-    <b-button href="./nft_choice" variant="outline-primary">뒤로 가기</b-button>
+    <router-link to="nft_issue">
+      <b-button href="/" variant="primary">발급</b-button>
+    </router-link>
+    <router-link to="nft_choice">
+      <b-button href="/" variant="outline-primary">뒤로 가기</b-button>
+    </router-link>
   </div>
 </template>
 

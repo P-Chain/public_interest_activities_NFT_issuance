@@ -16,7 +16,7 @@ import CommunityCard from "./components/CommunityCard.vue";
 
 export default {
   components: {
-    notice: Notice,
+    "notice": Notice,
     "ranking-card": RankingCard,
     "progress-card": ProgressCard,
     "community-card": CommunityCard,

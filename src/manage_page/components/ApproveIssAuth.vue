@@ -3,7 +3,6 @@
     <b-form-group
         label="발급권한 승인 목록"
         v-slot="{ ariaDescribedby }"
-        @submit="onSubmit"
         >
       <b-form-checkbox-group
         v-model="selected"
@@ -13,8 +12,8 @@
         stacked
       ></b-form-checkbox-group>
       <!-- 수정 -->
-      <b-button type="submit" variant="primary" href="">발급</b-button>
-      <b-button type="submit" variant="danger" href="">거절</b-button>
+      <b-button @click="submitApprove" variant="primary">발급</b-button>
+      <b-button @click="submitRevise" variant="danger">거절</b-button>
     </b-form-group>
   </div>
 </template>
@@ -33,8 +32,11 @@ export default {
       ],
     }
   },
-  method: {
-    onSubmit(event) {
+  methods: {
+    submitApprove(event) {
+      
+    },
+    submitRevise(event) {
       
     }
   }

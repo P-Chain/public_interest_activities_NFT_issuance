@@ -1,18 +1,18 @@
 <template>
-  <b-table small :fields="fields" :items="items" responsive="sm">
-    <template #cell(image)="data">
-      <!-- <img :src="baseUrl + 'path/path' + obj.key +'.png'"> -->
-      <b-img :src="data.item.image" alt="업적 이미지"></b-img>
-    </template>
-
-    <template #cell(name)="data">
-      {{ data.item.name }}
-    </template>
-
-    <template #cell(text)="data">
-      {{ data.item.text }}
-    </template>
-  </b-table>
+  <div class="wrapper">
+    <b-table small :fields="fields" :items="items" responsive="sm">
+      <template #cell(image)="data">
+        <!-- <img :src="baseUrl + 'path/path' + obj.key +'.png'"> -->
+        <b-img :src="data.item.image" alt="업적 이미지"></b-img>
+      </template>
+      <template #cell(name)="data">
+        {{ data.item.name }}
+      </template>
+      <template #cell(text)="data">
+        {{ data.item.text }}
+      </template>
+    </b-table>
+  </div>
 </template>
 
 <script>

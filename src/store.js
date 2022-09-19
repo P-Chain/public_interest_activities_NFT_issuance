@@ -2,7 +2,7 @@
 // + 페이지 접근 권한 제어 파일
 import Vue from "vue"
 import Vuex from "vuex"
-import createPersistedState from "vuex-persistedstate";
+import createPersistedState from "vuex-persistedstate"
 
 // Vuex 선언
 Vue.use(Vuex);

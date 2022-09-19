@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="wrapper">
       <b-form-input 
         type="search" 
         @keyup.enter="doSearch" 

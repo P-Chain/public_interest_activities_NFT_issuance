@@ -1,16 +1,17 @@
 <template>
-  <b-form-group v-slot="{ ariaDescribedby }">
-    <b-form-radio-group
-      v-model="selected"
-      :options="options"
-      :aria-describedby="ariaDescribedby"
-      name="plain-stacked"
-      plain
-      stacked
-    ></b-form-radio-group>
-
-    <b-button type="submit" variant="secondary">추가</b-button>
-  </b-form-group>
+  <div class="wrapper">
+    <b-form-group v-slot="{ ariaDescribedby }">
+      <b-form-radio-group
+        v-model="selected"
+        :options="options"
+        :aria-describedby="ariaDescribedby"
+        name="plain-stacked"
+        plain
+        stacked
+      ></b-form-radio-group>
+      <b-button type="submit" variant="secondary">추가</b-button>
+    </b-form-group>
+  </div>
 </template>
 
 <script>

@@ -1,23 +1,26 @@
 <template>
-  <b-form @submit="onSubmit">
-    <b-form-input
-        id="input-1"
-        v-model="vmsTime"
-        type="number"
-        placeholder="봉사시간을 입력해주세요."
-        required
-      ></b-form-input>
-    <b-form-file
-        v-model="file1"
-        :state="Boolean(file1)"
-        placeholder="Choose a file or drop it here..."
-        drop-placeholder="Drop file here..."
-      ></b-form-file>
-      <div class="mt-3">Selected file: {{ file1 ? file1.name : '' }}</div>
-
-    <b-button type="submit" variant="primary">제출</b-button>
-    <b-button @click="goPage('mypage')" variant="outline-primary">뒤로 가기</b-button>
-  </b-form>
+  <div class="wrapepr">
+    <b-form @submit="onSubmit">
+      <b-form-input
+          id="input-1"
+          v-model="vmsTime"
+          type="number"
+          placeholder="봉사시간을 입력해주세요."
+          required
+        ></b-form-input>
+      <b-form-file
+          v-model="file1"
+          :state="Boolean(file1)"
+          placeholder="Choose a file or drop it here..."
+          drop-placeholder="Drop file here..."
+        ></b-form-file>
+        <div class="mt-3">Selected file: {{ file1 ? file1.name : '' }}</div>
+      <b-button type="submit" variant="primary">제출</b-button>
+      <router-link to="/mypage">
+        <b-button href="/" variant="outline-primary">뒤로 가기</b-button>
+      </router-link>
+    </b-form>
+  </div>
 </template>
 
 <script>
@@ -31,10 +34,6 @@ export default {
     }
   },
   methods: {
-    goPage(pageName) {
-      var page = '/' + pageName
-      this.$router.push(page)
-    },
     onSubmit(event) {
       event.preventDefault()
       console.log(JSON.stringify(this.form)) // for debug

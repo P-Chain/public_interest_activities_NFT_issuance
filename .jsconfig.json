@@ -4,8 +4,8 @@
         "forceConsistentCasingInFileNames": false,
         "paths": {
             "@/*": [
-              "./src/*"
+                "./src/*"
             ]
-          }
+        }
     }
 }

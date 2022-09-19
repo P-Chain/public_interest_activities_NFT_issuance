@@ -2,85 +2,82 @@
 <!-- https://bootstrap-vue.org/docs/components/form -->
 <!-- 추가로 더 할 수 있는 것: UX / 유효성 검사 -->
 <template>
-  <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-    <!-- 이메일 -->
-    <b-form-group
-      id="input-group-1"
-      label="이메일"
-      :invalid-feedback="emailInvalidFeedback"
-      :state="emialState"
-        ><b-form-input
-          id="input-1"
-          v-model="form.email"
-          type="email"
-          placeholder="이메일을 입력해주세요. ex)example@example.com"
-          :state="emailState"
+  <div class="wrapper">
+    <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+      <!-- 이메일 -->
+      <b-form-group
+        id="input-group-1"
+        label="이메일"
+        :invalid-feedback="emailInvalidFeedback"
+        :state="emialState"
+          ><b-form-input
+            id="input-1"
+            v-model="form.email"
+            type="email"
+            placeholder="이메일을 입력해주세요. ex)example@example.com"
+            :state="emailState"
+            required
+          ></b-form-input>
+      </b-form-group>
+      <!-- password -->
+      <b-form-group id="input-group-2" label="비밀번호" :invalid-feedback="passwordInvalidFeedback" :state="passwordState">
+        <b-form-input
+          id="input-2"
+          v-model="form.password"
+          type="password"
+          placeholder="비밀번호를 입력해주세요."
+          aria-describedby="password-help-block"
+          :state="passwordState"
           required
         ></b-form-input>
-    </b-form-group>
-
-    <!-- password -->
-    <b-form-group id="input-group-2" label="비밀번호" :invalid-feedback="passwordInvalidFeedback" :state="passwordState">
-      <b-form-input
-        id="input-2"
-        v-model="form.password"
-        type="password"
-        placeholder="비밀번호를 입력해주세요."
-        aria-describedby="password-help-block"
-        :state="passwordState"
-        required
-      ></b-form-input>
-    </b-form-group>
-
-    <!-- username -->
-    <b-form-group id="input-group-3" label="이름" :invalid-feedback="usernameInvalidFeedback" :state="usernameState">
-      <b-form-input
-        id="input-3"
-        v-model="form.username"
-        placeholder="이름을 입력해주세요."
-        :state="usernameState"
-        required
-      ></b-form-input>
-    </b-form-group>
-
-    <!-- nickname -->
-    <b-form-group
-      id="input-group-4"
-      label="닉네임"
-      :invalid-feedback="nicknameInvalidFeedback"
-      :state="nicknameState"
-      ><b-form-input
-        id="input-4"
-        v-model="form.nickname"
-        placeholder="닉네임을 입력해주세요."
+      </b-form-group>
+      <!-- username -->
+      <b-form-group id="input-group-3" label="이름" :invalid-feedback="usernameInvalidFeedback" :state="usernameState">
+        <b-form-input
+          id="input-3"
+          v-model="form.username"
+          placeholder="이름을 입력해주세요."
+          :state="usernameState"
+          required
+        ></b-form-input>
+      </b-form-group>
+      <!-- nickname -->
+      <b-form-group
+        id="input-group-4"
+        label="닉네임"
+        :invalid-feedback="nicknameInvalidFeedback"
         :state="nicknameState"
-        required
-      ></b-form-input>
-    </b-form-group>
-
-    <!-- 전화번호 -->
-<!--
-    <b-form-group id="input-group-5" label="전화번호">
-      <b-form-input
-        id="input-5"
-        v-model="form.number"
-        placeholder="전화번호를 입력해주세요. ex)01012345678"
-        type="tel"
-        class="int"
-        maxlength="16"
-        required
-      ></b-form-input>
-    </b-form-group>
--->
-
-    <b-button type="submit" variant="primary">제출</b-button>
-    <b-button type="reset" variant="danger">초기화</b-button>
-  </b-form>
-  <!-- for debug -->
-  <!-- <b-card class="mt-3" header="Form Data Result">
-    <pre class="m-0">{{ form }}</pre>
-  </b-card> -->
-  <!-- for debug -->
+        ><b-form-input
+          id="input-4"
+          v-model="form.nickname"
+          placeholder="닉네임을 입력해주세요."
+          :state="nicknameState"
+          required
+        ></b-form-input>
+      </b-form-group>
+      <!-- 전화번호 -->
+    <!--
+      <b-form-group id="input-group-5" label="전화번호">
+        <b-form-input
+          id="input-5"
+          v-model="form.number"
+          placeholder="전화번호를 입력해주세요. ex)01012345678"
+          type="tel"
+          class="int"
+          maxlength="16"
+          required
+        ></b-form-input>
+      </b-form-group>
+    -->
+      <b-button type="submit" variant="primary">제출</b-button>
+      <b-button type="reset" variant="danger">초기화</b-button>
+    </b-form>
+    <!-- for debug -->
+    <!-- <b-card class="mt-3" header="Form Data Result">
+      <pre class="m-0">{{ form }}</pre>
+    </b-card> -->
+    <!-- for debug -->
+  </div>
 </template>
 
 <script>
