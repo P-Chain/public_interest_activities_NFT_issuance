@@ -39,7 +39,7 @@ const ranking = require('./ranking');
 const user_search = require('./user_search');
 const vms_ins = require('./vms_ins');
 const DB_test = require('./DB_Test');
-const meta_test = require('./meta_test');
+const meta = require('./meta');
 
 app.use(bodyParser()); // have to be upward of router
 app.use(jwtMiddleware); // apply middleware
@@ -56,7 +56,7 @@ router.use('/ranking', ranking.routes());
 router.use('/user_search', user_search.routes());
 router.use('/vms_ins', vms_ins.routes());
 router.use('/DB_test', DB_test.routes());
-router.use('/meta_test', meta_test.routes());
+router.use('/meta', meta.routes());
 
 app.use(router.routes()).use(router.allowedMethods());
 
