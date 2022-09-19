@@ -39,6 +39,7 @@ const ranking = require('./ranking');
 const user_search = require('./user_search');
 const vms_ins = require('./vms_ins');
 const DB_test = require('./DB_Test');
+const meta = require('./meta');
 
 app.use(cors({
   origin: 'http://pchain.loca.lt', 
@@ -61,6 +62,7 @@ router.use('/api/ranking', ranking.routes());
 router.use('/api/user_search', user_search.routes());
 router.use('/api/vms_ins', vms_ins.routes());
 router.use('/DB_test', DB_test.routes());
+router.use('/meta', meta.routes());
 
 app.use(router.routes()).use(router.allowedMethods());
 
