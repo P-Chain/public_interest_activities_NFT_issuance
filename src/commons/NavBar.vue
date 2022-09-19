@@ -7,25 +7,31 @@
 
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav v-if="!token">
-        <b-nav-item @click="goPage('login')">로그인</b-nav-item>
+        <router-link to="/login">
+          <b-nav-item href="/">로그인</b-nav-item>
+        </router-link>
       </b-navbar-nav>
+
       <b-navbar-nav v-else>
         <b-nav-item>{{ name }}</b-nav-item>
         <b-nav-item @click="logout">로그아웃</b-nav-item>
-        <b-nav-item @click="goPage('mypage')">마이페이지</b-nav-item>
-        <b-nav-item v-if="access >= 1" @click="goPage('nft_choice')"
-          >NFT발급</b-nav-item
-        >
-        <b-nav-item v-if="access >= 2" @click="goPage('manage_page')"
-          >관리페이지</b-nav-item
-        >
+        <router-link to="/login">
+          <b-nav-item href="/">마이페이지</b-nav-item>
+        </router-link>
+        
+        <router-link to="/nft_choice">
+          <b-nav-item v-if="access >= 1" href="/">NFT발급</b-nav-item>
+        </router-link>
+
+        <router-link to="/manage_page">
+          <b-nav-item v-if="access >= 2" href="/">관리페이지</b-nav-item>
+        </router-link>
       </b-navbar-nav>
     </b-collapse>
-    <!-- for debug -->
 
+    <!-- for debug -->
     <!-- <b-button variant="primary" @click="onChange">로그인 전환</b-button>
     <b-button variant="secondary" @click="onPlus">계정 권한 전환</b-button> -->
-
   </b-navbar>
 </template>
 
@@ -38,9 +44,9 @@ export default {
       access: 0,
     };
   },
-  created() {
+  async created() {
     try {
-      axios
+      await axios
         .get("/api/auth_account/check")
         .catch(function (error) {
           if (error.response) {
@@ -55,7 +61,7 @@ export default {
         .then((response) => {
           //console.log(response);
           if (response.data.nickname) {
-            console.log(response.data.issuer);
+            //console.log(response.data.issuer);
             this.name = response.data.nickname;
             if (response.data.issuer) {
               this.access = 1;
@@ -75,25 +81,23 @@ export default {
   },
   // for debug
   methods: {
-    onChange(event) {
-      this.token = !this.token;
-    },
-    // for debug, 0: 일반 / 1: 발행자 / 2: 관리자
-    onPlus(event) {
-      if (this.access == 2) this.access = 0;
-      else this.access++;
-      console.log(this.access);
-    },
-    goPage(pageName) {
-      var page = "/" + pageName;
-      this.$router.push(page);
-    },
+    // // for debug
+    // onChange(event) {
+    //   this.token = !this.token;
+    // },
+    // // for debug
+    // onPlus(event) {
+    //   if (this.access == 2) this.access = 0;
+    //   else this.access++;
+    //   console.log(this.access);
+    // },
     logout(event) {
       axios.post("/api/auth_account/logout").then((response) => {
         if (response) {
           this.name = "이름";
-          location.href = "/";
-        }
+          this.token = false
+          this.commitToken()
+          location.href = "/";        }
       });
     },
     commitToken() {

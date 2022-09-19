@@ -80,7 +80,6 @@ export default {
           if (res.status == 200) {
             location.href = "/";
             this.$store.commit("login", res.data);
-            this.$router.push("/");
           }
         });
     },

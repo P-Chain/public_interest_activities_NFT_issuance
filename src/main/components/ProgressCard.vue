@@ -67,12 +67,12 @@ export default {
       prog1: '업적1',
       prog2: '업적2',
       prog3: '업적3',
-
-      token: true
     }
   },
-  created() {
-    this.token = this.$store.state.token
+  computed: {
+    token() {
+      return this.$store.state.token
+    }
   }
 }
 </script>
