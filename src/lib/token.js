@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 
 /*
 * jwt 토큰 생성
-* @param {any} payload
+* @param {any] payload
 * @returns {string} token
 */
 function generateToken(payload) {
