@@ -8,7 +8,7 @@ exports.achieveRankInfo = async (ctx) => {
     var data = await APL.printAchieveRank();
     for (i in data){
         console.log(data[i]);
-        console.log(data[i].id);
+        console.log(data[i].nickname);
     }
     ctx.response.body = data;
 };

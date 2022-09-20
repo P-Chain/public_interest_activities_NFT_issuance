@@ -15,7 +15,7 @@
       <b-navbar-nav v-else>
         <b-nav-item>{{ name }}</b-nav-item>
         <b-nav-item @click="logout">로그아웃</b-nav-item>
-        <router-link to="/login">
+        <router-link to="/mypage">
           <b-nav-item href="/">마이페이지</b-nav-item>
         </router-link>
         

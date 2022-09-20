@@ -1,17 +1,14 @@
 <template>
   <div>
     <b-table striped hover :items="items" :fields="fields">
-      <!-- <template #cell(index)="data">
+    <!-- <template #cell(index)="data">
         {{ data.index + 1 }}
       </template>
-      <template #cell(name)="data">
-        {{ data.items.name }}
+      <template #cell(nickname)="data">
+        {{ data.items.nickname }}
       </template>
-      <template #cell(email)="data">
-        {{ data.items.email }}
-      </template>
-      <template #cell(prog)="data">
-        {{ data.items.prog }}
+      <template #cell(volTime)="data">
+        {{ data.items.volTime }}
       </template> -->
     </b-table>
   </div>
@@ -27,8 +24,8 @@ export default {
           label: '랭킹',
         },
         {
-          key: 'id',
-          label: '이메일',
+          key: 'nickname',
+          label: '닉네임',
         },        
         {
           key: 'volTime',

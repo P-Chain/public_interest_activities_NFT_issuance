@@ -18,5 +18,9 @@ vmsManage.statics.newApply = function(id,volIss,volTime,username){ // 새로운 
 };
 
 vmsManage.statics.allowApply = function(index){
-    this.findOne
-}
+    this.updateOne({index},{$set: {state: "수락"}}).exec();
+};
+
+vmsManage.statics.denApply = function(index){
+    this.updateOne({index},{$set: {state: "거부"}}).exec();
+};

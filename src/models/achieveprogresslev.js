@@ -8,11 +8,11 @@ const AchieveProgressLev = new Schema({ // 개인 진행도 저장용 DB
     volTime: {type: Number, default: 0}, // 봉사시간
     progressedAchieveNum: {type: Number, default: 0}, // 업적 달성 갯수
     doneNum: {type: Number, default: 0}, // 기부액
-    username: String // 사용자 이름
+    nickname: String // 사용자 닉네임
 });
 
-AchieveProgressLev.statics.userRegist = function(id){ // 새로운 유저DB생성
-    const user = new this({id});
+AchieveProgressLev.statics.userRegist = function(id,nickname){ // 새로운 유저DB생성
+    const user = new this({id,nickname});
     return user.save();
 };
 
@@ -61,15 +61,15 @@ AchieveProgressLev.statics.findAllProgress = function(id){
 };
 AchieveProgressLev.statics.printAchieveRank = function(){
     // 전체 DB 업적랭킹순으로 불러오기
-    return this.find({"progressedAchieveNum": {$gt: 0}},{"id":true,"progressedAchieveNum":true,"_id":false}).sort({progressedAchieveNum:-1}).exec();
+    return this.find({"progressedAchieveNum": {$gt: 0}},{"nickname":true,"progressedAchieveNum":true,"_id":false}).sort({progressedAchieveNum:-1}).exec();
 };
 AchieveProgressLev.statics.printVolRank = function(){
     // 전체 DB 봉사시간랭킹순으로 불러오기
-    return this.find({"volTime": {$gt: 0}},{"id":true,"volTime":true}).sort({volTime:-1}).exec();
+    return this.find({"volTime": {$gt: 0}},{"nickname":true,"volTime":true}).sort({volTime:-1}).exec();
 };
 AchieveProgressLev.statics.printDoneRank = function(){
     // 전체 DB 기부액랭킹순으로 불러오기
-    return this.find({"doneNum": {$gt: 0}},{"id":true,"doneNum":true}).sort({doneNum:-1}).exec();
+    return this.find({"doneNum": {$gt: 0}},{"nickname":true,"doneNum":true}).sort({doneNum:-1}).exec();
 };
 
 module.exports = mongoose.model('AchieveProgressLev', AchieveProgressLev);
