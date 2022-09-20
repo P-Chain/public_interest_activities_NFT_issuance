@@ -16,3 +16,7 @@ vmsManage.statics.newApply = function(id,volIss,volTime,username){ // 새로운 
     const user = new this({index: this.count()+1,id,volIss,volTime,username});
     return user.save();
 };
+
+vmsManage.statics.allowApply = function(index){
+    this.findOne
+}
