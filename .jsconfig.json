@@ -1,5 +1,11 @@
 {
     "compilerOptions": {
-        "baseUrl": "./src"
+        "baseUrl": "./src",
+        "forceConsistentCasingInFileNames": false,
+        "paths": {
+            "@/*": [
+                "./src/*"
+            ]
+        }
     }
 }

@@ -1,11 +1,15 @@
 const Joi = require('joi');
 const Account = require('models/Account');
+const APL = require('models/AchieveProgressLev');
+const PA = require('models/Progressed_achieve');
 
 // 로컬 회원가입
 exports.localRegister = async (ctx) => {
+    console.log(ctx.request.body);
     // 데이터 검증
     const schema = Joi.object().keys({
-        username: Joi.string().alphanum().min(4).max(15).required(),
+        nickname: Joi.string().min(4).max(15).required(),
+        username: Joi.string().required(),
         email: Joi.string().email().required(),
         password: Joi.string().required().min(6)
     });
@@ -30,7 +34,7 @@ exports.localRegister = async (ctx) => {
         ctx.status = 409; // Conflict
         // 어떤 값이 중복되었는지 알려줍니다
         ctx.body = {
-            key: existing.email === ctx.request.body.email ? 'email' : 'username'
+            key: existing.email === ctx.request.body.email ? 'email' : 'nickname'
         };
         return;
     }
@@ -39,6 +43,8 @@ exports.localRegister = async (ctx) => {
     let account = null;
     try {
         account = await Account.localRegister(ctx.request.body);
+        var data = await APL.userRegist(ctx.request.body.email);
+        await PA.AddUser(ctx.request.body.email);
     } catch (e) {
         ctx.throw(500, e);
     }
@@ -65,6 +71,7 @@ exports.localLogin = async (ctx) => {
     const result = schema.validate(ctx.request.body);
 
     if(result.error) {
+        console.log(result.error);
         ctx.status = 400; // Bad Request
         return;
     }
@@ -81,6 +88,8 @@ exports.localLogin = async (ctx) => {
 
     if(!account || !account.validatePassword(password)) {
     // 유저가 존재하지 않거나 || 비밀번호가 일치하지 않으면
+        console.log("input error");
+        console.log(account);
         ctx.status = 403; // Forbidden
         return;
     }
@@ -130,7 +139,7 @@ exports.check = async (ctx) => {
         ctx.status = 403; // Forbidden
         return;
     }
-
-    ctx.body = user.profile;
+    console.log(user.isIssuer);
+    ctx.body = {profile: user.profile, issuer: user.isIssuer, manager: user.isManager, nickname: user.nickname};
 }
 
