@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="wrapper">
     <b-form-group
         label="발급 NFT 목록"
         v-slot="{ ariaDescribedby }"
@@ -12,7 +12,9 @@
         name="NFT list"
         stacked
       ></b-form-checkbox-group>
-      <b-button type="submit" variant="primary" href="/user_search">발급</b-button>
+    <router-link to="/user_search">
+      <b-button type="submit" variant="primary" href="/">발급</b-button>
+    </router-link>
     </b-form-group>
   </div>
 </template>

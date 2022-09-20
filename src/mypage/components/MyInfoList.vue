@@ -1,6 +1,6 @@
 <!-- 텍스트박스: 이메일, 패스워드, 이름, 전화번호, 지갑주소 / 버튼: 권한신청, 지갑연동, 수정사항 저장 -->
 <template>
-  <div class="container">
+  <div class="wrapper">
     <b-list-group>
       이메일<b-list-group-item>{{ myEmail }}</b-list-group-item>
       <!-- 비밀번호 변경 -->
@@ -51,8 +51,12 @@
         </b-modal>
       </div>
     </b-list-group>
-    <b-button href="./vms_ins" variant="outline-primary">봉사시간 갱신</b-button>
-    <b-button href="./auth_apply" variant="outline-secondary">권한 신청</b-button>
+    <router-link to="/vms_ins">
+      <b-button href="/" variant="outline-primary">봉사시간 갱신</b-button>
+    </router-link>
+    <router-link to="./auth_apply">
+      <b-button href="/" variant="outline-secondary">권한 신청</b-button>
+    </router-link>
   </div>
 </template>
 

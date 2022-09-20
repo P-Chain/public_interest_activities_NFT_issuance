@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="wrapper">
     <h2>로그인</h2>
     <b-form @submit="onSubmit">
       <!-- 대표 이메일 -->
@@ -22,15 +22,21 @@
       <b-button type="submit" variant="primary">로그인</b-button>
     </b-form>
     <!--API 연결하기-->
-    <div class="g-signin2" data-onsuccess="onSignIn"></div>
-    <!-- <button class="button-image" id="GgCustomLogin" @click="init"><b-img :src="require('../../assets/googleIcon.png')"></b-img></button> -->
+    <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
+    <button class="button-image" @click="onSignIn(event)">
+      <!-- 상대경로 수정 -->
+      <b-img :src="require('../../assets/googleIcon.png')"></b-img>
+    </button>
+    
     <button class="button-image" href="">
       <b-img :src="require('../../assets/facebookIcon.png')"></b-img>
     </button>
 
     <p>
       계정이 없으신가요?
-      <a href="/auth_account">회원가입</a>
+      <router-link to="auth_account">
+        <a href="/">회원가입</a>
+      </router-link>
     </p>
   </div>
 </template>
@@ -79,8 +85,7 @@ export default {
           // temp
           if (res.status == 200) {
             location.href = "/";
-            this.$store.commit("login", res.data);
-            this.$router.push("/");
+            //this.$store.commit("login", res.data);
           }
         });
     },

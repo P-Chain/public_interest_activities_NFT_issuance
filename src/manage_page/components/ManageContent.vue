@@ -1,15 +1,17 @@
 <template>
-  <b-tabs>
-   <b-tab title="NFT 발급 승인">
-     <approve-nft></approve-nft>
-   </b-tab>
-   <b-tab title="봉사시간 승인">
-     <approve-vms></approve-vms>
-   </b-tab>
-   <b-tab title="발급권한 부여">
-     <approve-iss-auth></approve-iss-auth>
-   </b-tab>
- </b-tabs>
+  <div class="wrapper">
+    <b-tabs>
+     <b-tab title="NFT 발급 승인">
+       <approve-nft></approve-nft>
+     </b-tab>
+     <b-tab title="봉사시간 승인">
+       <approve-vms></approve-vms>
+     </b-tab>
+     <b-tab title="발급권한 부여">
+       <approve-iss-auth></approve-iss-auth>
+     </b-tab>
+     </b-tabs>
+  </div>
 </template>
 
 <script>
