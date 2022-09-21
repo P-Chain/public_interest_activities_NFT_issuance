@@ -26,7 +26,7 @@
               ref="wallet-jazzicon">
               <jazzicon
                 :address="myWalletAdr" 
-                :diameter="20" />
+                :diameter="50" />
               </td>
           </tr>
         </b-list-group-item>
@@ -126,12 +126,9 @@ export default {
       console.log('document.getElementById(wallet-jazzicon)='+document.getElementById('wallet-jazzicon'))
       domtoimage.toBlob(document.getElementById('wallet-jazzicon'))
       .then(blob => {
-        // 수정 필요
+        // 수정 필요 + style="display:none" 적용하고도 저장 가능한지
         window.saveAs(blob, 'img.png')
       })
-
-      console.log(this.myWalletAdr)
-      console.log(this.walletAdr)
 
       // Hide the modal manually
       this.$nextTick(() => {
