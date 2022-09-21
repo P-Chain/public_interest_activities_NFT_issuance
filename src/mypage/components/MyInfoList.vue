@@ -16,10 +16,18 @@
 
       <div class="wallet">
         지갑 주소
-        <b-list-group-item>
+        <b-list-group-item >
           <tr>
-            <td>{{ myWalletAdr }}</td>
-            <td><jazzicon :address="myWalletAdr" :diameter="20" /></td>
+            <td>
+              {{ myWalletAdr }}
+            </td>
+            <td
+              id="wallet-jazzicon" 
+              ref="wallet-jazzicon">
+              <jazzicon
+                :address="myWalletAdr" 
+                :diameter="20" />
+              </td>
           </tr>
         </b-list-group-item>
         <b-button v-b-modal.modal-prevent-closing variant="primary">
@@ -67,7 +75,7 @@ export default {
       myEmail: '이메일',
       myName: '이름',
       myPhoneNum: '전화번호',
-      myWalletAdr: '0xcd50586710A82A6f6cB06d8a017fc3177CEc9087',
+      myWalletAdr: '',
       form: {
         password: ''
       },
@@ -112,14 +120,24 @@ export default {
       }
       // Push the name to submitted names
       this.myWalletAdr = this.walletAdr
+      
+      
+      //console.log('this.$refs.wallet-jazzicon='+this.$refs.wallet-jazzicon)
+      console.log('document.getElementById(wallet-jazzicon)='+document.getElementById('wallet-jazzicon'))
+      domtoimage.toBlob(document.getElementById('wallet-jazzicon'))
+      .then(blob => {
+        // 수정 필요
+        window.saveAs(blob, 'img.png')
+      })
+
       console.log(this.myWalletAdr)
       console.log(this.walletAdr)
-      
+
       // Hide the modal manually
       this.$nextTick(() => {
         this.$bvModal.hide('modal-prevent-closing')
       })
-    }
+    },
   },
 }
 </script>

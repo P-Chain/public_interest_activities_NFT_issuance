@@ -21,7 +21,6 @@ Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
 // router 기능 확장 선언
 Vue.use(VueRouter);
-
 // Jazzicon 컴포넌트 등록
 Vue.component('jazzicon', Jazzicon);
 
@@ -29,7 +28,8 @@ Vue.component('jazzicon', Jazzicon);
 Vue.prototype.$EventBus = new Vue();
 
 // URL
-var BACKURL = 'http://pchapi.loca.lt'
+var BACKURL = process.env.VUE_APP_API_URL
+
 
 // 라우터 등록
 var routes = [
