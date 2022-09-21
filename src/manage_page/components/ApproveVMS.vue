@@ -32,6 +32,10 @@ export default {
       ],
     }
   },
+    created(){
+      axios.get('/api/manage_page/vmsapplys')  
+    },
+    
   methods: {
     submitApprove(event) {
       

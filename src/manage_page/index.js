@@ -7,7 +7,7 @@ const handler = (ctx, next) => {
     ctx.body = `${ctx.request.method} ${ctx.request.path}`;
 };
 
-manage_page.get('/applys', vms.viewVmsApply);
+manage_page.get('/vmsapplys', vms.viewVmsApply);
 
 manage_page.post('/', handler);
 

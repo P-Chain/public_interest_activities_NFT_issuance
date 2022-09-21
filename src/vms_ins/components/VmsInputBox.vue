@@ -60,7 +60,7 @@ export default {
         // do something with res
         console.log(res);
           if (res.status == 200) {
-            //location.href = "/mypage";
+            location.href = "/mypage";
             //this.$store.commit("login", res.data);
           }
       })
