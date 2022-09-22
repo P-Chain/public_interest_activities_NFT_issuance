@@ -35,7 +35,7 @@ const Account = new Schema({
 });
 
 Account.statics.printNftRank = function(){
-    return this.find({"issuanceCount":{$gt: 0}},{"email": true,"profile.username": true, "issuanceCount": true}).sort({"issuanceCount":-1}).exec();
+    return this.find({"issuanceCount":{$gt: 0}},{"nickname": true, "issuanceCount": true}).sort({"issuanceCount":-1}).exec();
 }
 
 Account.statics.findByUsername = function(username) {

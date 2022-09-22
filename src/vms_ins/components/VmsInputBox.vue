@@ -3,13 +3,13 @@
     <b-form @submit="onSubmit">
       <b-form-input
           id="input-1"
-          v-model="vmsTime"
+          v-model="form.vmsTime"
           type="number"
           placeholder="봉사시간을 입력해주세요."
           required
         ></b-form-input>
       <b-form-file
-          v-model="file1"
+          v-model="form.file1"
           :state="Boolean(file1)"
           placeholder="Choose a file or drop it here..."
           drop-placeholder="Drop file here..."
@@ -28,24 +28,46 @@ export default {
   data() {
     return {
       form: {
-        vmsTime: '',
-        file1: null
+        vmsTime: 0,
+        file1: null,
+          nickname: '',
+          username: '',
+          count:0
       }
     }
   },
   methods: {
     onSubmit(event) {
+        console.log(this.form.vmsTime);
       event.preventDefault()
       console.log(JSON.stringify(this.form)) // for debug
-      // 수정 필요
-      axios.post('/', { 
-        vmsTime: this.form.vmsTime,
-        file: this.form.file1
+        axios.get("/api/auth_account/check").then((response)=>{
+            this.form.nickname = response.data.nickname;
+            this.form.username = response.data.profile.username;
+            axios.get("/api/vms_ins/count").then((response)=>{
+            this.form.count = response.data;
+            if(this.form.count == null){
+                this.form.count = 0;
+            }
+            axios.post('/api/vms_ins/vmsapply', { 
+          index: this.form.count,
+        volTime: this.form.vmsTime,
+        volIss: this.form.file1,
+          nickname: this.form.nickname,
+          username: this.form.username
       })
       .then(res => {
         // do something with res
         console.log(res);
+          if (res.status == 200) {
+            location.href = "/mypage";
+            //this.$store.commit("login", res.data);
+          }
       })
+        })
+        })
+        console.log(this.form);
+      // 수정 필요
     }
   }
 }
