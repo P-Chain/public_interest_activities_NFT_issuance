@@ -24,7 +24,7 @@ export default {
         email: ''
       },
       options: [
-        { text: '이름: name, 이메일: email' },
+        { text: '이름: name, 이메일: email',name:"이름" },
         { text: '이름: name, 이메일: email' },
         { text: '이름: name, 이메일: email' },
       ]
@@ -32,12 +32,23 @@ export default {
   },
   created() {
     this.options 
+      axios.get('/api/user_search/userlist').then(response => {
+        console.log(response.data);
+          var data = response.data;
+          for(var i in data){
+              data[i].text = '이름: '+data[i].profile.username+' 닉네임: '+data[i].nickname;
+          }
+          this.options = data;
+      })
     this.$EventBus.$on('userSearch', function(value) {
-      console.log(value)
       this.options = []
       console.log(this.options)
-      axios.get('/').then(response => {
-        this.form = response.data
+      axios.post('/api/user_search/finduser',{username:value}).then(response => {
+        console.log(response);
+          var data = response.data;
+          data.text = '이름: '+data.profile.username+' 닉네임: '+data.nickname;
+          this.options.push(data.text);
+          console.log(this.options);
       })
     })
   },
