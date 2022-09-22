@@ -3,7 +3,6 @@
     <b-form-group
         label="발급 NFT 목록"
         v-slot="{ ariaDescribedby }"
-        @submit="onSubmit"
         >
       <b-form-checkbox-group
         v-model="selected"
@@ -12,9 +11,9 @@
         name="NFT list"
         stacked
       ></b-form-checkbox-group>
-    <router-link to="/user_search">
-      <b-button type="submit" variant="primary" href="/">발급</b-button>
-    </router-link>
+    <!-- <router-link to="/user_search"> -->
+      <b-button type="submit" variant="primary" @click="onSubmit">발급</b-button>
+    <!-- </router-link> -->
     </b-form-group>
   </div>
 </template>
@@ -33,9 +32,9 @@ export default {
       ],
     }
   },
-  method: {
+  methods: {
     onSubmit(event) {
-      
+      console.log(this.selected);
     }
   }
 }

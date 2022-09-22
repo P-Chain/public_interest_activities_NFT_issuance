@@ -1,5 +1,5 @@
 <template>
-  <div class="error">
+  <div class="contents error">
     <h3>Page Not found</h3>
   </div>
 </template>
@@ -11,5 +11,7 @@ export default {
 </script>
 
 <style scoped>
-
+.error {
+  height: 50rem
+}
 </style>

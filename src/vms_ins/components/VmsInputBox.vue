@@ -30,7 +30,7 @@ export default {
     return {
       form: {
         vmsTime: '',
-        imageData: ''
+        imageData: null
       },
       file1: null
     }
@@ -38,12 +38,19 @@ export default {
   methods: {
     onSubmit(event) {
       event.preventDefault();
-      var reader = new FileReader();
-      reader.readAsDataURL(this.file1);
-      reader.onload = () => {
-        this.imageData = reader.result;
-        console.log('imageData='+this.imageData);
+      this.form.imageData = window.URL.createObjectURL(this.file1);
+      console.log('form.imageData='+this.form.imageData)
+      this.form.imageData.onload = () => {
+        window.URL.revokeObjectURL(this.form.imageData)
+        console.log('after revoke, form.imageData='+this.form.imageData)
       }
+      // FileReader 사용
+      // var reader = new FileReader();
+      // reader.readAsDataURL(this.file1);
+      // reader.onload = () => {
+      //   this.imageData = reader.result;
+      //   console.log('imageData='+this.imageData);
+      // }
       // 수정 필요
       // console.log(JSON.stringify(this.form)) // for debug
       // axios.post('/', { 

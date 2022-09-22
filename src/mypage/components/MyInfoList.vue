@@ -2,10 +2,11 @@
 <template>
   <div class="wrapper">
     <b-list-group>
+      <!-- 이메일 -->
       이메일<b-list-group-item>{{ myEmail }}</b-list-group-item>
-      <!-- 비밀번호 변경 -->
+      <!-- 비밀번호 -->
       <div class="password">
-        <b-form inline @submit="onSubmit">
+        <b-form @submit="onSubmit">
           <label for="text-password">Password</label>
           <b-form-input type="password" v-model="form.password" id="text-password" aria-describedby="password-help-block"></b-form-input>
           <b-button type="submit" variant="primary">수정</b-button>
@@ -16,20 +17,21 @@
 
       <div class="wallet">
         지갑 주소
-        <b-list-group-item >
-          <tr>
+        <tr>
+          <b-list-group-item>
             <td>
               {{ myWalletAdr }}
             </td>
+          </b-list-group-item>
             <td
               id="wallet-jazzicon" 
-              ref="wallet-jazzicon">
-              <jazzicon
+              ref="wallet-jazzicon"
+              v-show="myWalletAdr !== ''"
+              ><jazzicon
                 :address="myWalletAdr" 
-                :diameter="50" />
-              </td>
-          </tr>
-        </b-list-group-item>
+                :diameter="30" />
+            </td>
+        </tr>
         <b-button v-b-modal.modal-prevent-closing variant="primary">
           지갑주소 입력
         </b-button>
@@ -40,8 +42,7 @@
           @show="resetModal"
           @hidden="resetModal"
           @ok="handleOk"
-        >
-          <form ref="form" @submit.stop.prevent="handleSubmit">
+        > <form ref="form" @submit.stop.prevent="handleSubmit">
             <b-form-group
               label="지갑주소"
               label-for="name-input"
@@ -52,6 +53,7 @@
                 id="name-input"
                 v-model="walletAdr"
                 :state="walletAdrState"
+                placeholder="0x"
                 required
               ></b-form-input>
             </b-form-group>
@@ -81,16 +83,19 @@ export default {
       },
       walletAdr : '',
       walletAdrState: null,
+      walletImgData: ''
     }
   },
   created() {
-    axios.get('/')
+    axios.get('/').then(res => {
+
+    })
   },
   methods: {
     onSubmit(event) {
       event.preventDefault()
       alert(JSON.stringify(this.form)) // for debug
-      axios.post('/register/local', { // router 수정 필요
+      axios.post('register/local', { // router 수정 필요
         password: this.form.password, 
       })
       .then(res => {
@@ -121,13 +126,17 @@ export default {
       // Push the name to submitted names
       this.myWalletAdr = this.walletAdr
       
-      
       //console.log('this.$refs.wallet-jazzicon='+this.$refs.wallet-jazzicon)
       console.log('document.getElementById(wallet-jazzicon)='+document.getElementById('wallet-jazzicon'))
       domtoimage.toBlob(document.getElementById('wallet-jazzicon'))
       .then(blob => {
         // 수정 필요 + style="display:none" 적용하고도 저장 가능한지
-        window.saveAs(blob, 'img.png')
+        var reader = new FileReader();
+        reader.readAsDataURL(blob);
+        reader.onload = () => {
+        this.walletImgData = reader.result;
+        console.log('walletImgData='+this.walletImgData);
+      }
       })
 
       // Hide the modal manually
