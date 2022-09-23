@@ -29,7 +29,11 @@ export default {
   },
   methods: {
     receive(data) {
-      console.log('this.options='+this.lists)
+      console.log('this.lists='+this.lists)
+      if (this.lists.length === 0) {
+        console.log("빈 리스트")
+      }
+      else 
       if (this.lists.includes(data)) {
         console.log("이미 존재");
       }
@@ -41,6 +45,13 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.bv-no-focus-ring {
+  margin-bottom: 0.5rem;
+  overflow: scroll;
+  height: 10rem;
+}
+.form-group {
+  border: 1px solid black;
+}
 </style>
