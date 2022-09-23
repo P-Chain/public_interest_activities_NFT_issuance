@@ -17,7 +17,7 @@
           :state="Boolean(file1)"
           placeholder="Choose a file or drop it here..."
           drop-placeholder="Drop file here..."
-          accept="image/jpeg, image/png"
+          accept="image/jpg, image/png"
           required
         ></b-form-file>
         <div class="mt-3">Selected file: {{ file1 ? file1.name : '' }}</div>
@@ -47,14 +47,6 @@ export default {
     async onSubmit(event) {
       event.preventDefault();
 
-    // making image file + filename
-      var date = new Date();
-      var fileName 
-        = this.name + '_' + date.getDate() + date.getHours() 
-        + date.getMinutes() + date.getSeconds();
-      var file = new File([this.file1], fileName, {type: this.file1.type});
-      console.log('file.name='+file.name);
-
     // bring user data
       await axios.get("/api/auth_account/check")
       .then(response => {
@@ -64,7 +56,7 @@ export default {
       .catch(error => {
         console.log('error='+error)
       })
-
+      
     // bring vms count  
       await axios.get("/api/vms_ins/count")
       .then(response => {
@@ -76,6 +68,22 @@ export default {
       .catch(error => {
         console.log('error='+error)
       })
+
+    // making image file + filename
+      var date = new Date();
+      var fileName 
+        = this.form.nickname + '_' + date.getDate() + date.getHours() 
+        + date.getMinutes() + date.getSeconds();
+      if (this.file1.type == 'image/jpg') {
+        fileName + '.jpg';
+      }
+      else {
+        fileName + '.png';
+      }
+      var file = new File([this.file1], fileName, {type: this.file1.type});
+      console.log('file1.name='+this.file1.name)
+      console.log('file.name='+file.name);
+
     // to db
       console.log('form='+JSON.stringify(this.form))
       axios.post('/api/vms_ins/vmsapply', {
