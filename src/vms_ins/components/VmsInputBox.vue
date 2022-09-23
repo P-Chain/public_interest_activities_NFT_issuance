@@ -40,10 +40,10 @@ export default {
   data() {
     return {
       form: {
-        volTime: 0,
+        volTime: null,
         nickname: '',
         username: '',
-        count:0
+        count: 0
       },
       file1: null
     }
@@ -86,8 +86,6 @@ export default {
         fileName + '.png';
       }
       var file = new File([this.file1], fileName, {type: this.file1.type});
-      console.log('file1.name='+this.file1.name)
-      console.log('file.name='+file.name);
 
     // to db
       console.log('form='+JSON.stringify(this.form))
@@ -105,6 +103,9 @@ export default {
         console.log('error='+error)
       })
 
+      console.log('file1.name='+this.file1.name)
+      console.log('file.name='+file.name);
+      
     // to Server
       await axios.post('/', { 
         file: file,

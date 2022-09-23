@@ -21,27 +21,23 @@
 export default {
   data() {
     return {
-      lists: [
-        { username: '이름1', nickname: 'aaa@aaa.aa' },
-        { username: '이름2', nickname: 'bbb@bbb.bb' }
-      ],
+      lists: [],
     }
   },
-    created(){
-        this.$EventBus.$on('addlist', this.receive) 
-        this.lists.splice(0);
-    },
-    methods:{
-        receive(data) {
+  created() {
+    this.$EventBus.$on('addlist', this.receive) 
+  },
+  methods: {
+    receive(data) {
       console.log('this.options='+this.lists)
-            if(this.lists.includes(data)){
-                console.log("이미 존재");
-            }
-            else{
-            this.lists.push(data);
-            }
-            },
-    }
+      if (this.lists.includes(data)) {
+        console.log("이미 존재");
+      }
+      else {
+        this.lists.push(data);
+      }
+    },
+  }
 }
 </script>
 
