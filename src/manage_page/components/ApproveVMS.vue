@@ -9,6 +9,7 @@
         :options="options"
         :aria-describedby="ariaDescribedby"
         name="VMS list"
+        value-field="value"
         stacked
       ></b-form-checkbox-group>
       <!-- 수정 -->
@@ -25,26 +26,47 @@ export default {
       selected: [], // Must be an array reference!
       options: [
         // DB에서 불러오는 작업 필요
-        { index: '1', html: '대상자: AAA / 봉사시간: N 시간 <a target=&apos;_blank&apos; href="">파일 보기</a>파일 보기</a>' },
-        { value: '2', html: '대상자: BBB / 봉사시간: N 시간 <a target=&apos;_blank&apos; href="">파일 보기</a>파일 보기</a>' },
-        { value: '3', html: '대상자: CCC / 봉사시간: N 시간 <a target=&apos;_blank&apos; href="">파일 보기</a>파일 보기</a>' },
-        { value: '4', html: '대상자: DDD / 봉사시간: N 시간 <a target=&apos;_blank&apos; href="">파일 보기</a>파일 보기</a>' },
+        { nickname: '1', html: '대상자: AAA / 봉사시간: N 시간 <a target=&apos;_blank&apos; href="../../tmp/uploads/vol_nick1_23194735.png">파일 보기</a>' },
+        { nickname: '2', html: '대상자: BBB / 봉사시간: N 시간 <a target=&apos;_blank&apos; href="">파일 보기</a>' },
+        { value: '3', html: '대상자: CCC / 봉사시간: N 시간 <a target=&apos;_blank&apos; href="">파일 보기</a>' },
+        { value: '4', html: '대상자: DDD / 봉사시간: N 시간 <a target=&apos;_blank&apos; href="">파일 보기</a>' },
       ],
+        data:[]
     }
   },
     created(){
       axios.get('/api/manage_page/vmsapplys').then((response)=>{
           console.log(response.data);
+          this.data = response.data;
+        console.log('response.data='+response.data);
+        for(var i in this.data){
+            this.data[i].html = '대상자: '+this.data[i].username+' / 신청봉사시간: '+this.data[i].volTime+' 시간 <a target=&apos;_blank&apos; href="../../tmp/uploads/'+this.data[i].volIss+'">파일 보기</a>';
+            this.data[i].value = {index:this.data[i].index, volTime:this.data[i].volTime, nickname:this.data[i].nickname};
+        }
+        this.options = this.data;
+        console.log('this.options='+this.options);
           //this.options = response.data;
       }) 
     },
     
   methods: {
     submitApprove(event) {
-      
+      console.log(this.selected);
+        for(var i in this.selected){
+            axios.post('/api/manage_page/allowapplys',this.selected[i]).then((response)=>{
+                console.log(response);
+            })
+        }
+        location.href='/manage_page';
     },
     submitRevise(event) {
-      
+      console.log(this.selected);
+        for(var i in this.selected){
+            axios.post('/api/manage_page/denyapplys',this.selected[i]).then((response)=>{
+                console.log(response);
+            })
+        }
+        location.href='/manage_page';
     }
   }
 }

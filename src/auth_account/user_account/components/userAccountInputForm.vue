@@ -101,10 +101,10 @@ export default {
   methods: {
     onSubmit(event) {
       event.preventDefault();
-        this.state.email = null;
-        this.state.nickname = null;
-      var res = axios
-        .post("/api/auth_account/register/local", {
+      this.state.email = null;
+      this.state.nickname = null;
+      var res = 
+        axios.post("/api/auth_account/register/local", {
           email: this.form.email,
           password: this.form.password,
           username: this.form.username,

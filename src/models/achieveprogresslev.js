@@ -22,10 +22,10 @@ AchieveProgressLev.statics.userRegist = function(id,nickname){ // 새로운 유�
     return data.vol_time;
 };*/
 
-AchieveProgressLev.statics.VolTimeUpdate = function(id,VolTime){
+AchieveProgressLev.statics.VolTimeUpdate = function(nickname,VolTime){
     // 봉사시간 업데이트
     //var User = this.findOne({Id}).exec();
-    this.updateOne({id},{$set: {volTime: VolTime}}).exec();
+    this.updateOne({nickname},{$set: {volTime: VolTime}}).exec();
     //return this.findByIdAndUpdate(User._id,{vol_time: VolTime},{new:true}).exec();
     
 };

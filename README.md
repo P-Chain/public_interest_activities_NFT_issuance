@@ -50,7 +50,7 @@ progress:     진행 정보 페이지
 ------------------------------
 
 
------ 3. 로컬터널 이용해서 서버 여는법- ----
+----- 3. 로컬터널 이용해서 서버 여는법-----
 
 npm 에서 localtunnel 설치 (-g)
 
@@ -63,5 +63,15 @@ lt -p 8080 -s pchain 으로 프론트 서버 터널 열기
 
 ------------------------------------------
 
+----- 4. .env 추가해야 할 것 -----
+SITE=https://pchain.loca.lt
+VUE_APP_SITE=https://pchain.loca.lt
+VUE_APP_API_URL=https://pchapi.loca.lt
 
+---------------------------------
 
+----- 5. URL 변경 시 -----
+
+.env URL 변경
+
+Google Oauth URL 변경

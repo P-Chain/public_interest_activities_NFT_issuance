@@ -13,16 +13,16 @@ const vmsManage = new Schema({ // 봉사시간 갱신 신청 관리 DB
 });
 
 vmsManage.statics.newApply = function({index,volTime,volIss,nickname,username}){ // 신청 문서 생성
-    const user = new this({index,volTime,volIss:volIss.path,nickname,username});
+    const user = new this({index,volTime,volIss,nickname,username});
     console.log(user);
     return user.save();
 };
 
-vmsManage.statics.allowApply = function(index){
+vmsManage.statics.allowApply = function({index,volTime}){
     this.updateOne({index},{$set: {state: "수락"}}).exec();
 };
 
-vmsManage.statics.denApply = function(index){
+vmsManage.statics.denyApply = function(index){
     this.updateOne({index},{$set: {state: "거부"}}).exec();
 };
 

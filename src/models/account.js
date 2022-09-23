@@ -36,7 +36,11 @@ const Account = new Schema({
 
 Account.statics.printNftRank = function(){
     return this.find({"issuanceCount":{$gt: 0}},{"nickname": true, "issuanceCount": true}).sort({"issuanceCount":-1}).exec();
-}
+};
+
+Account.statics.userSearch = function(){
+    return this.find({"nickname":{$gt: 0}},{"nickname": true, "profile.username": true}).exec();
+};
 
 Account.statics.findByUsername = function(username) {
     // 객체에 내장되어있는 값을 사용할 때는 객체명.키

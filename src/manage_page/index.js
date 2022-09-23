@@ -9,7 +9,9 @@ const handler = (ctx, next) => {
 
 manage_page.get('/vmsapplys', vms.viewVmsApply);
 
-manage_page.post('/', handler);
+manage_page.post('/allowapplys', vms.allowVmsApply);
+
+manage_page.post('/denyapplys', vms.denyVmsApply);
 
 manage_page.delete('/', handler);
 
