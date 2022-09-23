@@ -1,5 +1,15 @@
 <template>
-  <b-card title="달성업적" sub-title="">
+  <b-card>
+    <h4 class="card-title">
+      달성 업적
+      <span class="text-right" v-if="token">
+        <router-link to="/progress">
+          <button class = "card-button" type="button">
+            <img class="card-img" src="../../assets/cardButton.png"/>
+          </button>
+        </router-link>
+      </span>
+    </h4>
     <div v-if="token">
       <b-card-text>
           <b-tabs content-class="mt-3">
@@ -30,12 +40,12 @@
             <!-- b-img 태그로 수정하기 -->
             <b-tab title="보유">
               <div>
-                <b-img :src="require('../../assets/background.jpg')"></b-img>
-                <b-img :src="require('../../assets/googleIcon.png')"></b-img>
-                <b-img :src="require('../../assets/facebookIcon.png')"></b-img>
-                <b-img :src="require('../../assets/background.jpg')"></b-img>
-                <b-img :src="require('../../assets/googleIcon.png')"></b-img>
-                <b-img :src="require('../../assets/facebookIcon.png')"></b-img>
+                <b-img class="image" :src="require('../../assets/background.jpg')"></b-img>
+                <b-img class="image" :src="require('../../assets/googleIcon.png')"></b-img>
+                <b-img class="image" :src="require('../../assets/facebookIcon.png')"></b-img>
+                <b-img class="image" :src="require('../../assets/background.jpg')"></b-img>
+                <b-img class="image" :src="require('../../assets/googleIcon.png')"></b-img>
+                <b-img class="image" :src="require('../../assets/facebookIcon.png')"></b-img>
               </div>
             </b-tab>
             <!-- <b-tab title="Disabled" disabled><p>I'm a disabled tab!</p></b-tab> -->
@@ -81,7 +91,7 @@ export default {
 .progress {
   margin-bottom: 1rem;
 }
-img {
+.img {
   width: 5rem;
   height: 5rem;
   border: 1px solid black;

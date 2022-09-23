@@ -107,7 +107,7 @@ export default {
       console.log('file.name='+file.name);
       
     // to Server
-      await axios.post('/', { 
+      axios.post('/', { 
         file: file,
       })
       .then(res => {

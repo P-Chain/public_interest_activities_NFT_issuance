@@ -20,16 +20,17 @@ export default {
     return {
       selected: [],
       options: [],
-      data: []
+      data: [],
     }
   },
   created() {
-    axios.get('/api/user_search/userlist').then(response => {
+    axios.get('/api/user_search/userlist')
+    .then(response => {
       this.data = response.data;
       console.log('response.data='+response.data);
 
       for(var i in this.data) {
-          this.data[i].text = '이름: ' + this.data[i].profile.username + ' 닉네임: ' + this.data[i].nickname;
+          this.data[i].text = '이름: ' + this.data[i].profile.username + ', 닉네임: ' + this.data[i].nickname;
           this.data[i].value = { username: this.data[i].profile.username, nickname: this.data[i].nickname };
       }
       this.options = this.data;
@@ -51,8 +52,9 @@ export default {
       .then(response => {
         console.log(response);
         this.data = response.data;
-        this.data.text = '이름: '+this.data.profile.username+' 닉네임: '+this.data.nickname;
-        this.options.push(this.data.text);
+        this.data.text = '이름: '+this.data.profile.username+', 닉네임: '+this.data.nickname;
+        this.data.value = { username: this.data.profile.username, nickname: this.data.nickname }
+        this.options.push(this.data);
         console.log(this.options);
       })
     },

@@ -136,7 +136,7 @@ export default {
             }
           // do something with res
           if (res.status == 200) {
-            this.$router.push('/login')
+            this.$router.push('/')
           }
         });
     },

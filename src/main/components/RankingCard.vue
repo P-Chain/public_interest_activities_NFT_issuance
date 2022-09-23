@@ -1,5 +1,15 @@
 <template>
-  <b-card title="랭킹" sub-title="">
+  <b-card>
+    <h4 class="card-title">
+      랭킹
+      <span class="text-right">
+        <router-link to="/ranking">
+          <button class = "card-button" type="button">
+            <img class="card-img" src="../../assets/cardButton.png"/>
+          </button>
+        </router-link>
+      </span>
+    </h4>
     <b-tabs content-class="mt-3">
       <b-tab title="업적 랭킹">
         <b-card-text>
@@ -35,9 +45,6 @@
         </b-card-text>
       </b-tab>
     </b-tabs>
-    <template #footer>
-      <router-link to="/ranking" class="card-link">더보기</router-link>
-      </template>
   </b-card>
 </template>
 

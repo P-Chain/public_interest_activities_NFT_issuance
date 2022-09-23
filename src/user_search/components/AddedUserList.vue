@@ -29,8 +29,8 @@ export default {
   },
   methods: {
     receive(data) {
-      console.log('this.lists='+this.lists)
-      if (this.lists.length === 0) {
+      console.log('data='+data)
+      if (data.length === 0) {
         console.log("빈 리스트")
       }
       else 
