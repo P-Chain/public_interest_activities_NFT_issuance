@@ -5,3 +5,15 @@
   margin: 1rem;
   /* border: 1px solid black; */
 }
+.text-right {
+  float: right;
+  text-align: right;
+}
+.card-button {
+  border: none;
+  background: none;
+}
+.card-img {
+  height: 1.5rem;
+  width: 1.5rem;
+}

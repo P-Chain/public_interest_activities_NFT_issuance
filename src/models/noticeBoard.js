@@ -7,7 +7,8 @@ const noticeBoard = new Schema({ // 공지사항 DB
     index: Number, // 글번호
     title: String, // 게시글 제목
     date: Date, // 작성시간
-    mustRead: Boolean // 필독여부
+    mustRead: Boolean, // 필독여부
+    word: String, // 내용
 });
 
 noticeBoard.statics.viewMustread = function(){

@@ -21,30 +21,37 @@
 export default {
   data() {
     return {
-      lists: [
-        { username: '이름1', nickname: 'aaa@aaa.aa' },
-        { username: '이름2', nickname: 'bbb@bbb.bb' }
-      ],
+      lists: [],
     }
   },
-    created(){
-        this.$EventBus.$on('addlist', this.receive) 
-        this.lists.splice(0);
+  created() {
+    this.$EventBus.$on('addlist', this.receive) 
+  },
+  methods: {
+    receive(data) {
+      console.log('data='+data)
+      if (data.length === 0) {
+        console.log("빈 리스트")
+      }
+      else 
+      if (this.lists.includes(data)) {
+        console.log("이미 존재");
+      }
+      else {
+        this.lists.push(data);
+      }
     },
-    methods:{
-        receive(data) {
-      console.log('this.options='+this.lists)
-            if(this.lists.includes(data)){
-                console.log("이미 존재");
-            }
-            else{
-            this.lists.push(data);
-            }
-            },
-    }
+  }
 }
 </script>
 
-<style>
-
+<style scoped>
+.bv-no-focus-ring {
+  margin-bottom: 0.5rem;
+  overflow: scroll;
+  height: 10rem;
+}
+.form-group {
+  border: 1px solid black;
+}
 </style>

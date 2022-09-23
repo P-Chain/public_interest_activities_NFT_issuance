@@ -40,10 +40,10 @@ export default {
   data() {
     return {
       form: {
-        volTime: 0,
+        volTime: null,
         nickname: '',
         username: '',
-        count:0
+        count: 0
       },
       file1: null
     }
@@ -86,35 +86,34 @@ export default {
         fileName += '.png';
       }
       var file = new File([this.file1], fileName, {type: this.file1.type});
+      
+      console.log(file);
       console.log('file1.name='+this.file1.name)
       console.log('file.name='+file.name);
-        console.log(file);
-
-
+      
     // to Server
-        console.log("ok");
       await axios.post('/api/upload', {file:file},{headers: {'Content-Type':'multipart/form-data'}})
       .then(res => {
         console.log('to sv res='+res);
         this.file1 = null;
         this.volTime = '';
         this.volIss = ''
-        alert('제출 완료');
       })
       .catch(error => {
         console.log('To sv error.response='+error)
       });
-        // to db
-        axios.post('/api/vms_ins/vmsapply', {
+    // to db
+      axios.post('/api/vms_ins/vmsapply', {
         index: this.form.count,
         volTime: this.form.volTime,
-          volIss: file.name,
+        volIss: file.name,
         nickname: this.form.nickname,
         username: this.form.username,
       })
       .then(res => {
         if (res.status == 200) {
             location.href = "/mypage";
+            alert('제출 완료');
             //this.$store.commit("login", res.data);
           }
       })

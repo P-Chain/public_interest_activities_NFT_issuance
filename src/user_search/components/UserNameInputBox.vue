@@ -20,7 +20,7 @@ export default {
     doSearch(event) {
       var name = this.name
       this.$EventBus.$emit('userSearch', name)
-      console.log(name)
+      console.log('name='+name)
     }
   }
 }
