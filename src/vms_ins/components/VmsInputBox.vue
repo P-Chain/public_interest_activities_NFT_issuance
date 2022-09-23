@@ -68,12 +68,12 @@ export default {
       var file = new File([this.file1], fileName, {type: this.file1.type});
       console.log('file.name='+file.name);
       // for debug
-      var reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        var imageData = reader.result;
-        console.log('imageData='+imageData);
-      }
+      // var reader = new FileReader();
+      // reader.readAsDataURL(file);
+      // reader.onload = () => {
+      //   var imageData = reader.result;
+      //   console.log('imageData='+imageData);
+      // }
 
     // to Server
       await axios.post('/', { 
