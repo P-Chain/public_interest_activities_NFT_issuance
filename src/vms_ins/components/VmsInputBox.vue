@@ -1,7 +1,12 @@
-<!-- 업로드한 파일 제목: nickname_ddhhmmss-->
+<!-- 업로드한 파일 제목: NICKNAME_ddhhmmss.{png. jpg} -->
 <!-- 서버 전달: File 객체 -->
-<!-- DB 전달: 닉네임(name), 봉사시간(volTime), 파일이름(volIss)-->
-<!-- 추가할 수 있는 것: form-file-required, b-form-input:입력 쓰로잉,   -->
+<!-- DB 전달: 
+  index: this.form.count,
+  volTime: this.form.volTime,
+  nickname: this.form.nickname,
+  username: this.form.username,
+  volIss: file.name -->
+<!-- 추가할 수 있는 것: b-form-input 입력 처리 -->
 <template>
   <div class="wrapper">
     <b-form @submit="onSubmit">
@@ -112,7 +117,7 @@ export default {
         alert('제출 완료');
       })
       .catch(error => {
-        console.log('To sv error.response='+error.res)
+        console.log('To sv error.response='+error)
       });
     }
   }
