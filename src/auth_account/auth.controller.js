@@ -43,7 +43,7 @@ exports.localRegister = async (ctx) => {
     let account = null;
     try {
         account = await Account.localRegister(ctx.request.body);
-        var data = await APL.userRegist(ctx.request.body.email);
+        var data = await APL.userRegist(ctx.request.body.email,ctx.request.body.nickname);
         await PA.AddUser(ctx.request.body.email);
     } catch (e) {
         ctx.throw(500, e);

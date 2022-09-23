@@ -4,10 +4,10 @@
       <!-- <template #cell(index)="data">
         {{ data.index + 1 }}
       </template>
-      <template #cell(email)="data">
-        {{ data.items.id }}
+      <template #cell(nickname)="data">
+        {{ data.items.nickname }}
       </template>
-      <template #cell(prog)="data">
+      <template #cell(progressedAchieveNum)="data">
         {{ data.items.progressedAchieveNum }}
       </template> -->
     </b-table>
@@ -24,8 +24,8 @@ export default {
           label: '랭킹',
         },
         {
-          key: 'id',
-          label: '이메일',
+          key: 'nickname',
+          label: '닉네임',
         },        
         {
           key: 'progressedAchieveNum',

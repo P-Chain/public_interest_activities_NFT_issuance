@@ -18,9 +18,9 @@
           placeholder="Choose a file or drop it here..."
           drop-placeholder="Drop file here..."
           accept="image/jpeg, image/png"
+          required
         ></b-form-file>
         <div class="mt-3">Selected file: {{ file1 ? file1.name : '' }}</div>
-
       <b-button type="submit" variant="primary">제출</b-button>
 
       <router-link to="/mypage">
@@ -35,75 +35,76 @@ export default {
   data() {
     return {
       form: {
-        name: '',
-        volTime: '',
-        volIss: ''
+        volTime: 0,
+        nickname: '',
+        username: '',
+        count:0
       },
       file1: null
-    }
-  },
-  created() {
-    try {
-      axios.get("/api/auth_account/check")
-      .then(res => {
-        console.log('created res='+res);
-        if (res.data.nickname) {
-          this.name = res.data.nickname;
-        }
-      })
-      .catch(error => {
-        console.log('created error='+error);
-      });
-    } 
-    catch (error) {
-      console.log('try-catch error='+error);
     }
   },
   methods: {
     async onSubmit(event) {
       event.preventDefault();
+
+    // making image file + filename
       var date = new Date();
       var fileName 
         = this.name + '_' + date.getDate() + date.getHours() 
         + date.getMinutes() + date.getSeconds();
       var file = new File([this.file1], fileName, {type: this.file1.type});
       console.log('file.name='+file.name);
-      // for debug
-      // var reader = new FileReader();
-      // reader.readAsDataURL(file);
-      // reader.onload = () => {
-      //   var imageData = reader.result;
-      //   console.log('imageData='+imageData);
-      // }
+
+    // bring user data
+      await axios.get("/api/auth_account/check")
+      .then(response => {
+        this.form.nickname = response.data.nickname;
+        this.form.username = response.data.profile.username;
+      })
+      .catch(error => {
+        console.log('error='+error)
+      })
+
+    // bring vms count  
+      await axios.get("/api/vms_ins/count")
+      .then(response => {
+        this.form.count = response.data;
+        if(this.form.count == null){
+          this.form.count = 0;
+        }
+      })
+      .catch(error => {
+        console.log('error='+error)
+      })
+    // to db
+      console.log('form='+JSON.stringify(this.form))
+      axios.post('/api/vms_ins/vmsapply', {
+        index: this.form.count,
+        volTime: this.form.volTime,
+        nickname: this.form.nickname,
+        username: this.form.username,
+        volIss: file.name,
+      })
+      .then(res => {
+        console.log(res);
+      })
+      .catch(error => {
+        console.log('error='+error)
+      })
 
     // to Server
       await axios.post('/', { 
         file: file,
       })
       .then(res => {
-        // do something with res
         console.log('to sv res='+res);
-      })
-      .catch(error => {
-        console.log('To sv error.response='+error.res)
-      });
-
-    // to DB
-      axios.post('/', { 
-        name: this.form.name,
-        volTime: this.form.volTime,
-        volIss: this.file1.name
-      })
-      .then(res => {
-        // do something with res
-        console.log('To db res='+res);
         this.file1 = null;
         this.volTime = '';
         this.volIss = ''
         alert('제출 완료');
       })
       .catch(error => {
-        console.log('To db error.response='+error.res)
+        console.log('To sv error.response='+error.res)
       });
     }
   }

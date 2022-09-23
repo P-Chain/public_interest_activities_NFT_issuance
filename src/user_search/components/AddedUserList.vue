@@ -4,8 +4,8 @@
     선택한 대상자 목록
     <hr>
     <div v-for="item in lists" :key="item.index">
-      이름: {{ item.name }}<br>
-      이메일: {{ item.email }}<br>
+      이름: {{ item.username }}<br>
+      닉네임: {{ item.nickname }}<br>
       <hr>
     </div>
     <router-link to="nft_issue">
@@ -22,11 +22,26 @@ export default {
   data() {
     return {
       lists: [
-        { name: '이름1', email: 'aaa@aaa.aa' },
-        { name: '이름2', email: 'bbb@bbb.bb' }
+        { username: '이름1', nickname: 'aaa@aaa.aa' },
+        { username: '이름2', nickname: 'bbb@bbb.bb' }
       ],
     }
-  }
+  },
+    created(){
+        this.$EventBus.$on('addlist', this.receive) 
+        this.lists.splice(0);
+    },
+    methods:{
+        receive(data) {
+      console.log('this.options='+this.lists)
+            if(this.lists.includes(data)){
+                console.log("이미 존재");
+            }
+            else{
+            this.lists.push(data);
+            }
+            },
+    }
 }
 </script>
 

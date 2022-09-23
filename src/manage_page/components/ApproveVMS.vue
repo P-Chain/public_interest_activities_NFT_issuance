@@ -25,13 +25,20 @@ export default {
       selected: [], // Must be an array reference!
       options: [
         // DB에서 불러오는 작업 필요
-        { value: '1', html: '대상자: AAA / 봉사시간: N 시간 <a target=&apos;_blank&apos; href="">파일 보기</a>파일 보기</a>' },
+        { index: '1', html: '대상자: AAA / 봉사시간: N 시간 <a target=&apos;_blank&apos; href="">파일 보기</a>파일 보기</a>' },
         { value: '2', html: '대상자: BBB / 봉사시간: N 시간 <a target=&apos;_blank&apos; href="">파일 보기</a>파일 보기</a>' },
         { value: '3', html: '대상자: CCC / 봉사시간: N 시간 <a target=&apos;_blank&apos; href="">파일 보기</a>파일 보기</a>' },
         { value: '4', html: '대상자: DDD / 봉사시간: N 시간 <a target=&apos;_blank&apos; href="">파일 보기</a>파일 보기</a>' },
       ],
     }
   },
+    created(){
+      axios.get('/api/manage_page/vmsapplys').then((response)=>{
+          console.log(response.data);
+          //this.options = response.data;
+      }) 
+    },
+    
   methods: {
     submitApprove(event) {
       
