@@ -21,16 +21,27 @@
       ></b-form-input>
       <b-button type="submit" variant="primary">로그인</b-button>
     </b-form>
-    <!--API 연결하기-->
-    <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
-    <button class="button-image" @click="onSignIn(event)">
-      <!-- 상대경로 수정 -->
-      <b-img :src="require('../../assets/googleIcon.png')"></b-img>
-    </button>
     
-    <button class="button-image" href="">
+    <!--API 연결하기-->
+    <!--구글 API, 정책에 따라 정해진 이미지만 사용 가능-->
+    <!-- URi 수정 필요-->
+    <div id="g_id_onload"
+     data-client_id="1066448151508-13obd0kqml3hbjt46v1pvmcekel0fd4t.apps.googleusercontent.com"
+     data-context="signin"
+     data-ux_mode="popup"
+     data-login_uri="api/auth_account/login/local"
+     data-auto_prompt="false">
+    </div>
+    <div class="g_id_signin"
+      data-type="icon"
+      data-shape="circle"
+      data-theme="outline"
+      data-text="signin_with"
+      data-size="large">
+    </div>
+    <!-- <button class="button-image" href="">
       <b-img :src="require('../../assets/facebookIcon.png')"></b-img>
-    </button>
+    </button> -->
 
     <p>
       계정이 없으신가요?
@@ -53,7 +64,6 @@ export default {
   },
   methods: {
     onSubmit(event) {
-      event.preventDefault();
       // for debug
       //      alert(this.form.email);
       //      fetch('/api/auth_account/login/local',{
@@ -68,6 +78,7 @@ export default {
       //    password: this.form.password
       //  })
       //})
+      event.preventDefault();
       axios
         .post("/api/auth_account/login/local", {
           email: this.form.email,
@@ -89,17 +100,9 @@ export default {
           }
         });
     },
-    onSignIn(googleUser) {
-      var profile = googleUser.getBasicProfile();
-      console.log("ID: " + profile.getId()); // Do not send to your backend! Use an ID token instead.
-      console.log("Name: " + profile.getName());
-      console.log("Image URL: " + profile.getImageUrl());
-      console.log("Email: " + profile.getEmail()); // This is null if the 'email' scope is not present.
+  }
+}
 
-      var id_token = googleUser.getAuthResponse().id_token;
-    },
-  },
-};
 </script>
 
 <style scoped>
