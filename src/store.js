@@ -13,7 +13,12 @@ export default new Vuex.Store({
     access: 0
   },
   getters: {
-
+    getToken(state) {
+      return state.token;
+    },
+    getAccess(state) {
+      return state.access;
+    }
   },
   mutations: {
     changeToken(state, token) {

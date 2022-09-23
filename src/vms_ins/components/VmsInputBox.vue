@@ -1,6 +1,7 @@
 <!-- 업로드한 파일 제목: nickname_ddhhmmss-->
 <!-- 서버 전달: File 객체 -->
 <!-- DB 전달: 닉네임(name), 봉사시간(volTime), 파일이름(volIss)-->
+<!-- 추가할 수 있는 것: form-file-required, b-form-input:입력 쓰로잉,   -->
 <template>
   <div class="wrapper">
     <b-form @submit="onSubmit">
