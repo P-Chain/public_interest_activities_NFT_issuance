@@ -77,38 +77,23 @@ export default {
     // making image file + filename
       var date = new Date();
       var fileName 
-        = this.form.nickname + '_' + date.getDate() + date.getHours() 
+        = 'vol_'+this.form.nickname + '_' + date.getDate() + date.getHours() 
         + date.getMinutes() + date.getSeconds();
       if (this.file1.type == 'image/jpg') {
-        fileName + '.jpg';
+        fileName += '.jpg';
       }
       else {
-        fileName + '.png';
+        fileName += '.png';
       }
       var file = new File([this.file1], fileName, {type: this.file1.type});
       console.log('file1.name='+this.file1.name)
       console.log('file.name='+file.name);
+        console.log(file);
 
-    // to db
-      console.log('form='+JSON.stringify(this.form))
-      axios.post('/api/vms_ins/vmsapply', {
-        index: this.form.count,
-        volTime: this.form.volTime,
-        nickname: this.form.nickname,
-        username: this.form.username,
-        volIss: file.name,
-      })
-      .then(res => {
-        console.log(res);
-      })
-      .catch(error => {
-        console.log('error='+error)
-      })
 
     // to Server
-      await axios.post('/', { 
-        file: file,
-      })
+        console.log("ok");
+      await axios.post('/api/upload', {file:file},{headers: {'Content-Type':'multipart/form-data'}})
       .then(res => {
         console.log('to sv res='+res);
         this.file1 = null;
@@ -119,6 +104,23 @@ export default {
       .catch(error => {
         console.log('To sv error.response='+error)
       });
+        // to db
+        axios.post('/api/vms_ins/vmsapply', {
+        index: this.form.count,
+        volTime: this.form.volTime,
+          volIss: file.name,
+        nickname: this.form.nickname,
+        username: this.form.username,
+      })
+      .then(res => {
+        if (res.status == 200) {
+            location.href = "/mypage";
+            //this.$store.commit("login", res.data);
+          }
+      })
+      .catch(error => {
+        console.log('error='+error)
+      })
     }
   }
 }
