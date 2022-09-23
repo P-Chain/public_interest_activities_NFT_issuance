@@ -51,9 +51,8 @@ export default {
       .then(response => {
         console.log(response);
         this.data = response.data;
-        this.data.text = '이름: ' + this.data.profile.username + ' 닉네임: ' + this.data.nickname;
-        this.data.value = { username: this.data.profile.username, nickname: this.data.nickname };
-        this.options.push(this.data);
+        this.data.text = '이름: '+this.data.profile.username+' 닉네임: '+this.data.nickname;
+        this.options.push(this.data.text);
         console.log(this.options);
       })
     },

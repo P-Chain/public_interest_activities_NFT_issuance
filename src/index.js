@@ -40,17 +40,6 @@ const user_search = require('./user_search');
 const vms_ins = require('./vms_ins');
 const DB_test = require('./DB_Test');
 
-const multer = require('@koa/multer');
-const storage = multer.diskStorage({
-    destination: function(req, file, cb){
-        cb(null, 'tmp/my-uploads')
-    }
-})
-
-const upload = multer({
-    dest: __dirname+'/uploads/',
-})
-
 app.use(cors({
   origin: process.env.SITE,
   credentials: true, 
