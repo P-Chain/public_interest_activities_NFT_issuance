@@ -30,11 +30,11 @@ export default {
     return {
       form: {
         vmsTime: 0,
-        imageData: null
+        imageData: null,
           nickname: '',
           username: '',
           count:0
-      }
+      },
       file1: null
     }
   },
@@ -42,12 +42,12 @@ export default {
     onSubmit(event) {
         console.log(this.form.vmsTime);
       event.preventDefault();
-      this.form.imageData = window.URL.createObjectURL(this.file1);
-      console.log('form.imageData='+this.form.imageData)
-      this.form.imageData.onload = () => {
-        window.URL.revokeObjectURL(this.form.imageData)
-        console.log('after revoke, form.imageData='+this.form.imageData)
-      }
+//      this.form.imageData = window.URL.createObjectURL(this.file1);
+//      console.log('form.imageData='+this.form.imageData)
+//      this.form.imageData.onload = () => {
+//        window.URL.revokeObjectURL(this.form.imageData)
+//        console.log('after revoke, form.imageData='+this.form.imageData)
+//      }
       console.log(JSON.stringify(this.form)) // for debug
         axios.get("/api/auth_account/check").then((response)=>{
             this.form.nickname = response.data.nickname;

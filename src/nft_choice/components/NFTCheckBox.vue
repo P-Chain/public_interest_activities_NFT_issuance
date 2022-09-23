@@ -27,13 +27,14 @@ export default {
         { text: "num1", value: 1 },
         { text: "num2", value: "2번" },
         { text: "num3", value: "3번" },
-        { text: "num4", value: "4번" },
+        { text: "num4", value: "4번" , name: "name"},
       ],
     };
   },
   methods: {
     onSubmit(event) {
       event.preventDefault();
+        console.log(this.selected);
       if (this.selected.length == 1) {
         location.href = "/user_search?" + this.selected[0];
       } else {
