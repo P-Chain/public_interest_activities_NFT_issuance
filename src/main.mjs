@@ -151,15 +151,16 @@ var routes = [
     // 공지사항 페이지
     { 
       path: '/notice', 
-      component: () => import(/* webpackChunkName: "progress" */ './notice/NoticePage.vue'),
+      component: () => import(/* webpackChunkName: "notice" */ './notice/NoticePage.vue'),
       children: [
         {
-          path: '/',
-          component: () => import(/* webpackChunkName: "progress" */ './notice/components/NoticeBoard.vue'),
+          path: '',
+          component: () => import(/* webpackChunkName: "notice" */ './notice/components/NoticeBoard.vue'),
+          // meta: { authorization: ["all"] },
         },
         { 
-          path: '/:index', 
-          component: () => import(/* webpackChunkName: "progress" */ './notice/components/EachPost.vue'),
+          path: ':id', 
+          component: () => import(/* webpackChunkName: "notice" */ './notice/components/EachPost.vue'),
           // meta: { authorization: ["all"] },
         },
       ]

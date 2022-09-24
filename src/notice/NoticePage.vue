@@ -2,7 +2,6 @@
   <div class="contents">
     <h3>공지사항</h3>
     <router-view></router-view>
-    <page-number></page-number>
   </div>
 </template>
 
