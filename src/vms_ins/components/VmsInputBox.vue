@@ -61,7 +61,13 @@ export default {
       .catch(error => {
         console.log('error='+error)
       })
-      
+      await axios.post('/api/manage_page/nowvms',{nickname:this.form.nickname}).then((response)=>{
+                console.log(response.data.volTime);
+                if(response.data.volTime>this.form.volTime){
+                    alert("현재 봉사시간보다 낮은 값");
+                    location.href = '/mypage';
+                }
+      });
     // bring vms count  
       await axios.get("/api/vms_ins/count")
       .then(response => {
