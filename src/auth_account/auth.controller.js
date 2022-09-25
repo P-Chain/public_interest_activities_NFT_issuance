@@ -1,5 +1,6 @@
 const Joi = require('joi');
 const Account = require('models/Account');
+const insAccount = require('models/Ins_Account');
 const APL = require('models/AchieveProgressLev');
 const PA = require('models/Progressed_achieve');
 
@@ -25,6 +26,9 @@ exports.localRegister = async (ctx) => {
     let existing = null;
     try {
         existing = await Account.findByEmailOrUsername(ctx.request.body);
+        if(!existing){
+            existing = await insAccount.findByEmailOrUsername(ctx.request.body);
+        }
     } catch (e) {
         ctx.throw(500, e);
     }
@@ -45,6 +49,62 @@ exports.localRegister = async (ctx) => {
         account = await Account.localRegister(ctx.request.body);
         var data = await APL.userRegist(ctx.request.body.email,ctx.request.body.nickname);
         await PA.AddUser(ctx.request.body.email);
+    } catch (e) {
+        ctx.throw(500, e);
+    }
+
+    let token = null;
+    try {
+        token = await account.generateToken();
+    }catch (e) {
+        ctx.throw(500, e);
+    }
+
+    ctx.cookies.set('access_token', token, { httpOnly: true, maxAge: 1000 * 60 * 60 * 24 * 7});
+    ctx.body = account.profile; // 프로필 정보로 응답합니다.
+};
+
+exports.localInsRegister = async (ctx) => {
+    console.log(ctx.request.body);
+    // 데이터 검증
+    const schema = Joi.object().keys({
+        username: Joi.string().required(),
+        email: Joi.string().email().required(),
+        password: Joi.string().required().min(6)
+    });
+
+    const result = schema.validate(ctx.request.body);
+
+    if(result.error) {
+        ctx.status = 400; // Bad request
+        return;
+    }
+
+    // 아이디 / 이메일 중복 체크
+    let existing = null;
+    try {
+        existing = await insAccount.findByEmailOrUsername(ctx.request.body);
+        if(!existing){
+            existing = await Account.findByEmailOrUsername(ctx.request.body);
+        }
+    } catch (e) {
+        ctx.throw(500, e);
+    }
+
+    if(existing) {
+    // 중복되는 아이디/이메일이 있을 경우
+        ctx.status = 409; // Conflict
+        // 어떤 값이 중복되었는지 알려줍니다
+        ctx.body = {
+            key: existing.email === ctx.request.body.email ? 'email' : 'nickname'
+        };
+        return;
+    }
+
+    // 계정 생성
+    let account = null;
+    try {
+        account = await insAccount.localRegister(ctx.request.body);
     } catch (e) {
         ctx.throw(500, e);
     }
@@ -82,6 +142,9 @@ exports.localLogin = async (ctx) => {
     try {
         // 이메일로 계정 찾기
         account = await Account.findByEmail(email);
+        if(!account){
+            account = await insAccount.findByEmail(email);
+        }
     } catch (e) {
         ctx.throw(500, e);
     }

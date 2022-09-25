@@ -26,6 +26,7 @@ const Account = new Schema({
     },
     isManager: Boolean,
     isIssuer: {type: Boolean, default: false},
+    issList: [Number],
     password: String, // 로컬 계정의 경우엔 비밀번호를 해싱해서 저장
     walletAddress: String, // 수정가능.
     achievementProgress: [String], // 수정가능

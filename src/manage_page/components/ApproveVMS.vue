@@ -53,7 +53,7 @@ export default {
     submitApprove(event) {
       console.log(this.selected);
         for(var i in this.selected){
-            axios.post('/api/manage_page/allowapplys',this.selected[i]).then((response)=>{
+                    axios.post('/api/manage_page/allowapplys',this.selected[i]).then((response)=>{
                 console.log(response);
             })
         }

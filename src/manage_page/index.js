@@ -13,6 +13,8 @@ manage_page.post('/allowapplys', vms.allowVmsApply);
 
 manage_page.post('/denyapplys', vms.denyVmsApply);
 
+manage_page.post('/nowvms', vms.nowVms);
+
 manage_page.delete('/', handler);
 
 manage_page.put('/', handler);
