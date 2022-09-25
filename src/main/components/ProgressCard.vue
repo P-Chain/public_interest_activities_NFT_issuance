@@ -30,12 +30,21 @@
             <!-- b-img 태그로 수정하기 -->
             <b-tab title="보유">
               <div>
-                <b-img :src="require('../../assets/background.jpg')"></b-img>
-                <b-img :src="require('../../assets/googleIcon.png')"></b-img>
-                <b-img :src="require('../../assets/facebookIcon.png')"></b-img>
-                <b-img :src="require('../../assets/background.jpg')"></b-img>
-                <b-img :src="require('../../assets/googleIcon.png')"></b-img>
-                <b-img :src="require('../../assets/facebookIcon.png')"></b-img>
+                <b-img-lazy b-img v-bind="mainProps" alt="Transparent image" :src="require(`../../assets/achieves/${this.imglist[0]}`)"></b-img-lazy>
+                  <b-img-lazy b-img v-bind="mainProps" alt="Transparent image" :src="require(`../../assets/achieves/${this.imglist[1]}`)"></b-img-lazy>
+                  <b-img-lazy b-img v-bind="mainProps" alt="Transparent image" :src="require(`../../assets/achieves/${this.imglist[2]}`)"></b-img-lazy>
+                  <b-img-lazy b-img v-bind="mainProps" alt="Transparent image" :src="require(`../../assets/achieves/${this.imglist[3]}`)"></b-img-lazy>
+                  <b-img-lazy b-img v-bind="mainProps" alt="Transparent image" :src="require(`../../assets/achieves/${this.imglist[4]}`)"></b-img-lazy>
+                  <b-img-lazy b-img v-bind="mainProps" alt="Transparent image" :src="require(`../../assets/achieves/${this.imglist[5]}`)"></b-img-lazy>
+                  <b-img-lazy b-img v-bind="mainProps" alt="Transparent image" :src="require(`../../assets/achieves/${this.imglist[6]}`)"></b-img-lazy>
+                  <b-img-lazy b-img v-bind="mainProps" alt="Transparent image" :src="require(`../../assets/achieves/${this.imglist[7]}`)"></b-img-lazy>
+                  <b-img-lazy b-img v-bind="mainProps" alt="Transparent image" :src="require(`../../assets/achieves/${this.imglist[8]}`)"></b-img-lazy>
+                  <b-img-lazy b-img v-bind="mainProps" alt="Transparent image" :src="require(`../../assets/achieves/${this.imglist[9]}`)"></b-img-lazy>
+                  <b-img-lazy b-img v-bind="mainProps" alt="Transparent image" :src="require(`../../assets/achieves/${this.imglist[10]}`)"></b-img-lazy>
+                  <b-img-lazy b-img v-bind="mainProps" alt="Transparent image" :src="require(`../../assets/achieves/${this.imglist[11]}`)"></b-img-lazy>
+                  <b-img-lazy b-img v-bind="mainProps" alt="Transparent image" :src="require(`../../assets/achieves/${this.imglist[12]}`)"></b-img-lazy>
+                  <b-img-lazy b-img v-bind="mainProps" alt="Transparent image" :src="require(`../../assets/achieves/${this.imglist[13]}`)"></b-img-lazy>
+                  <b-img-lazy b-img v-bind="mainProps" alt="Transparent image" :src="require(`../../assets/achieves/${this.imglist[14]}`)"></b-img-lazy>
               </div>
             </b-tab>
             <!-- <b-tab title="Disabled" disabled><p>I'm a disabled tab!</p></b-tab> -->
@@ -63,12 +72,43 @@ export default {
       max2: 5,
       value3: 8,
       max3: 10,
+        list:[],
+        imglist:["blank.png","blank.png","blank.png","blank.png","blank.png","blank.png","blank.png","blank.png","blank.png","blank.png","blank.png","blank.png","blank.png","blank.png","blank.png"],
+        file: "vol_50.png",
 
       prog1: '업적1',
       prog2: '업적2',
       prog3: '업적3',
+        mainProps: { blank: true, width: 75, height: 75, class: 'm1' }
     }
   },
+    created(){
+        var data = axios.get('/api/progress/viewachieve').then((response)=>{
+            this.list = response.data.ProgAchieve
+            for(var i in this.list){
+            this.imglist.splice(i,1,this.list[i].imgAch)
+                console.log(this.imglist);
+        }
+        })
+    },
+    methods:{
+        getImageUrl(imageId) {
+        const { width, height } = this.mainProps
+        var data = axios.get('/api/progress/viewachieve').then((response)=>{
+            this.list = response.data.ProgAchieve
+        })
+//        axios.get('api/image/getimage/'+this.list[imageId].imgAch,{ responseType: 'arraybuffer' }).then((reaponse)=>{
+//            console.log(response);
+//        })
+//        console.log(this.list);
+        if(this.list.length-1<imageId){
+            console.log(imageId);
+            console.log(this.list.length);
+            return "blank.png";
+        }
+        return this.list[imageId].imgAch;
+      }
+    },
   computed: {
     token() {
       return this.$store.state.token

@@ -48,7 +48,7 @@ exports.localRegister = async (ctx) => {
     try {
         account = await Account.localRegister(ctx.request.body);
         var data = await APL.userRegist(ctx.request.body.email,ctx.request.body.nickname);
-        await PA.AddUser(ctx.request.body.email);
+        await PA.AddUser(ctx.request.body.nickname);
     } catch (e) {
         ctx.throw(500, e);
     }
@@ -202,7 +202,6 @@ exports.check = async (ctx) => {
         ctx.status = 403; // Forbidden
         return;
     }
-    console.log(user.isIssuer);
     ctx.body = {profile: user.profile, issuer: user.isIssuer, manager: user.isManager, nickname: user.nickname};
 }
 
