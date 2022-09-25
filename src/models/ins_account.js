@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const crypto = require('crypto');
+const { generateToken } = require('lib/token');
 
 function hash(password) {
     return crypto.createHmac('sha256', process.env.SECRET_KEY).update(password).digest('hex');
@@ -12,6 +13,7 @@ const Ins_Account = new Schema({
         thumbnail: { type: String, default: '/static/images/default_thumbnail.png'}
     },
     email: { type: String },
+    issList: [Number],
     // 소셜 계정으로 회원가입을 할 경우에는 각 서비스에서 제공되는 id와 accessToken을 저장
     /*social: {
         facebook: {
@@ -68,6 +70,18 @@ Ins_Account.methods.validatePassword = function(password) {
     // 함수로 전달받은 password의 해시값과, 데이터에 담겨있는 해시값과 비교를 합니다.
     const hashed = hash(password);
     return this.password === hashed;
+};
+
+Ins_Account.methods.generateToken = function() {
+    // JWT에 담을 내용
+    const payload = {
+        _id: this._id,
+        profile: this.profile,
+        isIssuer: this.isIssuer,
+        nickname: this.profile.username
+    };
+
+    return generateToken(payload, 'account');
 };
 
 
