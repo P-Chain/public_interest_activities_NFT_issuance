@@ -57,7 +57,7 @@ export default {
                 console.log(response);
             })
         }
-        //location.href='/manage_page';
+        location.href='/manage_page';
     },
     submitRevise(event) {
       console.log(this.selected);
