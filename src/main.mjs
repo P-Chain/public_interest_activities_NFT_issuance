@@ -69,7 +69,7 @@ var routes = [
       path: '/auth_account/user_account', 
       component: () => import(/* webpackChunkName: "auth" */ './auth_account/user_account/UserAccountPage.vue'),
       // meta: { authorization: ["client"] },
-    }, 
+    },
     // 랭킹 페이지
     { 
       path: '/ranking', 
@@ -147,7 +147,13 @@ var routes = [
       path: '/progress/progress_all', 
       component: () => import(/* webpackChunkName: "progress" */ './progress/progress_all/ProgressAll.vue'),
       // meta: { authorization: ["user"] }, 
-    }, 
+    },
+    // 공지사항 페이지
+    { 
+      path: '/notice/:id', 
+      component: () => import(/* webpackChunkName: "progress" */ './notice/Notice.vue'),
+      // meta: { authorization: ["all"] },
+    },
     
     // // 커뮤니티 페이지
     // {},
