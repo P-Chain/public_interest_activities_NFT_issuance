@@ -181,6 +181,12 @@ var routes = [
     // // 커뮤니티 -> 게시물 페이지
     // {},
 
+    // 임시
+    {
+      path: '/temp',
+      component: () => import(/* webpackChunkName: "temp" */ './assets/temp.vue'),
+    }
+
 ];
 
 // 뷰 라우터 인스턴스 생성
