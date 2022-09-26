@@ -6,12 +6,8 @@
 </template>
 
 <script>
-import PageNumber from './components/PageNumber.vue'
-
 export default {
-  components: {
-    'page-number': PageNumber,
-  }
+
 }
 </script>
 

@@ -1,7 +1,7 @@
 <!-- axiosGet에서 미리 만들어진 게시물 10개씩(index) 가져오는 작업 필요-->
 <template>
-  <div class="wrapper">
-    <b-list-group v-if="show">
+  <div class="wrapper" v-if="show">
+    <b-list-group>
       <b-list-group-item v-for="item in lists" :key="item.index">
         <router-link :to="{ path: './' + item.index }" append>
           <a>{{ item.title }}</a>
@@ -11,6 +11,12 @@
           </span>
       </b-list-group-item>
     </b-list-group>
+    <!-- for debug -->
+    <span class="write-button text-right" v-if="this.$store.getters.getAccess === 0">
+      <router-link :to="{ path: 'write' }" append>
+          <b-img class='image' :src="require('../../assets/notice-write-icon.png')"></b-img>
+      </router-link>
+    </span>
     <div class="overflow-auto">
       <b-pagination-nav
         :link-gen="linkGen"
@@ -90,5 +96,9 @@ a:hover {
 }
 .wrapper {
   margin-bottom: 1rem;
+}
+.image {
+  height: 1rem;
+  width: 1rem;
 }
 </style>

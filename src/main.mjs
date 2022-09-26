@@ -159,6 +159,11 @@ var routes = [
           // meta: { authorization: ["all"] },
         },
         { 
+          path: 'write', 
+          component: () => import(/* webpackChunkName: "notice" */ './notice/components/CreatePost.vue'),
+          // meta: { authorization: ["admin"] },
+        },
+        { 
           path: ':id', 
           component: () => import(/* webpackChunkName: "notice" */ './notice/components/EachPost.vue'),
           // meta: { authorization: ["all"] },
