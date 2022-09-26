@@ -202,6 +202,6 @@ exports.check = async (ctx) => {
         ctx.status = 403; // Forbidden
         return;
     }
-    ctx.body = {profile: user.profile, issuer: user.isIssuer, manager: user.isManager, nickname: user.nickname};
+    ctx.body = {profile: user.profile, issuer: user.isIssuer, manager: user.isManager, nickname: user.nickname, email: user.email, wallet: user.walletAddress};
 }
 

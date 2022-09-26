@@ -78,7 +78,8 @@ Ins_Account.methods.generateToken = function() {
         _id: this._id,
         profile: this.profile,
         isIssuer: this.isIssuer,
-        nickname: this.profile.username
+        nickname: this.profile.username,
+        email: this.email
     };
 
     return generateToken(payload, 'account');

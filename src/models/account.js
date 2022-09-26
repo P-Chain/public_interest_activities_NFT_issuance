@@ -90,7 +90,9 @@ Account.methods.generateToken = function() {
         profile: this.profile,
         isIssuer: this.isIssuer,
         isManager: this.isManager,
-        nickname: this.nickname
+        nickname: this.nickname,
+        email: this.email,
+        wallet: this.walletAddress
     };
 
     return generateToken(payload, 'account');

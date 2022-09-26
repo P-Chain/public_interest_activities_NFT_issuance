@@ -13,9 +13,9 @@
         </b-form>
       </div>
       이름 또는 기관명<b-list-group-item>{{ myName }}</b-list-group-item>
-      전화번호<b-list-group-item>{{ myPhoneNum }}</b-list-group-item>
+<!--      전화번호<b-list-group-item>{{ myPhoneNum }}</b-list-group-item>-->
 
-      <div class="wallet">
+      <div class="wallet" v-if= this.state>
         지갑 주소
         <tr>
           <b-list-group-item>
@@ -81,14 +81,21 @@ export default {
       form: {
         password: ''
       },
+        state: true,
       walletAdr : '',
       walletAdrState: null,
       walletImgData: ''
     }
   },
   created() {
-    axios.get('/').then(res => {
-
+    axios.get('/api/auth_account/check').then((response) => {
+        console.log(response);
+        this.myEmail = response.data.email;
+        this.myName = response.data.profile.username;
+        this.myWalletAdr = response.data.wallet;
+        if(this.myName == response.data.nickname){
+            this.state = false;
+        }
     })
   },
   methods: {
