@@ -1,9 +1,12 @@
 <template>
   <!-- v-if:*** for debug -->
   <b-navbar toggleable="sm" type="light" variant="light">
-    <b-navbar-toggle target="nav-text-collapse"></b-navbar-toggle>
-
-    <b-navbar-brand href="/">P-chain</b-navbar-brand>
+      <b-navbar-brand href="/">P-chain</b-navbar-brand>
+    <b-navbar-toggle target="nav-collapse">
+        <template>
+        <b-icon icon="three-dots-vertical" animation="cylon-vertical" font-scale="1"></b-icon>
+      </template>
+    </b-navbar-toggle>
 
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav v-if="!token">

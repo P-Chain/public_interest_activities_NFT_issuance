@@ -23,3 +23,8 @@ exports.denyVmsApply = async (ctx) => {
     await MVMS.denyApply(data.index);
     ctx.response.body = data;
 };
+
+exports.nowVms = async(ctx)=>{
+    var data = ctx.request.body;
+    ctx.response.body = await APL.findVolTime(data.nickname);
+}

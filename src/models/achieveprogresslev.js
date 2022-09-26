@@ -16,11 +16,11 @@ AchieveProgressLev.statics.userRegist = function(id,nickname){ // 새로운 유�
     return user.save();
 };
 
-/*AchieveProgressLev.statics.findVolTime = function(id){
+AchieveProgressLev.statics.findVolTime = function(nickname){
     // ID입력해 봉사시간 불러오기
-    var data = this.findOne({'Id':id}).exec();
-    return data.vol_time;
-};*/
+    var data = this.findOne({nickname},{volTime:true}).exec();
+    return data;
+};
 
 AchieveProgressLev.statics.VolTimeUpdate = function(nickname,VolTime){
     // 봉사시간 업데이트
