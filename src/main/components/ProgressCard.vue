@@ -41,10 +41,18 @@
                   >
                 </b-progress-bar>
               </b-progress>
+                {{ prog4 }}
+              <b-progress :max="max4" height="1rem">
+                <b-progress-bar :value="value4">
+                  <span
+                    ><strong>{{ value4 }} / {{ max4 }}</strong></span
+                  >
+                </b-progress-bar>
+              </b-progress>
             </div>
           </b-tab>
           <!-- b-img 태그로 수정하기 -->
-          <b-tab title="보유">
+          <b-tab title="달성업적">
             <div>
               <b-img-lazy
                 b-img
@@ -163,6 +171,8 @@ export default {
       max2: 5,
       value3: 8,
       max3: 10,
+        value4: 8,
+      max4: 10,
       list: [],
       imglist: [
         "blank.png",
@@ -183,9 +193,10 @@ export default {
       ],
       file: "vol_50.png",
 
-      prog1: "업적1",
-      prog2: "업적2",
-      prog3: "업적3",
+      prog1: "봉사시간",
+      prog2: "기부액",
+      prog3: "헌혈",
+        prog4: "NFT보유",
       mainProps: { blank: true, width: 75, height: 75, class: "m1" },
     };
   },

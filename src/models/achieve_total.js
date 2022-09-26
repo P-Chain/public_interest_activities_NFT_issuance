@@ -7,7 +7,7 @@ const Achieve_total = new Schema({ // 업적 종류 저장용 DB
     Id: Number, // 업적 구분용 ID
     Image: String, // 업적 이미지
     Name: String, // 업적 이름
-    Condition: {name: String, clear: Number} // 자동발급 업적을 위한 달성조건
+    //Condition: {name: String, clear: Number} // 자동발급 업적을 위한 달성조건
 });
 
 Achieve_total.statics.findAchieveByID = function(Id){

@@ -2,7 +2,7 @@
 <template>
   <b-card>
     <h4 class="card-title">
-      공지사항
+      필독 공지사항
       <span class="text-right">
         <router-link to="/notice">
           <button class = "card-button" type="button">
