@@ -28,12 +28,14 @@ export default {
       var today = new Date();
       var year = today.getFullYear();
       var month = today.getMonth() + 1;
-      var date = today.getDate()
-      this.noticeData.date = year + '-' + month + '-' + date
-      axios.post("/", {
+      var date = today.getDate();
+        console.log(date);
+      this.noticeData.date = year + '-' + month + '-' + date;
+        console.log(this.noticeData.date);
+      axios.post("/api/notice/writenotice", {
         title: this.noticeData.title,
+          date: this.noticeData.date,
         word: this.noticeData.word,
-        date: this.noticeData.date
       })
       .then(response => {
         console.log(response.data);

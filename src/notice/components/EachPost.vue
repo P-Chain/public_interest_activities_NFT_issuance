@@ -28,7 +28,9 @@ export default {
     }
   },
   created() {
-    axios.get("/api/notice").then(response => {
+      console.log(this.$route.params.id)
+    axios.get("/api/notice/findnotice/"+this.$route.params.id).then(response => {
+        console.log(response.data);
       this.noticeData = response.data;
     })
     .catch(error => {

@@ -40,6 +40,7 @@ const user_search = require('./user_search');
 const vms_ins = require('./vms_ins');
 const progress = require('./progress');
 const image = require('./image');
+const notice = require('./notice')
 const DB_test = require('./DB_Test');
 
 const multer = require('@koa/multer');
@@ -97,6 +98,7 @@ router.use('/api/user_search', user_search.routes());
 router.use('/api/vms_ins', vms_ins.routes());
 router.use('/api/progress', progress.routes());
 router.use('/api/image', image.routes());
+router.use('/api/notice', notice.routes());
 router.use('/DB_test', DB_test.routes());
 
 app.use(router.routes()).use(router.allowedMethods());
