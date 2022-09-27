@@ -29,7 +29,7 @@ export default {
         tempImage1.onload = () => {
             //이미지를 캔버스에 그리기
             console.log('tempimg2 onload executed')
-            this.context.drawImage(tempImage1, 0, 0, 500, 500);
+            this.context.drawImage(tempImage1, 0, 0, 500, 500); // 대상, (시작지점, 시작지점), (사진 크기, 사진 크기)
         }
         // FileReader 사용
         var reader2 = new FileReader();
