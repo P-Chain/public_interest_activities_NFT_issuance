@@ -40,17 +40,13 @@ export default {
     }
   },
   created() {
-    // axios.get('/')
-    // .then(response => {
-    //   for (var i = 0; i < 5; i++) { // 0 ~ 4
-    //     this.lists[i].index = response.data[i].index;
-    //     this.lists[i].title = response.data[i].title;
-    //     this.lists[i].date = response.data[i].date;
-    //   }
-    // })
-    // .catch(error => {
-    //   console.log('error='+error)
-    // })
+     axios.get('/api/notice/viewmustread')
+     .then(response => {
+       this.lists = response.data;
+     })
+     .catch(error => {
+       console.log('error='+error)
+     })
   }
 }
 </script>
