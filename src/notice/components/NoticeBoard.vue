@@ -12,7 +12,7 @@
       </b-list-group-item>
     </b-list-group>
     <!-- for debug -->
-    <span class="write-button text-right" v-if="this.$store.getters.getAccess === 0">
+    <span class="write-button text-right" v-if="this.$store.getters.getAccess === 2">
       <router-link :to="{ path: 'write' }" append>
           <b-img class='image' :src="require('../../assets/notice-write-icon.png')"></b-img>
       </router-link>
