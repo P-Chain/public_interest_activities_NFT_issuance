@@ -168,7 +168,7 @@ export default {
       value1: 33,
       max1: 50,
       value2: 3,
-      max2: 5,
+      max2: 100000,
       value3: 8,
       max3: 10,
         value4: 8,
@@ -208,6 +208,32 @@ export default {
         console.log(this.imglist);
       }
     });
+      axios.get("/api/progress/viewprogress").then((response)=>{
+          this.value1 = response.data.volTime;
+          if(this.value1>=50){
+              this.max1 = 100;
+              if(this.value1>100){
+                  this.max1 = 500;
+                  if(this.value1>500){
+                      this.max1 = 1000;
+                  }
+              }
+          }
+          this.value2 = response.data.doneNum;
+          if(this.value2>=100000){
+              this.max2 = 1000000;
+              if(this.value2>1000000){
+                  this.max2 = 10000000;
+              }
+          }
+          this.value3 = response.data.bloodNum;
+          if(this.value3>=10){
+              this.max3 = 50;
+              if(this.value3>50){
+                  this.max3 = 100;
+              }
+          }
+      });
   },
   methods: {
     getImageUrl(imageId) {

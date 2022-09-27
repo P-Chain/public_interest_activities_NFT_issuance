@@ -76,12 +76,40 @@ export default {
         value3: 8,
         max3: 10,
 
-        prog1: '업적1',
-        prog2: '업적3',
-        prog3: '업적5',
+        prog1: '봉사시간',
+        prog2: '기부액',
+        prog3: '헌혈횟수',
       }
     }
-  }
+  },
+    created(){
+        axios.get("/api/progress/viewprogress").then((response)=>{
+          this.card4.value1 = response.data.volTime;
+          if(this.card4.value1>=50){
+              this.card4.max1 = 100;
+              if(this.card4.value1>100){
+                  this.card4.max1 = 500;
+                  if(this.card4.value1>500){
+                      this.card4.max1 = 1000;
+                  }
+              }
+          }
+          this.card4.value2 = response.data.doneNum;
+          if(this.card4.value2>=100000){
+              this.card4.max2 = 1000000;
+              if(this.card4.value2>1000000){
+                  this.card4.max2 = 10000000;
+              }
+          }
+          this.card4.value3 = response.data.bloodNum;
+          if(this.card4.value3>=10){
+              this.card4.max3 = 50;
+              if(this.card4.value3>50){
+                  this.card4.max3 = 100;
+              }
+          }
+      });
+    }
 }
 </script>
 
