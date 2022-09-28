@@ -4,7 +4,19 @@ const crypto = require('crypto');
 
 
 const noticeBoard = new Schema({ // 공지사항 DB
+    index: Number, // 글번호
     title: String, // 게시글 제목
     date: Date, // 작성시간
-    comments: {type:[{comment: String, commenter: String, comDate: Date}], default: []}, //댓글 
+    mustRead: Boolean, // 필독여부
+    word: String, // 내용
 });
+
+noticeBoard.statics.viewMustread = function(){
+    // 필독 공지사항 불러오기
+    return this.find({"mustRead": true},{"index":true,"title":true}).sort({index:1}).exec();
+};
+
+noticeBoard.statics.viewNotice = function(){
+    // 전체 공지사항 불러오기
+    return this.find({"index": {$gt: 0}},{"index":true,"title":true}).sort({index:1}).exec();
+};

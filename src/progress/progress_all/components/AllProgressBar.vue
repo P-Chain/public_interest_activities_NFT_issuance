@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="wrapper">
     {{ prog1 }}
     <b-progress :max="max1" height="1rem">
       <b-progress-bar :value="value1">

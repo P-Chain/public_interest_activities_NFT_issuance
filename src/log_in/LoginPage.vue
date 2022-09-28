@@ -2,7 +2,7 @@
 <!-- 로그인 성공, 실패 시 백엔드와 연동해서 작업 필요 -->
 <template>
   <div class="login-page">
-    <div class="contents">
+    <div class="login-container">
       <login-box></login-box>
     </div>
   </div>
@@ -27,7 +27,7 @@ export default {
   background-image: url('../assets/background.jpg');
 }
 
-.contents {
+.login-container {
   margin: 1rem;
   padding: 3rem;
   background-color:white;

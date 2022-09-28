@@ -1,5 +1,15 @@
 <template>
-  <b-card title="랭킹" sub-title="">
+  <b-card>
+    <h4 class="card-title">
+      랭킹
+      <span class="text-right">
+        <router-link to="/ranking">
+          <button class = "card-button" type="button">
+            <img class="card-img" src="../../assets/cardButton.png"/>
+          </button>
+        </router-link>
+      </span>
+    </h4>
     <b-tabs content-class="mt-3">
       <b-tab title="업적 랭킹">
         <b-card-text>
@@ -35,9 +45,6 @@
         </b-card-text>
       </b-tab>
     </b-tabs>
-    <template #footer>
-      <a href="/ranking" class="card-link">더보기</a>
-      </template>
   </b-card>
 </template>
 
@@ -76,44 +83,44 @@ export default {
         var data = response.data;
         var dat = data[0];
         this.avalue1 = dat.progressedAchieveNum,
-        this.arank1 = dat.id
+        this.arank1 = dat.nickname
             if(data.length>1){
         dat = data[1];
         this.avalue2 = dat.progressedAchieveNum,
-        this.arank2 = dat.id}
+        this.arank2 = dat.nickname}
         if(data.length>2){
         dat = data[2];
         this.avalue3 = dat.progressedAchieveNum,
-        this.arank3 = dat.id}
+        this.arank3 = dat.nicname}
     });
-      axios.get("/api/ranking/vol").then(response =>{
+    axios.get("/api/ranking/vol").then(response =>{
         console.log(response);
         var data = response.data;
         var dat = data[0];
         this.vvalue1 = dat.volTime,
-        this.vrank1 = dat.id
+        this.vrank1 = dat.nickname
           if(data.length>1){
         dat = data[1];
         this.vvalue2 = dat.volTime,
-        this.vrank2 = dat.id}
+        this.vrank2 = dat.nickname}
           if(data.length>2){
         dat = data[2];
         this.vvalue3 = dat.volTime,
-        this.vrank3 = dat.id}
+        this.vrank3 = dat.nickname}
     });
-      axios.get("/api/ranking/nft").then(response =>{
+    axios.get("/api/ranking/nft").then(response =>{
         var data = response.data;
         var dat = data[0];
         this.nvalue1 = dat.issuanceCount,
-        this.nrank1 = dat.email
+        this.nrank1 = dat.nickname
         if(data.length>1){
             dat = data[1];
             this.nvalue2 = dat.issuanceCount,
-            this.nrank2 = dat.email}
+            this.nrank2 = dat.nickname}
         if(data.length>2){
             dat = data[2];
             this.nvalue3 = dat.issuanceCount,
-            this.nrank3 = dat.email}
+            this.nrank3 = dat.nickname}
     });
   }
 }

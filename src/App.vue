@@ -10,8 +10,6 @@
 import NavBar from './commons/NavBar.vue'
 import MainFooter from './commons/Footer.vue'
 
-var BACKURL = 'http://pchapi.loca.lt'
-
 export default {
   name: 'app',
   components: {
@@ -22,12 +20,5 @@ export default {
 </script>
 
 <style>
-.contents {
-  margin: 1rem;
-  /* border: 1px solid black; */
-}
-#app {
-  font-family: Roboto, Helvetica, Arial, sans-serif;
-}
 
 </style>

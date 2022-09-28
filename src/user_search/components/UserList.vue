@@ -1,48 +1,69 @@
 <template>
-  <b-form-group v-slot="{ ariaDescribedby }">
-    <b-form-radio-group
-      v-model="selected"
-      :options="options"
-      :aria-describedby="ariaDescribedby"
-      name="plain-stacked"
-      plain
-      stacked
-    ></b-form-radio-group>
-
-    <b-button type="submit" variant="secondary">추가</b-button>
-  </b-form-group>
+  <div class="wrapper">
+    <b-form-group v-slot="{ ariaDescribedby }">
+      <b-form-radio-group
+        v-model="selected"
+        :options="options"
+        :aria-describedby="ariaDescribedby"
+        name="plain-stacked"
+        plain
+        stacked
+      ></b-form-radio-group>
+      <b-button variant="secondary" @click = "onSubmit">추가</b-button>
+    </b-form-group>
+  </div>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      selected: '',
-      form: {
-        name: '',
-        email: ''
-      },
-      options: [
-        { text: '이름: name, 이메일: email' },
-        { text: '이름: name, 이메일: email' },
-        { text: '이름: name, 이메일: email' },
-      ]
+      selected: [],
+      options: [],
+      data: [],
     }
   },
   created() {
-    this.options 
-    this.$EventBus.$on('userSearch', function(value) {
-      console.log(value)
-      this.options = []
-      console.log(this.options)
-      axios.get('/').then(response => {
-        this.form = response.data
-      })
+    axios.get('/api/user_search/userlist')
+    .then(response => {
+      this.data = response.data;
+      console.log('response.data='+response.data);
+
+      for(var i in this.data) {
+          this.data[i].text = '이름: ' + this.data[i].profile.username + ', 닉네임: ' + this.data[i].nickname;
+          this.data[i].value = { username: this.data[i].profile.username, nickname: this.data[i].nickname };
+      }
+      this.options = this.data;
+      console.log('this.options='+this.options);
     })
+    .catch(error => {
+      console.log('axios error');
+    })
+
+    this.$EventBus.$on('userSearch', this.receive);
   },
-  updated() {
-    console.log('updated')
-  }
+  methods: {
+    receive(data) {
+      console.log('this.options='+this.options)
+      this.options.splice(0)
+      axios.post('/api/user_search/finduser', {
+        username: data
+      })
+      .then(response => {
+        console.log(response);
+        this.data = response.data;
+        this.data.text = '이름: '+this.data.profile.username+', 닉네임: '+this.data.nickname;
+        this.data.value = { username: this.data.profile.username, nickname: this.data.nickname }
+        this.options.push(this.data);
+        console.log(this.options);
+      })
+    },
+    onSubmit(event) {
+      event.preventDefault();
+      console.log('this.selected='+this.selected);
+      this.$EventBus.$emit('addlist', this.selected);
+    }
+  },
 }
 </script>
 

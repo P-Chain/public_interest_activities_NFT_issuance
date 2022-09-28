@@ -1,9 +1,12 @@
 <template>
   <!-- v-if:*** for debug -->
   <b-navbar toggleable="sm" type="light" variant="light">
-    <b-navbar-toggle target="nav-text-collapse"></b-navbar-toggle>
-
-    <b-navbar-brand href="/">P-chain</b-navbar-brand>
+      <b-navbar-brand href="/">P-chain</b-navbar-brand>
+    <b-navbar-toggle target="nav-collapse">
+        <template>
+        <b-icon icon="three-dots-vertical" animation="cylon-vertical" font-scale="1"></b-icon>
+      </template>
+    </b-navbar-toggle>
 
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav v-if="!token">
@@ -15,7 +18,7 @@
       <b-navbar-nav v-else>
         <b-nav-item>{{ name }}</b-nav-item>
         <b-nav-item @click="logout">로그아웃</b-nav-item>
-        <router-link to="/login">
+        <router-link to="/mypage">
           <b-nav-item href="/">마이페이지</b-nav-item>
         </router-link>
         
@@ -78,6 +81,7 @@ export default {
       this.token = false;
     }
     this.commitToken()
+    this.commitAccess()
   },
   // for debug
   methods: {
@@ -96,12 +100,18 @@ export default {
         if (response) {
           this.name = "이름";
           this.token = false
+          this.access = 0
           this.commitToken()
-          location.href = "/";        }
+          this.commitAccess()
+          location.href = "/";        
+        }
       });
     },
     commitToken() {
       this.$store.commit('changeToken', this.token)
+    },
+    commitAccess() {
+      this.$store.commit('changeAccess', this.access)
     }
   },
 }

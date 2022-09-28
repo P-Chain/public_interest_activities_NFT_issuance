@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="wrapper">
     <b-form-group
         label="발급 NFT 목록"
         v-slot="{ ariaDescribedby }"
@@ -24,7 +24,9 @@
     <div class="mt-3">Selected file: {{ file1 ? file1.name : '' }}</div>
     
     <b-button type="submit" variant="primary">발급권한 신청</b-button>
-    <b-button @click="goMypage" variant="outline-primary">뒤로 가기</b-button>
+    <router-link to="/mypage">
+      <b-button href="/" variant="outline-primary">뒤로 가기</b-button>
+    </router-link>
   </div>
 </template>
 
@@ -69,14 +71,11 @@ export default {
       })
   },
   methods: {
-    goMypage() {
-      this.$router.push('/mypage')
-      console.log('goUser executed')
-    },
     onSubmit() {
       axios.post('/', { 
         // 수정
-         selected: this.selected
+         selected: this.selected,
+         file: this.file1
       })
       .then(res => {
         // do something with res

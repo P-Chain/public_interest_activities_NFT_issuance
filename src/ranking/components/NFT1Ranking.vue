@@ -1,15 +1,17 @@
 <template>
-  <b-table striped hover :items="items" :fields="fields">
-    <!-- <template #cell(index)="data">
-      {{ data.index + 1 }}
-    </template>
-    <template #cell(email)="data">
-      {{ data.items.id }}
-    </template>
-    <template #cell(prog)="data">
-      {{ data.items.progressedAchieveNum }}
-    </template> -->
-  </b-table>
+  <div>
+    <b-table striped hover :items="items" :fields="fields">
+      <!-- <template #cell(index)="data">
+        {{ data.index + 1 }}
+      </template>
+      <template #cell(nickname)="data">
+        {{ data.items.nickname }}
+      </template>
+      <template #cell(progressedAchieveNum)="data">
+        {{ data.items.progressedAchieveNum }}
+      </template> -->
+    </b-table>
+  </div>
 </template>
 
 <script>
@@ -22,8 +24,8 @@ export default {
           label: '랭킹',
         },
         {
-          key: 'id',
-          label: '이메일',
+          key: 'nickname',
+          label: '닉네임',
         },        
         {
           key: 'progressedAchieveNum',

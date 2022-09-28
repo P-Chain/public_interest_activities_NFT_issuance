@@ -1,24 +1,24 @@
 <template>
-  <b-table small :fields="fields" :items="items" responsive="sm">
-    <!-- A virtual column -->
-    <template #cell(image)="data">
-      <!-- <img :src="baseUrl + 'path/path' + obj.key +'.png'"> -->
-      <b-img :src="data.item.image" alt="업적 이미지"></b-img>
-    </template>
-
-    <!-- A custom formatted column -->
-    <template #cell(name)="data">
-      {{ data.item.name }}
-    </template>
-
-    <!-- A virtual composite column -->
-    <template #cell(text)="data">
-      {{ data.item.text }}
-    </template>
-    <template #cell(achievedTime)="data">
-      {{ data.item.achievedTime }}
-    </template>
-  </b-table>
+  <div class="wrapper">
+    <b-table small :fields="fields" :items="items" responsive="sm">
+      <!-- A virtual column -->
+      <template #cell(image)="data">
+        <!-- <img :src="baseUrl + 'path/path' + obj.key +'.png'"> -->
+        <b-img :src="data.item.image" alt="업적 이미지"></b-img>
+      </template>
+      <!-- A custom formatted column -->
+      <template #cell(name)="data">
+        {{ data.item.name }}
+      </template>
+      <!-- A virtual composite column -->
+      <template #cell(text)="data">
+        {{ data.item.text }}
+      </template>
+      <template #cell(achievedTime)="data">
+        {{ data.item.achievedTime }}
+      </template>
+    </b-table>
+  </div>
 </template>
 
 <script>
