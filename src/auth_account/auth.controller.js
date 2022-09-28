@@ -205,3 +205,23 @@ exports.check = async (ctx) => {
     ctx.body = {profile: user.profile, issuer: user.isIssuer, manager: user.isManager, nickname: user.nickname, email: user.email, wallet: user.walletAddress};
 }
 
+exports.changePass = async(ctx)=>{
+    const schema = Joi.object().keys({
+        password: Joi.string().required().min(6)
+    });
+
+    const result = schema.validate(ctx.request.body);
+
+    if(result.error) {
+        ctx.status = 400; // Bad request
+        return;
+    }
+    var data = ctx.request.body;
+    ctx.body = await Account.changePassword(data.email,data.password);
+}
+
+exports.changeWallet = async(ctx)=>{
+    var data = ctx.request.body;
+    ctx.body = await Account.changeWalletAddr(data.email,data.wallet);
+    
+}

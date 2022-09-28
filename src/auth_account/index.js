@@ -15,4 +15,7 @@ auth_account.get('/ins/exists/:key(email|username)/:value', authCtrl.exists);
 auth_account.post('/ins/logout', authCtrl.logout);
 auth_account.get('/ins/check', authCtrl.check);
 
+auth_account.post('/changepass', authCtrl.changePass);
+auth_account.post('/changewall', authCtrl.changeWallet);
+
 module.exports = auth_account;

@@ -6,12 +6,26 @@
       이메일<b-list-group-item>{{ myEmail }}</b-list-group-item>
       <!-- 비밀번호 -->
       <div class="password">
-        <b-form @submit="onSubmit">
-          <label for="text-password">Password</label>
-          <b-form-input type="password" v-model="form.password" id="text-password" aria-describedby="password-help-block"></b-form-input>
+        <b-form @submit="onSubmit" :invalid-feedback="passwordInvalidFeedback" :state="passwordState">
+          <label for="text-password">Password(6자 이상)</label>
+          <b-form-input type="password" v-model="form.password" id="text-password" aria-describedby="password-help-block" :state="passwordState"></b-form-input>
           <b-button type="submit" variant="primary">수정</b-button>
         </b-form>
       </div>
+<!--
+              <b-form-group id="input-group-2" label="비밀번호" :invalid-feedback="passwordInvalidFeedback" :state="passwordState">
+        <b-form-input
+          id="input-2"
+          v-model="form.password"
+          type="password"
+          placeholder="비밀번호를 입력해주세요."
+          aria-describedby="password-help-block"
+          :state="passwordState"
+          required
+        ></b-form-input>
+                  <b-button type="submit" variant="primary">수정</b-button>
+      </b-form-group>
+-->
       이름 또는 기관명<b-list-group-item>{{ myName }}</b-list-group-item>
 <!--      전화번호<b-list-group-item>{{ myPhoneNum }}</b-list-group-item>-->
 
@@ -101,12 +115,15 @@ export default {
   methods: {
     onSubmit(event) {
       event.preventDefault()
-      alert(JSON.stringify(this.form)) // for debug
-      axios.post('register/local', { // router 수정 필요
+      axios.post('/api/auth_account/changepass', { // router 수정 필요
+          email:this.myEmail,
         password: this.form.password, 
       })
       .then(res => {
         // do something with res
+          if(res.status == 200){
+              alert("비밀번호 변경 완료!");
+          }
         console.log(res);
       })
     },
@@ -152,6 +169,14 @@ export default {
       })
     },
   },
+      computed: {
+      passwordState(){
+          return this.form.password.length>5;
+      },
+      passwordInvalidFeedback() {
+      return "6자 이상 비밀번호를 입력해주세요.";
+    },
+  }
 }
 </script>
 

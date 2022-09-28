@@ -35,6 +35,14 @@ const Account = new Schema({
     nickname: String
 });
 
+Account.statics.changePassword = function(email, password){
+    return this.updateOne({email},{$set: {password:hash(password)}}).exec();
+};
+
+Account.statics.changeWalletAddr = function(email, wallet){
+    return this.updateOne({email},{$set: {walletAddress:wallet}}).exec();
+};
+
 Account.statics.printNftRank = function(){
     return this.find({"issuanceCount":{$gt: 0}},{"nickname": true, "issuanceCount": true}).sort({"issuanceCount":-1}).exec();
 };
