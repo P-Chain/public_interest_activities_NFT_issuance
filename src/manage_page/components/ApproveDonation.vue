@@ -1,14 +1,14 @@
 <template>
   <div>
     <b-form-group
-        label="봉사시간 승인 목록"
+        label="기부액 승인 목록"
         v-slot="{ ariaDescribedby }"
         >
       <b-form-checkbox-group
         v-model="selected"
         :options="options"
         :aria-describedby="ariaDescribedby"
-        name="VMS list"
+        name="Donation list"
         value-field="value"
         stacked
       ></b-form-checkbox-group>
@@ -26,21 +26,21 @@ export default {
       selected: [], // Must be an array reference!
       options: [
         // DB에서 불러오는 작업 필요
-        { nickname: '1', html: '대상자: AAA / 봉사시간: N 시간 <a target=&apos;_blank&apos; href="../../tmp/uploads/vol_nick1_23194735.png">파일 보기</a>' },
-        { nickname: '2', html: '대상자: BBB / 봉사시간: N 시간 <a target=&apos;_blank&apos; href="">파일 보기</a>' },
-        { value: '3', html: '대상자: CCC / 봉사시간: N 시간 <a target=&apos;_blank&apos; href="">파일 보기</a>' },
-        { value: '4', html: '대상자: DDD / 봉사시간: N 시간 <a target=&apos;_blank&apos; href="">파일 보기</a>' },
+        { nickname: 'AAA', html: '대상자: AAA / 기부액: N 원 <a target=&apos;_blank&apos; href="">파일 보기</a>' },
+        { nickname: 'BBB', html: '대상자: BBB / 기부액: N 원 <a target=&apos;_blank&apos; href="">파일 보기</a>' },
+        { nickname: 'CCC', html: '대상자: CCC / 기부액: N 원 <a target=&apos;_blank&apos; href="">파일 보기</a>' },
+        { nickname: 'DDD', html: '대상자: DDD / 기부액: N 원 <a target=&apos;_blank&apos; href="">파일 보기</a>' },
       ],
       data:[],
     }
   },
     created(){
-      axios.get('/api/manage_page/vmsapplys').then((response)=>{
+      axios.get('/api/manage_page/donationapplys').then((response)=>{
           console.log(response.data);
           this.data = response.data;
         console.log('response.data='+response.data);
         for(var i in this.data){
-            this.data[i].html = '대상자: '+this.data[i].username+' / 신청봉사시간: '+this.data[i].volTime+' 시간 <a target=&apos;_blank&apos; href="../../tmp/uploads/'+this.data[i].volIss+'">파일 보기</a>';
+            this.data[i].html = '대상자: '+this.data[i].username+' / 기부액: '+this.data[i].volTime+' 원 <a target=&apos;_blank&apos; href="../../tmp/uploads/'+this.data[i].volIss+'">파일 보기</a>';
             this.data[i].value = {index:this.data[i].index, volTime:this.data[i].volTime, nickname:this.data[i].nickname};
         }
         this.options = this.data;
@@ -52,21 +52,23 @@ export default {
   methods: {
     submitApprove(event) {
       console.log(this.selected);
-        for(var i in this.selected){
-                    axios.post('/api/manage_page/allowapplys',this.selected[i]).then((response)=>{
-                console.log(response);
-            })
-        }
-        location.href='/manage_page';
+      for(var i in this.selected){
+        axios.post('/api/manage_page/allowapplys',this.selected[i])
+          .then((response)=>{
+            console.log(response);
+          })
+      }
+      location.href='/manage_page';
     },
     submitRevise(event) {
       console.log(this.selected);
-        for(var i in this.selected){
-            axios.post('/api/manage_page/denyapplys',this.selected[i]).then((response)=>{
-                console.log(response);
+      for(var i in this.selected){
+          axios.post('/api/manage_page/denyapplys',this.selected[i])
+            .then((response)=>{
+              console.log(response);
             })
-        }
-        location.href='/manage_page';
+      }
+      location.href='/manage_page';
     }
   }
 }
