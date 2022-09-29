@@ -41,10 +41,18 @@
                   </span>
                 </b-progress-bar>
               </b-progress>
+                {{ prog4 }}
+              <b-progress :max="max4" height="1rem">
+                <b-progress-bar :value="value4">
+                  <span
+                    ><strong>{{ value4 }} / {{ max4 }}</strong></span
+                  >
+                </b-progress-bar>
+              </b-progress>
             </div>
           </b-tab>
           <!-- b-img 태그로 수정하기 -->
-          <b-tab title="보유">
+          <b-tab title="달성업적">
             <div>
               <b-img-lazy
                 b-img
@@ -160,9 +168,11 @@ export default {
       value1: 33,
       max1: 50,
       value2: 3,
-      max2: 5,
+      max2: 100000,
       value3: 8,
       max3: 10,
+        value4: 8,
+      max4: 10,
       list: [],
       imglist: [
         "blank.png",
@@ -183,9 +193,10 @@ export default {
       ],
       file: "vol_50.png",
 
-      prog1: "업적1",
-      prog2: "업적2",
-      prog3: "업적3",
+      prog1: "봉사시간",
+      prog2: "기부액",
+      prog3: "헌혈",
+        prog4: "NFT보유",
       mainProps: { blank: true, width: 75, height: 75, class: "m1" },
     };
   },
@@ -197,6 +208,32 @@ export default {
         console.log(this.imglist);
       }
     });
+      axios.get("/api/progress/viewprogress").then((response)=>{
+          this.value1 = response.data.volTime;
+          if(this.value1>=50){
+              this.max1 = 100;
+              if(this.value1>100){
+                  this.max1 = 500;
+                  if(this.value1>500){
+                      this.max1 = 1000;
+                  }
+              }
+          }
+          this.value2 = response.data.doneNum;
+          if(this.value2>=100000){
+              this.max2 = 1000000;
+              if(this.value2>1000000){
+                  this.max2 = 10000000;
+              }
+          }
+          this.value3 = response.data.bloodNum;
+          if(this.value3>=10){
+              this.max3 = 50;
+              if(this.value3>50){
+                  this.max3 = 100;
+              }
+          }
+      });
   },
   methods: {
     getImageUrl(imageId) {

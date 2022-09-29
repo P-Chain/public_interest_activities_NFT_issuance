@@ -8,6 +8,7 @@ const AchieveProgressLev = new Schema({ // 개인 진행도 저장용 DB
     volTime: {type: Number, default: 0}, // 봉사시간
     progressedAchieveNum: {type: Number, default: 0}, // 업적 달성 갯수
     doneNum: {type: Number, default: 0}, // 기부액
+    bloodNum: {type: Number, default: 0}, // 헌혈횟수
     nickname: String // 사용자 닉네임
 });
 
@@ -19,6 +20,18 @@ AchieveProgressLev.statics.userRegist = function(id,nickname){ // 새로운 유�
 AchieveProgressLev.statics.findVolTime = function(nickname){
     // ID입력해 봉사시간 불러오기
     var data = this.findOne({nickname},{volTime:true}).exec();
+    return data;
+};
+
+AchieveProgressLev.statics.findDoneNum = function(nickname){
+    // ID입력해 기부액 불러오기
+    var data = this.findOne({nickname},{doneNum:true}).exec();
+    return data;
+};
+
+AchieveProgressLev.statics.findBloodNum = function(nickname){
+    // ID입력해 헌혈횟수 불러오기
+    var data = this.findOne({nickname},{bloodNum:true}).exec();
     return data;
 };
 
@@ -37,9 +50,17 @@ AchieveProgressLev.statics.VolTimeUpdate = function(nickname,VolTime){
     }).clone().exec();
     return num;
 };*/
-AchieveProgressLev.statics.DoneUpdate = function(id, doneNum){
+AchieveProgressLev.statics.DoneUpdate = function(nickname, doneNum){
     // 기부액 업데이트
-    this.updateOne({id},{$set: {doneNum: DoneNum}}).exec();
+    return this.findOne({nickname},function(err,res){
+        res.updateOne({$set: {doneNum: res.doneNum+doneNum}}).clone().exec();
+    }).clone().exec();
+};
+AchieveProgressLev.statics.BloodUpdate = function(nickname){
+    // ID입력해 업적 달성갯수 올리기
+    return this.findOne({nickname},function(err,res){
+        res.updateOne({$set: {bloodNum: res.bloodNum+1}}).clone().exec();
+    }).clone().exec();
 };
 /*AchieveProgressLev.statics.findAchieveNum = function(id){
     // ID입력해 업적 달성갯수 불러오기
@@ -49,15 +70,15 @@ AchieveProgressLev.statics.DoneUpdate = function(id, doneNum){
 
 // ** 세부 요소 불러오기 기능을 구현하려면 파싱이 필요한것으로 예상되어, 전체 불러오기 외에 다른 기능 주석처리함
 
-AchieveProgressLev.statics.AchieveCount = function(id){
+AchieveProgressLev.statics.AchieveCount = function(nickname){
     // ID입력해 업적 달성갯수 올리기
-    return this.findOne({id},function(err,res){
+    return this.findOne({nickname},function(err,res){
         res.updateOne({$set: {progressedAchieveNum: res.progressedAchieveNum+1}}).clone().exec();
     }).clone().exec();
 };
-AchieveProgressLev.statics.findAllProgress = function(id){
+AchieveProgressLev.statics.findAllProgress = function(nickname){
     // ID 입력해 전체 진행도 불러오기
-    return this.findOne({id}).exec();
+    return this.findOne({nickname}).exec();
 };
 AchieveProgressLev.statics.printAchieveRank = function(){
     // 전체 DB 업적랭킹순으로 불러오기

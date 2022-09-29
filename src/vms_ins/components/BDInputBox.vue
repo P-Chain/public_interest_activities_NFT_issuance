@@ -69,7 +69,7 @@ export default {
       //           }
       // });
     // bring vms count  
-      await axios.get("/api/vms_ins/count")
+      await axios.get("/api/vms_ins/blcount")
       .then(response => {
         this.form.count = response.data;
         if(this.form.count == null){
@@ -83,7 +83,7 @@ export default {
     // making image file + filename
       var date = new Date();
       var fileName 
-        = 'bd_'+this.form.nickname + '_' + date.getDate() + date.getHours() 
+        = 'bd_'+escape(this.form.nickname) + '_' + date.getDate() + date.getHours() 
         + date.getMinutes() + date.getSeconds();
       if (this.file1.type == 'image/jpg') {
         fileName += '.jpg';
@@ -109,10 +109,10 @@ export default {
         console.log('To sv error.response='+error)
       });
     // to db(수정 예상)
-      axios.post('/api/vms_ins/vmsapply', {
+      axios.post('/api/vms_ins/blapply', {
         index: this.form.count,
         // volTime: this.form.volTime,
-        volIss: file.name,
+        bloodIss: unescape(file.name),
         nickname: this.form.nickname,
         username: this.form.username,
       })

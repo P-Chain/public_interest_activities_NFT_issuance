@@ -12,7 +12,7 @@
       </b-list-group-item>
     </b-list-group>
     <!-- for debug -->
-    <span class="write-button text-right" v-if="this.$store.getters.getAccess === 0">
+    <span class="write-button text-right" v-if="this.$store.getters.getAccess === 2">
       <router-link :to="{ path: 'write' }" append>
           <b-img class='image' :src="require('../../assets/notice-write-icon.png')"></b-img>
       </router-link>
@@ -57,6 +57,9 @@ export default {
   created() {
   // axios index;
     this.pageClick();
+      axios.get('/api/notice/getcount').then((response)=>{
+          this.numberOfPages = response.data/10+1;
+      })
   },
   methods: {
   // page url method
@@ -74,9 +77,12 @@ export default {
   // axios get, 주소 임의 지정
     axiosGet(index) {
       this.show = false;
-      axios.get("/api/notice/getList/$(index)").then(response => {
-        this.lists = []
-        this.lists.concat(response.data);
+        console.log(index);
+      axios.get("/api/notice/getList/"+index).then(response => {
+          console.log(response.data);
+        this.lists = response.data;
+        //this.lists.concat(response.data);
+          console.log(this.lists);
       }).
       catch(error => {
        console.log(error)

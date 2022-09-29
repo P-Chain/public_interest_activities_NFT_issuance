@@ -61,15 +61,15 @@ export default {
       .catch(error => {
         console.log('error='+error)
       })
-      await axios.post('/api/manage_page/nowvms',{nickname:this.form.nickname}).then((response)=>{
-                console.log(response.data.volTime);
-                if(response.data.volTime>this.form.volTime){
-                    alert("현재 기부액보다 낮은 값");
-                    location.href = '/mypage';
-                }
-      });
+//      await axios.post('/api/manage_page/nowvms',{nickname:this.form.nickname}).then((response)=>{
+//                console.log(response.data.volTime);
+//                if(response.data.volTime>this.form.volTime){
+//                    alert("현재 기부액보다 낮은 값");
+//                    location.href = '/mypage';
+//                }
+//      });
     // bring vms count  
-      await axios.get("/api/vms_ins/count")
+      await axios.get("/api/vms_ins/docount")
       .then(response => {
         this.form.count = response.data;
         if(this.form.count == null){
@@ -83,7 +83,7 @@ export default {
     // making image file + filename
       var date = new Date();
       var fileName 
-        = 'dona_'+this.form.nickname + '_' + date.getDate() + date.getHours() 
+        = 'done_'+escape(this.form.nickname) + '_' + date.getDate() + date.getHours() 
         + date.getMinutes() + date.getSeconds();
       if (this.file1.type == 'image/jpg') {
         fileName += '.jpg';
@@ -109,10 +109,10 @@ export default {
         console.log('To sv error.response='+error)
       });
     // to db(수정 예상)
-      axios.post('/api/vms_ins/vmsapply', {
+      axios.post('/api/vms_ins/doapply', {
         index: this.form.count,
-        volTime: this.form.volTime,
-        volIss: file.name,
+        doneNum: this.form.volTime,
+        doneIss: unescape(file.name),
         nickname: this.form.nickname,
         username: this.form.username,
       })

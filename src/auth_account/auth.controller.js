@@ -202,6 +202,27 @@ exports.check = async (ctx) => {
         ctx.status = 403; // Forbidden
         return;
     }
-    ctx.body = {profile: user.profile, issuer: user.isIssuer, manager: user.isManager, nickname: user.nickname};
+    ctx.body = {profile: user.profile, issuer: user.isIssuer, manager: user.isManager, nickname: user.nickname, email: user.email, wallet: user.wallet};
 }
 
+exports.changePass = async(ctx)=>{
+    const schema = Joi.object().keys({
+        password: Joi.string().required().min(6)
+    });
+
+    const result = schema.validate(ctx.request.body);
+
+    if(result.error) {
+        ctx.status = 400; // Bad request
+        return;
+    }
+    var data = ctx.request.body;
+    ctx.body = await Account.changePassword(data.email,data.password);
+}
+
+exports.changeWallet = async(ctx)=>{
+    var data = ctx.request.body;
+    console.log(data);
+    ctx.body = await Account.changeWalletAddr(data.email,data.wallet,data.walletimage);
+    
+}

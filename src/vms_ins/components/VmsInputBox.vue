@@ -83,7 +83,7 @@ export default {
     // making image file + filename
       var date = new Date();
       var fileName 
-        = 'vol_'+this.form.nickname + '_' + date.getDate() + date.getHours() 
+        = 'vol_'+escape(this.form.nickname) + '_' + date.getDate() + date.getHours() 
         + date.getMinutes() + date.getSeconds();
       if (this.file1.type == 'image/jpg') {
         fileName += '.jpg';
@@ -112,7 +112,7 @@ export default {
       axios.post('/api/vms_ins/vmsapply', {
         index: this.form.count,
         volTime: this.form.volTime,
-        volIss: file.name,
+        volIss: unescape(file.name),
         nickname: this.form.nickname,
         username: this.form.username,
       })

@@ -26,14 +26,36 @@ const Account = new Schema({
     },
     isManager: Boolean,
     isIssuer: {type: Boolean, default: false},
-    issList: [Number],
+    issList: {type:[Number],default:[]},
     password: String, // 로컬 계정의 경우엔 비밀번호를 해싱해서 저장
     walletAddress: String, // 수정가능.
+    walletImage: String,
     achievementProgress: [String], // 수정가능
     issuanceCount: {type: Number, default: 0}, // 서비스에서 nft 발행을 받을때마다 1올라간다.
     createdAt: {type: Date, default: Date.now},
     nickname: String
 });
+
+Account.statics.AddIssAchieve = function(nickname, issNum){
+    // 사용자 달성 업적 추가
+    this.updateOne({nickname},{$push: {issList: issNum}}).exec();
+    this.updateOne({nickname},{$set:{isIssuer: true}}).exec();
+    
+};
+
+Account.statics.findIssList = function(email) {
+    // 객체에 내장되어있는 값을 사용할 때는 객체명.키
+    return this.findOne({'profile.email':email},{issList:true}).exec();
+};
+
+Account.statics.changePassword = function(email, password){
+    return this.updateOne({email},{$set: {password:hash(password)}}).exec();
+};
+
+Account.statics.changeWalletAddr = function(email, wallet, walletimage){
+    this.updateOne({email},{$set: {walletImage:walletimage}}).exec();
+    return this.updateOne({email},{$set: {walletAddress:wallet}}).exec();
+};
 
 Account.statics.printNftRank = function(){
     return this.find({"issuanceCount":{$gt: 0}},{"nickname": true, "issuanceCount": true}).sort({"issuanceCount":-1}).exec();
@@ -90,7 +112,9 @@ Account.methods.generateToken = function() {
         profile: this.profile,
         isIssuer: this.isIssuer,
         isManager: this.isManager,
-        nickname: this.nickname
+        nickname: this.nickname,
+        email: this.email,
+        wallet: this.walletAddress
     };
 
     return generateToken(payload, 'account');

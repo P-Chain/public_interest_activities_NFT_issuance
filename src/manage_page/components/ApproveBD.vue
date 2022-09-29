@@ -36,13 +36,13 @@ export default {
     }
   },
     created(){
-      axios.get('/api/manage_page/BDapplys').then((response)=>{
+      axios.get('/api/manage_page/bldapplys').then((response)=>{
           console.log(response.data);
           this.data = response.data;
         console.log('response.data='+response.data);
         for(var i in this.data){
-            this.data[i].html = '대상자: '+this.data[i].username+' / <a target=&apos;_blank&apos; href="../../tmp/uploads/'+this.data[i].volIss+'">파일 보기</a>';
-            this.data[i].value = {index:this.data[i].index, volNumber:this.data[i].volNumber, nickname:this.data[i].nickname};
+            this.data[i].html = '대상자: '+this.data[i].username+' / <a target=&apos;_blank&apos; href="../../tmp/uploads/'+this.data[i].bloodIss+'">파일 보기</a>';
+            this.data[i].value = {index:this.data[i].index, nickname:this.data[i].nickname};
         }
         this.options = this.data;
         console.log('this.options='+this.options);
@@ -54,7 +54,7 @@ export default {
     submitApprove(event) {
       console.log(this.selected);
         for(var i in this.selected){
-          axios.post('/api/manage_page/allowapplys',this.selected[i])
+          axios.post('/api/manage_page/allowbldapplys',this.selected[i])
             .then((response)=>{
               console.log(response);
             })
@@ -64,7 +64,7 @@ export default {
     submitRevise(event) {
       console.log(this.selected);
         for(var i in this.selected){
-            axios.post('/api/manage_page/denyapplys',this.selected[i])
+            axios.post('/api/manage_page/denybldapplys',this.selected[i])
               .then((response)=>{
                 console.log(response);
               })

@@ -24,19 +24,34 @@ export default {
       selected: [], // Must be an array reference!
       options: [
         // 권한 신청과의 차이점: 권한을 받은 NFT 리스트만 표기해야 한다는 점
-        { text: "num1", value: 1 },
-        { text: "num2", value: "2번" },
-        { text: "num3", value: "3번" },
-        { text: "num4", value: "4번" , name: "name"},
       ],
     };
   },
+ async created() {
+     this.cre()  
+    },
   methods: {
+      async cre() {
+          var list;
+     await axios.get('/api/nft_choice/viewlist').then((response)=>{
+          list = response.data.issList;
+          
+      });
+          for(var i in list){
+              console.log(i);
+              await axios.post('/api/achieve/findachieve',{id:list[i]}).then((response2)=>{
+                  console.log(response2);
+                  list[i] = {text: response2.data.Name, value: list[i]};
+              })
+              console.log(list);
+          }
+          this.options = list;
+    },
     onSubmit(event) {
       event.preventDefault();
         console.log(this.selected);
       if (this.selected.length == 1) {
-        location.href = "/user_search?" + this.selected[0];
+        location.href = "/user_search?index=" + this.selected[0];
       } else {
         console.log("하나의 nft를 선택해주세요.");
       }
