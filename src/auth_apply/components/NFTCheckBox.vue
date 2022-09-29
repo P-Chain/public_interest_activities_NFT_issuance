@@ -87,7 +87,8 @@ export default {
       await axios.get("/api/auth_account/check")
       .then(response => {
         this.form.email = response.data.email;
-          this.form.nickname = response.data.nickaname;
+        this.form.nickname = response.data.nickname;
+          console.log(this.form.nickname);
         this.form.username = response.data.profile.username;
       })
       .catch(error => {

@@ -26,7 +26,7 @@ const Account = new Schema({
     },
     isManager: Boolean,
     isIssuer: {type: Boolean, default: false},
-    issList: [Number],
+    issList: {type:[Number],default:[]},
     password: String, // 로컬 계정의 경우엔 비밀번호를 해싱해서 저장
     walletAddress: String, // 수정가능.
     achievementProgress: [String], // 수정가능
@@ -38,6 +38,7 @@ const Account = new Schema({
 Account.statics.AddIssAchieve = function(nickname, issNum){
     // 사용자 달성 업적 추가
     this.updateOne({nickname},{$push: {issList: issNum}}).exec();
+    this.updateOne({nickname},{$set:{isIssuer: true}}).exec();
     
 };
 

@@ -24,10 +24,6 @@ export default {
       selected: [], // Must be an array reference!
       options: [
         // 권한 신청과의 차이점: 권한을 받은 NFT 리스트만 표기해야 한다는 점
-        { text: "num1", value: 1 },
-        { text: "num2", value: "2번" },
-        { text: "num3", value: "3번" },
-        { text: "num4", value: "4번" , name: "name"},
       ],
     };
   },

@@ -36,6 +36,7 @@ const Ins_Account = new Schema({
 Ins_Account.statics.AddIssAchieve = function(username, issNum){
     // 사용자 달성 업적 추가
     this.updateOne({'profile.username':username},{$push: {issList: issNum}}).exec();
+    this.updateOne({'profile.username':username},{$set:{isIssuer: true}}).exec();
     
 };
 
