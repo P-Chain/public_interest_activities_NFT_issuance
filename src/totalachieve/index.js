@@ -9,6 +9,8 @@ const handler = (ctx, next) => {
 
 totalachieve.get('/loadcond', achieveControll.loadAchieveNotCond);
 
+totalachieve.get('/achlist', achieveControll.viewAchieveList);
+
 totalachieve.post('/findachieve', achieveControll.findAchieve);
 
 totalachieve.delete('/', handler);
