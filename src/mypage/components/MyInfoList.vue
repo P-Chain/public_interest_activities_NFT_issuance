@@ -32,19 +32,19 @@
       <div class="wallet" v-if= this.state>
         지갑 주소
         <tr>
-          <b-list-group-item>
-            <td>
+          <td>
+            <b-list-group-item>
               {{ myWalletAdr }}
-            </td>
-          </b-list-group-item>
-            <td
+            </b-list-group-item>
+          </td>
+          <td
+            v-show="myWalletAdr !== ''"
+            ><jazzicon
               id="wallet-jazzicon" 
               ref="wallet-jazzicon"
-              v-show="myWalletAdr !== ''"
-              ><jazzicon
-                :address="myWalletAdr" 
-                :diameter="30" />
-            </td>
+              :address="myWalletAdr" 
+              :diameter="50" />
+          </td>
         </tr>
         <b-button v-b-modal.modal-prevent-closing variant="primary">
           지갑주소 입력
@@ -76,7 +76,7 @@
       </div>
     </b-list-group>
     <router-link to="/vms_ins">
-      <b-button href="/" variant="outline-primary">봉사시간 갱신</b-button>
+      <b-button href="/" variant="outline-primary">봉사 추가</b-button>
     </router-link>
     <router-link to="./auth_apply">
       <b-button href="/" variant="outline-secondary">권한 신청</b-button>

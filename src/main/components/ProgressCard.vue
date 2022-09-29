@@ -20,25 +20,25 @@
               {{ prog1 }}
               <b-progress :max="max1" height="1rem">
                 <b-progress-bar :value="value1">
-                  <span
-                    ><strong>{{ value1 }} / {{ max1 }}</strong></span
-                  >
+                  <span>
+                    <strong>{{ value1 }} / {{ max1 }}</strong>
+                  </span>
                 </b-progress-bar>
               </b-progress>
               {{ prog2 }}
               <b-progress :max="max2" height="1rem">
                 <b-progress-bar :value="value2">
-                  <span
-                    ><strong>{{ value2 }} / {{ max2 }}</strong></span
-                  >
+                  <span>
+                    <strong>{{ value2 }} / {{ max2 }}</strong>
+                  </span>
                 </b-progress-bar>
               </b-progress>
               {{ prog3 }}
               <b-progress :max="max3" height="1rem">
                 <b-progress-bar :value="value3">
-                  <span
-                    ><strong>{{ value3 }} / {{ max3 }}</strong></span
-                  >
+                  <span>
+                    <strong>{{ value3 }} / {{ max3 }}</strong>
+                  </span>
                 </b-progress-bar>
               </b-progress>
                 {{ prog4 }}
@@ -150,7 +150,7 @@
         </b-tabs>
       </b-card-text>
       <!-- <b-card-text>A second paragraph of text in the card.</b-card-text> -->
-      <a href="/progress" class="card-link">더보기</a>
+      <!-- <a href="/progress" class="card-link">더보기</a> -->
     </div>
     <!-- <b-link href="#" class="card-link">Another link</b-link> -->
     <div v-else>
@@ -255,7 +255,7 @@ export default {
   },
   computed: {
     token() {
-      return this.$store.state.token;
+      return this.$store.getters.getToken;
     },
   },
 };
