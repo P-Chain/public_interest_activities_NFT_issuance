@@ -42,7 +42,7 @@ export default {
           tempImage2.onload = () => {
               //이미지를 캔버스에 그리기
             console.log('tempimg2 onload executed')
-            this.context.drawImage(tempImage2, 100, 100, 150, 160); // 대상, (시작지점, 시작지점), (사진 크기, 사진 크기)
+            this.context.drawImage(tempImage2, 20, 20, 50, 60); // 대상, (시작지점, 시작지점), (사진 크기, 사진 크기)
             console.log(this.canvas.toDataURL("image/jpeg"));
           }
         }
