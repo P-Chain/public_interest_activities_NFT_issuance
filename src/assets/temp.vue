@@ -26,6 +26,7 @@ export default {
         console.log('reader1 onload executed')
         var tempImage1 = new Image(); //drawImage 메서드에 넣기 위해 이미지 객체화
         tempImage1.src = reader1.result; //data-uri를 이미지 객체에 주입
+        console.log(tempImage1.src);
         tempImage1.onload = () => {
             //이미지를 캔버스에 그리기
             console.log('tempimg2 onload executed')
@@ -41,7 +42,7 @@ export default {
           tempImage2.onload = () => {
               //이미지를 캔버스에 그리기
             console.log('tempimg2 onload executed')
-            this.context.drawImage(tempImage2, 100, 100, 150, 160);
+            this.context.drawImage(tempImage2, 100, 100, 150, 160); // 대상, (시작지점, 시작지점), (사진 크기, 사진 크기)
             console.log(this.canvas.toDataURL("image/jpeg"));
           }
         }
