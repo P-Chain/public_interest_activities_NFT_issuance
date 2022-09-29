@@ -160,6 +160,9 @@ export default {
         reader.onload = () => {
         this.walletImgData = reader.result;
         console.log('walletImgData='+this.walletImgData);
+        axios.post('/api/auth_account/changewall',{email:this.myEmail, wallet: this.walletAdr, walletimage:this.walletImgData}).then((responese)=>{
+            console.log(response);
+        })
       }
       })
 

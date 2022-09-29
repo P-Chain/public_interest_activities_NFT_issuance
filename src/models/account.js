@@ -29,6 +29,7 @@ const Account = new Schema({
     issList: {type:[Number],default:[]},
     password: String, // 로컬 계정의 경우엔 비밀번호를 해싱해서 저장
     walletAddress: String, // 수정가능.
+    walletImage: String,
     achievementProgress: [String], // 수정가능
     issuanceCount: {type: Number, default: 0}, // 서비스에서 nft 발행을 받을때마다 1올라간다.
     createdAt: {type: Date, default: Date.now},
@@ -51,7 +52,8 @@ Account.statics.changePassword = function(email, password){
     return this.updateOne({email},{$set: {password:hash(password)}}).exec();
 };
 
-Account.statics.changeWalletAddr = function(email, wallet){
+Account.statics.changeWalletAddr = function(email, wallet, walletimage){
+    this.updateOne({email},{$set: {walletImage:walletimage}}).exec();
     return this.updateOne({email},{$set: {walletAddress:wallet}}).exec();
 };
 
