@@ -97,8 +97,8 @@ export default {
       await axios.post('/api/manage_page/nowiss',{nickname:this.form.nickname,email:this.form.email}).then((response)=>{
                 console.log(response.data.issList);
           for(var i in response.data.issList){
-              if(response.data.issList[i]==this.selected[0]){
-                  alart("이미 허가된 권한!");
+              if(response.data.issList[i]==this.selected[0].id){
+                  alert("이미 허가된 권한!");
                   location.href = '/mypage';
               }
           }

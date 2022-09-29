@@ -27,19 +27,26 @@ export default {
       ],
     };
   },
-    created(){
-      axios.get('/api/nft_choice/viewlist').then((response)=>{
-          var list = response.data.issList;
-          for(var i in list){
-              axios.post('/api/achieve/findachieve',{id:list[i]}).then((response2)=>{
-                  list[i] = {text: response2.data.Name, value: response.data.issList[i]};
-                  this.options = list;
-              })
-          }
-          
-      })  
+ async created() {
+     this.cre()  
     },
   methods: {
+      async cre() {
+          var list;
+     await axios.get('/api/nft_choice/viewlist').then((response)=>{
+          list = response.data.issList;
+          
+      });
+          for(var i in list){
+              console.log(i);
+              await axios.post('/api/achieve/findachieve',{id:list[i]}).then((response2)=>{
+                  console.log(response2);
+                  list[i] = {text: response2.data.Name, value: list[i]};
+              })
+              console.log(list);
+          }
+          this.options = list;
+    },
     onSubmit(event) {
       event.preventDefault();
         console.log(this.selected);
