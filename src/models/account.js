@@ -43,6 +43,12 @@ Account.statics.AddIssAchieve = function(nickname, issNum){
     
 };
 
+Account.statics.getWalletImg = function(nickname){
+    // 사용자 달성 업적 추가
+    return this.findOne({nickname},{walletImage: true}).exec();
+    
+};
+
 Account.statics.findIssList = function(email) {
     // 객체에 내장되어있는 값을 사용할 때는 객체명.키
     return this.findOne({'profile.email':email},{issList:true}).exec();
