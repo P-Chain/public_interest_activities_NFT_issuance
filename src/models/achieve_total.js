@@ -7,6 +7,7 @@ const Achieve_total = new Schema({ // 업적 종류 저장용 DB
     Id: Number, // 업적 구분용 ID
     Image: String, // 업적 이미지
     Name: String, // 업적 이름
+    isCon: Boolean,
     //Condition: {name: String, clear: Number} // 자동발급 업적을 위한 달성조건
 });
 
@@ -25,6 +26,10 @@ Achieve_total.statics.findImageAndName = function(id){
     var data = this.findOne({'Id':id}).exec();
     return {image : data.Image, name : data.Name}
 };*/
+
+Achieve_total.statics.viewcond = function(){
+    return this.find({"isCon": false}).sort({index:1}).exec();
+};
 
 // ** 전체 다큐먼트 외에 추가적인 불러오기 기능 주석처리(파싱필요 예상)
 module.exports = mongoose.model('Achieve_total', Achieve_total);

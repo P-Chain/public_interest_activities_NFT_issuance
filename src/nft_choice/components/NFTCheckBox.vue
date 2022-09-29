@@ -31,12 +31,24 @@ export default {
       ],
     };
   },
+    created(){
+      axios.get('/api/nft_choice/viewlist').then((response)=>{
+          var list = response.data.issList;
+          for(var i in list){
+              axios.post('/api/achieve/findachieve',{id:list[i]}).then((response2)=>{
+                  list[i] = {text: response2.data.Name, value: response.data.issList[i]};
+                  this.options = list;
+              })
+          }
+          
+      })  
+    },
   methods: {
     onSubmit(event) {
       event.preventDefault();
         console.log(this.selected);
       if (this.selected.length == 1) {
-        location.href = "/user_search?" + this.selected[0];
+        location.href = "/user_search?index=" + this.selected[0];
       } else {
         console.log("하나의 nft를 선택해주세요.");
       }

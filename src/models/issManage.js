@@ -8,12 +8,13 @@ const issManage = new Schema({ // 발급권한 신청 관리 DB
     nickname: String, // 신청자 닉네임
     issIss: String, // 해당기관 인증서
     issNum: Number, // 신청 업적
+    issName: String,
     state: {type: String, default: "대기"}, // 신청 상태(대기, 수락, 거부)
     username: String // 신청자 이름
 });
 
-issManage.statics.newApply = function({index,issNum,issIss,nickname,username}){ // 신청 문서 생성
-    const user = new this({index,issNum,issIss,nickname,username});
+issManage.statics.newApply = function({index,issNum,issName,issIss,nickname,username}){ // 신청 문서 생성
+    const user = new this({index,issNum,issName,issIss,nickname,username});
     console.log(user);
     return user.save();
 };

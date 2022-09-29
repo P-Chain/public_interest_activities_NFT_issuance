@@ -35,6 +35,17 @@ const Account = new Schema({
     nickname: String
 });
 
+Account.statics.AddIssAchieve = function(nickname, issNum){
+    // 사용자 달성 업적 추가
+    this.updateOne({nickname},{$push: {issList: issNum}}).exec();
+    
+};
+
+Account.statics.findIssList = function(email) {
+    // 객체에 내장되어있는 값을 사용할 때는 객체명.키
+    return this.findOne({'profile.email':email},{issList:true}).exec();
+};
+
 Account.statics.changePassword = function(email, password){
     return this.updateOne({email},{$set: {password:hash(password)}}).exec();
 };

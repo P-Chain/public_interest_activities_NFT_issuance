@@ -33,6 +33,17 @@ const Ins_Account = new Schema({
     createdAt: {type: Date, default: Date.now}*/ // 발급계정은 nft 소유 불가
 });
 
+Ins_Account.statics.AddIssAchieve = function(username, issNum){
+    // 사용자 달성 업적 추가
+    this.updateOne({'profile.username':username},{$push: {issList: issNum}}).exec();
+    
+};
+
+Ins_Account.statics.findIssList = function(email) {
+    // 객체에 내장되어있는 값을 사용할 때는 객체명.키
+    return this.findOne({'profile.email':email},{issList:true}).exec();
+};
+
 Ins_Account.statics.findByUsername = function(username) {
     // 객체에 내장되어있는 값을 사용할 때는 객체명.키
     return this.findOne({'profile.username': username}).exec();

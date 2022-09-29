@@ -8,9 +8,7 @@
       닉네임: {{ item.nickname }}<br>
       <hr>
     </div>
-    <router-link to="nft_issue">
-      <b-button href="/" variant="primary">발급</b-button>
-    </router-link>
+      <b-button @click = "onSubmit" variant="primary">발급</b-button>
     <router-link to="nft_choice">
       <b-button href="/" variant="outline-primary">뒤로 가기</b-button>
     </router-link>
@@ -25,9 +23,25 @@ export default {
     }
   },
   created() {
-    this.$EventBus.$on('addlist', this.receive) 
+    this.$EventBus.$on('addlist', this.receive) ;
+      console.log(this.$route.query);
   },
   methods: {
+      onSubmit(){
+          console.log(this.$route.query.index);
+          console.log("ok");
+          var addr = '/nft_issue?index='+this.$route.query.index+"&nicklist="
+          for(var i in this.lists){
+              if(i==0){
+                  addr += this.lists[i].nickname;
+              }
+              else{
+                  addr += ","+this.lists[i].nickname;
+              }
+          }
+          console.log(addr);
+          location.href = addr;
+      },
     receive(data) {
       console.log('data='+data)
       if (data.length === 0) {
