@@ -1,30 +1,30 @@
-const MVMS = require('models/vmsManage');
+const MDone = require('models/doneManage');
 const APL = require('models/AchieveProgressLev');
 
 // 봉사시간 갱신 신청 관리
 
-exports.viewVmsApply = async (ctx) => {
+exports.viewDoneApply = async (ctx) => {
     // 봉사시간 갱신 신청 확인
-    var data = await MVMS.viewApply();
+    var data = await MDone.viewApply();
     ctx.response.body = data;
 };
 
-exports.allowVmsApply = async (ctx) => {
+exports.allowDoneApply = async (ctx) => {
     // 봉사시간 갱신 신청 수락
     var data = ctx.request.body;
-    await MVMS.allowApply({index:data.index,volTime:data.volTime});
-    await APL.VolTimeUpdate(data.nickname, data.volTime);
+    await MDone.allowApply({index:data.index,doneNum:data.doneNum});
+    await APL.DoneUpdate(data.nickname, data.doneNum);
     ctx.response.body = data;
 };
 
-exports.denyVmsApply = async (ctx) => {
+exports.denyDoneApply = async (ctx) => {
     // 봉사시간 갱신 신청 거부
     var data = ctx.request.body;
-    await MVMS.denyApply(data.index);
+    await MDone.denyApply(data.index);
     ctx.response.body = data;
 };
 
-exports.nowVms = async(ctx)=>{
+exports.nowDone = async(ctx)=>{
     var data = ctx.request.body;
-    ctx.response.body = await APL.findVolTime(data.nickname);
+    ctx.response.body = await APL.findDoneNum(data.nickname);
 }

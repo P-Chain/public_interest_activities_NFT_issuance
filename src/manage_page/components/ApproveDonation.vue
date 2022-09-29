@@ -35,13 +35,13 @@ export default {
     }
   },
     created(){
-      axios.get('/api/manage_page/donationapplys').then((response)=>{
+      axios.get('/api/manage_page/donapplys').then((response)=>{
           console.log(response.data);
           this.data = response.data;
         console.log('response.data='+response.data);
         for(var i in this.data){
-            this.data[i].html = '대상자: '+this.data[i].username+' / 기부액: '+this.data[i].volTime+' 원 <a target=&apos;_blank&apos; href="../../tmp/uploads/'+this.data[i].volIss+'">파일 보기</a>';
-            this.data[i].value = {index:this.data[i].index, volTime:this.data[i].volTime, nickname:this.data[i].nickname};
+            this.data[i].html = '대상자: '+this.data[i].username+' / 기부액: '+this.data[i].doneNum+' 원 <a target=&apos;_blank&apos; href="../../tmp/uploads/'+this.data[i].doneIss+'">파일 보기</a>';
+            this.data[i].value = {index:this.data[i].index, doneNum:this.data[i].doneNum, nickname:this.data[i].nickname};
         }
         this.options = this.data;
         console.log('this.options='+this.options);
@@ -53,7 +53,7 @@ export default {
     submitApprove(event) {
       console.log(this.selected);
       for(var i in this.selected){
-        axios.post('/api/manage_page/allowapplys',this.selected[i])
+        axios.post('/api/manage_page/allowdonapplys',this.selected[i])
           .then((response)=>{
             console.log(response);
           })
@@ -63,7 +63,7 @@ export default {
     submitRevise(event) {
       console.log(this.selected);
       for(var i in this.selected){
-          axios.post('/api/manage_page/denyapplys',this.selected[i])
+          axios.post('/api/manage_page/denydonapplys',this.selected[i])
             .then((response)=>{
               console.log(response);
             })

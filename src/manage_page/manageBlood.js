@@ -1,42 +1,34 @@
-const MVMS = require('models/vmsManage');
+const MBld = require('models/bloodManage');
 const APL = require('models/AchieveProgressLev');
 
 // 봉사시간 갱신 신청 관리issList
 
-exports.viewIssApply = async (ctx) => {
+exports.viewBldApply = async (ctx) => {
     // 봉사시간 갱신 신청 확인
-    var data = await MISS.viewApply();
+    var data = await MBld.viewApply();
     ctx.response.body = data;
 };
 
-exports.allowIssApply = async (ctx) => {
+exports.allowBldApply = async (ctx) => {
     // 봉사시간 갱신 신청 수락
     var data = ctx.request.body;
     console.log(data);
-    await MISS.allowApply({index:data.index,issNum:data.issNum});
-    if(data.nickname==null){
-        await Ins_Account.AddIssAchieve(data.username, data.issNum);
-    }
-    else{
-        await Account.AddIssAchieve(data.nickname, data.issNum);
-    }
+    await MBld.allowApply({index:data.index,issNum:data.issNum});
+    await APL.BloodUpdate(data.nickname, data.issNum);
+
     ctx.response.body = data;
 };
 
-exports.denyIssApply = async (ctx) => {
+exports.denyBldApply = async (ctx) => {
     // 봉사시간 갱신 신청 거부
     var data = ctx.request.body;
-    await MISS.denyApply(data.index);
+    await MBld.denyApply(data.index);
     ctx.response.body = data;
 };
 
-exports.nowIss = async(ctx)=>{
+exports.nowBld = async(ctx)=>{
     var data = ctx.request.body;
-    if(data.nickname==null){
-        ctx.body = await Ins_Account.findIssList(data.email);
-    }
-    else{
-    ctx.response.body = await Account.findIssList(data.email);
+    ctx.response.body = await APL.findBloodNum(data.email);
 
-    }
+    
 }
