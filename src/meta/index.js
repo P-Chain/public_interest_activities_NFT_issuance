@@ -1,20 +1,16 @@
 const Router = require('koa-router');
+const meta = new Router();
 const MetaMask = require('lib/metamask');
-
-const nft_issue = new Router();
+const OpenSea = require('lib/opensea');
 
 const handler = (ctx, next) => {
     ctx.body = `${ctx.request.method} ${ctx.request.path}`;
 };
 
-nft_issue.get('/getTC', MetaMask.getTC);
+meta.get('/test/:Userid', OpenSea.returnListNFT);
+meta.post('/getTC', MetaMask.getTC);
+meta.delete('/', handler);
+meta.put('/', handler);
+meta.patch('/', handler);
 
-nft_issue.post('/', handler);
-
-nft_issue.delete('/', handler);
-
-nft_issue.put('/', handler);
-
-nft_issue.patch('/', handler);
-
-module.exports = nft_issue;
+module.exports = meta;
