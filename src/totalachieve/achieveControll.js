@@ -18,3 +18,17 @@ exports.viewAchieveList = async(ctx)=>{
     }
     ctx.body = await PA.findAchieveArray(user.nickname);
 }
+
+exports.viewYetList = async(ctx)=>{
+    const { user } = ctx.request;
+
+    if(!user) {
+        ctx.status = 403; // Forbidden
+        return;
+    }
+    var ach = await AT.viewAchieve();
+    var data = await PA.findAchieveArray(user.nickname);
+    var list = data.ProgAchieve;
+    var reslist = [];
+    
+}

@@ -15,6 +15,10 @@ Achieve_total.statics.findAchieveByID = function(Id){
     // 업적 ID 입력해서 해당 업적 정보 불러오기
     return this.findOne({Id}).exec();
 };
+Achieve_total.statics.viewAchieve = function(Id){
+    // 업적 ID 입력해서 해당 업적 정보 불러오기
+    return this.findOne().exec();
+};
 /*
 Achieve_total.statics.findImageByID = function(id){
     // 업적 ID 입력해서 업적 이미지 불러오기
