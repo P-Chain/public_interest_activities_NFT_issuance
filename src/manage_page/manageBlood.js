@@ -21,12 +21,15 @@ exports.allowBldApply = async (ctx) => {
     ctx.response.body = data;
     if(bl == 9){
         await PA.AddProgAchieve(data.nickname, 10, "blood_10", new Date());
+        await APL.AchieveCount(data.nickname);
     }
     if(bl == 49){
         await PA.AddProgAchieve(data.nickname, 11, "blood_50", new Date());
+        await APL.AchieveCount(data.nickname);
     }
     if(bl == 99){
         await PA.AddProgAchieve(data.nickname, 12, "blood_100", new Date());
+        await APL.AchieveCount(data.nickname);
     }
 };
 

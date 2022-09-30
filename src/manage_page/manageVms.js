@@ -19,15 +19,19 @@ exports.allowVmsApply = async (ctx) => {
     ctx.response.body = data;
     if(vs<50&&data.volTime>=50){
         await PA.AddProgAchieve(data.nickname, 0, "vol_50", new Date());
+        await APL.AchieveCount(data.nickname);
     }
     if(vs<100&&data.volTime>=100){
         await PA.AddProgAchieve(data.nickname, 1, "vol_100", new Date());
+        await APL.AchieveCount(data.nickname);
     }
     if(vs<500&&data.volTime>=500){
         await PA.AddProgAchieve(data.nickname, 2, "vol_500", new Date());
+        await APL.AchieveCount(data.nickname);
     }
     if(vs<1000&&data.volTime>=1000){
         await PA.AddProgAchieve(data.nickname, 3, "vol_1000", new Date());
+        await APL.AchieveCount(data.nickname);
     }
 };
 
