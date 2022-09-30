@@ -143,7 +143,7 @@ export default {
         console.log('response.data='+response.data);
         for(var i in this.data){
             this.data[i].html = '발급자: '+this.data[i].username+' / 대상자: '+this.data[i].nickname+' <a target=&apos;_blank&apos; href="../../tmp/uploads/'+this.data[i].nftIss+'">파일 보기</a>';
-            this.data[i].value = {user:this.data[i].nickname, nft:this.data[i].nftName, nftNum:this.data[i].nftNum};
+            this.data[i].value = {user:this.data[i].nickname, nft:this.data[i].nftName, nftNum:this.data[i].nftNum, index:this.data[i].index};
             }
         this.options = this.data;
     }).catch(error => {})

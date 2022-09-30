@@ -1,5 +1,6 @@
 const MBld = require('models/bloodManage');
 const APL = require('models/AchieveProgressLev');
+const PA = require('models/Progressed_achieve');
 
 // 봉사시간 갱신 신청 관리issList
 
@@ -12,11 +13,21 @@ exports.viewBldApply = async (ctx) => {
 exports.allowBldApply = async (ctx) => {
     // 봉사시간 갱신 신청 수락
     var data = ctx.request.body;
+    var bl =  await APL.findBloodNum(data.email);
     console.log(data);
     await MBld.allowApply({index:data.index,issNum:data.issNum});
     await APL.BloodUpdate(data.nickname, data.issNum);
 
     ctx.response.body = data;
+    if(bl == 9){
+        await PA.AddProgAchieve(data.nickname, 10, "blood_10", new Date());
+    }
+    if(bl == 49){
+        await PA.AddProgAchieve(data.nickname, 11, "blood_50", new Date());
+    }
+    if(bl == 99){
+        await PA.AddProgAchieve(data.nickname, 12, "blood_100", new Date());
+    }
 };
 
 exports.denyBldApply = async (ctx) => {

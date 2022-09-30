@@ -9,7 +9,7 @@ const router = new Router();
 const mongoose = require('mongoose');
 const bodyParser = require('koa-bodyparser');
 const { jwtMiddleware } = require('lib/token');
-const cors = require('@koa/cors');
+
 
 mongoose.Promise = global.Promise; // use node native Promise
 // connect mongoDB
@@ -59,11 +59,7 @@ const upload = multer({
     storage: storage
 })
 
-app.use(cors({
-  origin: process.env.SITE,
-  credentials: true, 
-  exposeHeaders: ['page-count']
-}));
+
 app.proxy = true
 app.use(bodyParser()); // have to be upward of router
 app.use(jwtMiddleware); // apply middleware
