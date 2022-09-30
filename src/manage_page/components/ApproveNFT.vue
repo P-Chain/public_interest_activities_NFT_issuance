@@ -59,60 +59,77 @@ export default {
           .catch(error => {
             console.log('axios get wallet img error');
           })
-
+          var arrdata;
       // 해당 NFT 이미지 불러오는 작업 필요
-        await axios.get("/api/image/getImage/"+this.selected[i].nft+".png",{
-      responseType: "arraybuffer"
-    })
+        await axios.get("/api/image/getImage/"+this.selected[i].nft+".png",{responseType: "arraybuffer"})
           .then(response => {
-            console.log(response)
+            console.log(response.data)
             const blob = new Blob(new Uint8Array(response.data), {type: 'image/png'});
+//            console.log(blob);
+//            var a = URL.createObjectURL(blob);
+//            console.log(a);
+//            NFTimage.image = a;
+//            console.log(NFTimage.image);
+//            NFTimage.index = this.selected[i].nftNum; // 업적 종류(이미지 합성 좌표 지정에 쓰임)
+//          })
+//          .catch(error => {
+//            console.log(error);
+//            console.log('axios get nft img error');
+            console.log(response.data);
             console.log(blob);
-            var a = URL.createObjectURL(blob);
+            NFTimage.image = blob;
+          })
+          var a = URL.createObjectURL(NFTimage.image);
             console.log(a);
-            NFTimage.image = a;
-            console.log(NFTimage.image);
-            NFTimage.index = this.selected[i].nftNum; // 업적 종류(이미지 합성 좌표 지정에 쓰임)
-          })
-          .catch(error => {
-            console.log(error);
-            console.log('axios get nft img error');
-          })
 //          NFTimage.image = "http://localhost:8080/api/image/getImage/"+this.selected[i].nft+".png"
 //          console.log(NFTimage.image);
 //          NFTimage.index = this.selected[i].nftNum
 
       // if 문으로 업적 종류마다 지갑 이미지 합성 좌표를 다르게 지정해야 함
+          console.log(NFTimage.image);
+          console.log(walletImg);
         reader1.readAsDataURL(NFTimage.image);
+          console.log(reader1);
         reader1.onload = () => {
-          console.log('reader1 onload executed')
+          console.log('reader1 onload executed');
           var tempImage1 = new Image(); //drawImage 메서드에 넣기 위해 이미지 객체화
           tempImage1.src = reader1.result; //data-uri를 이미지 객체에 주입
+            console.log(tempImage1.src);
           tempImage1.onload = () => {
               //이미지를 캔버스에 그리기
             console.log('tempimg1 onload executed')
             this.context.drawImage(tempImage1, 0, 0, 500, 500); // 대상, (시작지점, 시작지점), (사진 크기, 사진 크기)
           }
-          // FileReader 사용
-          reader2.readAsDataURL(walletImg);
-          reader2.onload = () => {
-            console.log('reader2 onload executed')
-            var tempImage2 = new Image(); //drawImage 메서드에 넣기 위해 이미지 객체화
-            tempImage2.src = reader2.result; //data-uri를 이미지 객체에 주입
+          var tempImage2 = new Image(); //drawImage 메서드에 넣기 위해 이미지 객체화
+            tempImage2.src = walletImg; //data-uri를 이미지 객체에 주입
+              console.log(tempImage2.src);
             tempImage2.onload = () => {
                 //이미지를 캔버스에 그리기
               var startx = 100, starty = 100, xvalue = 150, yvalue = 150;  
               console.log('tempimg2 onload executed')
-              // if (NFTimage.index === 0) {startx = ;starty = ;xvalue = ;yvalue = ;}
-              // else if (NFTimage.index === 1) {}
-              // else if (NFTimage.index === 2) {}
-
-              this.context.drawImage(tempImage2, startx, starty, xvalue, yvalue); // 대상, (시작지점, 시작지점), (사진 크기, 사진 크기)
-              console.log(this.canvas.toDataURL("image/png"));
+          // FileReader 사용
+          //reader2.readAsDataURL(walletImg);
+          //reader2.get
+          //reader2.result = walletImg;
+//          reader2.onload = () => {
+//            console.log('reader2 onload executed')
+//            var tempImage2 = new Image(); //drawImage 메서드에 넣기 위해 이미지 객체화
+//            tempImage2.src = walletImg; //data-uri를 이미지 객체에 주입
+//              console.log(tempImage2.src);
+//            tempImage2.onload = () => {
+//                //이미지를 캔버스에 그리기
+//              var startx = 100, starty = 100, xvalue = 150, yvalue = 150;  
+//              console.log('tempimg2 onload executed')
+//              // if (NFTimage.index === 0) {startx = ;starty = ;xvalue = ;yvalue = ;}
+//              // else if (NFTimage.index === 1) {}
+//              // else if (NFTimage.index === 2) {}
+//
+//              this.context.drawImage(tempImage2, startx, starty, xvalue, yvalue); // 대상, (시작지점, 시작지점), (사진 크기, 사진 크기)
+//              console.log(this.canvas.toDataURL("image/png"));
             }
           }
         }
-      }
+      
     },
     submitRevise(event) {
     // 신청 DB에서 해당 목록 제거

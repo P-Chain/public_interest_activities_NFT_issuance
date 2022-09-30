@@ -71,9 +71,9 @@ Account.statics.userSearch = function(){
     return this.find({"nickname":{$gt: 0}},{"nickname": true, "profile.username": true}).exec();
 };
 
-Account.statics.findByUsername = function(username) {
+Account.statics.findByNickname = function(nickname) {
     // 객체에 내장되어있는 값을 사용할 때는 객체명.키
-    return this.findOne({'profile.username': username}).exec();
+    return this.findOne({nickname}).exec();
 };
 
 Account.statics.findByEmail = function(email) {

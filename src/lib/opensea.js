@@ -11,7 +11,7 @@ const image_original_url = "image_original_url";
 exports.returnListNFT = async (ctx) => {
     const { Userid } = ctx.params;
     console.log(Userid);
-    let account = await (Account.findByUsername(Userid));
+    let account = await Account.findByNickname(Userid);
     let url = "https://testnets-api.opensea.io/api/v1/assets?owner=" 
         + account.walletAddress + "&offset=0&include_orders=false";
     

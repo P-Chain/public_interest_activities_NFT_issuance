@@ -17,7 +17,7 @@ var web3 = new Web3(node_host); // 소문자 web3
 const send_account = "0xC14656C3e35e0f53095021958e74e909D14C413C"; // Account1 account
 const receive_account = "0x39b4a18A7435eF1ED5ecbb8bdc28970e62FF524e"; // transactionBody account
 
-const privateKeyBuffer = Buffer.from(private_key, "hex")
+//const privateKeyBuffer = Buffer.from(private_key, "hex")
 
 exports.getTC = async (ctx) => {
     var bodyString = '';

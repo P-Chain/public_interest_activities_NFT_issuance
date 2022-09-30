@@ -17,9 +17,11 @@
     "@koa/multer": "^3.0.0",
     "bootstrap": "^5.2.0",
     "bootstrap-vue": "^2.22.0",
+    "command-line-args": "^5.2.1",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
     "dotenv": "^16.0.1",
+    "ethereumjs-tx": "^2.1.2",
     "fs": "^0.0.1-security",
     "joi": "^17.6.0",
     "jsonwebtoken": "^8.5.1",
@@ -35,6 +37,7 @@
     "vue-router": "^3.0.1",
     "vuex": "^3.6.2",
     "vuex-persistedstate": "^4.1.0",
+    "web3": "^1.8.0",
     "yarn": "^1.22.19"
   },
   "browserslist": [
@@ -48,12 +51,12 @@
     "babel-preset-env": "^1.6.0",
     "babel-preset-stage-3": "^6.24.1",
     "css-loader": "^0.28.7",
+    "eslint": "^8.20.0",
+    "eslint-plugin-vue": "^9.2.0",
     "file-loader": "^1.1.4",
     "vue-loader": "^13.0.5",
     "vue-template-compiler": "^2.4.4",
     "webpack": "^3.6.0",
-    "webpack-dev-server": "^2.9.1",
-    "eslint": "^8.20.0",
-    "eslint-plugin-vue": "^9.2.0"
+    "webpack-dev-server": "^2.9.1"
   }
 }

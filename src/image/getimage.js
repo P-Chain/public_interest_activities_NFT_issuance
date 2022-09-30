@@ -1,6 +1,6 @@
 const fs = require('fs').promises;
 var mime = require('mime');
-const buffer = require('buffer');
+const {Blob} = require('buffer');
 
 // 업적 불러오기
 
@@ -12,5 +12,5 @@ exports.getimage = async (ctx) => {
     var ret = await fs.readFile('./src/assets/achieves/'+key);
     console.log(ret);
     ctx.body = ret;
-    console.log(ctx.type);
+    console.log(ctx.body);
 }

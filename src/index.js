@@ -41,7 +41,8 @@ const vms_ins = require('./vms_ins');
 const progress = require('./progress');
 const image = require('./image');
 const notice = require('./notice');
-const totalachieve = require('./totalachieve')
+const totalachieve = require('./totalachieve');
+const meta = require('./meta');
 const DB_test = require('./DB_Test');
 
 const multer = require('@koa/multer');
@@ -100,7 +101,8 @@ router.use('/api/vms_ins', vms_ins.routes());
 router.use('/api/progress', progress.routes());
 router.use('/api/image', image.routes());
 router.use('/api/notice', notice.routes());
-router.use('/api/achieve', totalachieve.routes())
+router.use('/api/achieve', totalachieve.routes());
+router.use('/api/meta', meta.routes());
 router.use('/DB_test', DB_test.routes());
 
 app.use(router.routes()).use(router.allowedMethods());
