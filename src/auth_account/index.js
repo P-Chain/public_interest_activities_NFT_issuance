@@ -17,5 +17,6 @@ auth_account.get('/ins/check', authCtrl.check);
 
 auth_account.post('/changepass', authCtrl.changePass);
 auth_account.post('/changewall', authCtrl.changeWallet);
+auth_account.post('/getwallimg', authCtrl.getWalletImg);
 
 module.exports = auth_account;

@@ -226,3 +226,10 @@ exports.changeWallet = async(ctx)=>{
     ctx.body = await Account.changeWalletAddr(data.email,data.wallet,data.walletimage);
     
 }
+
+exports.getWalletImg = async(ctx)=>{
+    var data = ctx.request.body;
+    ctx.body = await Account.getWalletImg(data.nickname);
+    
+}
+

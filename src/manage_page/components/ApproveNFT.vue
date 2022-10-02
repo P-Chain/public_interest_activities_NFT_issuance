@@ -44,16 +44,16 @@ export default {
   methods: {
     async submitApprove(event) {
       var walletImg = null;
-      var NFTimage = null;
+      var NFTimage = {image:'',nftNum:0};
       var reader1 = new FileReader();
       var reader2 = new FileReader();
       for (var i in this.selected) {
       // 해당 유저의 DB에서 지갑 이미지를 불러오는 작업 필요
-        await axios.get("/", { 
-          nickname: this.selected[i].value.user
+        await axios.post("/api/auth_account/getwallimg", { 
+          nickname: this.selected[i].user
           })
           .then(response => {
-            walletImg = response.data.walletImg;
+            walletImg = response.data.walletImage;
             console.log('walletImg='+walletImg);
           })
           .catch(error => {
@@ -61,14 +61,26 @@ export default {
           })
 
       // 해당 NFT 이미지 불러오는 작업 필요
-        await axios.get("/api/image/getImage")
+        await axios.get("/api/image/getImage/"+this.selected[i].nft+".png",{
+      responseType: "arraybuffer"
+    })
           .then(response => {
-            NFTimage.image = response.data.image;
-            NFTimage.index = response.data.index; // 업적 종류(이미지 합성 좌표 지정에 쓰임)
+            console.log(response)
+            const blob = new Blob(new Uint8Array(response.data), {type: 'image/png'});
+            console.log(blob);
+            var a = URL.createObjectURL(blob);
+            console.log(a);
+            NFTimage.image = a;
+            console.log(NFTimage.image);
+            NFTimage.index = this.selected[i].nftNum; // 업적 종류(이미지 합성 좌표 지정에 쓰임)
           })
           .catch(error => {
+            console.log(error);
             console.log('axios get nft img error');
           })
+//          NFTimage.image = "http://localhost:8080/api/image/getImage/"+this.selected[i].nft+".png"
+//          console.log(NFTimage.image);
+//          NFTimage.index = this.selected[i].nftNum
 
       // if 문으로 업적 종류마다 지갑 이미지 합성 좌표를 다르게 지정해야 함
         reader1.readAsDataURL(NFTimage.image);
@@ -108,7 +120,16 @@ export default {
   },
   created() {
   // NFT 발급 신청목록을 DB 불러오는 작업 필요
-    axios.get("/").then(response => {}).catch(error => {})
+    axios.get("/api/manage_page/nftapplys").then(response => {
+        console.log(response.data);
+          this.data = response.data;
+        console.log('response.data='+response.data);
+        for(var i in this.data){
+            this.data[i].html = '발급자: '+this.data[i].username+' / 대상자: '+this.data[i].nickname+' <a target=&apos;_blank&apos; href="../../tmp/uploads/'+this.data[i].nftIss+'">파일 보기</a>';
+            this.data[i].value = {user:this.data[i].nickname, nft:this.data[i].nftName, nftNum:this.data[i].nftNum};
+            }
+        this.options = this.data;
+    }).catch(error => {})
   
   // canvas 인스턴스 실행
     this.canvas = document.createElement('canvas');
