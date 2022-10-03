@@ -16,7 +16,6 @@ exports.allowVmsApply = async (ctx) => {
     var vs = await APL.findVolTime(data.nickname);
     await MVMS.allowApply({index:data.index,volTime:data.volTime});
     await APL.VolTimeUpdate(data.nickname, data.volTime);
-    ctx.response.body = data;
     if(vs<50&&data.volTime>=50){
         await PA.AddProgAchieve(data.nickname, 0, "vol_50", new Date());
         await APL.AchieveCount(data.nickname);
@@ -33,6 +32,7 @@ exports.allowVmsApply = async (ctx) => {
         await PA.AddProgAchieve(data.nickname, 3, "vol_1000", new Date());
         await APL.AchieveCount(data.nickname);
     }
+    ctx.response.body = data;
 };
 
 exports.denyVmsApply = async (ctx) => {

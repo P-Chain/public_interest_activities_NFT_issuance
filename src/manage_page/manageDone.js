@@ -19,12 +19,15 @@ exports.allowDoneApply = async (ctx) => {
     ctx.response.body = data;
     if(vs<100000&&data.don+doneNum>=100000){
         await PA.AddProgAchieve(data.nickname, 4, "don_100k", new Date());
+        await APL.AchieveCount(data.nickname);
     }
     if(vs<1000000&&data.don+doneNum>=1000000){
         await PA.AddProgAchieve(data.nickname, 5, "don_1m", new Date());
+        await APL.AchieveCount(data.nickname);
     }
     if(vs<10000000&&data.don+doneNum>=10000000){
         await PA.AddProgAchieve(data.nickname, 6, "don_10m", new Date());
+        await APL.AchieveCount(data.nickname);
     }
 };
 
