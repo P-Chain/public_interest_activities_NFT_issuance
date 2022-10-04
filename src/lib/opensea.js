@@ -38,6 +38,8 @@ exports.returnListNFT = async (ctx) => {
             // console.log("creator : ", wallet[nft]["creator"]["address"]);
             // console.log(JSON.parse('{ "img" : "' + wallet[nft][image_url] + '" }'));
             if (wallet[nft]["creator"] != null){
+            // if (wallet[nft]["creator"]["user"]["username"] != null){
+                
                 // if (wallet[nft]["creator"]["address"] == "0xbc19ffef966bff35cb0fee54741fef4f1a33662a"){
                 //     nft_list.push(JSON.parse('{ "img" : "' + wallet[nft][image_url] + '" }'));
                 //     console.log("creator : ", wallet[nft]["creator"]["address"]);
@@ -47,12 +49,12 @@ exports.returnListNFT = async (ctx) => {
                 //     nft_list.push(JSON.parse('{ "img" : "' + wallet[nft][image_url] + '" }'));
                 //     console.log("creator : ", wallet[nft]["creator"]["address"]);
                 // }
-                nft_list.push(JSON.parse('{ "img" : "' + wallet[nft][image_url] + '" }'));
+                // console.log(wallet[nft]);
+                nft_list.push(JSON.parse('{ "img" : "' + wallet[nft][image_url] + '", "creator" : "' + wallet[nft]["creator"]["user"]["username"] + '" }'));
             }
         }                
         console.log(nft_list);
-        ctx.body = nft_list;
-        ctx.status = 200;
+        return nft_list;
     });
     // const temp = new Promise((resolve, reject) => {
     //     try{
