@@ -51,11 +51,11 @@ export default {
       ],
     }
   },
-  // created(){
-  //   axios.get("/").then(response =>{
-  //       console.log(response);
-  //   })
-  // }
+   created(){
+     axios.get("/api/achieve/achlist").then(response =>{
+         console.log(response);
+     })
+   }
 }
 </script>
 
