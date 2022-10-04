@@ -128,7 +128,7 @@ export default {
 //              console.log(this.canvas.toDataURL("image/png"));
 //            }
 //          }
-        }
+        
       
     },
     submitRevise(event) {

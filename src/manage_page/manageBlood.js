@@ -19,15 +19,15 @@ exports.allowBldApply = async (ctx) => {
     await APL.BloodUpdate(data.nickname, data.issNum);
 
     ctx.response.body = data;
-    if(bl == 9){
+    if(bl.bloodNum == 9){
         await PA.AddProgAchieve(data.nickname, 10, "blood_10", new Date());
         await APL.AchieveCount(data.nickname);
     }
-    if(bl == 49){
+    if(bl.bloodNum == 49){
         await PA.AddProgAchieve(data.nickname, 11, "blood_50", new Date());
         await APL.AchieveCount(data.nickname);
     }
-    if(bl == 99){
+    if(bl.bloodNum == 99){
         await PA.AddProgAchieve(data.nickname, 12, "blood_100", new Date());
         await APL.AchieveCount(data.nickname);
     }

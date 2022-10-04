@@ -22,6 +22,9 @@ Progressed_achieve.statics.findAchieveArray = function(nickname){
 };
 Progressed_achieve.statics.AddProgAchieve = function(nickname, IdAch, NameAch, DateAch){
     // 사용자 달성 업적 추가
+    console.log(IdAch);
+    console.log(NameAch);
+    console.log(DateAch);
     this.updateOne({nickname},{$push: {ProgAchieve: {idAch:IdAch, nameAch:NameAch, dateAch:DateAch}}}).exec();
     
 };

@@ -37,7 +37,8 @@ exports.nowIss = async(ctx)=>{
         ctx.body = await Ins_Account.findIssList(data.email);
     }
     else{
+        
     ctx.response.body = await Account.findIssList(data.email);
-
+        console.log(ctx.response.body);
     }
 }

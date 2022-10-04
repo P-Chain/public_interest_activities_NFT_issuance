@@ -10,6 +10,8 @@ exports.loadachieve = async (ctx) => {
         return;
     }
     ctx.body = {profile: user.profile, issuer: user.isIssuer, manager: user.isManager, nickname: user.nickname};
+    console.log(ctx.body);
     var data = await PA.findAchieveArray(user.nickname);
+    console.log(data);
     ctx.body = data;
 }

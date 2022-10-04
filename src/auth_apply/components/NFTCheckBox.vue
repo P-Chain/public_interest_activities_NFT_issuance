@@ -99,7 +99,7 @@ export default {
           for(var i in response.data.issList){
               if(response.data.issList[i]==this.selected[0].id){
                   alert("이미 허가된 권한!");
-                  location.href = '/mypage';
+                  //location.href = '/mypage';
               }
           }
             

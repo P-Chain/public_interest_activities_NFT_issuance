@@ -203,6 +203,7 @@ export default {
   created() {
     var data = axios.get("/api/progress/viewachieve").then((response) => {
       this.list = response.data.ProgAchieve;
+        console.log(this.list);
       for (var i in this.list) {
         this.imglist.splice(i, 1, this.list[i].imgAch);
         console.log(this.imglist);

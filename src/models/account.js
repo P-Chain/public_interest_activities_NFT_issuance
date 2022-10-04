@@ -51,7 +51,8 @@ Account.statics.getWalletImg = function(nickname){
 
 Account.statics.findIssList = function(email) {
     // 객체에 내장되어있는 값을 사용할 때는 객체명.키
-    return this.findOne({'profile.email':email},{issList:true}).exec();
+    console.log(email);
+    return this.findOne({'email':email}).exec();
 };
 
 Account.statics.changePassword = function(email, password){
