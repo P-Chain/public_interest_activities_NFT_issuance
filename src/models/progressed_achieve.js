@@ -25,7 +25,7 @@ Progressed_achieve.statics.AddProgAchieve = function(nickname, IdAch, NameAch, D
     console.log(IdAch);
     console.log(NameAch);
     console.log(DateAch);
-    this.updateOne({nickname},{$push: {ProgAchieve: {idAch:IdAch, nameAch:NameAch, dateAch:DateAch}}}).exec();
+    this.updateOne({nickname},{$push: {ProgAchieve: {idAch:IdAch, nameAch:NameAch, dateAch:DateAch,imgAch:NameAch+".png"}}}).exec();
     
 };
 
