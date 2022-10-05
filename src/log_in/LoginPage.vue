@@ -23,8 +23,9 @@ export default {
   align-items: center;
   justify-content: center;
   display: flex;
-  height: 100vh;
+  height: 50rem;
   background-image: url('../assets/background.jpg');
+  background-size: 100%;
 }
 
 .login-container {

@@ -45,9 +45,9 @@ export default {
         }
       ],
       items: [
-        { image: require("../../../assets/background.jpg"), name: '업적1', text: '업적 설명', achievedTime: '시간1' },
-        { image: require("../../../assets/googleIcon.png"), name: '업적2', text: '업적 설명', achievedTime: '시간2' },
-        { image: require("../../../assets/facebookIcon.png"), name: '업적3', text: '업적 설명', achievedTime: '시간3' },
+        // { image: require("../../../assets/background.jpg"), name: '업적1', text: '업적 설명', achievedTime: '시간1' },
+        // { image: require("../../../assets/googleIcon.png"), name: '업적2', text: '업적 설명', achievedTime: '시간2' },
+        // { image: require("../../../assets/facebookIcon.png"), name: '업적3', text: '업적 설명', achievedTime: '시간3' },
       ],
     }
   },

@@ -1,5 +1,5 @@
 <template>
-  <b-card>
+  <b-card class="main-card">
     <h4 class="card-title">
       랭킹
       <span class="text-right">
@@ -129,6 +129,9 @@ export default {
 <style scoped>
 .progress {
   margin-bottom: 1rem;
+}
+.main-card {
+  border: 1px solid lightblue;
 }
 
 </style>

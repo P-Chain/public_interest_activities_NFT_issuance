@@ -17,13 +17,10 @@ export default {
   data() {
     return {
       noticeData: { 
-        index: 1, 
-        title: '제목제목', 
-        date: '2022-08-15', 
-        word: `게시글 생성 부터 진행해보도록 하겠습니다.
-                BoardList.vue 에서 등록 버튼을 누르면 fnWrite 함수를 호출하도록 작업했습니다.
-                vue-router에서 생성 화면으로 연결하고 저장까지 진행해보겠습니다.
-                router/index.js에 먼저 write로 이동할 수 있게 추가합니다.` 
+        index: 0, 
+        title: '', 
+        date: '', 
+        word: `` 
     }
     }
   },

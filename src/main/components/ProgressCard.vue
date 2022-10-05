@@ -1,5 +1,5 @@
 <template>
-  <b-card>
+  <b-card class="main-card">
     <h4 class="card-title">
       달성 업적
       <span class="text-right" v-if="token">
@@ -165,14 +165,14 @@
 export default {
   data() {
     return {
-      value1: 33,
-      max1: 50,
-      value2: 3,
-      max2: 100000,
-      value3: 8,
-      max3: 10,
-        value4: 8,
-      max4: 10,
+      value1: 0,
+      max1: 0,
+      value2: 0,
+      max2: 0,
+      value3: 0,
+      max3: 0,
+      value4: 0,
+      max4: 0,
       list: [],
       imglist: [
         "blank.png",
@@ -196,7 +196,8 @@ export default {
       prog1: "봉사시간",
       prog2: "기부액",
       prog3: "헌혈",
-        prog4: "NFT보유",
+      prog4: "NFT보유",
+
       mainProps: { blank: true, width: 75, height: 75, class: "m1" },
     };
   },
@@ -269,5 +270,8 @@ export default {
   width: 5rem;
   height: 5rem;
   border: 1px solid black;
+}
+.main-card {
+  border: 1px solid lightblue;
 }
 </style>

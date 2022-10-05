@@ -59,9 +59,9 @@ export default {
         text3: '업적5'
       },
       card2: {
-        img1: require("../../assets/background.jpg"),
-        img2: require("../../assets/googleIcon.png"),
-        img3: require("../../assets/facebookIcon.png"),
+        // img1: require("../../assets/background.jpg"),
+        // img2: require("../../assets/googleIcon.png"),
+        // img3: require("../../assets/facebookIcon.png"),
       },
       card3: {
         text1: '업적2',

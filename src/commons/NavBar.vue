@@ -1,11 +1,13 @@
 <template>
-  <!-- v-if:*** for debug -->
-  <b-navbar toggleable="sm" type="light" variant="light">
-      <b-navbar-brand href="/">P-chain</b-navbar-brand>
+  <b-navbar toggleable="sm">
+    <router-link to="/">
+      <b-navbar-brand href="/">
+        <img src="../assets/main-brand.png" class="navbar-brand-img" alt="P-chain"/>
+      </b-navbar-brand>
+    </router-link>
+
     <b-navbar-toggle target="nav-collapse">
-        <template>
-        <b-icon icon="three-dots-vertical" animation="cylon-vertical" font-scale="1"></b-icon>
-      </template>
+      <b-icon icon="three-dots-vertical" animation="cylon-vertical" font-scale="1"></b-icon>
     </b-navbar-toggle>
 
     <b-collapse id="nav-collapse" is-nav>
@@ -16,7 +18,7 @@
       </b-navbar-nav>
 
       <b-navbar-nav v-else>
-        <b-nav-item>{{ name }}</b-nav-item>
+        <b-nav-item disabled>{{ name }}</b-nav-item>
         <b-nav-item @click="logout">로그아웃</b-nav-item>
         <router-link to="/mypage">
           <b-nav-item href="/">마이페이지</b-nav-item>
@@ -31,7 +33,6 @@
         </router-link>
       </b-navbar-nav>
     </b-collapse>
-
     <!-- for debug -->
     <!-- <b-button variant="primary" @click="onChange">로그인 전환</b-button>
     <b-button variant="secondary" @click="onPlus">계정 권한 전환</b-button> -->
@@ -117,4 +118,13 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.navbar-brand-img {
+  width: 6.4rem;
+  height: 2.4rem;
+}
+#nav-collapse {
+  color: black;
+  font-weight: 900;
+}
+</style>

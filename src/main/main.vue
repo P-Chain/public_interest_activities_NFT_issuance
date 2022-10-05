@@ -1,27 +1,36 @@
 <!-- 메인 페이지 -->
 <template>
   <div class="contents">
+    <intro></intro>
     <notice-card></notice-card>
     <ranking-card></ranking-card>
     <progress-card></progress-card>
-    <community-card></community-card>
+    <!-- <community-card></community-card> -->
   </div>
 </template>
 
 <script>
+import Introduce from "./components/Introduce.vue"
 import NoticeCard from "./components/NoticeCard.vue";
 import RankingCard from "./components/RankingCard.vue";
 import ProgressCard from "./components/ProgressCard.vue";
-import CommunityCard from "./components/CommunityCard.vue";
+// import CommunityCard from "./components/CommunityCard.vue";
 
 export default {
   components: {
+    "intro": Introduce,
     "notice-card": NoticeCard,
     "ranking-card": RankingCard,
     "progress-card": ProgressCard,
-    "community-card": CommunityCard,
+    // "community-card": CommunityCard,
   },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.main-card {
+  border: 1px solid lightgreen;
+  background-color: #fdfdfd;
+  margin-bottom: 1rem;
+}
+</style>
