@@ -66,13 +66,13 @@ export default {
         await axios.get("/api/image/getImage/"+this.selected[i].nft+".png",{responseType: "arraybuffer"})
           .then(response => {
             console.log(response.data)
-            const blob = new Blob(response.data, {type: 'image/png'});
+            const blob = new Blob([response.data], {type: 'image/png'});
 //            console.log(blob);
 //            var a = URL.createObjectURL(blob);
 //            console.log(a);
 //            NFTimage.image = a;
 //            console.log(NFTimage.image);
-//            NFTimage.index = this.selected[i].nftNum; // 업적 종류(이미지 합성 좌표 지정에 쓰임)
+            NFTimage.index = this.selected[i].nftNum; // 업적 종류(이미지 합성 좌표 지정에 쓰임)
 //          })
 //          .catch(error => {
 //            console.log(error);
@@ -88,49 +88,60 @@ export default {
 //          NFTimage.index = this.selected[i].nftNum
 
 //      // if 문으로 업적 종류마다 지갑 이미지 합성 좌표를 다르게 지정해야 함
-//          console.log(NFTimage.image);
-//          console.log(walletImg);
-//        reader1.readAsDataURL(NFTimage.image);
-//          console.log(reader1);
-//        reader1.onload = () => {
-//          console.log('reader1 onload executed');
-//          var tempImage1 = new Image(); //drawImage 메서드에 넣기 위해 이미지 객체화
-//          tempImage1.src = reader1.result; //data-uri를 이미지 객체에 주입
-//            console.log(tempImage1.src);
-//          tempImage1.onload = () => {
-//              //이미지를 캔버스에 그리기
-//            console.log('tempimg1 onload executed')
-//            this.context.drawImage(tempImage1, 0, 0, 500, 500); // 대상, (시작지점, 시작지점), (사진 크기, 사진 크기)
-//          }
-//          var tempImage2 = new Image(); //drawImage 메서드에 넣기 위해 이미지 객체화
-//            tempImage2.src = walletImg; //data-uri를 이미지 객체에 주입
-//              console.log(tempImage2.src);
-//            tempImage2.onload = () => {
-//                //이미지를 캔버스에 그리기
-//              var startx = 100, starty = 100, xvalue = 150, yvalue = 150;  
-//              console.log('tempimg2 onload executed')
-          // FileReader 사용
-          //reader2.readAsDataURL(walletImg);
-          //reader2.get
-          //reader2.result = walletImg;
-//          reader2.onload = () => {
-//            console.log('reader2 onload executed')
-//            var tempImage2 = new Image(); //drawImage 메서드에 넣기 위해 이미지 객체화
-//            tempImage2.src = walletImg; //data-uri를 이미지 객체에 주입
-//              console.log(tempImage2.src);
-//            tempImage2.onload = () => {
-//                //이미지를 캔버스에 그리기
-//              var startx = 100, starty = 100, xvalue = 150, yvalue = 150;  
-//              console.log('tempimg2 onload executed')
-//              // if (NFTimage.index === 0) {startx = ;starty = ;xvalue = ;yvalue = ;}
-//              // else if (NFTimage.index === 1) {}
-//              // else if (NFTimage.index === 2) {}
-//
-//              this.context.drawImage(tempImage2, startx, starty, xvalue, yvalue); // 대상, (시작지점, 시작지점), (사진 크기, 사진 크기)
-//              console.log(this.canvas.toDataURL("image/png"));
-//            }
+          console.log(NFTimage.image);
+          console.log(walletImg);
+        reader1.readAsDataURL(NFTimage.image);
+          console.log(reader1);
+        reader1.onload = () => {
+          console.log('reader1 onload executed');
+          var tempImage1 = new Image(); //drawImage 메서드에 넣기 위해 이미지 객체화
+          tempImage1.src = reader1.result; //data-uri를 이미지 객체에 주입
+            console.log(tempImage1.src);
+          tempImage1.onload = () => {
+              //이미지를 캔버스에 그리기
+            console.log('tempimg1 onload executed')
+            this.context.drawImage(tempImage1, 0, 0, 500, 500); // 대상, (시작지점, 시작지점), (사진 크기, 사진 크기)
           }
-        
+           //FileReader 사용
+            var byteString = atob(walletImg.split(',')[1]);
+
+  // separate out the mime component
+  var mimeString = walletImg.split(',')[0].split(':')[1].split(';')[0]
+
+  // write the bytes of the string to an ArrayBuffer
+  var ab = new ArrayBuffer(byteString.length);
+
+  // create a view into the buffer
+  var ia = new Uint8Array(ab);
+
+  // set the bytes of the buffer to the correct values
+  for (var i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i);
+  }
+
+  // write the ArrayBuffer to a blob, and you're done
+  var blob = new Blob([ab], {type: mimeString});
+          reader2.readAsDataURL(blob);
+
+  //        reader2.result = walletImg;
+          reader2.onload = () => {
+            console.log('reader2 onload executed')
+            var tempImage2 = new Image(); //drawImage 메서드에 넣기 위해 이미지 객체화
+            tempImage2.src = walletImg; //data-uri를 이미지 객체에 주입
+              console.log(tempImage2.src);
+            tempImage2.onload = () => {
+                //이미지를 캔버스에 그리기
+              var startx = 0, starty = 0, xvalue = 150, yvalue = 150;  
+              console.log('tempimg2 onload executed')
+              // if (NFTimage.index === 0) {startx = ;starty = ;xvalue = ;yvalue = ;}
+              // else if (NFTimage.index === 1) {}
+              // else if (NFTimage.index === 2) {}
+
+              this.context.drawImage(tempImage2, startx, starty, xvalue, yvalue); // 대상, (시작지점, 시작지점), (사진 크기, 사진 크기)
+              console.log(this.canvas.toDataURL("image/png"));
+            }
+          }
+            }}
       
     },
     submitRevise(event) {
