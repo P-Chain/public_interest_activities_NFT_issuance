@@ -52,8 +52,17 @@ export default {
     }
   },
    created(){
-     axios.get("/api/achieve/achlist").then(response =>{
+       var list;
+     axios.get("/api/progress/viewachieve").then(response =>{
          console.log(response);
+         list = response.data.ProgAchieve;
+         for(var i in list){
+             list[i].image = "/api/image/getimage/"+list[i].imgAch;
+             list[i].name = list[i].nameAch;
+             list[i].text = list[i].nameAch;
+             list[i].achievedTime = list[i].dateAch;
+         }
+         this.items = list;
      })
    }
 }

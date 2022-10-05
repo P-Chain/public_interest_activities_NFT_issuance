@@ -47,44 +47,46 @@ export default {
       var NFTimage = {image:'',nftNum:0};
       var reader1 = new FileReader();
       var reader2 = new FileReader();
-//      for (var i in this.selected) {
-//      // 해당 유저의 DB에서 지갑 이미지를 불러오는 작업 필요
-//        await axios.post("/api/auth_account/getwallimg", { 
-//          nickname: this.selected[i].user
-//          })
-//          .then(response => {
-//            walletImg = response.data.walletImage;
-//            console.log('walletImg='+walletImg);
+        
+        
+      for (var i in this.selected) {
+      // 해당 유저의 DB에서 지갑 이미지를 불러오는 작업 필요
+        await axios.post("/api/auth_account/getwallimg", { 
+          nickname: this.selected[i].user
+          })
+          .then(response => {
+            walletImg = response.data.walletImage;
+            console.log('walletImg='+walletImg);
+          })
+          .catch(error => {
+            console.log('axios get wallet img error');
+          })
+          var arrdata;
+      // 해당 NFT 이미지 불러오는 작업 필요
+        await axios.get("/api/image/getImage/"+this.selected[i].nft+".png",{responseType: "arraybuffer"})
+          .then(response => {
+            console.log(response.data)
+            const blob = new Blob(response.data, {type: 'image/png'});
+//            console.log(blob);
+//            var a = URL.createObjectURL(blob);
+//            console.log(a);
+//            NFTimage.image = a;
+//            console.log(NFTimage.image);
+//            NFTimage.index = this.selected[i].nftNum; // 업적 종류(이미지 합성 좌표 지정에 쓰임)
 //          })
 //          .catch(error => {
-//            console.log('axios get wallet img error');
-//          })
-//          var arrdata;
-//      // 해당 NFT 이미지 불러오는 작업 필요
-//        await axios.get("/api/image/getImage/"+this.selected[i].nft+".png",{responseType: "arraybuffer"})
-//          .then(response => {
-//            console.log(response.data)
-//            const blob = new Blob(new Uint8Array(response.data), {type: 'image/png'});
-////            console.log(blob);
-////            var a = URL.createObjectURL(blob);
-////            console.log(a);
-////            NFTimage.image = a;
-////            console.log(NFTimage.image);
-////            NFTimage.index = this.selected[i].nftNum; // 업적 종류(이미지 합성 좌표 지정에 쓰임)
-////          })
-////          .catch(error => {
-////            console.log(error);
-////            console.log('axios get nft img error');
-//            console.log(response.data);
-//            console.log(blob);
-//            NFTimage.image = blob;
-//          })
-//          var a = URL.createObjectURL(NFTimage.image);
-//            console.log(a);
-////          NFTimage.image = "http://localhost:8080/api/image/getImage/"+this.selected[i].nft+".png"
-////          console.log(NFTimage.image);
-////          NFTimage.index = this.selected[i].nftNum
-//
+//            console.log(error);
+//            console.log('axios get nft img error');
+            console.log(response.data);
+            console.log(blob);
+            NFTimage.image = blob;
+          })
+          var a = URL.createObjectURL(NFTimage.image);
+            console.log(a);
+//          NFTimage.image = "http://localhost:8080/api/image/getImage/"+this.selected[i].nft+".png"
+//          console.log(NFTimage.image);
+//          NFTimage.index = this.selected[i].nftNum
+
 //      // if 문으로 업적 종류마다 지갑 이미지 합성 좌표를 다르게 지정해야 함
 //          console.log(NFTimage.image);
 //          console.log(walletImg);
@@ -127,7 +129,7 @@ export default {
 //              this.context.drawImage(tempImage2, startx, starty, xvalue, yvalue); // 대상, (시작지점, 시작지점), (사진 크기, 사진 크기)
 //              console.log(this.canvas.toDataURL("image/png"));
 //            }
-//          }
+          }
         
       
     },

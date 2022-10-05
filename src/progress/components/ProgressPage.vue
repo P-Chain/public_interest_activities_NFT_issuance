@@ -1,9 +1,9 @@
 <template>
   <b-card-group deck>
     <b-card title="달성 업적">
-      <b-card-text>{{ card1.text1 }}</b-card-text>
-      <b-card-text>{{ card1.text2 }}</b-card-text>
-      <b-card-text>{{ card1.text3 }}</b-card-text>
+      <b-card-text>{{ card1[0] }}</b-card-text>
+      <b-card-text>{{ card1[1] }}</b-card-text>
+      <b-card-text>{{ card1[2] }}</b-card-text>
       <router-link to="/progress/achieved" class="card-link">더보기</router-link>
     </b-card>
 
@@ -53,11 +53,11 @@
 export default {
   data() {
     return {
-      card1: {
-        text1: '업적1',
-        text2: '업적3',
-        text3: '업적5'
-      },
+      card1: [
+        '업적1',
+        '업적3',
+        '업적5'
+      ],
       card2: {
         img1: require("../../assets/background.jpg"),
         img2: require("../../assets/googleIcon.png"),
@@ -87,9 +87,9 @@ export default {
           this.card4.value1 = response.data.volTime;
           if(this.card4.value1>=50){
               this.card4.max1 = 100;
-              if(this.card4.value1>100){
+              if(this.card4.value1>=100){
                   this.card4.max1 = 500;
-                  if(this.card4.value1>500){
+                  if(this.card4.value1>=500){
                       this.card4.max1 = 1000;
                   }
               }
@@ -97,18 +97,25 @@ export default {
           this.card4.value2 = response.data.doneNum;
           if(this.card4.value2>=100000){
               this.card4.max2 = 1000000;
-              if(this.card4.value2>1000000){
+              if(this.card4.value2>=1000000){
                   this.card4.max2 = 10000000;
               }
           }
           this.card4.value3 = response.data.bloodNum;
           if(this.card4.value3>=10){
               this.card4.max3 = 50;
-              if(this.card4.value3>50){
+              if(this.card4.value3>=50){
                   this.card4.max3 = 100;
               }
           }
       });
+        axios.get("/api/progress/viewachieve").then(response =>{
+         console.log(response);
+         for(var i=0;i<3;i++){
+             this.card1.splice(i,1,response.data.ProgAchieve[i].nameAch);
+             console.log(this.card1);
+         }
+     })
     }
 }
 </script>
