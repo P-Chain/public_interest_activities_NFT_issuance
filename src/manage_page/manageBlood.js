@@ -14,7 +14,7 @@ exports.viewBldApply = async (ctx) => {
 exports.allowBldApply = async (ctx) => {
     // 봉사시간 갱신 신청 수락
     var data = ctx.request.body;
-    var bl =  await APL.findBloodNum(data.email);
+    var bl =  await APL.findBloodNum(data.nickname);
     console.log(data);
     await MBld.allowApply({index:data.index,issNum:data.issNum});
     await APL.BloodUpdate(data.nickname, data.issNum);
