@@ -110,7 +110,7 @@ export default {
         for(var i in this.userlist){
             axios.post('/api/nft_issue/nftapply', {
         index: this.form.count++,
-        nftNum: this.form.volTime,
+        nftNum: this.form.nftidn,
           nftName: this.form.nftname,
         nftIss: unescape(file.name),
         nickname: this.userlist[i],

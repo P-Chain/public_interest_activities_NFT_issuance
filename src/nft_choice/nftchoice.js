@@ -8,5 +8,6 @@ exports.viewIssNft = async (ctx) => {
         ctx.status = 403; // Forbidden
         return;
     }
-    ctx.body = await Account.findIssList(user.profile.email);
+    ctx.body = await Account.findIssList(user.email);
+    console.log(ctx.body);
 };

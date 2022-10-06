@@ -91,7 +91,7 @@ export default {
         if(data.length>2){
         dat = data[2];
         this.avalue3 = dat.progressedAchieveNum,
-        this.arank3 = dat.nicname}
+        this.arank3 = dat.nickname}
     });
     axios.get("/api/ranking/vol").then(response =>{
         console.log(response);

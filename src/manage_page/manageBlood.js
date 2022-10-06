@@ -1,6 +1,7 @@
 const MBld = require('models/bloodManage');
 const APL = require('models/AchieveProgressLev');
 const PA = require('models/Progressed_achieve');
+const NM = require('models/nftManage');
 
 // 봉사시간 갱신 신청 관리issList
 
@@ -20,16 +21,17 @@ exports.allowBldApply = async (ctx) => {
 
     ctx.response.body = data;
     if(bl.bloodNum == 9){
-        await PA.AddProgAchieve(data.nickname, 10, "blood_10", new Date());
-        await APL.AchieveCount(data.nickname);
+                var num = await NM.getCount();
+        await NM.newApply({index:num, nftNum:10,nftName:"blood_10",nickname:data.nickname,username:"auto"});
+
     }
     if(bl.bloodNum == 49){
-        await PA.AddProgAchieve(data.nickname, 11, "blood_50", new Date());
-        await APL.AchieveCount(data.nickname);
+                var num = await NM.getCount();
+        await NM.newApply({index:num, nftNum:11,nftName:"blood_50",nickname:data.nickname,username:"auto"});
     }
     if(bl.bloodNum == 99){
-        await PA.AddProgAchieve(data.nickname, 12, "blood_100", new Date());
-        await APL.AchieveCount(data.nickname);
+                var num = await NM.getCount();
+        await NM.newApply({index:num, nftNum:12,nftName:"blood_100",nickname:data.nickname,username:"auto"});
     }
 };
 

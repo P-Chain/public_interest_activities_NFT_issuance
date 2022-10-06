@@ -1,6 +1,7 @@
 const MDone = require('models/doneManage');
 const APL = require('models/AchieveProgressLev');
 const PA = require('models/Progressed_achieve');
+const NM = require('models/nftManage');
 
 // 봉사시간 갱신 신청 관리
 
@@ -18,16 +19,16 @@ exports.allowDoneApply = async (ctx) => {
     await APL.DoneUpdate(data.nickname, data.doneNum);
     ctx.response.body = data;
     if(don.doneNum<100000&&data.don+doneNum>=100000){
-        await PA.AddProgAchieve(data.nickname, 4, "don_100k", new Date());
-        await APL.AchieveCount(data.nickname);
+                var num = await NM.getCount();
+        await NM.newApply({index:num, nftNum:4,nftName:"don_100k",nickname:data.nickname,username:"auto"});
     }
     if(don.doneNum<1000000&&data.don+doneNum>=1000000){
-        await PA.AddProgAchieve(data.nickname, 5, "don_1m", new Date());
-        await APL.AchieveCount(data.nickname);
+                var num = await NM.getCount();
+        await NM.newApply({index:num, nftNum:5,nftName:"don_1m",nickname:data.nickname,username:"auto"});
     }
     if(don.doneNum<10000000&&data.don+doneNum>=10000000){
-        await PA.AddProgAchieve(data.nickname, 6, "don_10m", new Date());
-        await APL.AchieveCount(data.nickname);
+                var num = await NM.getCount();
+        await NM.newApply({index:num, nftNum:6,nftName:"don_10m",nickname:data.nickname,username:"auto"});
     }
 };
 

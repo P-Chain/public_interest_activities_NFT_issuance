@@ -1,6 +1,7 @@
 const MVMS = require('models/vmsManage');
 const APL = require('models/AchieveProgressLev');
 const PA = require('models/Progressed_achieve');
+const NM = require('models/nftManage');
 
 // 봉사시간 갱신 신청 관리
 
@@ -17,20 +18,20 @@ exports.allowVmsApply = async (ctx) => {
     await MVMS.allowApply({index:data.index,volTime:data.volTime});
     await APL.VolTimeUpdate(data.nickname, data.volTime);
     if(vs.volTime<50&&data.volTime>=50){
-        await PA.AddProgAchieve(data.nickname, 0, "vol_50", new Date());
-        await APL.AchieveCount(data.nickname);
+        var num = await NM.getCount();
+        await NM.newApply({index:num, nftNum:0,nftName:"vol_50",nickname:data.nickname,username:"auto"});
     }
     if(vs.volTime<100&&data.volTime>=100){
-        await PA.AddProgAchieve(data.nickname, 1, "vol_100", new Date());
-        await APL.AchieveCount(data.nickname);
+                var num = await NM.getCount();
+        await NM.newApply({index:num, nftNum:1,nftName:"vol_100",nickname:data.nickname,username:"auto"});
     }
     if(vs.volTime<500&&data.volTime>=500){
-        await PA.AddProgAchieve(data.nickname, 2, "vol_500", new Date());
-        await APL.AchieveCount(data.nickname);
+                var num = await NM.getCount();
+        await NM.newApply({index:num, nftNum:2,nftName:"vol_500",nickname:data.nickname,username:"auto"});
     }
     if(vs.volTime<1000&&data.volTime>=1000){
-        await PA.AddProgAchieve(data.nickname, 3, "vol_1000", new Date());
-        await APL.AchieveCount(data.nickname);
+                var num = await NM.getCount();
+        await NM.newApply({index:num, nftNum:3,nftName:"vol_1000",nickname:data.nickname,username:"auto"});
     }
     ctx.response.body = data;
 };

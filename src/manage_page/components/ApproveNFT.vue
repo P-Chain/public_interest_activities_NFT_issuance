@@ -38,15 +38,17 @@ export default {
         { value: { user: 'YYY', nft: 'NFT4' }, html: 'NFT1 / 발급자: XXX / 대상자: YYY <a target=&apos;_blank&apos; href="">파일 보기</a>' },
       ],
       canvas: null,
-      context: null
+      context: null,
+        nftimage: null
     }
   },
   methods: {
     async submitApprove(event) {
       var walletImg = null;
-      var NFTimage = {image:'',nftNum:0};
+      var NFTimage = {image:'',index:0};
       var reader1 = new FileReader();
       var reader2 = new FileReader();
+        console.log(this.selected);
         
         
       for (var i in this.selected) {
@@ -115,8 +117,8 @@ export default {
   var ia = new Uint8Array(ab);
 
   // set the bytes of the buffer to the correct values
-  for (var i = 0; i < byteString.length; i++) {
-      ia[i] = byteString.charCodeAt(i);
+  for (var j = 0; j < byteString.length; j++) {
+      ia[j] = byteString.charCodeAt(j);
   }
 
   // write the ArrayBuffer to a blob, and you're done
@@ -139,9 +141,64 @@ export default {
 
               this.context.drawImage(tempImage2, startx, starty, xvalue, yvalue); // 대상, (시작지점, 시작지점), (사진 크기, 사진 크기)
               console.log(this.canvas.toDataURL("image/png"));
+                this.nftimage = this.canvas.toDataURL("image/png");
+                
             }
           }
-            }}
+            }
+        
+        await axios.post('/api/manage_page/allownftapplys',{
+            index: this.selected[i].index,
+            nftNum: this.selected[i].nftNum,
+            nickname: this.selected[i].user,
+            nftName: this.selected[i].nft,
+            date: new Date()
+        }).then((response)=>{
+                  var date = new Date();
+            console.log(this.selected[i]);
+      var fileName 
+        = 'nft_'+escape(this.selected[i].user) + '_' + date.getDate() + date.getHours() 
+        + date.getMinutes() + date.getSeconds()+'.png';
+                        var byteString = atob(this.nftimage.split(',')[1]);
+            console.log("OK");
+
+  // separate out the mime component
+  var mimeString = this.nftimage.split(',')[0].split(':')[1].split(';')[0]
+
+  // write the bytes of the string to an ArrayBuffer
+  var ab = new ArrayBuffer(byteString.length);
+
+  // create a view into the buffer
+  var ia = new Uint8Array(ab);
+
+  // set the bytes of the buffer to the correct values
+  for (var j = 0; j < byteString.length; j++) {
+      ia[j] = byteString.charCodeAt(j);
+  }
+
+  // write the ArrayBuffer to a blob, and you're done
+//  var blob = new Blob([ab], {type: mimeString});
+      var file = new File([ab], fileName, {type: 'image/png'});
+      
+      console.log(file);
+      console.log('file.name='+file.name);
+      
+    // to Server
+      axios.post('/api/upload2', {file:file},{headers: {'Content-Type':'multipart/form-data'}})
+      .then(res => {
+        console.log('to sv res='+res);
+          if(res.status==200){
+              location.href = '/manage_page'
+          }
+        this.file1 = null;
+        this.volTime = '';
+        this.volIss = ''
+      })
+      .catch(error => {
+        console.log('To sv error.response='+error)
+      });
+        })
+      }
       
     },
     submitRevise(event) {

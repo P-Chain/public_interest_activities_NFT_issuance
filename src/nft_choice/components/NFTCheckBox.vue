@@ -35,6 +35,7 @@ export default {
           var list;
      await axios.get('/api/nft_choice/viewlist').then((response)=>{
           list = response.data.issList;
+         console.log(response.data.issList);
           
       });
           for(var i in list){
