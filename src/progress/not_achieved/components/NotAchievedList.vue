@@ -41,11 +41,18 @@ export default {
       ],
     }
   },
-  // created(){
-  //   axios.get("/").then(response =>{
-  //       console.log(response);
-  //   })
-  // }
+   created(){
+     axios.get("/api/achieve/list").then(response =>{
+         console.log(response);
+         var list = response.data
+         for(var i in list){
+             list[i].image = "/api/image/getimage/"+list[i].Image;
+             list[i].name = list[i].Name;
+             list[i].text = list[i].Name;
+         }
+         this.items = list;
+     })
+   }
 }
 </script>
 

@@ -1,6 +1,6 @@
 <template>
   <div class="contents">
-    <h3>미달성 업적</h3>
+    <h3>전체 업적</h3>
     <not-achieved-list></not-achieved-list>
   </div>
 </template>

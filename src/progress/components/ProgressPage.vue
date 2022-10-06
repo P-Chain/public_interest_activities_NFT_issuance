@@ -16,10 +16,7 @@
       <router-link to="/progress/my_own_NFT" class="card-link">더보기</router-link>
     </b-card>
 
-    <b-card title="미달성 업적">
-      <b-card-text>{{ card3.text1 }}</b-card-text>
-      <b-card-text>{{ card3.text2 }}</b-card-text>
-      <b-card-text>{{ card3.text3 }}</b-card-text>
+    <b-card title="전체업적">
       <router-link to="/progress/not_achieved" class="card-link">더보기</router-link>
     </b-card>
 
