@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import store from './store'
+import axios from 'axios'
 
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import Jazzicon from 'vue-jazzicon'
