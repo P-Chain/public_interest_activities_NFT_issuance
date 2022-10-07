@@ -54,7 +54,7 @@ export default {
     async submitApprove(event) {
       console.log(this.selected);
         for(var i in this.selected){
-          await axios.post('/api/manage_page/allowbldapplys',this.selected[i])
+          await this.$axios.post('/api/manage_page/allowbldapplys',this.selected[i])
             .then((response)=>{
               console.log(response);
             })
