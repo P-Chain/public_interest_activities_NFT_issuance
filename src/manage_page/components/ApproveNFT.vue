@@ -53,7 +53,7 @@ export default {
         
       for (var i in this.selected) {
       // 해당 유저의 DB에서 지갑 이미지를 불러오는 작업 필요
-        await axios.post("/api/auth_account/getwallimg", { 
+        await this.$axios.post("/api/auth_account/getwallimg", { 
           nickname: this.selected[i].user
           })
           .then(response => {
@@ -65,7 +65,7 @@ export default {
           })
           var arrdata;
       // 해당 NFT 이미지 불러오는 작업 필요
-        await axios.get("/api/image/getImage/"+this.selected[i].nft+".png",{responseType: "arraybuffer"})
+        await this.$axios.get("/api/image/getImage/"+this.selected[i].nft+".png",{responseType: "arraybuffer"})
           .then(response => {
             console.log(response.data)
             const blob = new Blob([response.data], {type: 'image/png'});
@@ -147,7 +147,7 @@ export default {
           }
             }
         
-        await axios.post('/api/manage_page/allownftapplys',{
+        await this.$axios.post('/api/manage_page/allownftapplys',{
             index: this.selected[i].index,
             nftNum: this.selected[i].nftNum,
             nickname: this.selected[i].user,
@@ -184,7 +184,7 @@ export default {
       console.log('file.name='+file.name);
       
     // to Server
-      axios.post('/api/upload2', {file:file},{headers: {'Content-Type':'multipart/form-data'}})
+    this.$axios.post('/api/upload2', {file:file},{headers: {'Content-Type':'multipart/form-data'}})
       .then(res => {
         console.log('to sv res='+res);
           if(res.status==200){
@@ -207,7 +207,7 @@ export default {
   },
   created() {
   // NFT 발급 신청목록을 DB 불러오는 작업 필요
-    axios.get("/api/manage_page/nftapplys").then(response => {
+  this.$axios.get("/api/manage_page/nftapplys").then(response => {
         console.log(response.data);
           this.data = response.data;
         console.log('response.data='+response.data);
