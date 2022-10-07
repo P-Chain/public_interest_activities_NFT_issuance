@@ -1,9 +1,13 @@
 <template>
-  <div id="app">
-    <nav-bar></nav-bar>
-    <router-view></router-view>
-    <main-footer></main-footer>
-  </div>
+    <div id="app">
+      <nav-bar></nav-bar>
+      <div id="main-background">
+        <transition name="fade" appear>
+          <router-view></router-view>
+        </transition>
+      </div>
+      <main-footer></main-footer>
+    </div>
 </template>
 
 <script>
@@ -19,6 +23,6 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>

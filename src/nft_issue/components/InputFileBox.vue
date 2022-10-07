@@ -36,7 +36,7 @@ export default {
         console.log(this.$route.query.nicklist.split(','));
         this.userlist = this.$route.query.nicklist.split(',');
         this.form.nftidn = this.$route.query.index;
-        axios.post("api/achieve/findachieve",{id:this.form.nftidn}).then((response)=>{
+        this.$axios.post("api/achieve/findachieve",{id:this.form.nftidn}).then((response)=>{
             this.form.nftname = response.data.Name;
         })
         console.log(this.userlist[0]);
@@ -47,7 +47,7 @@ export default {
       event.preventDefault();
 
     // bring user data
-      await axios.get("/api/auth_account/check")
+      await this.$axios.get("/api/auth_account/check")
       .then(response => {
         this.form.nickname = response.data.nickname;
         this.form.username = response.data.profile.username;
@@ -56,7 +56,7 @@ export default {
         console.log('error='+error)
       })
         for(var i in this.userlist){
-            await axios.post('/api/manage_page/nownft',{nickname:this.userlist[i]}).then((response)=>{
+            await this.$axios.post('/api/manage_page/nownft',{nickname:this.userlist[i]}).then((response)=>{
           for(var i in response.data){
               if(this.form.nftidn==response.data[i].idAch){
                     alert("이미 있는 업적");
@@ -67,7 +67,7 @@ export default {
         }
 
     // bring vms count  
-      await axios.get("/api/nft_issue/count")
+      await this.$axios.get("/api/nft_issue/count")
       .then(response => {
         this.form.count = response.data;
         if(this.form.count == null){
@@ -96,7 +96,7 @@ export default {
       console.log('file.name='+file.name);
       
     // to Server
-      await axios.post('/api/upload', {file:file},{headers: {'Content-Type':'multipart/form-data'}})
+      await this.$axios.post('/api/upload', {file:file},{headers: {'Content-Type':'multipart/form-data'}})
       .then(res => {
         console.log('to sv res='+res);
         this.file1 = null;
@@ -108,7 +108,7 @@ export default {
       });
     // to db
         for(var i in this.userlist){
-            axios.post('/api/nft_issue/nftapply', {
+            this.$axios.post('/api/nft_issue/nftapply', {
         index: this.form.count++,
         nftNum: this.form.nftidn,
           nftName: this.form.nftname,

@@ -104,7 +104,7 @@ export default {
       this.state.email = null;
       this.state.nickname = null;
       var res = 
-        axios.post("/api/auth_account/register/local", {
+        this.$axios.post("/api/auth_account/register/local", {
           email: this.form.email,
           password: this.form.password,
           username: this.form.username,

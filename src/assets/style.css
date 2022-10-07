@@ -13,7 +13,22 @@
   border: none;
   background: none;
 }
+.card-button:hover {
+  background: lightgray;
+}
 .card-img {
   height: 1.5rem;
   width: 1.5rem;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 1s ease;
+}
+
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
+.main-card {
+  border: 1px solid lightgreen;
+  background-color: #fdfdfd;
+  margin-bottom: 1rem;
 }

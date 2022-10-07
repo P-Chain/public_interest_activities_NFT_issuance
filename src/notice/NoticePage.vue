@@ -1,7 +1,9 @@
 <template>
   <div class="contents">
     <h3>공지사항</h3>
-    <router-view></router-view>
+    <transition name="fade" appear>
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 

@@ -3,9 +3,11 @@
   <div class="wrapper" v-if="show">
     <b-list-group>
       <b-list-group-item v-for="item in lists" :key="item.index">
+        <transition>
         <router-link :to="{ path: './' + item.index }" append>
           <a>{{ item.title }}</a>
         </router-link>
+      </transition>
           <span class="text-right">
             {{ item.date }}
           </span>
@@ -38,16 +40,7 @@ export default {
   data() {
     return {
       lists: [
-        { index: 0, title: 'aaaa', date: '2022-09-24'},
-        { index: 1, title: 'bbbb', date: '2022-08-15'},
-        { index: 2, title: 'cccc', date: '2022-07-16'},
-        { index: 3, title: 'dddd', date: '2022-05-05'},
-        { index: 4, title: 'eeee', date: '2022-03-01'},
-        { index: 5, title: 'aaa', date: '2021-09-24'},
-        { index: 6, title: 'bbb', date: '2021-08-15'},
-        { index: 7, title: 'ccc', date: '2021-07-16'},
-        { index: 8, title: 'ddd', date: '2021-05-05'},
-        { index: 9, title: 'eee', date: '2021-03-01'},
+    
       ],
       show: true,
       index: 1,
@@ -57,7 +50,7 @@ export default {
   created() {
   // axios index;
     this.pageClick();
-      axios.get('/api/notice/getcount').then((response)=>{
+      this.$axios.get('/api/notice/getcount').then((response)=>{
           this.numberOfPages = response.data/10+1;
       })
   },
@@ -78,7 +71,7 @@ export default {
     axiosGet(index) {
       this.show = false;
         console.log(index);
-      axios.get("/api/notice/getList/"+index).then(response => {
+      this.$axios.get("/api/notice/getList/"+index).then(response => {
           console.log(response.data);
         this.lists = response.data;
         //this.lists.concat(response.data);

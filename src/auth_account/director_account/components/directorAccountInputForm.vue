@@ -100,7 +100,7 @@ export default {
         this.state.email = null;
       this.state.organization_name = null;
       console.log(JSON.stringify(this.form)) // for debug
-      axios.post('/api/auth_account/register/ins', { 
+      this.$axios.post('/api/auth_account/register/ins', { 
         username: this.form.organization_name,
         email: this.form.email,
         password: this.form.password, 

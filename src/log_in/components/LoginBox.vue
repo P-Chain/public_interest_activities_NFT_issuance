@@ -22,10 +22,10 @@
       <b-button type="submit" variant="primary">로그인</b-button>
     </b-form>
     
-    <!--API 연결하기-->
-    <!--구글 API, 정책에 따라 정해진 이미지만 사용 가능-->
+    <!-- API 연결하기 -->
+    <!-- 구글 API, 정책에 따라 정해진 이미지만 사용 가능-->
     <!-- URi 수정 필요-->
-    <div id="g_id_onload"
+    <!-- <div id="g_id_onload"
      data-client_id="1066448151508-13obd0kqml3hbjt46v1pvmcekel0fd4t.apps.googleusercontent.com"
      data-context="signin"
      data-ux_mode="popup"
@@ -38,7 +38,7 @@
       data-theme="outline"
       data-text="signin_with"
       data-size="large">
-    </div>
+    </div> -->
     <!-- <button class="button-image" href="">
       <b-img :src="require('../../assets/facebookIcon.png')"></b-img>
     </button> -->
@@ -79,7 +79,7 @@ export default {
       //  })
       //})
       event.preventDefault();
-      axios
+      this.$axios
         .post("/api/auth_account/login/local", {
           email: this.form.email,
           password: this.form.password,

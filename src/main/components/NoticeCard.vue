@@ -1,6 +1,6 @@
 <!-- 공지사항 리스트 갯수는 최신 게시물 5개 이하로 맞추기 -->
 <template>
-  <b-card>
+  <b-card class="main-card">
     <h4 class="card-title">
       필독 공지사항
       <span class="text-right">
@@ -31,16 +31,16 @@ export default {
   data() {
     return {
       lists: [
-        { index: '1', title: 'aaa', date: '2022-09-23' },
-        { index: '2', title: 'bbb', date: '2022-08-15' },
-        { index: '3', title: 'ccc', date: '2022-07-16' },
-        { index: '4', title: 'ddd', date: '2022-05-05' },
-        { index: '5', title: 'eee', date: '2022-03-01' },
+        // { index: '1', title: 'aaa', date: '2022-09-23' },
+        // { index: '2', title: 'bbb', date: '2022-08-15' },
+        // { index: '3', title: 'ccc', date: '2022-07-16' },
+        // { index: '4', title: 'ddd', date: '2022-05-05' },
+        // { index: '5', title: 'eee', date: '2022-03-01' },
       ],
     }
   },
   created() {
-     axios.get('/api/notice/viewmustread')
+     this.$axios.get('/api/notice/viewmustread')
      .then(response => {
        this.lists = response.data;
      })

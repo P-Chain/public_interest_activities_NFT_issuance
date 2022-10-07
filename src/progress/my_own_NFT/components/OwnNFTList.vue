@@ -42,14 +42,14 @@ export default {
         }
       ],
       items: [
-        { image: require("../../../assets/background.jpg"), gainedTime: '시간1' },
-        { image: require("../../../assets/googleIcon.png"), gainedTime: '시간2' },
-        { image: require("../../../assets/facebookIcon.png"), gainedTime: '시간3' },
+        // { image: require("../../../assets/background.jpg"), gainedTime: '시간1' },
+        // { image: require("../../../assets/googleIcon.png"), gainedTime: '시간2' },
+        // { image: require("../../../assets/facebookIcon.png"), gainedTime: '시간3' },
       ],
     }
   }
   // created(){
-  //   axios.get("/").then(response =>{
+  //   this.$axios.get("/").then(response =>{
   //       console.log(response);
   //   })
   // }

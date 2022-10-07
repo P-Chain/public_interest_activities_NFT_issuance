@@ -35,14 +35,14 @@ export default {
         },
       ],
       items: [
-        { image: require("../../../assets/background.jpg"), name: '업적1', text: '업적 설명' },
-        { image: require("../../../assets/googleIcon.png"), name: '업적2', text: '업적 설명' },
-        { image: require("../../../assets/facebookIcon.png"), name: '업적3', text: '업적 설명' },
+        // { image: require("../../../assets/background.jpg"), name: '업적1', text: '업적 설명' },
+        // { image: require("../../../assets/googleIcon.png"), name: '업적2', text: '업적 설명' },
+        // { image: require("../../../assets/facebookIcon.png"), name: '업적3', text: '업적 설명' },
       ],
     }
   },
    created(){
-     axios.get("/api/achieve/list").then(response =>{
+     this.$axios.get("/api/achieve/list").then(response =>{
          console.log(response);
          var list = response.data
          for(var i in list){
