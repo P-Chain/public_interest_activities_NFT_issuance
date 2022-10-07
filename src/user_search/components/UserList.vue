@@ -24,7 +24,7 @@ export default {
     }
   },
   created() {
-    axios.get('/api/user_search/userlist')
+    this.$axios.get('/api/user_search/userlist')
     .then(response => {
       this.data = response.data;
       console.log('response.data='+response.data);
@@ -46,7 +46,7 @@ export default {
     receive(data) {
       console.log('this.options='+this.options)
       this.options.splice(0)
-      axios.post('/api/user_search/finduser', {
+      this.$axios.post('/api/user_search/finduser', {
         username: data
       })
       .then(response => {

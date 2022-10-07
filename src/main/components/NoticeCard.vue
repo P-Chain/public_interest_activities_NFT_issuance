@@ -40,7 +40,7 @@ export default {
     }
   },
   created() {
-     axios.get('/api/notice/viewmustread')
+     this.$axios.get('/api/notice/viewmustread')
      .then(response => {
        this.lists = response.data;
      })

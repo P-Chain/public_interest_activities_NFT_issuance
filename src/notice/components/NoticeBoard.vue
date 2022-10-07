@@ -50,7 +50,7 @@ export default {
   created() {
   // axios index;
     this.pageClick();
-      axios.get('/api/notice/getcount').then((response)=>{
+      this.$axios.get('/api/notice/getcount').then((response)=>{
           this.numberOfPages = response.data/10+1;
       })
   },
@@ -71,7 +71,7 @@ export default {
     axiosGet(index) {
       this.show = false;
         console.log(index);
-      axios.get("/api/notice/getList/"+index).then(response => {
+      this.$axios.get("/api/notice/getList/"+index).then(response => {
           console.log(response.data);
         this.lists = response.data;
         //this.lists.concat(response.data);

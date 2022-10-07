@@ -41,7 +41,7 @@ export default {
     }
   },
   created(){
-    axios.get("/api/ranking/achieve").then(response =>{
+    this.$axios.get("/api/ranking/achieve").then(response =>{
     console.log(response.data);
         var arr = response.data;
         for(var i in arr){

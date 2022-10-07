@@ -50,7 +50,7 @@ export default {
   },
   async created() {
     try {
-      await axios
+      await this.$axios
         .get("/api/auth_account/check")
         .catch(function (error) {
           if (error.response) {
@@ -97,7 +97,7 @@ export default {
     //   console.log(this.access);
     // },
     logout(event) {
-      axios.post("/api/auth_account/logout").then((response) => {
+      this.$axios.post("/api/auth_account/logout").then((response) => {
         if (response) {
           this.name = "이름";
           this.token = false

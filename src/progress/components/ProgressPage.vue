@@ -83,7 +83,7 @@ export default {
     }
   },
     created(){
-        axios.get("/api/progress/viewprogress").then((response)=>{
+        this.$axios.get("/api/progress/viewprogress").then((response)=>{
           this.card4.value1 = response.data.volTime;
           if(this.card4.value1>=50){
               this.card4.max1 = 100;

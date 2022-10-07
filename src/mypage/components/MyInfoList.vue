@@ -102,7 +102,7 @@ export default {
     }
   },
   created() {
-    axios.get('/api/auth_account/check').then((response) => {
+    this.$axios.get('/api/auth_account/check').then((response) => {
         console.log(response);
         this.myEmail = response.data.email;
         this.myName = response.data.profile.username;
@@ -115,7 +115,7 @@ export default {
   methods: {
     onSubmit(event) {
       event.preventDefault()
-      axios.post('/api/auth_account/changepass', { // router 수정 필요
+      this.$axios.post('/api/auth_account/changepass', { // router 수정 필요
           email:this.myEmail,
         password: this.form.password, 
       })
@@ -160,7 +160,7 @@ export default {
         reader.onload = () => {
         this.walletImgData = reader.result;
         console.log('walletImgData='+this.walletImgData);
-        axios.post('/api/auth_account/changewall',{email:this.myEmail, wallet: this.walletAdr, walletimage:this.walletImgData}).then((responese)=>{
+        this.$axios.post('/api/auth_account/changewall',{email:this.myEmail, wallet: this.walletAdr, walletimage:this.walletImgData}).then((responese)=>{
             console.log(response);
         })
       }

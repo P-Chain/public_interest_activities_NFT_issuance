@@ -52,7 +52,7 @@ export default {
     }
   },
   // created(){
-  //   axios.get("/").then(response =>{
+  //   this.$axios.get("/").then(response =>{
   //       console.log(response);
   //   })
   // }

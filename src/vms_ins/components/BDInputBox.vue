@@ -53,7 +53,7 @@ export default {
       event.preventDefault();
 
     // bring user data
-      await axios.get("/api/auth_account/check")
+      await this.$axios.get("/api/auth_account/check")
       .then(response => {
         this.form.nickname = response.data.nickname;
         this.form.username = response.data.profile.username;
@@ -61,7 +61,7 @@ export default {
       .catch(error => {
         console.log('error='+error)
       })
-      // await axios.post('/api/manage_page/nowvms',{nickname:this.form.nickname}).then((response)=>{
+      // await this.$axios.post('/api/manage_page/nowvms',{nickname:this.form.nickname}).then((response)=>{
       //           console.log(response.data.volTime);
       //           if(response.data.volTime>this.form.volTime){
       //               alert("현재 기부액보다 낮은 값");
@@ -69,7 +69,7 @@ export default {
       //           }
       // });
     // bring vms count  
-      await axios.get("/api/vms_ins/blcount")
+      await this.$axios.get("/api/vms_ins/blcount")
       .then(response => {
         this.form.count = response.data;
         if(this.form.count == null){
@@ -98,7 +98,7 @@ export default {
       console.log('file.name='+file.name);
       
     // to Server
-      await axios.post('/api/upload', {file:file},{headers: {'Content-Type':'multipart/form-data'}})
+      await this.$axios.post('/api/upload', {file:file},{headers: {'Content-Type':'multipart/form-data'}})
       .then(res => {
         console.log('to sv res='+res);
         this.file1 = null;
@@ -109,7 +109,7 @@ export default {
         console.log('To sv error.response='+error)
       });
     // to db(수정 예상)
-      axios.post('/api/vms_ins/blapply', {
+      this.$axios.post('/api/vms_ins/blapply', {
         index: this.form.count,
         // volTime: this.form.volTime,
         bloodIss: unescape(file.name),

@@ -202,14 +202,14 @@ export default {
     };
   },
   created() {
-    var data = axios.get("/api/progress/viewachieve").then((response) => {
+    var data = this.$axios.get("/api/progress/viewachieve").then((response) => {
       this.list = response.data.ProgAchieve;
       for (var i in this.list) {
         this.imglist.splice(i, 1, this.list[i].imgAch);
         console.log(this.imglist);
       }
     });
-      axios.get("/api/progress/viewprogress").then((response)=>{
+      this.$axios.get("/api/progress/viewprogress").then((response)=>{
           this.value1 = response.data.volTime;
           if(this.value1>=50){
               this.max1 = 100;
@@ -239,10 +239,10 @@ export default {
   methods: {
     getImageUrl(imageId) {
       const { width, height } = this.mainProps;
-      var data = axios.get("/api/progress/viewachieve").then((response) => {
+      var data = this.$axios.get("/api/progress/viewachieve").then((response) => {
         this.list = response.data.ProgAchieve;
       });
-      //        axios.get('api/image/getimage/'+this.list[imageId].imgAch,{ responseType: 'arraybuffer' }).then((reaponse)=>{
+      //        this.$axios.get('api/image/getimage/'+this.list[imageId].imgAch,{ responseType: 'arraybuffer' }).then((reaponse)=>{
       //            console.log(response);
       //        })
       //        console.log(this.list);

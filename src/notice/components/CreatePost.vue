@@ -32,7 +32,7 @@ export default {
         console.log(date);
       this.noticeData.date = year + '-' + month + '-' + date;
         console.log(this.noticeData.date);
-      axios.post("/api/notice/writenotice", {
+      this.$axios.post("/api/notice/writenotice", {
         title: this.noticeData.title,
           date: this.noticeData.date,
         word: this.noticeData.word,

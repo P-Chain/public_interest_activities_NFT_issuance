@@ -50,7 +50,7 @@ export default {
     }
   },
   created() {
-    axios.get("/api/achieve/loadcond").then(response => {
+    this.$axios.get("/api/achieve/loadcond").then(response => {
       var arr = response.data;
         console.log(arr);
       this.options = arr;
@@ -84,7 +84,7 @@ export default {
       event.preventDefault();
 
     // bring user data
-      await axios.get("/api/auth_account/check")
+      await this.$axios.get("/api/auth_account/check")
       .then(response => {
         this.form.email = response.data.email;
         this.form.nickname = response.data.nickname;
@@ -94,7 +94,7 @@ export default {
       .catch(error => {
         console.log('error='+error)
       })
-      await axios.post('/api/manage_page/nowiss',{nickname:this.form.nickname,email:this.form.email}).then((response)=>{
+      await this.$axios.post('/api/manage_page/nowiss',{nickname:this.form.nickname,email:this.form.email}).then((response)=>{
                 console.log(response.data.issList);
           for(var i in response.data.issList){
               if(response.data.issList[i]==this.selected[0].id){
@@ -104,7 +104,7 @@ export default {
           }
             
       });
-        await axios.get("/api/auth_apply/count")
+        await this.$axios.get("/api/auth_apply/count")
       .then(response => {
         this.form.count = response.data;
         if(this.form.count == null){
@@ -133,7 +133,7 @@ export default {
       console.log('file.name='+file.name);
       
     // to Server
-      await axios.post('/api/upload', {file:file},{headers: {'Content-Type':'multipart/form-data'}})
+      await this.$axios.post('/api/upload', {file:file},{headers: {'Content-Type':'multipart/form-data'}})
       .then(res => {
         console.log('to sv res='+res);
         this.file1 = null;
@@ -142,7 +142,7 @@ export default {
         console.log('To sv error.response='+error)
       });
     // to db
-      axios.post('/api/auth_apply/issapply',{
+      this.$axios.post('/api/auth_apply/issapply',{
         index: this.form.count,
         issNum: this.selected[0].id,
         issName: this.selected[0].name,

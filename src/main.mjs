@@ -26,6 +26,8 @@ Vue.component('jazzicon', Jazzicon);
 
 // 이벤트 버스 선언
 Vue.prototype.$EventBus = new Vue();
+// axios 전역 선언
+Vue.prototype.$axios = axios;
 
 // URL
 var BACKURL = process.env.VUE_APP_API_URL

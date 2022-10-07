@@ -36,7 +36,7 @@ export default {
     }
   },
     created(){
-      axios.get('/api/manage_page/bldapplys').then((response)=>{
+      this.$axios.get('/api/manage_page/bldapplys').then((response)=>{
           console.log(response.data);
           this.data = response.data;
         console.log('response.data='+response.data);
@@ -54,7 +54,7 @@ export default {
     submitApprove(event) {
       console.log(this.selected);
         for(var i in this.selected){
-          axios.post('/api/manage_page/allowbldapplys',this.selected[i])
+          this.$axios.post('/api/manage_page/allowbldapplys',this.selected[i])
             .then((response)=>{
               console.log(response);
             })
@@ -64,7 +64,7 @@ export default {
     submitRevise(event) {
       console.log(this.selected);
         for(var i in this.selected){
-            axios.post('/api/manage_page/denybldapplys',this.selected[i])
+            this.$axios.post('/api/manage_page/denybldapplys',this.selected[i])
               .then((response)=>{
                 console.log(response);
               })

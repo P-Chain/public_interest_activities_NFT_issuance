@@ -26,7 +26,7 @@ export default {
   },
   created() {
       console.log(this.$route.params.id)
-    axios.get("/api/notice/findnotice/"+this.$route.params.id).then(response => {
+    this.$axios.get("/api/notice/findnotice/"+this.$route.params.id).then(response => {
         console.log(response.data);
       this.noticeData = response.data;
     })

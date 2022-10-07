@@ -33,13 +33,13 @@ export default {
   methods: {
       async cre() {
           var list;
-     await axios.get('/api/nft_choice/viewlist').then((response)=>{
+     await this.$axios.get('/api/nft_choice/viewlist').then((response)=>{
           list = response.data.issList;
           
       });
           for(var i in list){
               console.log(i);
-              await axios.post('/api/achieve/findachieve',{id:list[i]}).then((response2)=>{
+              await this.$axios.post('/api/achieve/findachieve',{id:list[i]}).then((response2)=>{
                   console.log(response2);
                   list[i] = {text: response2.data.Name, value: list[i]};
               })

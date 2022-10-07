@@ -79,7 +79,7 @@ export default {
     }
   },
   created(){
-    axios.get("/api/ranking/achieve").then(response =>{
+    this.$axios.get("/api/ranking/achieve").then(response =>{
         var data = response.data;
         var dat = data[0];
         this.avalue1 = dat.progressedAchieveNum,
@@ -93,7 +93,7 @@ export default {
         this.avalue3 = dat.progressedAchieveNum,
         this.arank3 = dat.nicname}
     });
-    axios.get("/api/ranking/vol").then(response =>{
+    this.$axios.get("/api/ranking/vol").then(response =>{
         console.log(response);
         var data = response.data;
         var dat = data[0];
@@ -108,7 +108,7 @@ export default {
         this.vvalue3 = dat.volTime,
         this.vrank3 = dat.nickname}
     });
-    axios.get("/api/ranking/nft").then(response =>{
+    this.$axios.get("/api/ranking/nft").then(response =>{
         var data = response.data;
         var dat = data[0];
         this.nvalue1 = dat.issuanceCount,

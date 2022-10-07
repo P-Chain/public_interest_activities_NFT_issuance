@@ -23,9 +23,12 @@ export default {
   align-items: center;
   justify-content: center;
   display: flex;
-  height: 50rem;
+  width: 100%;
+  height: 100vh;
   background-image: url('../assets/background.jpg');
-  background-size: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .login-container {
