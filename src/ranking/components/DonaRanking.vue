@@ -28,21 +28,22 @@ export default {
           label: '닉네임',
         },        
         {
-          key: 'issuanceCount',
-          label: '보유 갯수',
+          key: 'doneNum',
+          label: '기부액',
           sortable: true
         },
       ],
       items: [
-        { index: 1, name: '홍*동', email: 'a****@naver.com', prog: 50 },
-        { index: 2, name: 'A*C', email: 'g****@google.com', prog: 30 },
-        { index: 3, name: 'D*F', email: 'a****@daum.com', prog: 20 },
-        { index: 4, name: 'E*F', email: 'e****@daum.com', prog: 10 },
+        // { index: 1, name: '홍*동', email: 'a****@naver.com', prog: 50 },
+        // { index: 2, name: 'A*C', email: 'g****@google.com', prog: 30 },
+        // { index: 3, name: 'D*F', email: 'a****@daum.com', prog: 20 },
+        // { index: 4, name: 'E*F', email: 'e****@daum.com', prog: 10 },
       ]
     }
   },
   created(){
-    this.$axios.get("/api/ranking/nft").then(response =>{
+    // 수정 필요
+    this.$axios.get("/api/ranking/done").then(response =>{
     console.log(response.data);
         var arr = response.data;
         for(var i in arr){

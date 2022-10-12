@@ -1,13 +1,16 @@
 <template>
   <div class="wrapper">
     <b-tabs>
+      <b-tab title="업적 횟수">
+        <achieve-ranking></achieve-ranking>
+      </b-tab>
       <b-tab title="봉사 시간">
         <vms-ranking></vms-ranking>
       </b-tab>
-      <b-tab title="NFT 1">
+      <b-tab title="헌혈 횟수">
         <NFT-1-ranking></NFT-1-ranking>
       </b-tab>
-      <b-tab title="NFT 2">
+      <b-tab title="기부액">
         <NFT-2-ranking></NFT-2-ranking>
       </b-tab>
     </b-tabs>
@@ -15,15 +18,17 @@
 </template>
 
 <script>
+import AchieveRanking from './AchieveRanking.vue'
 import VMSRanking from './VMSRanking.vue'
-import NFT1Ranking from './NFT1Ranking.vue'
-import NFT2Ranking from './NFT2Ranking.vue'
+import BDRanking from './BDRanking.vue'
+import DonaRanking from './DonaRanking.vue'
 
 export default {
   components: {
+    'achieve-ranking': AchieveRanking,
     'vms-ranking': VMSRanking,
-    'NFT-1-ranking': NFT1Ranking,
-    'NFT-2-ranking': NFT2Ranking
+    'bd-ranking': BDRanking,
+    'dona-ranking': DonaRanking
   }
 }
 </script>

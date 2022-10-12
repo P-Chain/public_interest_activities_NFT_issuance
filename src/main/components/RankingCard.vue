@@ -1,3 +1,8 @@
+<!-- 
+헌혈 랭킹: bd* / ex) bdrank, bdvalue
+기부액 랭킹: d* / ex) drank, dvalue
+axios get router 수정 필요
+-->
 <template>
   <b-card class="main-card">
     <h4 class="card-title">
@@ -33,17 +38,29 @@
           <b-progress :value="vvalue3" :max="vvalue1" height="1rem" show-value class="mb-3"></b-progress>
         </b-card-text>
       </b-tab>
-      <b-tab title="NFT 보유 랭킹">
+      <b-tab title="헌혈 랭킹">
           <b-card-text>
           <!-- DB에서 불러내는 작업 필요. 최대 3개까지 -->
-          {{ nrank1 }}
-          <b-progress :value="nvalue1" :max="nvalue1" height="1rem" show-value class="mb-1"></b-progress>
-          {{ nrank2 }}
-          <b-progress :value="nvalue2" :max="nvalue1" height="1rem" show-value class="mb-2"></b-progress>
-          {{ nrank3 }}
-          <b-progress :value="nvalue3" :max="nvalue1" height="1rem" show-value class="mb-3"></b-progress>
+          {{ bdrank1 }}
+          <b-progress :value="bdvalue1" :max="bdvalue1" height="1rem" show-value class="mb-1"></b-progress>
+          {{ bdrank2 }}
+          <b-progress :value="bdvalue2" :max="bdvalue1" height="1rem" show-value class="mb-2"></b-progress>
+          {{ bdrank3 }}
+          <b-progress :value="bdvalue3" :max="bdvalue1" height="1rem" show-value class="mb-3"></b-progress>
         </b-card-text>
       </b-tab>
+      <b-tab title="기부액 랭킹">
+          <b-card-text>
+          <!-- DB에서 불러내는 작업 필요. 최대 3개까지 -->
+          {{ drank1 }}
+          <b-progress :value="dvalue1" :max="dvalue1" height="1rem" show-value class="mb-1"></b-progress>
+          {{ drank2 }}
+          <b-progress :value="dvalue2" :max="dvalue1" height="1rem" show-value class="mb-2"></b-progress>
+          {{ drank3 }}
+          <b-progress :value="dvalue3" :max="dvalue1" height="1rem" show-value class="mb-3"></b-progress>
+        </b-card-text>
+      </b-tab>
+      
     </b-tabs>
   </b-card>
 </template>
@@ -69,13 +86,21 @@ export default {
       vrank2: 'none',
       vrank3: 'none',
         
-      nvalue1: 0,
-      nvalue2: 0,
-      nvalue3: 0,
+      bdvalue1: 0,
+      bdvalue2: 0,
+      bdvalue3: 0,
 
-      nrank1: 'none',
-      nrank2: 'none',
-      nrank3: 'none',
+      bdrank1: 'none',
+      bdrank2: 'none',
+      bdrank3: 'none',
+        
+      dvalue1: 0,
+      dvalue2: 0,
+      dvalue3: 0,
+
+      drank1: 'none',
+      drank2: 'none',
+      drank3: 'none',
     }
   },
   created(){
@@ -108,19 +133,49 @@ export default {
         this.vvalue3 = dat.volTime,
         this.vrank3 = dat.nickname}
     });
-    this.$axios.get("/api/ranking/nft").then(response =>{
+    // this.$axios.get("/api/ranking/nft").then(response =>{
+    //     var data = response.data;
+    //     var dat = data[0];
+    //     this.nvalue1 = dat.issuanceCount,
+    //     this.nrank1 = dat.nickname
+    //     if(data.length>1){
+    //         dat = data[1];
+    //         this.nvalue2 = dat.issuanceCount,
+    //         this.nrank2 = dat.nickname}
+    //     if(data.length>2){
+    //         dat = data[2];
+    //         this.nvalue3 = dat.issuanceCount,
+    //         this.nrank3 = dat.nickname}
+    // });
+    // 수정 필요
+    this.$axios.get("/api/ranking/***").then(response =>{
         var data = response.data;
         var dat = data[0];
-        this.nvalue1 = dat.issuanceCount,
-        this.nrank1 = dat.nickname
+        this.bdvalue1 = dat.issuanceCount, //
+        this.bdrank1 = dat.nickname
         if(data.length>1){
             dat = data[1];
-            this.nvalue2 = dat.issuanceCount,
-            this.nrank2 = dat.nickname}
+            this.bdvalue2 = dat.issuanceCount, //
+            this.bdrank2 = dat.nickname}
         if(data.length>2){
             dat = data[2];
-            this.nvalue3 = dat.issuanceCount,
-            this.nrank3 = dat.nickname}
+            this.bdvalue3 = dat.issuanceCount, //
+            this.bdrank3 = dat.nickname}
+    });
+    // 수정 필요
+    this.$axios.get("/api/ranking/***").then(response =>{
+        var data = response.data;
+        var dat = data[0];
+        this.dvalue1 = dat.issuanceCount, //
+        this.drank1 = dat.nickname
+        if(data.length>1){
+            dat = data[1];
+            this.dvalue2 = dat.issuanceCount, //
+            this.drank2 = dat.nickname}
+        if(data.length>2){
+            dat = data[2];
+            this.dvalue3 = dat.issuanceCount, //
+            this.drank3 = dat.nickname}
     });
   }
 }
