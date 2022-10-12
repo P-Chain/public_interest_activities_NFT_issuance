@@ -1,14 +1,14 @@
 <template>
   <div>
     <b-table striped hover :items="items" :fields="fields">
-    <!-- <template #cell(index)="data">
+      <!-- <template #cell(index)="data">
         {{ data.index + 1 }}
       </template>
       <template #cell(nickname)="data">
         {{ data.items.nickname }}
       </template>
-      <template #cell(volTime)="data">
-        {{ data.items.volTime }}
+      <template #cell(progressedAchieveNum)="data">
+        {{ data.items.progressedAchieveNum }}
       </template> -->
     </b-table>
   </div>
@@ -28,20 +28,21 @@ export default {
           label: '닉네임',
         },        
         {
-          key: 'volTime',
-          label: '봉사 시간',
+          key: 'bloodNum',  //
+          label: '헌혈 횟수',
           sortable: true
         },
       ],
       items: [
-        // { index: 1, name: 'A*C', email: 'a****@naver.com', prog: 1000 },
-        // { index: 2, name: 'D*F', email: 'g****@google.com', prog: 660 },
-        // { index: 3, name: '홍*동', email: 'a****@daum.com', prog: 300 },
+        // { index: 1, name: '홍*동', email: 'a****@naver.com', prog: 100 },
+        // { index: 2, name: 'A*C', email: 'g****@google.com', prog: 66 },
+        // { index: 3, name: 'D*F', email: 'a****@daum.com', prog: 30 },
       ]
     }
   },
-created(){
-    this.$axios.get("/api/ranking/vol").then(response =>{
+  created(){
+    // 수정 필요
+    this.$axios.get("/api/ranking/blood").then(response =>{
     console.log(response.data);
         var arr = response.data;
         for(var i in arr){
