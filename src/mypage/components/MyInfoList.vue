@@ -88,9 +88,9 @@
 export default {
   data() {
     return {
-      myEmail: '이메일',
-      myName: '이름',
-      myPhoneNum: '전화번호',
+      myEmail: '',
+      myName: '',
+      myPhoneNum: '',
       myWalletAdr: '',
       form: {
         password: ''

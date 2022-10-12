@@ -2,6 +2,7 @@
 <template>
   <div class="contents">
     <intro></intro>
+    <last-nft></last-nft>
     <notice-card></notice-card>
     <ranking-card></ranking-card>
     <progress-card></progress-card>
@@ -11,6 +12,7 @@
 
 <script>
 import Introduce from "./components/Introduce.vue"
+import LastNFT from "./components/LastNFT.vue"
 import NoticeCard from "./components/NoticeCard.vue";
 import RankingCard from "./components/RankingCard.vue";
 import ProgressCard from "./components/ProgressCard.vue";
@@ -19,6 +21,7 @@ import ProgressCard from "./components/ProgressCard.vue";
 export default {
   components: {
     "intro": Introduce,
+    "last-nft": LastNFT,
     "notice-card": NoticeCard,
     "ranking-card": RankingCard,
     "progress-card": ProgressCard,
