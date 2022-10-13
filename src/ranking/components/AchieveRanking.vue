@@ -1,14 +1,14 @@
 <template>
   <div>
     <b-table striped hover :items="items" :fields="fields">
-      <!-- <template #cell(index)="data">
+    <!-- <template #cell(index)="data">
         {{ data.index + 1 }}
       </template>
       <template #cell(nickname)="data">
         {{ data.items.nickname }}
       </template>
-      <template #cell(progressedAchieveNum)="data">
-        {{ data.items.progressedAchieveNum }}
+      <template #cell(volTime)="data">
+        {{ data.items.volTime }}
       </template> -->
     </b-table>
   </div>
@@ -29,18 +29,18 @@ export default {
         },        
         {
           key: 'progressedAchieveNum',
-          label: '보유 갯수',
+          label: '업적 갯수',
           sortable: true
         },
       ],
       items: [
-        { index: 1, name: '홍*동', email: 'a****@naver.com', prog: 100 },
-        { index: 2, name: 'A*C', email: 'g****@google.com', prog: 66 },
-        { index: 3, name: 'D*F', email: 'a****@daum.com', prog: 30 },
+        // { index: 1, name: 'A*C', email: 'a****@naver.com', prog: 1000 },
+        // { index: 2, name: 'D*F', email: 'g****@google.com', prog: 660 },
+        // { index: 3, name: '홍*동', email: 'a****@daum.com', prog: 300 },
       ]
     }
   },
-  created(){
+created(){
     this.$axios.get("/api/ranking/achieve").then(response =>{
     console.log(response.data);
         var arr = response.data;
