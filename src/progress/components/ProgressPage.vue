@@ -106,7 +106,7 @@ export default {
               }
           }
       });
-        axios.get("/api/progress/viewachieve").then(response =>{
+        this.$axios.get("/api/progress/viewachieve").then(response =>{
          console.log(response);
          for(var i=0;i<3;i++){
              this.card1.splice(i,1,response.data.ProgAchieve[i].nameAch);
