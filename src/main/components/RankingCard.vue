@@ -148,33 +148,33 @@ export default {
     //         this.nrank3 = dat.nickname}
     // });
     // 수정 필요
-    this.$axios.get("/api/ranking/***").then(response =>{
+    this.$axios.get("/api/ranking/blood").then(response =>{
         var data = response.data;
         var dat = data[0];
-        this.bdvalue1 = dat.issuanceCount, //
+        this.bdvalue1 = dat.bloodNum, //
         this.bdrank1 = dat.nickname
         if(data.length>1){
             dat = data[1];
-            this.bdvalue2 = dat.issuanceCount, //
+            this.bdvalue2 = dat.bloodNum, //
             this.bdrank2 = dat.nickname}
         if(data.length>2){
             dat = data[2];
-            this.bdvalue3 = dat.issuanceCount, //
+            this.bdvalue3 = dat.bloodNum, //
             this.bdrank3 = dat.nickname}
     });
     // 수정 필요
-    this.$axios.get("/api/ranking/***").then(response =>{
+    this.$axios.get("/api/ranking/done").then(response =>{
         var data = response.data;
         var dat = data[0];
-        this.dvalue1 = dat.issuanceCount, //
+        this.dvalue1 = dat.doneNum, //
         this.drank1 = dat.nickname
         if(data.length>1){
             dat = data[1];
-            this.dvalue2 = dat.issuanceCount, //
+            this.dvalue2 = dat.doneNum, //
             this.drank2 = dat.nickname}
         if(data.length>2){
             dat = data[2];
-            this.dvalue3 = dat.issuanceCount, //
+            this.dvalue3 = dat.doneNum, //
             this.drank3 = dat.nickname}
     });
   }

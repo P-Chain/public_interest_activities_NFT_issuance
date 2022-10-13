@@ -13,6 +13,8 @@ ranking.get('/vol', rank.volRankInfo);
 
 ranking.get('/done', rank.doneRankInfo);
 
+ranking.get('/blood', rank.bloodRankInfo);
+
 ranking.get('/nft', rank.nftRankInfo);
 
 ranking.post('/', handler);

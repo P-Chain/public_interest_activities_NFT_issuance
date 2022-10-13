@@ -92,5 +92,8 @@ AchieveProgressLev.statics.printDoneRank = function(){
     // 전체 DB 기부액랭킹순으로 불러오기
     return this.find({"doneNum": {$gt: 0}},{"nickname":true,"doneNum":true}).sort({doneNum:-1}).exec();
 };
-
+AchieveProgressLev.statics.printBDRank = function(){
+    // 전체 DB 기부액랭킹순으로 불러오기
+    return this.find({"bloodNum": {$gt: 0}},{"nickname":true,"bloodNum":true}).sort({bloodNum:-1}).exec();
+};
 module.exports = mongoose.model('AchieveProgressLev', AchieveProgressLev);

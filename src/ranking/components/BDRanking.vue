@@ -7,8 +7,8 @@
       <template #cell(nickname)="data">
         {{ data.items.nickname }}
       </template>
-      <template #cell(progressedAchieveNum)="data">
-        {{ data.items.progressedAchieveNum }}
+      <template #cell(bloodNum)="data">
+        {{ data.items.bloodNum }}
       </template> -->
     </b-table>
   </div>

@@ -21,6 +21,12 @@ exports.doneRankInfo = async (ctx) => {
     ctx.body = data;
 };
 
+exports.bloodRankInfo = async (ctx) => {
+    // 기부액 랭킹 불러오기
+    var data = await APL.printBDRank();
+    ctx.body = data;
+};
+
 exports.nftRankInfo = async (ctx) => {
     // nft 랭킹 불러오기
     var data = await Account.printNftRank();

@@ -8,10 +8,10 @@
         <vms-ranking></vms-ranking>
       </b-tab>
       <b-tab title="헌혈 횟수">
-        <NFT-1-ranking></NFT-1-ranking>
+        <bd-ranking></bd-ranking>
       </b-tab>
       <b-tab title="기부액">
-        <NFT-2-ranking></NFT-2-ranking>
+        <dona-ranking></dona-ranking>
       </b-tab>
     </b-tabs>
   </div>
