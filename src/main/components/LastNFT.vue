@@ -6,7 +6,7 @@
       class="nft-image"
       v-bind="mainProps"
       alt="Transparent image"
-      :src="require(`../../assets/achieves/blood_10.png`)"
+      :src=img
     ></b-img-lazy>
   </div>
 </template>
@@ -15,13 +15,17 @@
 export default {
   data() {
     return {
-      imglist: ['temp']
+      img: ''
     }
   },
   created() {
     // 수정 필요
-    this.$axios.get("/").then(response => {
-      imglist = response.data;
+    this.$axios.get("/api/image/getimage2",{responseType: "arraybuffer"}).then(response => {
+      console.log(response.data)
+            const blob = new Blob([response.data], {type: 'image/png'});
+            console.log(response.data);
+            console.log(blob);
+            this.img = URL.createObjectURL(blob);
     })
     .catch (error => {
 

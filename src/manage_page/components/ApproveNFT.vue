@@ -182,9 +182,11 @@ export default {
       
       console.log(file);
       console.log('file.name='+file.name);
-      
+    this.$store.commit('changeNft', file.name);
+      let fd = new FormData();
+        fd.append('file',file);
     // to Server
-    this.$axios.post('/api/upload2', {file:file},{headers: {'Content-Type':'multipart/form-data'}})
+    this.$axios.post('/api/upload2', fd,{headers: {'Content-Type':'multipart/form-data'}})
       .then(res => {
         console.log('to sv res='+res);
           if(res.status==200){

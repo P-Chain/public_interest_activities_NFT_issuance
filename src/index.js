@@ -96,9 +96,11 @@ router.post('/api/upload', upload.single('file'), (ctx, next)=>{
 
 router.post('/api/upload2', upload2.single('file'), (ctx, next)=>{
     console.log("ok");
+    
     console.log(ctx.request.file);
     const { fieldname, originalname, encoding, mimetype, destination, filename, path, size } = ctx.request.file
     const { name } = ctx.request.body;
+    process.env.NFT_NAME = filename;
 
     console.log("body 데이터 : ", name);
     console.log("폼에 정의된 필드명 : ", fieldname);

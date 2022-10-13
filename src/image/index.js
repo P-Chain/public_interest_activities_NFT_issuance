@@ -11,6 +11,8 @@ image.get('/', handler);
 
 image.get('/getimage/:key', getimage.getimage);
 
+image.get('/getimage2', getimage.getimage2);
+
 image.delete('/', handler);
 
 image.put('/', handler);

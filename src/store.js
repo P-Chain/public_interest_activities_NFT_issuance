@@ -10,7 +10,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     token: false,
-    access: 0
+    access: 0,
+      nftname:""
   },
   getters: {
     getToken(state) {
@@ -18,7 +19,10 @@ export default new Vuex.Store({
     },
     getAccess(state) {
       return state.access;
-    }
+    },
+      getNft(state){
+      return state.nftname;
+  }
   },
   mutations: {
     changeToken(state, token) {
@@ -26,7 +30,10 @@ export default new Vuex.Store({
     },
     changeAccess(state, access) {
       state.access = access
-    }
+    },
+      changeNft(state,nftname){
+          state.nftname = nftname;
+      }
   },
   actions: {
 

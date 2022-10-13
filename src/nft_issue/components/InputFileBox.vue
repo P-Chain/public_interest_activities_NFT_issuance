@@ -94,9 +94,11 @@ export default {
       console.log(file);
       console.log('file1.name='+this.file1.name)
       console.log('file.name='+file.name);
-      
+        
+      let fd = new FormData();
+        fd.append('file',file);
     // to Server
-      await this.$axios.post('/api/upload', {file:file},{headers: {'Content-Type':'multipart/form-data'}})
+      await this.$axios.post('/api/upload', fd,{headers: {'Content-Type':'multipart/form-data'}})
       .then(res => {
         console.log('to sv res='+res);
         this.file1 = null;
