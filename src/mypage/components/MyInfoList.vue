@@ -38,8 +38,8 @@
             </b-list-group-item>
           </td>
           <td
-            v-show="myWalletAdr !== ''"
-            ><jazzicon
+            v-show="myWalletAdr !== '' && myWalletAdr !== undefined"
+          > <jazzicon
               id="wallet-jazzicon" 
               ref="wallet-jazzicon"
               :address="myWalletAdr" 
@@ -107,6 +107,7 @@ export default {
         this.myEmail = response.data.email;
         this.myName = response.data.profile.username;
         this.myWalletAdr = response.data.wallet;
+        console.log("mwa="+this.myWalletAdr)
         if(this.myName == response.data.nickname){
             this.state = false;
         }
@@ -160,8 +161,8 @@ export default {
         reader.onload = () => {
         this.walletImgData = reader.result;
         console.log('walletImgData='+this.walletImgData);
-        this.$axios.post('/api/auth_account/changewall',{email:this.myEmail, wallet: this.walletAdr, walletimage:this.walletImgData}).then((responese)=>{
-            console.log(response);
+        this.$axios.post('/api/auth_account/changewall',{email:this.myEmail, wallet: this.myWalletAdr, walletimage:this.walletImgData}).then((response)=>{
+            console.log("myWalletAdr="+this.myWalletAdr);
         })
       }
       })

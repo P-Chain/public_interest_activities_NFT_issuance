@@ -32,10 +32,10 @@ export default {
       ], // Must be an array reference!
       options: [
         // DB에서 불러오는 작업 필요
-        { value: { user: 'YYY', nft: 'NFT1' }, html: 'NFT1 / 발급자: XXX / 대상자: YYY <a target=&apos;_blank&apos; href="">파일 보기</a>' },
-        { value: { user: 'YYY', nft: 'NFT2' }, html: 'NFT1 / 발급자: XXX / 대상자: YYY <a target=&apos;_blank&apos; href="">파일 보기</a>' },
-        { value: { user: 'YYY', nft: 'NFT3' }, html: 'NFT1 / 발급자: XXX / 대상자: YYY <a target=&apos;_blank&apos; href="">파일 보기</a>' },
-        { value: { user: 'YYY', nft: 'NFT4' }, html: 'NFT1 / 발급자: XXX / 대상자: YYY <a target=&apos;_blank&apos; href="">파일 보기</a>' },
+        // { value: { user: 'YYY', nft: 'NFT1' }, html: 'NFT1 / 발급자: XXX / 대상자: YYY <a target=&apos;_blank&apos; href="">파일 보기</a>' },
+        // { value: { user: 'YYY', nft: 'NFT2' }, html: 'NFT1 / 발급자: XXX / 대상자: YYY <a target=&apos;_blank&apos; href="">파일 보기</a>' },
+        // { value: { user: 'YYY', nft: 'NFT3' }, html: 'NFT1 / 발급자: XXX / 대상자: YYY <a target=&apos;_blank&apos; href="">파일 보기</a>' },
+        // { value: { user: 'YYY', nft: 'NFT4' }, html: 'NFT1 / 발급자: XXX / 대상자: YYY <a target=&apos;_blank&apos; href="">파일 보기</a>' },
       ],
       canvas: null,
       context: null,

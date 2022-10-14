@@ -36,10 +36,10 @@ export default {
       selected: [], // Must be an array reference!
       options: [
         // 수정 필요. DB에서 불러와서 배치
-        { text: 'num1', value: '1번' },
-        { text: 'num2', value: '2번' },
-        { text: 'num3', value: '3번' },
-        { text: 'num4', value: '4번' }
+        // { text: 'num1', value: '1번' },
+        // { text: 'num2', value: '2번' },
+        // { text: 'num3', value: '3번' },
+        // { text: 'num4', value: '4번' }
       ],
       file1: null,
         form: {

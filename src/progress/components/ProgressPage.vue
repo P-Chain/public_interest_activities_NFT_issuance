@@ -8,7 +8,7 @@
     </b-card>
 
     <b-card title="보유 NFT">
-      <b-card-text>
+      <b-card-text v-show="card2.img1">
         <b-img :src="card2.img1"></b-img>  
         <b-img :src="card2.img2"></b-img>  
         <b-img :src="card2.img3"></b-img>
@@ -51,9 +51,9 @@ export default {
   data() {
     return {
       card1: [
-        '업적1',
-        '업적3',
-        '업적5'
+        // '업적1',
+        // '업적3',
+        // '업적5'
       ],
       card2: {
         // img1: require("../../assets/background.jpg"),
@@ -66,12 +66,12 @@ export default {
         text3: '업적6',
       },
       card4: {
-        value1: 33,
-        max1: 50,
-        value2: 3,
-        max2: 5,
-        value3: 8,
-        max3: 10,
+        value1: 0,
+        max1: 0,
+        value2: 0,
+        max2: 0,
+        value3: 0,
+        max3: 0,
 
         prog1: '봉사시간',
         prog2: '기부액',
@@ -121,7 +121,11 @@ export default {
 img {
   width: 5rem;
   height: 5rem;
-  border: 1px solid black;
+  margin-bottom: 1rem;
+}
+.card {
+  border: 3px solid lightgreen;
+  background-color: #fdfdfd;
   margin-bottom: 1rem;
 }
 </style>

@@ -58,4 +58,7 @@ a:link {
 a:hover {
   color : blue;
 }
+.main-card {
+  border: 3px solid lightgreen;
+}
 </style>

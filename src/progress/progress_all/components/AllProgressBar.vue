@@ -25,16 +25,16 @@
   export default {
     data() {
       return {
-        value1: 33,
-        max1: 50,
-        value2: 3,
-        max2: 5,
-        value3: 8,
-        max3: 10,
+        value1: 0,
+        max1: 0,
+        value2: 0,
+        max2: 0,
+        value3: 0,
+        max3: 0,
   
-        prog1: '업적1',
-        prog2: '업적2',
-        prog3: '업적3'
+        prog1: '',
+        prog2: '',
+        prog3: ''
       }
     },
   // created(){

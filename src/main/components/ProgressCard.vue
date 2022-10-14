@@ -273,6 +273,6 @@ export default {
   border: 1px solid black;
 }
 .main-card {
-  border: 1px solid lightblue;
+  border: 3px solid lightskyblue;
 }
 </style>

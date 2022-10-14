@@ -24,5 +24,7 @@ export default {
 </script>
 
 <style scoped>
-
+#main-background {
+  background-color: #fdfdfd;
+}
 </style>

@@ -186,7 +186,6 @@ export default {
   margin-bottom: 1rem;
 }
 .main-card {
-  border: 1px solid lightblue;
+  border: 3px solid lightblue;
 }
-
 </style>

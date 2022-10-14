@@ -1,5 +1,5 @@
 <template>
-  <div class="main-box" v-if="imglist !== []">
+  <div class="main-box" v-if="img !== ''">
     <p class="p-bold">최근 발행 NFT</p>
     <b-img-lazy
       b-img

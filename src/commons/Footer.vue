@@ -1,7 +1,7 @@
 <template>
   <div :text="['center', 'lg-start']">
     <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.1)">
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.25)">
       © 2022 Copyright: P-chain
       <br>
       ▶ HomePage:
