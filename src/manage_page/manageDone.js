@@ -18,15 +18,16 @@ exports.allowDoneApply = async (ctx) => {
     await MDone.allowApply({index:data.index,doneNum:data.doneNum});
     await APL.DoneUpdate(data.nickname, data.doneNum);
     ctx.response.body = data;
-    if(don.doneNum<100000&&data.don+doneNum>=100000){
+    console.log(don);
+    if(don.doneNum<100000&&data.doneNum+don.doneNum>=100000){
                 var num = await NM.getCount();
         await NM.newApply({index:num, nftNum:4,nftName:"don_100k",nickname:data.nickname,username:"auto"});
     }
-    if(don.doneNum<1000000&&data.don+doneNum>=1000000){
+    if(don.doneNum<1000000&&data.doneNum+don.doneNum>=1000000){
                 var num = await NM.getCount();
         await NM.newApply({index:num, nftNum:5,nftName:"don_1m",nickname:data.nickname,username:"auto"});
     }
-    if(don.doneNum<10000000&&data.don+doneNum>=10000000){
+    if(don.doneNum<10000000&&data.doneNum+don.doneNum>=10000000){
                 var num = await NM.getCount();
         await NM.newApply({index:num, nftNum:6,nftName:"don_10m",nickname:data.nickname,username:"auto"});
     }
