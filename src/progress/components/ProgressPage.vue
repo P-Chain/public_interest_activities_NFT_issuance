@@ -7,7 +7,7 @@
       <router-link to="/progress/achieved" class="card-link">더보기</router-link>
     </b-card>
 
-    <b-card title="보유 NFT">
+    <b-card title="보유 NFT(미구현)">
       <b-card-text v-show="card2.img1">
         <b-img :src="card2.img1"></b-img>  
         <b-img :src="card2.img2"></b-img>  
@@ -51,9 +51,9 @@ export default {
   data() {
     return {
       card1: [
-        // '업적1',
-        // '업적3',
-        // '업적5'
+        '',
+        '',
+        ''
       ],
       card2: {
         // img1: require("../../assets/background.jpg"),

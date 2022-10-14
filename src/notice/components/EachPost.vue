@@ -55,8 +55,8 @@ export default {
 }
 .notice-text {
   height: auto;
+  white-space: pre-line;
   border-bottom: 1px solid #e3e3e3;
   padding: 1rem 1rem 1rem;
-  white-space: pre-line;
 }
 </style>

@@ -5,7 +5,7 @@
       b-img
       class="nft-image"
       v-bind="mainProps"
-      alt="Transparent image"
+      alt="최근 발행된 NFT가 없음"
       :src=img
     ></b-img-lazy>
   </div>

@@ -177,7 +177,7 @@ export default {
           return this.form.email.length>1&&this.state.email!=false;
       },
       nicknameState(){
-          return this.form.organization_name.length>3&&this.state.organization_name!=false&&this.form.organization_name.length<16;
+          return this.form.organization_name.length>2&&this.state.organization_name!=false&&this.form.organization_name.length<16;
       },
       passwordState(){
           return this.form.password.length>5;
@@ -192,7 +192,7 @@ export default {
         if(this.state.organization_name==false){
             return "기관명 중복입니다.";
         }
-      return "4자 이상 15자 이하 기관명을 입력해주세요.";
+      return "3자 이상 15자 이하 기관명을 입력해주세요.";
     },
       passwordInvalidFeedback() {
       return "6자 이상 비밀번호를 입력해주세요.";

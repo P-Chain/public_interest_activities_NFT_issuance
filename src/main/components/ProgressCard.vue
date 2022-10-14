@@ -166,11 +166,11 @@ export default {
   data() {
     return {
       value1: 0,
-      max1: 0,
+      max1: 50,
       value2: 0,
-      max2: 0,
+      max2: 100000,
       value3: 0,
-      max3: 0,
+      max3: 10,
       value4: 0,
       max4: 0,
       list: [],

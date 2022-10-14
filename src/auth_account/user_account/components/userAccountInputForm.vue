@@ -164,7 +164,7 @@ export default {
           return this.form.email.length>1&&this.state.email!=false;
       },
       nicknameState(){
-          return this.form.nickname.length>3&&this.state.nickname!=false&&this.form.nickname.length<16;
+          return this.form.nickname.length>2&&this.state.nickname!=false&&this.form.nickname.length<16;
       },
       passwordState(){
           return this.form.password.length>5;
@@ -182,7 +182,7 @@ export default {
         if(this.state.nickname==false){
             return "닉네임 중복입니다.";
         }
-      return "4자 이상 15자 이하 닉네임을 입력해주세요.";
+      return "3자 이상 15자 이하 닉네임을 입력해주세요.";
     },
       passwordInvalidFeedback() {
       return "6자 이상 비밀번호를 입력해주세요.";
