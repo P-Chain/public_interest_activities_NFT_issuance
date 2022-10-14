@@ -45,8 +45,17 @@ created(){
     console.log(response.data);
         var arr = response.data;
         for(var i in arr){
+            if(i>0){
+                if(arr[i].progressedAchieveNum == arr[i-1].progressedAchieveNum){
+                    arr[i].index = arr[i-1].index;
+                }
+                else{
             arr[i].index = Number(i)+1;
         }
+            }
+            else{
+            arr[i].index = Number(i)+1;
+        }}
         this.items = arr;
     })
   }
