@@ -15,7 +15,7 @@ exports.allowIssApply = async (ctx) => {
     var data = ctx.request.body;
     console.log(data);
     await MISS.allowApply({index:data.index,issNum:data.issNum});
-    if(data.nickname==null){
+    if(data.nickname==data.username){
         await Ins_Account.AddIssAchieve(data.username, data.issNum);
     }
     else{
@@ -33,7 +33,7 @@ exports.denyIssApply = async (ctx) => {
 
 exports.nowIss = async(ctx)=>{
     var data = ctx.request.body;
-    if(data.nickname==null){
+    if(data.nickname==data.username){
         ctx.body = await Ins_Account.findIssList(data.email);
     }
     else{
