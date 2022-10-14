@@ -54,7 +54,8 @@ export default {
   font-size: 1rem;
 }
 .notice-text {
-  height: 6rem;
+  height: auto;
+    white-space: pre-line;
   border-bottom: 1px solid #e3e3e3;
   padding: 1rem 1rem 1rem;
 }

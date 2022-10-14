@@ -9,7 +9,7 @@ exports.localRegister = async (ctx) => {
     console.log(ctx.request.body);
     // 데이터 검증
     const schema = Joi.object().keys({
-        nickname: Joi.string().min(4).max(15).required(),
+        nickname: Joi.string().min(3).max(15).required(),
         username: Joi.string().required(),
         email: Joi.string().email().required(),
         password: Joi.string().required().min(6)
