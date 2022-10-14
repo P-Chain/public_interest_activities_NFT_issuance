@@ -40,8 +40,14 @@
             <span><strong>{{ card4.value3 }} / {{ card4.max3 }}</strong></span>
           </b-progress-bar>
         </b-progress>
+        {{ card4.prog4 }}
+        <b-progress :max="card4.max4" height="1rem">
+          <b-progress-bar :value="card4.value4">
+            <span><strong>{{ card4.value4 }} / {{ card4.max4 }}</strong></span>
+          </b-progress-bar>
+        </b-progress>
       </b-card-text>
-      <router-link to="/progress/progress_all" class="card-link">더보기</router-link>
+      <!-- <router-link to="/progress/progress_all" class="card-link">더보기</router-link> -->
     </b-card>
   </b-card-group>
 </template>
@@ -72,10 +78,13 @@ export default {
         max2: 0,
         value3: 0,
         max3: 0,
+        value4: 0,
+        max4: 0,
 
         prog1: '봉사시간',
         prog2: '기부액',
-        prog3: '헌혈횟수',
+        prog3: '헌혈',
+        prog4: 'NFT보유'
       }
     }
   },
@@ -124,7 +133,7 @@ img {
   margin-bottom: 1rem;
 }
 .card {
-  border: 3px solid lightgreen;
+  border: 3px solid lightblue;
   background-color: #fdfdfd;
   margin-bottom: 1rem;
 }
